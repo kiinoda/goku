@@ -1,0 +1,594 @@
+{
+    :profiles {
+        :grn {
+            :default true
+            :sim      200 ; keys need to be pressed within this threshold to be considered simultaneous
+            :simlayer-threshold 450 ; ???????
+            :delay    500 ; time after which the key press is count delayed
+            :alone    500 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
+            :held    1000 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
+        }
+    }
+
+    :templates {
+        :open "osascript -e 'tell application \"%s\" to activate'"
+        :paste "osascript -e '
+              set the clipboard to \"%s\"
+              set the clipboard to the clipboard + \"%s\"
+              tell application \"System Events\"
+                      keystroke \"v\" using command down
+              end tell
+              '"
+        :sleep "sleep %s" ; sample placeholder
+    }
+
+    :applications {
+        :terminals [ "net.kovidgoyal.kitty" ]
+        :safari [ "^com.apple.Safari$" ]
+        :vscode [ "^com.microsoft.VSCode$" ]
+    }
+
+    :froms {
+        ;alias
+        :delete {:key :delete_or_backspace}
+        :return {:key :return_or_enter}
+        :btick {:key :grave_accent_and_tilde}
+        :bslash {:key :backslash}
+        :ls {:key :left_shift}
+        :rs {:key :right_shift}
+
+        ;colemak froms (for easier mnemonics)
+        :-q {:key :q}
+        :-w {:key :w}
+        :-f {:key :e}
+        :-p {:key :r}
+        :-g {:key :t}
+        :-j {:key :y}
+        :-l {:key :u}
+        :-u {:key :i}
+        :-y {:key :o}
+        :-semicolon {:key :p}
+
+        :-a {:key :a}
+        :-r {:key :s}
+        :-s {:key :d}
+        :-t {:key :f}
+        :-d {:key :g}
+        :-h {:key :h}
+        :-n {:key :j}
+        :-e {:key :k}
+        :-i {:key :l}
+        :-o {:key :semicolon}
+
+        :-z {:key :z}
+        :-x {:key :x}
+        :-c {:key :c}
+        :-v {:key :v}
+        :-b {:key :b}
+        :-k {:key :n}
+        :-m {:key :m}
+    }
+
+    :tos {
+        ;colemak tos (for easier string sending)
+        :-q {:key :q}
+        :-w {:key :w}
+        :-f {:key :e}
+        :-p {:key :r}
+        :-g {:key :t}
+        :-j {:key :y}
+        :-l {:key :u}
+        :-u {:key :i}
+        :-y {:key :o}
+        :-semicolon {:key :semicolon}
+
+        :-a {:key :a}
+        :-r {:key :s}
+        :-s {:key :d}
+        :-t {:key :f}
+        :-d {:key :g}
+        :-h {:key :h}
+        :-n {:key :j}
+        :-e {:key :k}
+        :-i {:key :l}
+        :-o {:key :semicolon}
+
+        :-z {:key :z}
+        :-x {:key :x}
+        :-c {:key :c}
+        :-v {:key :v}
+        :-b {:key :b}
+        :-k {:key :n}
+        :-m {:key :m}
+    
+        ;named symbols
+        :exclaim {:key :1 :modi :shift}
+        :at {:key :2 :modi :shift}
+        :hash {:key :3 :modi :shift}
+        :dollar {:key :4 :modi :shift}
+        :percent {:key :5 :modi :shift}
+        :caret {:key :6 :modi :shift}
+        :ampersand {:key :7 :modi :shift}
+        :bullet {:key :8 :modi :shift}
+        :open_paren {:key :9 :modi :shift}
+        :close_paren {:key :0 :modi :shift}
+        :hyphen {:key :hyphen}
+        :underscore {:key :hyphen :modi :shift}
+        :equal {:key :equal_sign}
+        :plus {:key :equal_sign :modi :shift}
+        :semicolon {:key :semicolon}
+        :colon {:key :semicolon :modi :shift}
+        :open_bracket {:key :open_bracket}
+        :close_bracket {:key :close_bracket}
+        :open_brace {:key :open_bracket :modi :shift}
+        :close_brace {:key :close_bracket :modi :shift}
+        :less_than {:key :comma :modi :shift}
+        :greater_than {:key :period :modi :shift}
+        :backquote {:key :grave_accent_and_tilde}
+        :tilde {:key :grave_accent_and_tilde :modi :shift}
+        :dquote {:key :quote :modi :shift}
+        :pipe {:key :backslash :modi :shift}
+        :question {:key :slash :modi :shift}
+        :ls {:key :left_shift}
+        :rs {:key :right_shift}
+
+        ; system-wide shortcuts
+        :command_tab {:key :!Ctab}
+        :left_desktop {:key :!!left_arrow}
+        :right_desktop {:key :!!right_arrow} 
+        :mission_control {:key :!!up_arrow}
+        :internet_query {:key :!!t}
+        :show_application_windows {:key :!!down_arrow}
+        :show_desktop {:key :!!f12}
+        :activate_spotlight {:key :!!spacebar}
+        :fullscreen_snapshot {:key :!CS3}
+        :window_snapshot {:key :!CS4}
+        :selection_snapshot {:key :!CS5}
+        :emoji_picker {:key :spacebar :modi [:control :command]} ;!CTspacebar
+        :system-new_tab {:key :!Ct}
+        :system-close_tab {:key :!Cw}
+        :system-force_quit_apps {:key :!COescape}
+
+        ; 1password
+        :activate_1password {:key :!!backslash}
+        ; hazeover - focus on one window
+        :activate_hazeover {:key :!!return_or_enter}
+        ; mosaic - window positioning
+        :window_align_left {:key :!!u}
+        :window_align_right {:key :!!o}
+        :window_center {:key :!!i}
+        :window_full_size {:key :!!p}
+        ; vscode
+        :toggle_terminal_or_editor {:key :!Cspacebar}
+        :focus_group_or_terminal_left {:key :!CTOup_arrow}
+        :focus_group_or_terminal_right {:key :!CTOdown_arrow}
+        :focus_editor_left {:key :!COleft_arrow}
+        :focus_editor_right {:key :!COright_arrow}
+        :focus_file_or_new_tab {:key :!Cp}
+        ; kitty
+        :kitty-prev_tab {:key :!Cleft_arrow}
+        :kitty-next_tab {:key :!Cright_arrow}
+        :kitty-move_tab_left {:key :!COleft_arrow}
+        :kitty-move_tab_right {:key :!COright_arrow}
+        :kitty-word_left {:key :!Tleft_arrow}
+        :kitty-word_right {:key :!Tright_arrow}
+        :kitty-beginning_of_line {:key :!Ta}
+        :kitty-end_of_line {:key :!Te}
+        ; safari
+        :safari-prev_tab {:key :!TStab}
+        :safari-next_tab {:key :!Ttab}
+        :safari-hist_back {:key :!Cclose_bracket}
+        :safari-hist_frwd {:key :!Copen_bracket}
+    }
+
+    :simlayers {
+        :app-mode {:key :a}
+        :desktop-mode {:key :k}
+        :emoji-mode {:key :grave_accent_and_tilde}
+    }
+
+    :main [
+        {
+            :des "Old Style Layers w/ a Twist"
+            :rules [
+                ; Caps Lock magic
+                ; press and hold -> extend layer
+                ; press and release -> enter sequence layer
+                ; press twice and hold -> mouse layer
+                ; press twice and release -> escape
+                ; exit sequence and mouse layer after :delay period automatically
+                [:caps_lock ["extend" 1] [:!sequence :!mouse :!capslock] {:afterup ["extend" 0] :alone ["sequence" 1] :delayed {:invoked [["sequence" 0], ["mouse" 0]]}}]
+                [:caps_lock ["mouse" 1] [:sequence :!mouse :!capslock] {:afterup [["mouse" 0] ["sequence" 0]] :alone {:key :escape} :delayed {:invoked ["mouse" 0] :cancelled ["mouse" 0]}}]
+                ; command layer
+                [:left_command :left_command [:!command :!emoji] {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
+                ; shifted layer
+                [:quote ["shifted" 1] [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                ; System layer (defined here for consistency)
+                [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
+            ]
+        }
+
+        {
+            :des "Chords - Navigation and Application Switching "
+            :rules [
+                ; navigational extensions
+                :extend
+                    ; functions
+                    [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
+                    [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
+                    ; modifiers
+                    [:##a :left_control][:##s :left_shift][:##d :left_option][:##f :left_command]
+                    ; arrows
+                    [:##j :left_arrow]
+                    [:##k :down_arrow]
+                    [:##i :up_arrow]
+                    [:##l :right_arrow]
+                    ; shortcuts
+                    [:##u :!Cleft_arrow :!terminals]
+                    [:##o :!Cright_arrow :!terminals]
+                    ; undo, cut, copy, paste
+                    [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
+                    ; edit/organize text properly
+                    [:##spacebar :return_or_enter]
+                    [:##semicolon :delete_or_backspace]
+
+                ; application switching
+                :app-mode
+                    ; most used apps
+                    [:-w [:open "WhatsApp"]]              ; whatsapp
+                    [:-t [:open "Kitty"]]                 ; terminal
+                    [:-s [:open "Drafts"]]                ; drafts
+                    [:-v [:open "Preview"]]               ; preView
+                    [:-n [:open "Safari"]]                ; navigator
+                    [:-e [:open "Visual Studio Code"]]    ; editor
+                    [:-f [:open "Type Fu"]]               ; typeFu
+                    [:-m [:open "Mailmate"]]              ; mail
+                    ; others
+                    [:-p :activate_1password]             ; password_manager
+                    [:-y :internet_query]                 ; internet querY
+                    [:spacebar :activate_spotlight]       ; spotlight
+
+                ; desktop switching
+                :desktop-mode
+                    [:a :!!1]
+                    [:s :!!2]
+                    [:d :!!3]
+                    [:f :!!4]
+                    [:g :!!5]
+
+                ; chords - window positioning, focus, mission control, snapshot, force quit
+                :system
+                    ; global shortcuts
+                    [:spacebar :system-force_quit_apps]
+                    [:u :mission_control]
+                    [:o :show_application_windows]
+                    ; snapshot stuff
+                    [:q :fullscreen_snapshot]
+                    [:w :window_snapshot]
+                    ; focus on one window (using Hazeover)
+                    [:return_or_enter :activate_hazeover]
+                    ; window positioning (using Rectangle)
+                    [:j :window_align_left]
+                    [:k :window_center]
+                    [:l :window_align_right]
+                    [:i :window_full_size]
+
+                ; chords - mouse navigation
+                :mouse
+                    ; hold f to slow down to 1/4 of default speed
+                    [:f {:mkey {:speed 0.25}}]
+                    ; navigate quickly around the screen
+                    [:k {:mkey {:y 4000}}]
+                    [:i {:mkey {:y -4000}}]
+                    [:j {:mkey {:x -4000}}]
+                    [:l {:mkey {:x 4000}}]
+                    ; mouse buttons
+                    [:u {:pkey :button1}]
+                    [:o {:pkey :button2}]
+
+                ; chords - safari
+                :safari
+                    [:ls :ls :safari {:alone :safari-prev_tab}]
+                    [:rs :rs :safari {:alone :safari-next_tab}]
+                    [:!Rleft_shift :safari-hist_frwd]
+                    [:!Sright_shift :safari-hist_back]
+
+                ; chords - terminals
+                :terminals
+                    [:u :kitty-beginning_of_line [:terminals :extend]]
+                    [:o :kitty-end_of_line [:terminals :extend]]
+                    [:!Cu :kitty-word_left [:terminals :extend]]
+                    [:!Co :kitty-word_right [:terminals :extend]]
+                    [:ls :ls :terminals {:alone :kitty-prev_tab}]
+                    [:rs :rs :terminals {:alone :kitty-next_tab}]
+                    [:!Rleft_shift :kitty-move_tab_left :terminals]
+                    [:!Sright_shift :kitty-move_tab_right :terminals]
+
+                ; chords - vscode
+                :vscode
+                    ; [:left_command :left_command :!command {:alone :toggle_terminal_or_editor}]
+                    [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
+                    [:ls :ls :vscode {:alone :focus_group_or_terminal_left}]
+                    [:rs :rs :vscode {:alone :focus_group_or_terminal_right}]
+                    [:!Rleft_shift :focus_editor_left]
+                    [:!Sright_shift :focus_editor_right]
+            ]
+        }
+
+
+        {
+            :des "Sequences - Editing and App Shortcuts"
+            :rules [
+                ; sequence - symbols
+                :sequence
+                    [:-q :equal_sign nil {:afterup ["sequence" 0]}]
+                    [:-f :dquote nil {:afterup ["sequence" 0]}]
+                    [:-w :quote nil {:afterup ["sequence" 0]}]
+                    [:-p :percent nil {:afterup ["sequence" 0]}]
+                    [:-l :plus nil {:afterup ["sequence" 0]}]
+                    [:-u :underscore nil {:afterup ["sequence" 0]}]
+                    [:-y :hyphen nil {:afterup ["sequence" 0]}]
+                    [:-a :at nil {:afterup ["sequence" 0]}]
+                    [:-s :ampersand nil {:afterup ["sequence" 0]}]
+                    [:-d :dollar nil {:afterup ["sequence" 0]}]
+                    [:-h :hash nil {:afterup ["sequence" 0]}]
+                    [:-e :tilde nil {:afterup ["sequence" 0]}]
+                    [:-x :exclaim nil {:afterup ["sequence" 0]}]
+                    [:-c :caret nil {:afterup ["sequence" 0]}]
+                    [:-b :bullet nil {:afterup ["sequence" 0]}]
+                    [:-k :semicolon nil {:afterup ["sequence" 0]}]
+
+                ; sequence - parens, brackets and braces
+                :sequence
+                    [:-g :open_brace nil {:afterup ["sequence" 0]}]
+                    [:-j :close_brace nil {:afterup ["sequence" 0]}]
+                    [:-r :open_bracket nil {:afterup ["sequence" 0]}]
+                    [:-t :open_paren nil {:afterup ["sequence" 0]}]
+                    [:-n :close_paren nil {:afterup ["sequence" 0]}]
+                    [:-i :close_bracket nil {:afterup ["sequence" 0]}]
+
+                ; sequence - editing helpers
+                :sequence
+                    [:-o :delete_or_backspace nil {:afterup ["sequence" 0]}]
+                    [:-m :return_or_enter nil {:afterup ["sequence" 0]}]
+
+                ; sequence - cancelled keypresses (can be repurposed)
+                :sequence
+                    [:-semicolon :vk_none nil {:afterup ["sequence" 0]}]
+                    [:-z :vk_none nil {:afterup ["sequence" 0]}]
+                    [:-v :vk_none nil {:afterup ["sequence" 0]}]
+                    [:hyphen :vk_none nil {:afterup ["sequence" 0]}]
+                    [:equal_sign :vk_none nil {:afterup ["sequence" 0]}]
+                    [:open_bracket :vk_none nil {:afterup ["sequence" 0]}]
+                    [:close_bracket :vk_none nil {:afterup ["sequence" 0]}]
+
+                ; sequence - symbols on the original keys but shifted for ease of use
+                :sequence
+                    [:comma :less_than nil {:afterup ["sequence" 0]}]
+                    [:period :greater_than nil {:afterup ["sequence" 0]}]
+                    [:slash :question nil {:afterup ["sequence" 0]}]
+                    [:quote :dquote nil {:afterup ["sequence" 0]}]
+                    [:backslash :pipe nil {:afterup ["sequence" 0]}]
+                    [:btick :tilde nil {:afterup ["sequence" 0]}]
+
+                ; sequence - desktop switching
+                :sequence
+                    [:1 :!!1 nil {:afterup ["sequence" 0]}]
+                    [:2 :!!2 nil {:afterup ["sequence" 0]}]
+                    [:3 :!!3 nil {:afterup ["sequence" 0]}]
+                    [:4 :!!4 nil {:afterup ["sequence" 0]}]
+                    [:5 :!!5 nil {:afterup ["sequence" 0]}]
+                    [:6 :!!6 nil {:afterup ["sequence" 0]}]
+                    [:7 :!!7 nil {:afterup ["sequence" 0]}]
+                    [:8 :!!8 nil {:afterup ["sequence" 0]}]
+                    [:9 :!!9 nil {:afterup ["sequence" 0]}]
+                    [:0 :!!0 nil {:afterup ["sequence" 0]}]
+
+                ; commands as sequences
+                :command
+                    ; while in the command layer
+                    ; click and hold to activate mouse layer
+                    ; click and release to activate capslock layer
+                    [:left_command ["mouse" 1] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
+                    ; activate emoji layer
+                    [:btick ["emoji" 1] :command {:afterup ["command" 0] :delayed {:invoked ["emoji" 0]}}]
+
+                ; command - tab switching
+                :command
+                    [:1 :!C1 nil {:afterup ["command" 0]}]
+                    [:2 :!C2 nil {:afterup ["command" 0]}]
+                    [:3 :!C3 nil {:afterup ["command" 0]}]
+                    [:4 :!C4 nil {:afterup ["command" 0]}]
+                    [:5 :!C5 nil {:afterup ["command" 0]}]
+                    [:6 :!C6 nil {:afterup ["command" 0]}]
+                    [:7 :!C7 nil {:afterup ["command" 0]}]
+                    [:8 :!C8 nil {:afterup ["command" 0]}]
+                    [:9 :!C9 nil {:afterup ["command" 0]}]
+                    [:0 :!C0 nil {:afterup ["command" 0]}]
+
+                ; press command+key
+                :command
+                    [:-q :!Cq nil {:afterup ["command" 0]}]
+                    [:-w :!Cw nil {:afterup ["command" 0]}]
+                    [:-f :!Cf nil {:afterup ["command" 0]}]
+                    [:-p :!Cp nil {:afterup ["command" 0]}]
+                    [:-g :!Cg nil {:afterup ["command" 0]}]
+                    [:-j :!Cj nil {:afterup ["command" 0]}]
+                    [:-l :!Cl nil {:afterup ["command" 0]}]
+                    [:-u :!Cu nil {:afterup ["command" 0]}]
+                    [:-y :!Cy nil {:afterup ["command" 0]}]
+                    [:-a :!Ca nil {:afterup ["command" 0]}]
+                    [:-r :!Cr nil {:afterup ["command" 0]}]
+                    [:-s :!Cs nil {:afterup ["command" 0]}]
+                    [:-t :!Ct nil {:afterup ["command" 0]}]
+                    [:-d :!Cd nil {:afterup ["command" 0]}]
+                    [:-h :!Ch nil {:afterup ["command" 0]}]
+                    [:-n :!Cn nil {:afterup ["command" 0]}]
+                    [:-e :!Ce nil {:afterup ["command" 0]}]
+                    [:-i :!Ci nil {:afterup ["command" 0]}]
+                    [:-o :!Co nil {:afterup ["command" 0]}]
+                    [:-x :!Cx nil {:afterup ["command" 0]}]
+                    [:-c :!Cc nil {:afterup ["command" 0]}]
+                    [:-v :!Cv nil {:afterup ["command" 0]}]
+                    [:-b :!Cb nil {:afterup ["command" 0]}]
+                    [:-k :!Ck nil {:afterup ["command" 0]}]
+                    [:-m :!Cm nil {:afterup ["command" 0]}]
+                    [:return_or_enter :!Creturn_or_enter nil {:afterup ["command" 0]}]
+
+                ; show me some emojis
+                :emoji
+                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
+                    [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
+                    [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
+                    [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
+                    [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
+                    [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
+                    [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
+                    [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
+                    [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
+                    [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
+                    [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
+                    [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
+                    [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
+                    [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
+                    [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
+                    [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
+                    [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
+                    [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
+                    [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
+                    [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
+                    [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
+                    [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
+                    [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
+                    [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
+                    [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
+                    [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
+
+                :shifted
+                    [:-q :!Sq nil {:afterup ["shifted" 0]}]
+                    [:-w :!Sw nil {:afterup ["shifted" 0]}]
+                    [:-f :!Sf nil {:afterup ["shifted" 0]}]
+                    [:-p :!Sp nil {:afterup ["shifted" 0]}]
+                    [:-g :!Sg nil {:afterup ["shifted" 0]}]
+                    [:-j :!Sj nil {:afterup ["shifted" 0]}]
+                    [:-l :!Sl nil {:afterup ["shifted" 0]}]
+                    [:-u :!Su nil {:afterup ["shifted" 0]}]
+                    [:-y :!Sy nil {:afterup ["shifted" 0]}]
+                    [:-a :!Sa nil {:afterup ["shifted" 0]}]
+                    [:-r :!Sr nil {:afterup ["shifted" 0]}]
+                    [:-s :!Ss nil {:afterup ["shifted" 0]}]
+                    [:-t :!St nil {:afterup ["shifted" 0]}]
+                    [:-d :!Sd nil {:afterup ["shifted" 0]}]
+                    [:-h :!Sh nil {:afterup ["shifted" 0]}]
+                    [:-n :!Sn nil {:afterup ["shifted" 0]}]
+                    [:-e :!Se nil {:afterup ["shifted" 0]}]
+                    [:-i :!Si nil {:afterup ["shifted" 0]}]
+                    [:-o :!So nil {:afterup ["shifted" 0]}]
+                    [:-x :!Sx nil {:afterup ["shifted" 0]}]
+                    [:-c :!Sc nil {:afterup ["shifted" 0]}]
+                    [:-v :!Sv nil {:afterup ["shifted" 0]}]
+                    [:-b :!Sb nil {:afterup ["shifted" 0]}]
+                    [:-k :!Sk nil {:afterup ["shifted" 0]}]
+                    [:-m :!Sm nil {:afterup ["shifted" 0]}]
+                    ; [:any :vk_none nil {:afterup ["shifted" 0]}]
+            ]
+        }
+
+
+        {
+            :des "Keyboard Tweaks"
+            :rules [
+                ; right command
+                ;   press and hold and become left_control
+                ;   press and release to switch to last used app
+                [:right_command :left_control nil {:alone :command_tab}]
+
+                ; press Cmd+Q twice to quit apps
+                [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+                [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
+            ]
+        }
+
+        {
+            :des "Trackpad + Keyboard = Magic"
+            :rules [
+                ; trackpad - 1 finger resting on it
+                [:condi ["multitouch_extension_finger_count_total" 1]]
+                    [:-w :!Cw]
+                    [:-p :!Ct]
+                    ; [:-g :!Cl]
+                    ; [:-a :!Cl]
+                    ; [:-r :!Cl]
+                    [:-s {:pkey :button1 :modi :left_shift}]
+                    [:-t {:pkey :button1}]
+                    [:-d {:pkey :button1 :modi :left_command}]
+                    [:grave_accent_and_tilde :!Tgrave_accent_and_tilde]
+                    [:-z :!Cz]
+                    [:-x :!Cx]
+                    [:-c :!Cc]
+                    [:-v :!Cv]
+                    [:-b :!CT1]
+                    [:spacebar :return_or_enter]
+                    [:a :delete_or_backspace]
+
+                ; trackpad - 5 fingers resting on it
+                [:condi ["multitouch_extension_finger_count_total" 5]]
+                    [:-s :selection_snapshot]
+                    [:-t :window_snapshot]
+                    [:-d :fullscreen_snapshot]
+            ]
+        }
+
+        {
+            :des "Colemak Layout"
+            :rules [
+                ; no active layer
+                nil
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :colon]
+                    [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
+                    [:##n :k]
+                ; when capslock layer is active
+                :capslock
+                    [:caps_lock ["capslock" 0]]
+                    [:q :!Sq][:w :!Sw][:e :!Sf][:r :!Sp][:t :!Sg][:y :!Sj][:u :!Sl][:i :!Su][:o :!Sy]
+                    [:a :!Sa][:s :!Sr][:d :!Ss][:f :!St][:g :!Sd][:h :!Sh][:j :!Sn][:k :!Se][:l :!Si][:semicolon :!So]
+                    [:z :!Sz][:x :!Sx][:c :!Sc][:v :!Sv][:b :!Sb][:n :!Sk][:m :!Sm]
+            ]
+        }
+
+  ]
+}
+
+;; rule [:period ["media-mode" 1] nil {:afterup ["media-mode" 0] :alone :period}]
+;;       |_____| |_______________| |_| |_________________________________________|
+;;        <from>    <to>      <conditions>         <other options>
+
+;; !  | means mandatory -   modifier(s) alone when pressend change behavior
+;; #  | means optional  -   modifiers are optional (but atleast one necessary)
+
+;; :!Ca is keycode :a and prefix a with !C
+
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+
+;; ## | optional any (this has no effect when used on the RHS; only LHS)
+;; !! | command + control + optional + shift (hyper)
+
+;; to understand better how modifiers work in karabiner
+;; karabiner definition of mandatory and optional
+;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
+
+
+;; need to prefix C T O S F with ! or #
+;;
+;; code for all this:
+;; https://github.com/yqrashawn/GokuRakuJoudo/blob/b9b334a187379f9bc8182ad59e2cca2a1789e9c0/src/karabiner_configurator/keys.clj#L68 
+
+;; URL of extend layer - https://forum.colemak.com/topic/2014-extend-extra-extreme/
