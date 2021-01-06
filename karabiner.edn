@@ -191,18 +191,27 @@
         {
             :des "Old Style Layers w/ a Twist"
             :rules [
-                ; Caps Lock magic
+                ; caps lock
                 ; press and hold -> extend layer
                 ; press and release -> escape
                 [:caps_lock ["extend" 1] [:!sequence :!mouse :!capslock] {:afterup ["extend" 0] :alone :escape}]
-                ; command layer
-                [:left_command :left_command [:!command :!emoji] {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
+                ; left command
+                ; press and hold -> command modifier
+                ; press and release -> command layer (sequences)
+                ; press twice and hold -> mouse layer
+                ; press twice and release -> capslock layer
+                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
+                [:left_command ["mouse" 1] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
+                ; left shift
                 ; sequence layer
                 [:left_shift :left_shift [:!sequence] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
+                ; right shift
                 ; shifted layer
                 [:slash :right_shift [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                ; backtick (while in shifted layer)
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                ; fn key
                 ; system layer
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
             ]
@@ -385,13 +394,6 @@
                     [:8 :!!8 nil {:afterup ["sequence" 0]}]
                     [:9 :!!9 nil {:afterup ["sequence" 0]}]
                     [:0 :!!0 nil {:afterup ["sequence" 0]}]
-
-                ; commands as sequences
-                :command
-                    ; while in the command layer
-                    ; click and hold to activate mouse layer
-                    ; click and release to activate capslock layer
-                    [:left_command ["mouse" 1] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
 
                 ; command - tab switching
                 :command
