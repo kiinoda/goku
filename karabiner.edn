@@ -351,6 +351,7 @@
                 :sequence
                     [:-o :delete_or_backspace nil {:afterup ["sequence" 0]}]
                     [:-m :return_or_enter nil {:afterup ["sequence" 0]}]
+                    [:spacebar :return_or_enter nil {:afterup ["sequence" 0]}]
 
                 ; sequence - cancelled keypresses (can be repurposed)
                 :sequence
