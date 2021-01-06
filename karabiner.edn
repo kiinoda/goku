@@ -197,8 +197,7 @@
                 ; press twice and hold -> mouse layer
                 ; press twice and release -> escape
                 ; exit sequence and mouse layer after :delay period automatically
-                [:caps_lock ["extend" 1] [:!sequence :!mouse :!capslock] {:afterup ["extend" 0] :alone ["sequence" 1] :delayed {:invoked [["sequence" 0], ["mouse" 0]]}}]
-                [:caps_lock ["mouse" 1] [:sequence :!mouse :!capslock] {:afterup [["mouse" 0] ["sequence" 0]] :alone {:key :escape} :delayed {:invoked ["mouse" 0] :cancelled ["mouse" 0]}}]
+                [:caps_lock ["extend" 1] [:!sequence :!mouse :!capslock] {:afterup ["extend" 0] :alone :escape}]
                 ; command layer
                 [:left_command :left_command [:!command :!emoji] {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
                 ; shifted layer
