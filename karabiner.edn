@@ -201,6 +201,8 @@
                 [:left_shift :left_shift [:!sequence] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
                 ; shifted layer
                 [:slash :right_shift [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                ; activate emoji layer
+                [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
                 ; system layer
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
             ]
@@ -390,8 +392,6 @@
                     ; click and hold to activate mouse layer
                     ; click and release to activate capslock layer
                     [:left_command ["mouse" 1] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
-                    ; activate emoji layer
-                    [:btick ["emoji" 1] :command {:afterup ["command" 0] :delayed {:invoked ["emoji" 0]}}]
 
                 ; command - tab switching
                 :command
@@ -435,6 +435,34 @@
                     [:-m :!Cm nil {:afterup ["command" 0]}]
                     [:return_or_enter :!Creturn_or_enter nil {:afterup ["command" 0]}]
 
+                :shifted
+                    [:-q :!Sq nil {:afterup ["shifted" 0]}]
+                    [:-w :!Sw nil {:afterup ["shifted" 0]}]
+                    [:-f :!Sf nil {:afterup ["shifted" 0]}]
+                    [:-p :!Sp nil {:afterup ["shifted" 0]}]
+                    [:-g :!Sg nil {:afterup ["shifted" 0]}]
+                    [:-j :!Sj nil {:afterup ["shifted" 0]}]
+                    [:-l :!Sl nil {:afterup ["shifted" 0]}]
+                    [:-u :!Su nil {:afterup ["shifted" 0]}]
+                    [:-y :!Sy nil {:afterup ["shifted" 0]}]
+                    [:-a :!Sa nil {:afterup ["shifted" 0]}]
+                    [:-r :!Sr nil {:afterup ["shifted" 0]}]
+                    [:-s :!Ss nil {:afterup ["shifted" 0]}]
+                    [:-t :!St nil {:afterup ["shifted" 0]}]
+                    [:-d :!Sd nil {:afterup ["shifted" 0]}]
+                    [:-h :!Sh nil {:afterup ["shifted" 0]}]
+                    [:-n :!Sn nil {:afterup ["shifted" 0]}]
+                    [:-e :!Se nil {:afterup ["shifted" 0]}]
+                    [:-i :!Si nil {:afterup ["shifted" 0]}]
+                    [:-o :!So nil {:afterup ["shifted" 0]}]
+                    [:-x :!Sx nil {:afterup ["shifted" 0]}]
+                    [:-c :!Sc nil {:afterup ["shifted" 0]}]
+                    [:-v :!Sv nil {:afterup ["shifted" 0]}]
+                    [:-b :!Sb nil {:afterup ["shifted" 0]}]
+                    [:-k :!Sk nil {:afterup ["shifted" 0]}]
+                    [:-m :!Sm nil {:afterup ["shifted" 0]}]
+                    [:slash :!Sslash nil {:afterup ["shifted" 0]}]
+
                 ; show me some emojis
                 :emoji
                     [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
@@ -463,35 +491,6 @@
                     [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
                     [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
                     [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
-
-                :shifted
-                    [:-q :!Sq nil {:afterup ["shifted" 0]}]
-                    [:-w :!Sw nil {:afterup ["shifted" 0]}]
-                    [:-f :!Sf nil {:afterup ["shifted" 0]}]
-                    [:-p :!Sp nil {:afterup ["shifted" 0]}]
-                    [:-g :!Sg nil {:afterup ["shifted" 0]}]
-                    [:-j :!Sj nil {:afterup ["shifted" 0]}]
-                    [:-l :!Sl nil {:afterup ["shifted" 0]}]
-                    [:-u :!Su nil {:afterup ["shifted" 0]}]
-                    [:-y :!Sy nil {:afterup ["shifted" 0]}]
-                    [:-a :!Sa nil {:afterup ["shifted" 0]}]
-                    [:-r :!Sr nil {:afterup ["shifted" 0]}]
-                    [:-s :!Ss nil {:afterup ["shifted" 0]}]
-                    [:-t :!St nil {:afterup ["shifted" 0]}]
-                    [:-d :!Sd nil {:afterup ["shifted" 0]}]
-                    [:-h :!Sh nil {:afterup ["shifted" 0]}]
-                    [:-n :!Sn nil {:afterup ["shifted" 0]}]
-                    [:-e :!Se nil {:afterup ["shifted" 0]}]
-                    [:-i :!Si nil {:afterup ["shifted" 0]}]
-                    [:-o :!So nil {:afterup ["shifted" 0]}]
-                    [:-x :!Sx nil {:afterup ["shifted" 0]}]
-                    [:-c :!Sc nil {:afterup ["shifted" 0]}]
-                    [:-v :!Sv nil {:afterup ["shifted" 0]}]
-                    [:-b :!Sb nil {:afterup ["shifted" 0]}]
-                    [:-k :!Sk nil {:afterup ["shifted" 0]}]
-                    [:-m :!Sm nil {:afterup ["shifted" 0]}]
-                    [:slash :!Sslash nil {:afterup ["shifted" 0]}]
-                    ; [:any :vk_none nil {:afterup ["shifted" 0]}]
             ]
         }
 
