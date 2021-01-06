@@ -545,7 +545,7 @@
             :rules [
                 ; no active layer
                 nil
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :colon]
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :escape]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##n :k]
                 ; when capslock layer is active
