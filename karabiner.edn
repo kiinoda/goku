@@ -545,13 +545,13 @@
             :rules [
                 ; no active layer
                 nil
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :escape]
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :colon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##n :k]
                 ; when capslock layer is active
                 :capslock
                     [:caps_lock ["capslock" 0]]
-                    [:q :!Sq][:w :!Sw][:e :!Sf][:r :!Sp][:t :!Sg][:y :!Sj][:u :!Sl][:i :!Su][:o :!Sy]
+                    [:q :!Sq][:w :!Sw][:e :!Sf][:r :!Sp][:t :!Sg][:y :!Sj][:u :!Sl][:i :!Su][:o :!Sy][:p :colon]
                     [:a :!Sa][:s :!Sr][:d :!Ss][:f :!St][:g :!Sd][:h :!Sh][:j :!Sn][:k :!Se][:l :!Si][:semicolon :!So]
                     [:z :!Sz][:x :!Sx][:c :!Sc][:v :!Sv][:b :!Sb][:n :!Sk][:m :!Sm]
             ]
