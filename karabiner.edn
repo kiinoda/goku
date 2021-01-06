@@ -325,19 +325,21 @@
                     [:-f :dquote nil {:afterup ["sequence" 0]}]
                     [:-w :quote nil {:afterup ["sequence" 0]}]
                     [:-p :percent nil {:afterup ["sequence" 0]}]
-                    [:-l :plus nil {:afterup ["sequence" 0]}]
+                    [:-l :pipe nil {:afterup ["sequence" 0]}]
                     [:-u :underscore nil {:afterup ["sequence" 0]}]
                     [:-y :hyphen nil {:afterup ["sequence" 0]}]
+                    [:-semicolon :ampersand nil {:afterup ["sequence" 0]}]
                     [:-a :at nil {:afterup ["sequence" 0]}]
-                    [:-s :ampersand nil {:afterup ["sequence" 0]}]
+                    [:-s :slash nil {:afterup ["sequence" 0]}]
                     [:-d :dollar nil {:afterup ["sequence" 0]}]
                     [:-h :hash nil {:afterup ["sequence" 0]}]
                     [:-e :tilde nil {:afterup ["sequence" 0]}]
                     [:-x :exclaim nil {:afterup ["sequence" 0]}]
                     [:-c :caret nil {:afterup ["sequence" 0]}]
+                    [:-v :backslash nil {:afterup ["sequence" 0]}]
                     [:-b :bullet nil {:afterup ["sequence" 0]}]
                     [:-k :semicolon nil {:afterup ["sequence" 0]}]
-                    [:-m :colon nil {:afterup ["sequence" 0]}]
+                    [:-m :question nil {:afterup ["sequence" 0]}]
 
                 ; sequence - parens, brackets and braces
                 :sequence
@@ -348,16 +350,15 @@
                     [:-n :close_paren nil {:afterup ["sequence" 0]}]
                     [:-i :close_bracket nil {:afterup ["sequence" 0]}]
 
-                ; sequence - editing helpers
+                ; sequence - work helpers
                 :sequence
                     [:-o :delete_or_backspace nil {:afterup ["sequence" 0]}]
                     [:spacebar :return_or_enter nil {:afterup ["sequence" 0]}]
+                    [:return_or_enter :!Creturn_or_enter nil {:afterup ["sequence" 0]}]
 
                 ; sequence - cancelled keypresses (can be repurposed)
                 :sequence
-                    [:-semicolon :vk_none nil {:afterup ["sequence" 0]}]
                     [:-z :vk_none nil {:afterup ["sequence" 0]}]
-                    [:-v :vk_none nil {:afterup ["sequence" 0]}]
                     [:hyphen :vk_none nil {:afterup ["sequence" 0]}]
                     [:equal_sign :vk_none nil {:afterup ["sequence" 0]}]
                     [:open_bracket :vk_none nil {:afterup ["sequence" 0]}]
@@ -367,7 +368,6 @@
                 :sequence
                     [:comma :less_than nil {:afterup ["sequence" 0]}]
                     [:period :greater_than nil {:afterup ["sequence" 0]}]
-                    [:slash :question nil {:afterup ["sequence" 0]}]
                     [:quote :dquote nil {:afterup ["sequence" 0]}]
                     [:backslash :pipe nil {:afterup ["sequence" 0]}]
                     [:btick :tilde nil {:afterup ["sequence" 0]}]
