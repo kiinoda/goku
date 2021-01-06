@@ -337,6 +337,7 @@
                     [:-c :caret nil {:afterup ["sequence" 0]}]
                     [:-b :bullet nil {:afterup ["sequence" 0]}]
                     [:-k :semicolon nil {:afterup ["sequence" 0]}]
+                    [:-m :colon nil {:afterup ["sequence" 0]}]
 
                 ; sequence - parens, brackets and braces
                 :sequence
@@ -350,7 +351,6 @@
                 ; sequence - editing helpers
                 :sequence
                     [:-o :delete_or_backspace nil {:afterup ["sequence" 0]}]
-                    [:-m :return_or_enter nil {:afterup ["sequence" 0]}]
                     [:spacebar :return_or_enter nil {:afterup ["sequence" 0]}]
 
                 ; sequence - cancelled keypresses (can be repurposed)
