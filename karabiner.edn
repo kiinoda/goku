@@ -193,17 +193,15 @@
             :rules [
                 ; Caps Lock magic
                 ; press and hold -> extend layer
-                ; press and release -> enter sequence layer
-                ; press twice and hold -> mouse layer
-                ; press twice and release -> escape
-                ; exit sequence and mouse layer after :delay period automatically
+                ; press and release -> escape
                 [:caps_lock ["extend" 1] [:!sequence :!mouse :!capslock] {:afterup ["extend" 0] :alone :escape}]
                 ; command layer
                 [:left_command :left_command [:!command :!emoji] {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
-                ; shifted layer
+                ; sequence layer
                 [:left_shift :left_shift [:!sequence] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
+                ; shifted layer
                 [:slash :right_shift [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                ; System layer (defined here for consistency)
+                ; system layer
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
             ]
         }
