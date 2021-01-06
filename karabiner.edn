@@ -201,7 +201,7 @@
                 ; command layer
                 [:left_command :left_command [:!command :!emoji] {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
                 ; shifted layer
-                [:quote :left_shift [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                [:left_shift :left_shift [:!sequence] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
                 ; System layer (defined here for consistency)
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
             ]
@@ -320,6 +320,7 @@
             :rules [
                 ; sequence - symbols
                 :sequence
+                    [:left_shift :plus nil {:afterup ["sequence" 0]}]
                     [:-q :equal_sign nil {:afterup ["sequence" 0]}]
                     [:-f :dquote nil {:afterup ["sequence" 0]}]
                     [:-w :quote nil {:afterup ["sequence" 0]}]
