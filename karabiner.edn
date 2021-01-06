@@ -288,10 +288,10 @@
 
                 ; chords - safari
                 :safari
-                    [:ls :ls :safari {:alone :safari-prev_tab}]
-                    [:rs :rs :safari {:alone :safari-next_tab}]
-                    [:!Rleft_shift :safari-hist_frwd]
-                    [:!Sright_shift :safari-hist_back]
+                    [:comma :safari-prev_tab [:safari :extend]]
+                    [:period :safari-next_tab [:safari :extend]]
+                    [:!Cperiod :safari-hist_frwd]
+                    [:!Ccomma :safari-hist_back]
 
                 ; chords - terminals
                 :terminals
@@ -299,19 +299,19 @@
                     [:o :kitty-end_of_line [:terminals :extend]]
                     [:!Cu :kitty-word_left [:terminals :extend]]
                     [:!Co :kitty-word_right [:terminals :extend]]
-                    [:ls :ls :terminals {:alone :kitty-prev_tab}]
-                    [:rs :rs :terminals {:alone :kitty-next_tab}]
-                    [:!Rleft_shift :kitty-move_tab_left :terminals]
-                    [:!Sright_shift :kitty-move_tab_right :terminals]
+                    [:comma :kitty-prev_tab [:terminals :extend]]
+                    [:period :kitty-next_tab [:terminals :extend]]
+                    [:!Ccomma :kitty-move_tab_left :terminals]
+                    [:!Cperiod :kitty-move_tab_right :terminals]
 
                 ; chords - vscode
                 :vscode
                     ; [:left_command :left_command :!command {:alone :toggle_terminal_or_editor}]
                     [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
-                    [:ls :ls :vscode {:alone :focus_group_or_terminal_left}]
-                    [:rs :rs :vscode {:alone :focus_group_or_terminal_right}]
-                    [:!Rleft_shift :focus_editor_left]
-                    [:!Sright_shift :focus_editor_right]
+                    [:comma :focus_group_or_terminal_left [:vscode :extend]]
+                    [:period :focus_group_or_terminal_right [:vscode :extend]]
+                    [:!Ccomma :focus_editor_left]
+                    [:!Cperiod :focus_editor_right]
             ]
         }
 
