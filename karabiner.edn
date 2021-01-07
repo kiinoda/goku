@@ -205,8 +205,9 @@
                 ; backtick
                 ; sequence layer
                 [:btick :left_shift [:!sequence :!shifted] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
+                ; slash
                 ; shifted layer
-                [:slash :right_shift [:!shifted] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                [:slash :right_shift [:!shifted :!sequence] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 ; backtick (while in shifted layer)
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
