@@ -362,7 +362,6 @@
 
                 ; sequence - work helpers
                 :sequence
-                    [:-o :delete_or_backspace nil {:afterup ["sequence" 0]}]
                     [:spacebar :return_or_enter nil {:afterup ["sequence" 0]}]
                     [:return_or_enter :!Creturn_or_enter nil {:afterup ["sequence" 0]}]
 
