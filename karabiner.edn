@@ -315,7 +315,7 @@
 
                 ; chords - vscode
                 :vscode
-                    ; [:left_command :left_command :!command {:alone :toggle_terminal_or_editor}]
+                    [:tab :toggle_terminal_or_editor :shifted {:afterup ["shifted" 0]}]
                     [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
                     [:comma :focus_group_or_terminal_left [:vscode :extend]]
                     [:period :focus_group_or_terminal_right [:vscode :extend]]
