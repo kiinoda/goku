@@ -457,6 +457,7 @@
                     [:-e :!Se nil {:afterup ["shifted" 0]}]
                     [:-i :!Si nil {:afterup ["shifted" 0]}]
                     [:-o :!So nil {:afterup ["shifted" 0]}]
+                    [:-z :!Sz nil {:afterup ["shifted" 0]}]
                     [:-x :!Sx nil {:afterup ["shifted" 0]}]
                     [:-c :!Sc nil {:afterup ["shifted" 0]}]
                     [:-v :!Sv nil {:afterup ["shifted" 0]}]
