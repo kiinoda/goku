@@ -177,8 +177,8 @@
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
-        :safari-hist_back {:key :!Cclose_bracket}
-        :safari-hist_frwd {:key :!Copen_bracket}
+        :safari-hist_back {:key :!Copen_bracket}
+        :safari-hist_frwd {:key :!Cclose_bracket}
     }
 
     :simlayers {
