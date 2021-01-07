@@ -330,26 +330,25 @@
             :rules [
                 ; sequence - symbols
                 :sequence
-                    [:left_shift :plus nil {:afterup ["sequence" 0]}]
-                    [:-q :equal_sign nil {:afterup ["sequence" 0]}]
-                    [:-f :dquote nil {:afterup ["sequence" 0]}]
-                    [:-w :quote nil {:afterup ["sequence" 0]}]
-                    [:-p :percent nil {:afterup ["sequence" 0]}]
-                    [:-l :pipe nil {:afterup ["sequence" 0]}]
-                    [:-u :underscore nil {:afterup ["sequence" 0]}]
-                    [:-y :hyphen nil {:afterup ["sequence" 0]}]
-                    [:-semicolon :ampersand nil {:afterup ["sequence" 0]}]
-                    [:-a :at nil {:afterup ["sequence" 0]}]
-                    [:-s :slash nil {:afterup ["sequence" 0]}]
-                    [:-d :dollar nil {:afterup ["sequence" 0]}]
-                    [:-h :hash nil {:afterup ["sequence" 0]}]
-                    [:-e :tilde nil {:afterup ["sequence" 0]}]
-                    [:-x :exclaim nil {:afterup ["sequence" 0]}]
-                    [:-c :caret nil {:afterup ["sequence" 0]}]
-                    [:-v :backslash nil {:afterup ["sequence" 0]}]
-                    [:-b :bullet nil {:afterup ["sequence" 0]}]
-                    [:-k :semicolon nil {:afterup ["sequence" 0]}]
-                    [:-m :question nil {:afterup ["sequence" 0]}]
+                    [:btick :colon nil {:afterup ["sequence" 0]}]           ; ?
+                    [:-w :tilde nil {:afterup ["sequence" 0]}]              ; wave
+                    [:-p :percent nil {:afterup ["sequence" 0]}]            ; percent
+                    [:-l :plus nil {:afterup ["sequence" 0]}]               ; pLus
+                    [:-u :underscore nil {:afterup ["sequence" 0]}]         ; underscore
+                    [:-y :hyphen nil {:afterup ["sequence" 0]}]             ; hYphen
+                    [:-semicolon :backquote nil {:afterup ["sequence" 0]}]  ; ?
+                    [:-a :at nil {:afterup ["sequence" 0]}]                 ; at
+                    [:-s :ampersand nil {:afterup ["sequence" 0]}]          ; amperSand
+                    [:-d :dollar nil {:afterup ["sequence" 0]}]             ; dollar
+                    [:-h :hash nil {:afterup ["sequence" 0]}]               ; hash
+                    [:-e :exclaim nil {:afterup ["sequence" 0]}]            ; exclaim
+                    [:-o :semicolon nil {:afterup ["sequence" 0]}]          ; semicOlon
+                    [:-c :caret nil {:afterup ["sequence" 0]}]              ; caret
+                    [:-v :pipe nil {:afterup ["sequence" 0]}]               ; vertical
+                    [:-b :backslash nil {:afterup ["sequence" 0]}]          ; backslash
+                    [:-k :equal nil {:afterup ["sequence" 0]}]              ; eKual
+                    [:-m :bullet nil {:afterup ["sequence" 0]}]             ; multiply
+                    [:slash :slash nil {:afterup ["sequence" 0]}]           ; slash
 
                 ; sequence - parens, brackets and braces
                 :sequence
@@ -367,6 +366,9 @@
 
                 ; sequence - cancelled keypresses (can be repurposed)
                 :sequence
+                    [:-q :vk_none nil {:afterup ["sequence" 0]}]         ; equal
+                    [:-f :vk_none nil {:afterup ["sequence" 0]}]
+                    [:-x :vk_none nil {:afterup ["sequence" 0]}]
                     [:-z :vk_none nil {:afterup ["sequence" 0]}]
                     [:hyphen :vk_none nil {:afterup ["sequence" 0]}]
                     [:equal_sign :vk_none nil {:afterup ["sequence" 0]}]
