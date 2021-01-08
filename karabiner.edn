@@ -196,7 +196,7 @@
                 ; caps lock
                 ; press and hold -> extend layer
                 ; press and release -> escape
-                [:##caps_lock ["extend" 1] [:!sequence :!mouse :!capslock :!shifted] {:afterup ["extend" 0] :alone :escape}]
+                [:##caps_lock ["extend" 1] [:!sequence :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
                 ; left command
                 ; press and hold -> command modifier
                 ; press and release -> command layer (sequences)
@@ -222,6 +222,7 @@
         {
             :des "Chords - Navigation and Application Switching "
             :rules [
+                [:##up_arrow :##slash]
                 ; navigational extensions
                 :extend
                     ; functions
