@@ -213,6 +213,8 @@
                 ; backtick (while in shifted layer)
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                ; right shift - activate ctrl sequence layer
+                [:right_shift :right_shift :!ctrl {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0] :cancelled ["ctrl" 0]}}]
                 ; fn key
                 ; system layer
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
