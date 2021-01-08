@@ -242,6 +242,7 @@
                     ; edit/organize text properly
                     [:##spacebar :return_or_enter]
                     [:##semicolon :delete_or_backspace]
+                    [:##delete_or_backspace :caps_lock]
 
                 ; application switching
                 :app-mode
