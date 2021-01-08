@@ -469,6 +469,37 @@
                     [:-m :!Sm nil {:afterup ["shifted" 0]}]
                     [:slash :slash nil {:afterup ["shifted" 0]}]
 
+                :ctrl
+                    ; [:any :vk_none nil {:afterup ["ctrl" 0]}]
+                    [:-q :!Tq nil {:afterup ["ctrl" 0]}]
+                    [:-w :!Tw nil {:afterup ["ctrl" 0]}]
+                    [:-f :!Tf nil {:afterup ["ctrl" 0]}]
+                    [:-p :!Tp nil {:afterup ["ctrl" 0]}]
+                    [:-g :!Tg nil {:afterup ["ctrl" 0]}]
+                    [:-j :!Tj nil {:afterup ["ctrl" 0]}]
+                    [:-l :!Tl nil {:afterup ["ctrl" 0]}]
+                    [:-u :!Tu nil {:afterup ["ctrl" 0]}]
+                    [:-y :!Ty nil {:afterup ["ctrl" 0]}]
+                    [:-a :!Ta nil {:afterup ["ctrl" 0]}]
+                    [:-r :!Tr nil {:afterup ["ctrl" 0]}]
+                    [:-s :!Ts nil {:afterup ["ctrl" 0]}]
+                    [:-t :!Tt nil {:afterup ["ctrl" 0]}]
+                    [:-d :!Td nil {:afterup ["ctrl" 0]}]
+                    [:-h :!Th nil {:afterup ["ctrl" 0]}]
+                    [:-n :!Tn nil {:afterup ["ctrl" 0]}]
+                    [:-e :!Te nil {:afterup ["ctrl" 0]}]
+                    [:-i :!Ti nil {:afterup ["ctrl" 0]}]
+                    [:-o :!To nil {:afterup ["ctrl" 0]}]
+                    [:-z :!Tz nil {:afterup ["ctrl" 0]}]
+                    [:-x :!Tx nil {:afterup ["ctrl" 0]}]
+                    [:-c :!Tc nil {:afterup ["ctrl" 0]}]
+                    [:-v :!Tv nil {:afterup ["ctrl" 0]}]
+                    [:-b :!Tb nil {:afterup ["ctrl" 0]}]
+                    [:-k :!Tk nil {:afterup ["ctrl" 0]}]
+                    [:-m :!Tm nil {:afterup ["ctrl" 0]}]
+                    [:slash :slash nil {:afterup ["ctrl" 0]}]
+                    [:up_arrow :slash nil {:afterup ["ctrl" 0]}]
+
                 ; show me some emojis
                 :emoji
                     [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
