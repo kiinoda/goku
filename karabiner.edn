@@ -509,6 +509,12 @@
                 ;   press and release to switch to last used app
                 [:right_command :left_control nil {:alone :command_tab}]
 
+                ; use the qwerty p (since we're on Colemak) to:
+                ;   switch to last used app with a single press on p
+                ;   switch between windows of the same app with Cmd+p
+                [:p :!Ctab :!shifted]
+                [:!Cp :!Cgrave_accent_and_tilde]
+
                 ; press Cmd+Q twice to quit apps
                 [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
                 [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
@@ -550,7 +556,7 @@
             :rules [
                 ; no active layer
                 nil
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :!Ctab :!shifted]
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##n :k]
                 ; when capslock layer is active
