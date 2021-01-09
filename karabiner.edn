@@ -243,6 +243,8 @@
                     ; shortcuts
                     [:##u :!Cleft_arrow :!terminals]
                     [:##o :!Cright_arrow :!terminals]
+                    ; switch app windows
+                    [:##p :!Cgrave_accent_and_tilde]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; edit/organize text properly
