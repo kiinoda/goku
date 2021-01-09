@@ -619,6 +619,7 @@
 ;; W  | right_control
 ;; E  | right_option
 ;; R  | right_shift
+;; P  | caps_lock
 
 ;; ## | optional any (this has no effect when used on the RHS; only LHS)
 ;; !! | command + control + optional + shift (hyper)
