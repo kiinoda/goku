@@ -323,6 +323,7 @@
 
                 ; chords - terminals
                 :terminals
+                    ; [:-semicolon :toggle_terminal_or_editor [:terminals :!symbols]]
                     [:u :kitty-beginning_of_line [:terminals :extend]]
                     [:o :kitty-end_of_line [:terminals :extend]]
                     [:!Cu :kitty-word_left [:terminals :extend]]
@@ -332,9 +333,9 @@
                     [:!Ccomma :kitty-move_tab_left :terminals]
                     [:!Cperiod :kitty-move_tab_right :terminals]
 
-                ; chords - vscode
                 :vscode
-                    [:caps_lock :toggle_terminal_or_editor :shifted {:afterup ["shifted" 0]}]
+                    [:-semicolon :toggle_terminal_or_editor [:vscode :!symbols]]
+                    [:left_command :toggle_terminal_or_editor :!shifted {:afterup ["shifted" 0]}]
                     [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
                     [:comma :focus_group_or_terminal_left [:vscode :extend]]
                     [:period :focus_group_or_terminal_right [:vscode :extend]]
@@ -609,7 +610,8 @@
                     [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
             ]
         }
-
+                    ; p is a power key, is defined per app and thus UNdefined on the nil layer
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :vk_none]
         {
             :des "Colemak Layout"
             :rules [
