@@ -654,7 +654,7 @@
 ;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
 
 
-;; need to prefix C T O S F with ! or #
+;; need to prefix C T O S F P with ! or #
 ;;
 ;; code for all this:
 ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/b9b334a187379f9bc8182ad59e2cca2a1789e9c0/src/karabiner_configurator/keys.clj#L68 
