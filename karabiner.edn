@@ -195,24 +195,30 @@
             :des "Old Style Layers w/ a Twist"
             :rules [
                 ; RESET ALL LAYERS
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["sequence" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
                 ; caps lock
                 ; press and hold -> extend layer
                 ; press and release -> escape
-                [:##caps_lock ["extend" 1] [:!sequence :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
+                [:##caps_lock ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
                 ; left command
                 ; press and hold -> command modifier
                 ; press and release -> command layer (sequences)
                 ; press twice and hold -> mouse layer
                 ; press twice and release -> capslock layer
                 [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
-                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
+                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone :!Ctab}]
                 ; backtick
                 ; sequence layer
-                [:btick :left_shift [:!sequence :!shifted] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
+                [:btick :left_shift [:!sequence :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
                 ; slash
                 ; shifted layer
                 [:slash :right_shift [:!shifted :!sequence] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                ; symbols layer
+                [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                [:left_shift :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                ; slash
+                ; shifted layer
+                [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 ; backtick (while in shifted layer)
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
@@ -309,6 +315,7 @@
 
                 ; chords - safari
                 :safari
+                    [:-semicolon :safari-toggle_reader [:safari :!symbols]]
                     [:comma :safari-prev_tab [:safari :extend]]
                     [:period :safari-next_tab [:safari :extend]]
                     [:!Cperiod :safari-hist_frwd]
@@ -341,54 +348,56 @@
             :des "Sequences - Editing and App Shortcuts"
             :rules [
                 ; sequence - symbols
-                :sequence
-                    [:btick :colon nil {:afterup ["sequence" 0]}]           ; ?
-                    [:-w :tilde nil {:afterup ["sequence" 0]}]              ; wave
-                    [:-p :percent nil {:afterup ["sequence" 0]}]            ; percent
-                    [:-l :plus nil {:afterup ["sequence" 0]}]               ; pLus
-                    [:-u :underscore nil {:afterup ["sequence" 0]}]         ; underscore
-                    [:-y :hyphen nil {:afterup ["sequence" 0]}]             ; hYphen
-                    [:-semicolon :backquote nil {:afterup ["sequence" 0]}]  ; ?
-                    [:-a :at nil {:afterup ["sequence" 0]}]                 ; at
-                    [:-s :ampersand nil {:afterup ["sequence" 0]}]          ; amperSand
-                    [:-d :dollar nil {:afterup ["sequence" 0]}]             ; dollar
-                    [:-h :hash nil {:afterup ["sequence" 0]}]               ; hash
-                    [:-e :exclaim nil {:afterup ["sequence" 0]}]            ; exclaim
-                    [:-o :semicolon nil {:afterup ["sequence" 0]}]          ; semicOlon
-                    [:-c :caret nil {:afterup ["sequence" 0]}]              ; caret
-                    [:-v :pipe nil {:afterup ["sequence" 0]}]               ; vertical
-                    [:-b :backslash nil {:afterup ["sequence" 0]}]          ; backslash
-                    [:-k :equal nil {:afterup ["sequence" 0]}]              ; eKual
-                    [:-m :bullet nil {:afterup ["sequence" 0]}]             ; multiply
-                    [:slash :!Sslash nil {:afterup ["sequence" 0]}]         ; slash
+                :symbols
+                    [:btick :colon nil {:afterup ["symbols" 0]}]           ; ?
+                    [:left_shift :colon nil {:afterup ["symbols" 0]}]      ; same as above for keys where tilde is NOT next to shift
+                    [:-w :tilde nil {:afterup ["symbols" 0]}]              ; wave
+                    [:-p :percent nil {:afterup ["symbols" 0]}]            ; percent
+                    [:-l :plus nil {:afterup ["symbols" 0]}]               ; pLus
+                    [:-u :underscore nil {:afterup ["symbols" 0]}]         ; underscore
+                    [:-y :hyphen nil {:afterup ["symbols" 0]}]             ; hYphen
+                    [:-semicolon :backquote nil {:afterup ["symbols" 0]}]  ; ?
+                    [:-a :at nil {:afterup ["symbols" 0]}]                 ; at
+                    [:-s :ampersand nil {:afterup ["symbols" 0]}]          ; amperSand
+                    [:-d :dollar nil {:afterup ["symbols" 0]}]             ; dollar
+                    [:-h :hash nil {:afterup ["symbols" 0]}]               ; hash
+                    [:-e :exclaim nil {:afterup ["symbols" 0]}]            ; exclaim
+                    [:-o :semicolon nil {:afterup ["symbols" 0]}]          ; semicOlon
+                    [:-c :caret nil {:afterup ["symbols" 0]}]              ; caret
+                    [:-v :pipe nil {:afterup ["symbols" 0]}]               ; vertical
+                    [:-b :backslash nil {:afterup ["symbols" 0]}]          ; backslash
+                    [:-k :equal nil {:afterup ["symbols" 0]}]              ; eKual
+                    [:-m :bullet nil {:afterup ["symbols" 0]}]             ; multiply
+                    [:slash :!Sslash nil {:afterup ["symbols" 0]}]         ; slash
+                    [:up_arrow :!Sslash nil {:afterup ["symbols" 0]}]      ; slash
 
                 ; sequence - parens, brackets and braces
-                :sequence
-                    [:-g :open_brace nil {:afterup ["sequence" 0]}]
-                    [:-j :close_brace nil {:afterup ["sequence" 0]}]
-                    [:-r :open_bracket nil {:afterup ["sequence" 0]}]
-                    [:-t :open_paren nil {:afterup ["sequence" 0]}]
-                    [:-n :close_paren nil {:afterup ["sequence" 0]}]
-                    [:-i :close_bracket nil {:afterup ["sequence" 0]}]
+                :symbols
+                    [:-g :open_brace nil {:afterup ["symbols" 0]}]
+                    [:-j :close_brace nil {:afterup ["symbols" 0]}]
+                    [:-r :open_bracket nil {:afterup ["symbols" 0]}]
+                    [:-t :open_paren nil {:afterup ["symbols" 0]}]
+                    [:-n :close_paren nil {:afterup ["symbols" 0]}]
+                    [:-i :close_bracket nil {:afterup ["symbols" 0]}]
 
                 ; sequence - work helpers
-                :sequence
-                    [:spacebar :return_or_enter nil {:afterup ["sequence" 0]}]
-                    [:return_or_enter :!Creturn_or_enter nil {:afterup ["sequence" 0]}]
+                :symbols
+                    [:spacebar :return_or_enter nil {:afterup ["symbols" 0]}]
+                    [:return_or_enter :!Creturn_or_enter nil {:afterup ["symbols" 0]}]
 
                 ; sequence - cancelled keypresses (can be repurposed)
-                :sequence
-                    [:-q :vk_none nil {:afterup ["sequence" 0]}]         ; equal
-                    [:-f :vk_none nil {:afterup ["sequence" 0]}]
-                    [:-x :vk_none nil {:afterup ["sequence" 0]}]
-                    [:-z :vk_none nil {:afterup ["sequence" 0]}]
-                    [:hyphen :vk_none nil {:afterup ["sequence" 0]}]
-                    [:equal_sign :vk_none nil {:afterup ["sequence" 0]}]
-                    [:open_bracket :vk_none nil {:afterup ["sequence" 0]}]
-                    [:close_bracket :vk_none nil {:afterup ["sequence" 0]}]
+                :symbols
+                    [:-q :vk_none nil {:afterup ["symbols" 0]}]         ; equal
+                    [:-f :vk_none nil {:afterup ["symbols" 0]}]
+                    [:-x :vk_none nil {:afterup ["symbols" 0]}]
+                    [:-z :vk_none nil {:afterup ["symbols" 0]}]
+                    [:hyphen :vk_none nil {:afterup ["symbols" 0]}]
+                    [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
+                    [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
+                    [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
 
                 ; sequence - symbols on the original keys but shifted for ease of use
-                :sequence
+                :symbols
                     [:comma :less_than nil {:afterup ["sequence" 0]}]
                     [:period :greater_than nil {:afterup ["sequence" 0]}]
                     [:quote :dquote nil {:afterup ["sequence" 0]}]
@@ -583,9 +592,9 @@
                     [:any_key :vk_none]
                     [:any_consumer :vk_none]
                 ; sequences
-                :sequence
-                    [:any_key :vk_none nil {:afterup ["sequence" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["sequence" 0]}]
+                :symbols
+                    [:any_key :vk_none nil {:afterup ["symbols" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
                 :command
                     [:any_key :vk_none nil {:afterup ["command" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["command" 0]}]
@@ -606,7 +615,8 @@
             :rules [
                 ; no active layer
                 nil
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :!Ctab]
+                    ; p is a power key, is defined per app and thus UNdefined on the nil layer
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :vk_none]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##n :k]
             ]
