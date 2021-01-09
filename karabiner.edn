@@ -297,7 +297,7 @@
                 ; chords - mouse navigation
                 :mouse
                     ; hold f to slow down to 1/4 of default speed
-                    [:f {:mkey {:speed 0.25}}]
+                    [:caps_lock {:mkey {:speed 0.25}}]
                     ; navigate quickly around the screen
                     [:k {:mkey {:y 4000}}]
                     [:i {:mkey {:y -4000}}]
