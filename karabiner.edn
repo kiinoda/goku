@@ -395,19 +395,6 @@
                     [:backslash :pipe nil {:afterup ["sequence" 0]}]
                     [:btick :tilde nil {:afterup ["sequence" 0]}]
 
-                ; sequence - desktop switching
-                :sequence
-                    [:1 :!!1 nil {:afterup ["sequence" 0]}]
-                    [:2 :!!2 nil {:afterup ["sequence" 0]}]
-                    [:3 :!!3 nil {:afterup ["sequence" 0]}]
-                    [:4 :!!4 nil {:afterup ["sequence" 0]}]
-                    [:5 :!!5 nil {:afterup ["sequence" 0]}]
-                    [:6 :!!6 nil {:afterup ["sequence" 0]}]
-                    [:7 :!!7 nil {:afterup ["sequence" 0]}]
-                    [:8 :!!8 nil {:afterup ["sequence" 0]}]
-                    [:9 :!!9 nil {:afterup ["sequence" 0]}]
-                    [:0 :!!0 nil {:afterup ["sequence" 0]}]
-
                 ; command - tab switching
                 :command
                     [:1 :!C1 nil {:afterup ["command" 0]}]
