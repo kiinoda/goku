@@ -178,6 +178,7 @@
         :kitty-word_right {:key :!Tright_arrow}
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
+        :kitty-tmux_prefix {:key :!Tb}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
