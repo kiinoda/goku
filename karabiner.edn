@@ -250,6 +250,8 @@
                     [:##spacebar :return_or_enter]
                     [:##semicolon :delete_or_backspace]
                     [:##delete_or_backspace :caps_lock]
+                    ; quick send in vscode, mailmate, others
+                    [:##return_or_enter :!Creturn_or_enter]
 
                 ; application switching
                 :app-mode
