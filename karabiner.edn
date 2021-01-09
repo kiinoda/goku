@@ -316,7 +316,8 @@
 
                 ; chords - safari
                 :safari
-                    [:-semicolon :safari-toggle_reader [:safari :!symbols]]
+                    ; (colemak semicolon) power key - toggle reader mode
+                    [:p :safari-toggle_reader [:safari :!symbols]]
                     [:comma :safari-prev_tab [:safari :extend]]
                     [:period :safari-next_tab [:safari :extend]]
                     [:!Cperiod :safari-hist_frwd]
@@ -324,7 +325,8 @@
 
                 ; chords - terminals
                 :terminals
-                    ; [:-semicolon :toggle_terminal_or_editor [:terminals :!symbols]]
+                    ; (colemak semicolon) power key - tmux prefix
+                    [:p :kitty-tmux_prefix [:terminals :!symbols]]
                     [:u :kitty-beginning_of_line [:terminals :extend]]
                     [:o :kitty-end_of_line [:terminals :extend]]
                     [:!Cu :kitty-word_left [:terminals :extend]]
@@ -335,7 +337,8 @@
                     [:!Cperiod :kitty-move_tab_right :terminals]
 
                 :vscode
-                    [:-semicolon :toggle_terminal_or_editor [:vscode :!symbols]]
+                    ; (colemak semicolon) power key - toggle between terminal or editor
+                    [:p :toggle_terminal_or_editor [:vscode :!symbols]]
                     [:left_command :toggle_terminal_or_editor :!shifted {:afterup ["shifted" 0]}]
                     [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
                     [:comma :focus_group_or_terminal_left [:vscode :extend]]
