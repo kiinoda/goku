@@ -195,7 +195,7 @@
             :des "Old Style Layers w/ a Twist"
             :rules [
                 ; RESET ALL LAYERS
-                [:!COTescape [["extend" 0], ["command" 0], ["mouse" 0], ["sequence" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["sequence" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
                 ; caps lock
                 ; press and hold -> extend layer
                 ; press and release -> escape
