@@ -481,7 +481,6 @@
                     [:slash :slash nil {:afterup ["shifted" 0]}]
 
                 :ctrl
-                    ; [:any :vk_none nil {:afterup ["ctrl" 0]}]
                     [:-q :!Tq nil {:afterup ["ctrl" 0]}]
                     [:-w :!Tw nil {:afterup ["ctrl" 0]}]
                     [:-f :!Tf nil {:afterup ["ctrl" 0]}]
