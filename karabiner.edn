@@ -186,9 +186,8 @@
     }
 
     :simlayers {
-        :app-mode {:key :a}
-        :desktop-mode {:key :k}
-        :emoji-mode {:key :grave_accent_and_tilde}
+        :apps {:key :a}
+        :desktop {:key :f}
     }
 
     :main [
@@ -254,7 +253,7 @@
                     [:##return_or_enter :!Creturn_or_enter]
 
                 ; application switching
-                :app-mode
+                :apps
                     ; most used apps
                     [:-w [:open "WhatsApp"]]              ; whatsapp
                     [:-t [:open "Kitty"]]                 ; terminal
@@ -270,12 +269,12 @@
                     [:spacebar :activate_spotlight]       ; spotlight
 
                 ; desktop switching
-                :desktop-mode
-                    [:a :!!1]
-                    [:s :!!2]
-                    [:d :!!3]
-                    [:f :!!4]
-                    [:g :!!5]
+                :desktop
+                    [:j :!!1]
+                    [:k :!!2]
+                    [:l :!!3]
+                    [:semicolon :!!4]
+                    [:quote :!!5]
 
                 ; chords - window positioning, focus, mission control, snapshot, force quit
                 :system
