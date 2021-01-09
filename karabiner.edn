@@ -29,6 +29,10 @@
     }
 
     :froms {
+        :any_key {:any :key_code}
+        :any_consumer {:any :consumer_key_code }
+        :any_button {:any :pointing_button}
+
         ;alias
         :delete {:key :delete_or_backspace}
         :return {:key :return_or_enter}
