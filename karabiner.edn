@@ -610,8 +610,7 @@
                     [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
             ]
         }
-                    ; p is a power key, is defined per app and thus UNdefined on the nil layer
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :vk_none]
+
         {
             :des "Colemak Layout"
             :rules [
