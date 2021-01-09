@@ -227,7 +227,6 @@
         {
             :des "Chords - Navigation and Application Switching "
             :rules [
-                [:##up_arrow :##slash]
                 ; navigational extensions
                 :extend
                     ; functions
