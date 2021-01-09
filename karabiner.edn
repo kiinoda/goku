@@ -206,7 +206,7 @@
                 ; press twice and hold -> mouse layer
                 ; press twice and release -> capslock layer
                 [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
-                [:left_command ["mouse" 1] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
+                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone ["capslock" 1]}]
                 ; backtick
                 ; sequence layer
                 [:btick :left_shift [:!sequence :!shifted] {:alone ["sequence" 1] :delayed {:invoked ["sequence" 0] :cancelled ["sequence" 0]}}]
