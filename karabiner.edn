@@ -587,6 +587,36 @@
             ]
         }
 
+
+     {
+            ; make sure that any key that we don't define on a specific
+            ; layer will be ignored on that layer, to avoid unexpected
+            ; behavior (eg: pressing caps_lock while in a sequence layer)
+            :des "Layer Scrubbing - THIS MUST BE ACTIVE"
+            :rules [
+                ; chords
+                :mouse
+                    [:any_key :vk_none]
+                    [:any_consumer :vk_none]
+                ; sequences
+                :sequence
+                    [:any_key :vk_none nil {:afterup ["sequence" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["sequence" 0]}]
+                :command
+                    [:any_key :vk_none nil {:afterup ["command" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["command" 0]}]
+                :shifted
+                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
+                :ctrl
+                    [:any_key :vk_none nil {:afterup ["ctrl" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["ctrl" 0]}]
+                :emoji
+                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
+            ]
+        }
+
         {
             :des "Colemak Layout"
             :rules [
