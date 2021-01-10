@@ -466,6 +466,45 @@
             ]
         }
 
+        {
+            :des "Emoji Layer - while in the Shifted layer, press ` (LShift on Velocifire) to trigger"
+            :rules [
+                ; trigger emoji layer - while we're in the shifted layer
+                [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                [:left_shift ["emoji" 1] [:shifted :velocifire] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                :emoji
+                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
+                    [:left_shift :emoji_picker [:emoji :velocifire] {:afterup ["emoji" 0]}]
+                    [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
+                    [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
+                    [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
+                    [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
+                    [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
+                    [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
+                    [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
+                    [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
+                    [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
+                    [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
+                    [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
+                    [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
+                    [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
+                    [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
+                    [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
+                    [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
+                    [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
+                    [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
+                    [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
+                    [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
+                    [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
+                    [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
+                    [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
+                    [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
+                    [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
+            ]
+        }
 
         {
             :des "Shifted Layer - press / (UpArrow on Velocifire) to trigger"
@@ -473,6 +512,7 @@
                 [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 [:up_arrow :right_shift [:!shifted :!symbols :velocifire] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 :shifted
+                    ; capital letters
                     [:-q :!Sq nil {:afterup ["shifted" 0]}]
                     [:-w :!Sw nil {:afterup ["shifted" 0]}]
                     [:-f :!Sf nil {:afterup ["shifted" 0]}]
@@ -544,46 +584,6 @@
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["shifted" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-            ]
-        }
-
-
-        {
-            :des "Emoji Layer - while in the Shifted layer, press ` (LShift on Velocifire) to trigger"
-            :rules [
-                [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                [:left_shift ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                :emoji
-                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
-                    [:left_shift :emoji_picker [:emoji :velocifire] {:afterup ["emoji" 0]}]
-                    [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
-                    [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
-                    [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
-                    [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
-                    [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
-                    [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
-                    [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
-                    [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
-                    [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
-                    [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
-                    [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
-                    [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
-                    [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
-                    [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
-                    [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
-                    [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
-                    [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
-                    [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
-                    [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
-                    [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
-                    [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
-                    [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
-                    [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
-                    [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
-                    [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
             ]
         }
 
