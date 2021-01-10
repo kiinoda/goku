@@ -205,7 +205,6 @@
                 ; press and release -> command layer (sequences)
                 ; press twice and hold -> mouse layer
                 ; press twice and release -> capslock layer
-                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
                 [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone :!Ctab}]
                 ; backtick
                 ; symbols layer
@@ -426,7 +425,14 @@
                     [:quote :dquote nil {:afterup ["sequence" 0]}]
                     [:backslash :pipe nil {:afterup ["sequence" 0]}]
                     [:btick :tilde nil {:afterup ["sequence" 0]}]
+            ]
+        }
 
+
+        {
+            :des "Command Layer - press LCmd and release to trigger"
+            :rules [
+                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
                 ; command - tab switching
                 :command
                     [:1 :!C1 nil {:afterup ["command" 0]}]
@@ -467,7 +473,13 @@
                     [:-b :!Cb nil {:afterup ["command" 0]}]
                     [:-k :!Ck nil {:afterup ["command" 0]}]
                     [:-m :!Cm nil {:afterup ["command" 0]}]
+            ]
+        }
 
+
+        {
+            :des "Shifted Layer - press / (Up arrow on Velocifire) to trigger"
+            :rules [
                 :shifted
                     [:-q :!Sq nil {:afterup ["shifted" 0]}]
                     [:-w :!Sw nil {:afterup ["shifted" 0]}]
