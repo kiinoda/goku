@@ -200,8 +200,6 @@
         {
             :des "Old Style Layers w/ a Twist"
             :rules [
-                ; RESET ALL LAYERS
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
                 ; caps lock
                 ; press and hold -> extend layer
                 ; press and release -> escape
@@ -551,6 +549,9 @@
         {
             :des "Keyboard Tweaks"
             :rules [
+                ; RESET ALL LAYERS
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
+
                 ; right command
                 ;   press and hold and become left_control
                 ;   press and release to switch to last used app
