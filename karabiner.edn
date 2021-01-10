@@ -198,17 +198,6 @@
 
     :main [
         {
-            :des "Old Style Layers w/ a Twist"
-            :rules [
-                ; activate emoji layer
-                [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                [:left_shift ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                ; fn key
-                ; system layer
-            ]
-        }
-
-        {
             :des "Extend Layer - CapsLock (quick release for ESC)"
             :rules [
                 ; caps lock
@@ -564,6 +553,8 @@
         {
             :des "Emoji Layer - press / followed by ` (/ followed by LShift on Velocifire) to trigger"
             :rules [
+                [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                [:left_shift ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
                 ; show me some emojis
                 :emoji
                     [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
