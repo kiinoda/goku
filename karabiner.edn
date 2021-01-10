@@ -309,6 +309,9 @@
                     ; mouse buttons
                     [:u {:pkey :button1}]
                     [:o {:pkey :button2}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none]
+                    [:any_consumer :vk_none]
             ]
         }
 
@@ -390,23 +393,17 @@
                     [:-m :bullet nil {:afterup ["symbols" 0]}]                           ; multiply
                     [:slash :!Sslash nil {:afterup ["symbols" 0]}]                       ; slash
                     [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
-
-                ; sequence - parens, brackets and braces
-                :symbols
+                    ; sequence - parens, brackets and braces
                     [:-g :open_brace nil {:afterup ["symbols" 0]}]
                     [:-j :close_brace nil {:afterup ["symbols" 0]}]
                     [:-r :open_bracket nil {:afterup ["symbols" 0]}]
                     [:-t :open_paren nil {:afterup ["symbols" 0]}]
                     [:-n :close_paren nil {:afterup ["symbols" 0]}]
                     [:-i :close_bracket nil {:afterup ["symbols" 0]}]
-
-                ; sequence - work helpers
-                :symbols
+                    ; sequence - work helpers
                     [:spacebar :return_or_enter nil {:afterup ["symbols" 0]}]
                     [:return_or_enter :!Creturn_or_enter nil {:afterup ["symbols" 0]}]
-
-                ; sequence - cancelled keypresses (can be repurposed)
-                :symbols
+                   ; sequence - cancelled keypresses (can be repurposed)
                     [:-q :vk_none nil {:afterup ["symbols" 0]}]         ; equal
                     [:-f :vk_none nil {:afterup ["symbols" 0]}]
                     [:-x :vk_none nil {:afterup ["symbols" 0]}]
@@ -415,14 +412,15 @@
                     [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
                     [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
                     [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
-
-                ; sequence - symbols on the original keys but shifted for ease of use
-                :symbols
+                    ; sequence - symbols on the original keys but shifted for ease of use
                     [:comma :less_than nil {:afterup ["sequence" 0]}]
                     [:period :greater_than nil {:afterup ["sequence" 0]}]
                     [:quote :dquote nil {:afterup ["sequence" 0]}]
                     [:backslash :pipe nil {:afterup ["sequence" 0]}]
                     [:btick :tilde nil {:afterup ["sequence" 0]}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["symbols" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
             ]
         }
 
@@ -443,7 +441,6 @@
                     [:8 :!C8 nil {:afterup ["command" 0]}]
                     [:9 :!C9 nil {:afterup ["command" 0]}]
                     [:0 :!C0 nil {:afterup ["command" 0]}]
-
                 ; press command+key
                 :command
                     [:-q :!Cq nil {:afterup ["command" 0]}]
@@ -471,6 +468,9 @@
                     [:-b :!Cb nil {:afterup ["command" 0]}]
                     [:-k :!Ck nil {:afterup ["command" 0]}]
                     [:-m :!Cm nil {:afterup ["command" 0]}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["command" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["command" 0]}]
             ]
         }
 
@@ -509,6 +509,9 @@
                     [:-m :!Sm nil {:afterup ["shifted" 0]}]
                     [:slash :slash nil {:afterup ["shifted" 0]}]
                     [:up_arrow :slash [:shifted :velocifire] {:afterup ["shifted" 0]}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
             ]
         }
 
@@ -546,6 +549,9 @@
                     [:-m :!Tm nil {:afterup ["ctrl" 0]}]
                     [:slash :slash nil {:afterup ["ctrl" 0]}]
                     [:up_arrow :slash [:ctrl :velocifire] {:afterup ["ctrl" 0]}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
             ]
         }
 
@@ -584,6 +590,9 @@
                     [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
                     [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
                     [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
             ]
         }
 
@@ -634,37 +643,6 @@
             ]
         }
 
-
-
-     {
-            ; make sure that any key that we don't define on a specific
-            ; layer will be ignored on that layer, to avoid unexpected
-            ; behavior (eg: pressing caps_lock while in a sequence layer)
-            :des "Layer Scrubbing - THIS MUST BE ACTIVE"
-            :rules [
-                ; chords
-                :mouse
-                    [:any_key :vk_none]
-                    [:any_consumer :vk_none]
-                ; sequences
-                :symbols
-                    [:any_key :vk_none nil {:afterup ["symbols" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
-                :command
-                    [:any_key :vk_none nil {:afterup ["command" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["command" 0]}]
-                :shifted
-                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-                :ctrl
-                    [:any_key :vk_none nil {:afterup ["ctrl" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["ctrl" 0]}]
-                :emoji
-                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
-            ]
-        }
-
         {
             :des "Colemak Layout"
             :rules [
@@ -689,7 +667,7 @@
                     [:##right_arrow :right_control :velocifire]
             ]
         }
-  ]
+    ]
 }
 
 ;; rule [:period ["media-mode" 1] nil {:afterup ["media-mode" 0] :alone :period}]
