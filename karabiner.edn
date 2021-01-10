@@ -205,7 +205,6 @@
                 ; press and release -> command layer (sequences)
                 ; press twice and hold -> mouse layer
                 ; press twice and release -> capslock layer
-                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone :!Ctab}]
                 ; backtick
                 ; symbols layer
                 [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
@@ -315,7 +314,14 @@
                     [:k :window_center]
                     [:l :window_align_right]
                     [:i :window_full_size]
+            ]
+        }
 
+
+        {
+            :des "Mouse Layer - press LCmd twice and hold to trigger (release for Cmd+Tab)"
+            :rules [
+                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone :!Ctab}]
                 ; chords - mouse navigation
                 :mouse
                     ; escape - maybe you want to undo a right click
@@ -330,7 +336,13 @@
                     ; mouse buttons
                     [:u {:pkey :button1}]
                     [:o {:pkey :button2}]
+            ]
+        }
 
+
+        {
+            :des "Safari Layer - Application Specific Shortcutss"
+            :rules [
                 ; chords - safari
                 :safari
                     ; (colemak semicolon) power key - toggle reader mode
