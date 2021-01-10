@@ -207,8 +207,6 @@
                 ; press twice and release -> capslock layer
                 ; backtick
                 ; symbols layer
-                [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                [:left_shift :left_shift [:!symbols :!shifted :velocifire] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 ; slash
                 ; shifted layer
                 [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
@@ -390,8 +388,10 @@
 
 
         {
-            :des "Sequences - Editing and App Shortcuts"
+            :des "Symbols Layer - press ` (LShift on Velocifire) to trigger"
             :rules [
+                [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                [:left_shift :left_shift [:!symbols :!shifted :velocifire] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 ; sequence - symbols
                 :symbols
                     [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
