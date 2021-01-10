@@ -1,99 +1,78 @@
-This repo contains a configuration for GokuRakuJoudo which is used to generate a Karabiner profile. Various parts were adapted from other internet sources, check out the __Inspiration__ section below.
+# What is this for?
+
+This is a configuration file for [GokuRakuJoudo](https://github.com/yqrashawn/GokuRakuJoudo) which in turn generates a [Karabiner](https://pqrs.org/osx/karabiner/) profile.
+
+With sequences and squeezing up to 4 events out of a single key, it enables you to limit the number of times you need to twist your hands or are forced to leave the home row. Sequence layers transform chords like `Cmd+Key`, `Shift+Key`, `Ctrl+Key` into sequences of pressing two keys. For example, instead of pressing Cmd+S to save a file, you can press `Cmd` quickly followed by `S` and get the same behavior. `Cmd` still retains its original behavior and can be used for any `Cmd+Key` combo.
 
 
-## What is Karabiner?
+## What are Karabiner and GokuRakuJoudo?
 
-[Karabiner](https://pqrs.org/osx/karabiner/) is a powerful and stable keyboard customizer for macOS.
-
-- You can re-map any key without any restriction. 
-- You can accelerate speed of the key repeat. Karabiner offers frequently used settings. 
-
-## What is GokuRakuJoudo?
-
-[Goku](https://github.com/yqrashawn/GokuRakuJoudo) is a tool to let you manage your Karabiner configuration with ease.
-
-Karbiner Elements uses JSON as it's config file. This leads to thousands lines of JSON (sometimes over 20,000 lines). Which makes it really hard to edit the config file and iterate on your keymap.
-
-Goku use the [edn format](https://github.com/edn-format/edn) to the rescue.
-
-## What does this repo contain?
-
-You will find some regular customizations that you find elsewhere, adapted to my taste. My personal additions are as follows:
-
-- the sequence layers
-- squeezing up to 4 events out of a single key
-
-My sequence layers transform chords like Cmd+Key, Shift+Key, Ctrl+Key into sequences of pressing two keys. For example, instead of pressing Cmd+S to save in VSCode, I instead press Cmd quickly followed by S and get the same behavior. Cmd can still be used for any Cmd+Key combination. The sequence layers where inspired by Xah Lee's [article](http://xahlee.info/kbd/banish_shift_key.html) on banning the Shift key, thus avoiding combos of multiple key presses as much as possible.
-
-One other useful behavior that I make use of is triggering some things on double-press and hold as with the mouse layer that is on left_command. This manifests in being able to use 4 events on a single key such as command, caps lock and others, making use of layers, negated conditions and the `:alone` property when defining a rule.
-
-I also maintain a different velocifire branch where I keep specific changes for a [60% Velocifire M2](https://www.velocifiretech.com/product/m2-wireless-mechanical-keyboard/) and make it a lot more usable.
-
-Example One (found in the main branch):
-
-- press and hold `Cmd` key to get usual behavior (combos like `Cmd+S`)
-- press and release `Cmd` key to trigger command layer (effectively getting `Cmd+S` if you press `Cmd` quickly followed by `S`)
-- press twice and hold `Cmd` key to trigger mouse layer (use the mouse, press `Caps` to slow it down)
-- press twice and then release `Cmd` key to trigger things (`Cmd+Tab`, switch between editor and terminal in VSCode, whatever)
-
-Example Two (used verbatim in the velocifire branch):
-
-- press and hold `LShift` to get usual behavior (combos like `LShift+A`)
-- press and release `LShift` to trigger __symbols__ layer (quickly following `LShift` by `a` gives you `@`, etc)
-- press twice and release `LShift` to get `:`
-
-Example Three (a variation of this is used in both the main and velocifire branches):
-
-- press and hold `RShift` to get usual behavior (combos like `RShift+A`)
-- press and release `RShift` to trigger shifted layer (quickly following `RShift` by `a` gives you `A`, etc)
-- press and release `RShift` to trigger shifted layer, then press `LShift` and you're in the emoji layer
-- press twice and release `RShift` to get `?`
-
-The sky is the limit!
-
-### Inspiration
-
-[Kun Chen - k-goku](https://github.com/kchen0x/k-goku)
-[John Lindquist - dotfiles](https://github.com/johnlindquist/dotfiles)
-[Nikita Voloboev - dotfiles](https://github.com/nikitavoloboev/dotfiles)
-[Xah Lee - Banning the Shift Key](http://xahlee.info/kbd/banish_shift_key.html)
-[Øystein Bech Gadmar - Colemak Forum - Extend Layer](https://forum.colemak.com/topic/2014-extend-extra-extreme/)
+[Karabiner](https://pqrs.org/osx/karabiner/) is a powerful and stable keyboard customizer for macOS. [Goku](https://github.com/yqrashawn/GokuRakuJoudo) is a tool to let you manage your Karabiner configuration with ease, since Karabiner uses JSON for it's very verbose config file, while Goku uses the highly "compressed" [edn format](https://github.com/edn-format/edn).
 
 
-# Edit from here on
+## Background
 
-### Hyper Mode
+The idea of the sequence layers was inspired by Xah Lee's [article](http://xahlee.info/kbd/banish_shift_key.html) on banning the Shift key, thus avoiding combos of multiple key presses (chording) as much as possible.
 
-Hyper mode is the way to take full use of CapsLock key. When `CapsLock` is pressed down, the hyper mode will be actived fot next action, and it will send `Escape` key when pressed alone.
+Also, triggering some things on double-press and hold or on double-press and release, you can get 4 events on a single key such as command, caps lock and others.
 
-#### Hyper Mode - Control
+Some of the combos defined are specific to my [60% Velocifire M2](https://www.velocifiretech.com/product/m2-wireless-mechanical-keyboard/) keyboard and make it a lot more usable without having to resort to chording for most of the right-side modifiers.
 
-Hyper mode can be used as a `ctrl` key where it's mostly used in terminal for:
+### Warning
 
-| key | effect                                      |
-|-----|---------------------------------------------|
-| `a` | tmux prefix                                 |
-| `c` | kill a process with signal SIGINT           |
-| `z` | suspend a process by sending it the SIGTSTP |
-| `d` | `exit()` from the command                   |
+Some things rely upon the fact that the Colemak layout (and its corresponding layer) is used. As such, the semicolon key on Colemak (where P is placed on QWERTY) is unmapped but is instead used as a "power key". This key is then mapped per-app: toggle reader mode in Safari, switch between editor and terminal in VSCode or send the tmux prefix in [Kitty](https://sw.kovidgoyal.net/kitty/index.html), my preferred terminal emulator.
 
+### Functional Summary
 
-### Misc
+#### Sequence Layers
 
-- Shift pressed alone to change input source
-- Change right command to command-tab when used alone for jumping between two recent apps
-- Change right option to 4 modifiers combination `⇧⌃⌥⌘`, and `f17` when used alone
-- Quit apps by pressing command-q twice
+- symbols (type "`LShift` followed by `Key`" to get symbols like !, *, parens, etc)
+- shifted (type "`RShift` followed by `Key`" to get capital letter for `Key`)
+- emoji (while in the shifted layer, type `LShift` then various letters to get emojis)
+- ctrl (type "`LCtrl` followed by `Key`" to get `LCtrl+Key`)
+- command (type "`LCmd` followed by `Key`" to get `LCmd+Key`)
+
+#### App-Specific Layers
+
+- kitty (customizations for [Kitty](https://sw.kovidgoyal.net/kitty/index.html), a fast, lightweight terminal emulator for Mac)
+- vscode (customizations for Visual Studio Code)
+- safari (customizations for Safari)
+
+#### Chording Layers
+
+- extend (type `CapsLock` and hold to activate, quick release for `Esc`)
+- apps (press and hold `A`, then quickly follow by various keys to switch to apps)
+- desktop (press and hold `F`, then quickly follow by various keys to switch to desktop)
+- system (press and hold `Fn` to activate and rearrange windows or other tasks, quick release to show desktop)
+- mouse (press `LCmd` twice and hold for mouse movements or press twice and release for `LCmd+Tab`)
 
 ## Installation
 
 1. Install [Karabiner-Elements](https://pqrs.org/osx/karabiner/)
-2. Create a profile in Karabiner-Elements which named 'Default'. (It will generate a karabiner.json file under ~/.config/karabiner/ folder for goku to use.)
+2. Create a profile named 'Default' in Karabiner-Elements. (It will generate a karabiner.json file under ~/.config/karabiner/ folder for goku to use.)
 3. Install [Goku](https://github.com/yqrashawn/GokuRakuJoudo)
 4. Install files from this repo.
 
+```shell
+# curl https://raw.githubusercontent.com/kiinoda/goku/master/karabiner.edn > ~/.config/karabiner.edn
+# goku
 ```
-curl https://raw.githubusercontent.com/kiinoda/goku/master/karabiner.edn > ~/.config/karabiner.edn
 
-goku
-```
+### Inspiration
+
+Various parts were adapted from other internet sources, indicated below.
+
+- [Kun Chen - k-goku](https://github.com/kchen0x/k-goku) - document structure and general inspiration
+- [John Lindquist - dotfiles](https://github.com/johnlindquist/dotfiles) - emoji layer contents and from/to templates
+- [Nikita Voloboev - dotfiles](https://github.com/nikitavoloboev/dotfiles) - general inspiration, using conditions
+- [Xah Lee - Banning the Shift Key](http://xahlee.info/kbd/banish_shift_key.html) - the seed for the sequence layers
+- [Øystein Bech Gadmar - Colemak Forum - Extend Layer](https://forum.colemak.com/topic/2014-extend-extra-extreme/) - the general organization of the extend layer
+
+[##] : (
+| SAMPLE TABLE DEFINITION                                                    |
+| key               | effect                                                 |
+|-------------------|--------------------------------------------------------|
+|                   |                                                        |
+|                   |                                                        |
+)
+
