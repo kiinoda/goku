@@ -341,7 +341,7 @@
 
 
         {
-            :des "Safari Layer - Application Specific Shortcutss"
+            :des "Safari Layer - Application Specific Shortcuts"
             :rules [
                 ; chords - safari
                 :safari
@@ -351,7 +351,13 @@
                     [:period :safari-next_tab [:safari :extend]]
                     [:!Cperiod :safari-hist_frwd]
                     [:!Ccomma :safari-hist_back]
+            ]
+        }
 
+
+        {
+            :des "Terminal Layer - Application Specific Shortcuts"
+            :rules [
                 ; chords - terminals
                 :terminals
                     ; (colemak semicolon) power key - tmux prefix
