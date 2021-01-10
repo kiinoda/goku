@@ -200,15 +200,6 @@
         {
             :des "Old Style Layers w/ a Twist"
             :rules [
-                ; left command
-                ; press and hold -> command modifier
-                ; press and release -> command layer (sequences)
-                ; press twice and hold -> mouse layer
-                ; press twice and release -> capslock layer
-                ; backtick
-                ; symbols layer
-                ; slash
-                ; backtick (while in shifted layer)
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
                 [:left_shift ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
