@@ -359,15 +359,26 @@
             ]
         }
 
-
         {
-            :des "Symbols Layer - press ` (LShift on Velocifire) and release to trigger"
+            :des "Symbols & Emoji - use backtick to do the same as LShift (a bit better on Apple KB)"
             :rules [
+                ; trigger symbols layer
                 [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                [:left_shift :left_shift [:!symbols :!shifted :velocifire] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                ; trigger emoji layer - while we're in the shifted layer
+                [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                :symbols
+                    [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
+                :emoji
+                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
+            ]
+        }
+ 
+        {
+            :des "Symbols Layer - press LShift and release to trigger"
+            :rules [
+                [:left_shift :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 :symbols
                     ; symbols
-                    [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
                     [:left_shift :colon [:symbols :velocifire] {:afterup ["symbols" 0]}] ; same as above for keys where tilde is NOT next to shift
                     [:-w :tilde nil {:afterup ["symbols" 0]}]                            ; wave
                     [:-p :percent nil {:afterup ["symbols" 0]}]                          ; percent
@@ -469,14 +480,12 @@
         }
 
         {
-            :des "Emoji Layer - while in the Shifted layer, press ` (LShift on Velocifire) to trigger"
+            :des "Emoji Layer - while in the Shifted layer, press LShift to trigger"
             :rules [
                 ; trigger emoji layer - while we're in the shifted layer
-                [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                [:left_shift ["emoji" 1] [:shifted :velocifire] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+                [:left_shift ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
                 :emoji
-                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
-                    [:left_shift :emoji_picker [:emoji :velocifire] {:afterup ["emoji" 0]}]
+                    [:left_shift :emoji_picker [:emoji] {:afterup ["emoji" 0]}]
                     [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
                     [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
                     [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
@@ -509,9 +518,19 @@
         }
 
         {
-            :des "Shifted Layer - press / (UpArrow on Velocifire) to trigger"
+            :des "Shifted Layer - use slash to do the same as LShift (a bit better on Apple KB)"
             :rules [
                 [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                :shifted
+                    [:slash :slash nil {:afterup ["shifted" 0]}]
+            ]
+        }
+
+        {
+            :des "Shifted Layer - press RShift to trigger"
+            :rules [
+                ; [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                [:right_shift :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 [:up_arrow :right_shift [:!shifted :!symbols :velocifire] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 :shifted
                     ; capital letters
@@ -541,7 +560,6 @@
                     [:-b :!Sb nil {:afterup ["shifted" 0]}]
                     [:-k :!Sk nil {:afterup ["shifted" 0]}]
                     [:-m :!Sm nil {:afterup ["shifted" 0]}]
-                    [:slash :slash nil {:afterup ["shifted" 0]}]
                     [:up_arrow :slash [:shifted :velocifire] {:afterup ["shifted" 0]}]
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["shifted" 0]}]
