@@ -203,8 +203,6 @@
                 ; activate emoji layer
                 [:btick ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
                 [:left_shift ["emoji" 1] :shifted {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                ; right shift - activate ctrl sequence layer
-                [:right_shift :right_shift [:velocifire] {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
                 ; fn key
                 ; system layer
             ]
@@ -527,8 +525,9 @@
 
 
         {
-            :des ""
+            :des "Ctrl Layer - press RShift to trigger"
             :rules [
+                [:right_shift :right_shift nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
                 :ctrl
                     [:-q :!Tq nil {:afterup ["ctrl" 0]}]
                     [:-w :!Tw nil {:afterup ["ctrl" 0]}]
@@ -558,7 +557,13 @@
                     [:-m :!Tm nil {:afterup ["ctrl" 0]}]
                     [:slash :slash nil {:afterup ["ctrl" 0]}]
                     [:up_arrow :slash [:ctrl :velocifire] {:afterup ["ctrl" 0]}]
+            ]
+        }
 
+
+        {
+            :des "Emoji Layer - press / followed by ` (/ followed by LShift on Velocifire) to trigger"
+            :rules [
                 ; show me some emojis
                 :emoji
                     [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
