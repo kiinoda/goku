@@ -220,6 +220,8 @@
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; edit/organize text properly
+                    [:##open_bracket :delete_forward]
+                    [:##close_bracket :insert]
                     [:##spacebar :return_or_enter]
                     [:##semicolon :delete_or_backspace]
                     [:##delete_or_backspace :caps_lock]
