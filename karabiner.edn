@@ -551,9 +551,9 @@
 
 
         {
-            :des "Ctrl Layer - press RShift to trigger"
+            :des "Ctrl Layer - press LCtrl to trigger"
             :rules [
-                [:right_shift :right_shift nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
+                [:left_control :left_control nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
                 :ctrl
                     [:-q :!Tq nil {:afterup ["ctrl" 0]}]
                     [:-w :!Tw nil {:afterup ["ctrl" 0]}]
@@ -581,8 +581,6 @@
                     [:-b :!Tb nil {:afterup ["ctrl" 0]}]
                     [:-k :!Tk nil {:afterup ["ctrl" 0]}]
                     [:-m :!Tm nil {:afterup ["ctrl" 0]}]
-                    [:slash :slash nil {:afterup ["ctrl" 0]}]
-                    [:up_arrow :slash [:ctrl :velocifire] {:afterup ["ctrl" 0]}]
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["shifted" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
