@@ -223,8 +223,6 @@
                 [:right_shift :right_shift [:velocifire] {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
                 ; fn key
                 ; system layer
-                [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
-                [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
             ]
         }
 
@@ -264,7 +262,7 @@
         }
 
         {
-            :des "Application Layer - press A to trigger"
+            :des "Application Layer"
             :rules [
                 ; application switching
                 :apps
@@ -294,7 +292,14 @@
                     [:l :!!3]
                     [:semicolon :!!4]
                     [:quote :!!5]
+            ]
+        }
 
+        {
+            :des "System Layer - press Fn to trigger (Esc, too, on Velocifire)"
+            :rules [
+                [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
+                [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
                 ; chords - window positioning, focus, mission control, snapshot, force quit
                 :system
                     ; global shortcuts
