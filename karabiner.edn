@@ -596,26 +596,8 @@
             ]
         }
 
-
         {
-            :des "Keyboard Tweaks"
-            :rules [
-                ; RESET ALL LAYERS
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
-
-                ; right command
-                ;   press and hold and become left_control
-                ;   press and release to switch to last used app
-                [:right_command :left_control nil {:alone :command_tab}]
-
-                ; press Cmd+Q twice to quit apps
-                [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
-                [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
-            ]
-        }
-
-        {
-            :des "Trackpad + Keyboard = Magic"
+            :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
             :rules [
                 ; trackpad - 1 finger resting on it
                 [:condi ["multitouch_extension_finger_count_total" 1]]
@@ -643,6 +625,24 @@
                     [:-d :fullscreen_snapshot]
             ]
         }
+
+        {
+            :des "Keyboard Tweaks"
+            :rules [
+                ; RESET ALL LAYERS
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
+
+                ; right command
+                ;   press and hold and become left_control
+                ;   press and release to switch to last used app
+                [:right_command :left_control nil {:alone :command_tab}]
+
+                ; press Cmd+Q twice to quit apps
+                [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+                [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
+            ]
+        }
+
 
 
      {
