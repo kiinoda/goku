@@ -264,7 +264,7 @@
         }
 
         {
-            :des "Application Layer"
+            :des "Application Layer - press A to trigger"
             :rules [
                 ; application switching
                 :apps
@@ -281,7 +281,12 @@
                     [:-p :activate_1password]             ; password_manager
                     [:-y :internet_query]                 ; internet querY
                     [:spacebar :activate_spotlight]       ; spotlight
+            ]
+        }
 
+        {
+            :des "Desktop Layer - press F to trigger"
+            :rules [
                 ; desktop switching
                 :desktop
                     [:j :!!1]
