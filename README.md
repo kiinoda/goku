@@ -61,11 +61,11 @@ Various parts were adapted from other internet sources, indicated below.
 - [Xah Lee - Banning the Shift Key](http://xahlee.info/kbd/banish_shift_key.html) - the seed for the sequence layers
 - [Øystein Bech Gadmar - Colemak Forum - Extend Layer](https://forum.colemak.com/topic/2014-extend-extra-extreme/) - the general organization of the extend layer
 
-[##] : (
+<!---
 | SAMPLE TABLE DEFINITION                                                    |
 | key               | effect                                                 |
 |-------------------|--------------------------------------------------------|
 |                   |                                                        |
 |                   |                                                        |
-)
+--->
 
