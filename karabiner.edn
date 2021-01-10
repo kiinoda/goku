@@ -200,10 +200,6 @@
         {
             :des "Old Style Layers w/ a Twist"
             :rules [
-                ; caps lock
-                ; press and hold -> extend layer
-                ; press and release -> escape
-                [:##caps_lock ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
                 ; left command
                 ; press and hold -> command modifier
                 ; press and release -> command layer (sequences)
@@ -233,8 +229,12 @@
         }
 
         {
-            :des "Chords - Navigation and Application Switching "
+            :des "Extend Layer - CapsLock (quick release for ESC)"
             :rules [
+                ; caps lock
+                ; press and hold -> extend layer
+                ; press and release -> escape
+                [:##caps_lock ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
                 ; navigational extensions
                 :extend
                     ; functions
@@ -260,7 +260,12 @@
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode, mailmate, others
                     [:##return_or_enter :!Creturn_or_enter]
+            ]
+        }
 
+        {
+            :des "Application Layer"
+            :rules [
                 ; application switching
                 :apps
                     ; most used apps
