@@ -654,7 +654,7 @@
         }
 
         {
-            :des "Colemak Layout - semicolon (QWERTY P) is unmapped, left for power key in apps"
+            :des "Colemak Layout - semicolon (QWERTY P) is unmapped, used as power key in apps"
             :rules [
                 nil
                     ; p is a power key, it is defined per app and thus UNmapped on the nil layer
@@ -703,7 +703,6 @@
 ;; to understand better how modifiers work in karabiner
 ;; karabiner definition of mandatory and optional
 ;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
-
 
 ;; need to prefix C T O S F P with ! or #
 ;;
