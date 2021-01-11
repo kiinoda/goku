@@ -652,7 +652,7 @@
         {
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0]]]
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0]]]
             ]
         }
 
