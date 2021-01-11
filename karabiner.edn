@@ -233,6 +233,25 @@
         }
 
         {
+            :des "Power Layer / Per App - p (quick release for primary combo)"
+            :rules [
+                ; vscode - power layer triggering
+                [:p ["power" 1] [:vscode :!symbols] {:alone :toggle_terminal_or_editor :afterup ["power" 0] :delayed {:invoked ["power" 0] :cancelled ["power" 0]}}]
+                ; vscode - actual layer functions
+                [:-v [:!Ck :v] [:vscode :power :!symbols]]                                          ; preView (markdown)
+                [:-p [:!Cp :!Speriod :g :i :t :l :e :n :s :spacebar] [:vscode :power :!symbols]]    ; gitlens: Palette
+                [:-g [:!Cp :!Speriod :g :i :t :!Ssemicolon :spacebar] [:vscode :power :!symbols]]   ; git: palette
+                [:-c [:!COTSg :c] [:vscode :power :!symbols]]                                       ; git commit
+                [:-q [:!COTSg :y] [:vscode :power :!symbols]]                                       ; git synQ
+                ; vscode - scrubbing - undefine all unused keys
+                [:any_key :vk_none [:vscode :power :!symbols]]
+                [:any_consumer :vk_none [:vscode :power :!symbols]]
+                ;
+                ; TODO more to be added here, per app
+            ]
+        }
+
+        {
             :des "Application Layer - press A to trigger"
             :rules [
                 :apps
