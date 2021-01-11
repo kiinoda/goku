@@ -33,6 +33,7 @@ The idea of the sequence layers was inspired by Xah Lee's [article](http://xahle
 #### Chording Layers
 
 - **extend** (type `CapsLock` and hold to activate, quick release for `Esc`)
+- **power** (a second extend layer, application specific. hold Colemak `semicolon` to activate, quickly release to just press the power key)
 - **apps** (press and hold `A`, then quickly follow by various keys to switch to apps)
 - **desktop** (press and hold `F`, then quickly follow by various keys to switch to desktop)
 - **system** (press and hold `Fn` to activate and rearrange windows or other tasks, quick release to show desktop)
