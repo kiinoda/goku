@@ -378,8 +378,8 @@
             :rules [
                 [:left_shift :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 :symbols
-                    ; symbols
-                    [:left_shift :colon [:symbols :velocifire] {:afterup ["symbols" 0]}] ; same as above for keys where tilde is NOT next to shift
+                    ; symbols - mnemonics reflect Colemak layout
+                    [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
                     [:-w :tilde nil {:afterup ["symbols" 0]}]                            ; wave
                     [:-p :percent nil {:afterup ["symbols" 0]}]                          ; percent
                     [:-l :plus nil {:afterup ["symbols" 0]}]                             ; pLus
