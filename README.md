@@ -4,7 +4,7 @@ This is a configuration file for [GokuRakuJoudo](https://github.com/yqrashawn/Go
 
 With sequences and squeezing up to 4 events out of a single key, it enables you to limit the number of times you need to twist your hands or are forced to leave the home row. Sequence layers transform chords like `Cmd+Key`, `Shift+Key`, `Ctrl+Key` into sequences of pressing two keys. For example, instead of pressing `Cmd+S` to save a file, you can press `Cmd` quickly followed by `S` and get the same behavior. `Cmd` still retains its original behavior and can be used for any `Cmd+Key` combo.
 
-WARNING: Some things rely upon the fact that the Colemak layout (and its corresponding layer) is used. As such, the semicolon key on Colemak (where P is placed on QWERTY) is unmapped but is instead used as a "power key". This key is then mapped per-app: toggle reader mode in Safari, switch between editor and terminal in VSCode or send the tmux prefix in [Kitty](https://sw.kovidgoyal.net/kitty/index.html), my preferred terminal emulator.
+**WARNING**: Some things rely upon the fact that the Colemak layout (and its corresponding layer) is used. As such, the semicolon key on Colemak (where P is placed on QWERTY) is unmapped but is instead used as a "power key". This key is then mapped per-app: toggle reader mode in Safari, switch between editor and terminal in VSCode or send the tmux prefix in [Kitty](https://sw.kovidgoyal.net/kitty/index.html), the fast, lightweight, terminal emulator.
 
 ## What are Karabiner and GokuRakuJoudo?
 

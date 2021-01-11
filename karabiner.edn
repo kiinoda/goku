@@ -173,6 +173,8 @@
         :focus_editor_left {:key :!COleft_arrow}
         :focus_editor_right {:key :!COright_arrow}
         :focus_file_or_new_tab {:key :!Cp}
+        ; TODO find a valid way to express this or propose a patch so that it becomes a valid definition
+        ; :vscode-markdown_preview {:key [:!Ck :v]}
         ; kitty
         :kitty-prev_tab {:key :!Cleft_arrow}
         :kitty-next_tab {:key :!Cright_arrow}
