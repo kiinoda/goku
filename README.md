@@ -10,7 +10,6 @@ With sequences and squeezing up to 4 events out of a single key, it enables you 
 
 [Karabiner](https://pqrs.org/osx/karabiner/) is a powerful and stable keyboard customizer for macOS. [Goku](https://github.com/yqrashawn/GokuRakuJoudo) is a tool to let you manage your Karabiner configuration with ease, since Karabiner uses JSON for its very verbose, complex config file, while Goku uses the "optimized for typing" [edn format](https://github.com/edn-format/edn).
 
-
 ## Background
 
 The idea of the sequence layers was inspired by Xah Lee's [article](http://xahlee.info/kbd/banish_shift_key.html) on banning the Shift key, thus avoiding combos of multiple key presses (chording) as much as possible. Triggering some things on double-press and hold or on double-press and release, you can get 4 events on a single key such as command, caps lock and others. Some of the combos defined are specific to my [60% Velocifire M2](https://www.velocifiretech.com/product/m2-wireless-mechanical-keyboard/) keyboard, making it a lot more usable without having to resort to chording for most of the right-side modifiers which overlap with arrows by default.
@@ -27,7 +26,7 @@ The idea of the sequence layers was inspired by Xah Lee's [article](http://xahle
 
 #### App-Specific Layers
 
-- **kitty** (customizations for [Kitty](https://sw.kovidgoyal.net/kitty/index.html), a fast, lightweight terminal emulator for Mac)
+- **kitty** (customizations for [Kitty](https://sw.kovidgoyal.net/kitty/index.html), the fast, lightweight, terminal emulator)
 - **vscode** (customizations for Visual Studio Code)
 - **safari** (customizations for Safari)
 
@@ -68,4 +67,3 @@ Various parts were adapted from other internet sources, indicated below.
 |                   |                                                        |
 |                   |                                                        |
 --->
-
