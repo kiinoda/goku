@@ -1,6 +1,6 @@
 # What is this for?
 
-This is a configuration file for [GokuRakuJoudo](https://github.com/yqrashawn/GokuRakuJoudo) which in turn generates a [Karabiner](https://pqrs.org/osx/karabiner/) profile.
+This is a configuration file for [GokuRakuJoudo](#what-are-karabiner-and-gokurakujoudo) which in turn generates a [Karabiner](#what-are-karabiner-and-gokurakujoudo) profile.
 
 With sequences and squeezing up to 4 events out of a single key, it enables you to limit the number of times you need to twist your hands or are forced to leave the home row. Sequence layers transform chords like `Cmd+Key`, `Shift+Key`, `Ctrl+Key` into sequences of pressing two keys. For example, instead of pressing `Cmd+S` to save a file, you can press `Cmd` quickly followed by `S` and get the same behavior. `Cmd` still retains its original behavior and can be used for any `Cmd+Key` combo.
 
