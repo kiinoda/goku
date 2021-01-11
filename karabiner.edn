@@ -475,6 +475,7 @@
                     [:-b :!Cb nil {:afterup ["command" 0]}]
                     [:-k :!Ck nil {:afterup ["command" 0]}]
                     [:-m :!Cm nil {:afterup ["command" 0]}]
+                    [:comma :!Ccomma nil {:afterup ["command" 0]}]
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["command" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["command" 0]}]
