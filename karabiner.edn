@@ -257,7 +257,9 @@
                 :apps
                     ; most used apps
                     [:-w [:open "WhatsApp"]]              ; whatsapp
-                    [:-t [:open "Kitty"]]                 ; terminal
+                    [:-k [:open "Kitty"]]                 ; kitty
+                    [:-g [:open "Signal"]]                ; signal
+                    [:-t [:open "Telegram"]]              ; telegram
                     [:-s [:open "Drafts"]]                ; drafts
                     [:-v [:open "Preview"]]               ; preView
                     [:-n [:open "Safari"]]                ; navigator
