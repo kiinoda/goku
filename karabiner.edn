@@ -30,6 +30,8 @@
         :kitty [ "net.kovidgoyal.kitty" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
+        :mailmate [ "^com.freron.MailMate$" ]
+        :chrome [ "^com.google.Chrome$" ]
     }
 
     :froms {
@@ -191,6 +193,8 @@
         :safari-hist_back {:key :!Copen_bracket}
         :safari-hist_frwd {:key :!Cclose_bracket}
         :safari-toggle_reader {:key :!CSr}
+        ; mailmate
+        :mailmate-sync_mailbox {:key :!CSn}
     }
 
     :simlayers {
@@ -200,78 +204,26 @@
 
     :main [
         {
-            :des "Power Layer / Per App - p (quick release for primary combo)"
+            :des "System Layer"
             :rules [
-                ; vscode - power layer triggering
-                ; [:p ["power" 1] [:vscode :!symbols] {:alone :toggle_terminal_or_editor :afterup ["power" 0] :delayed {:invoked ["power" 0] :cancelled ["power" 0]}}]
-                ; vscode - actual layer functions
-                [:-v [:!Ck :v] [:vscode :power :!symbols]]                                          ; preView (markdown)
-                [:-p [:!Cp :!Speriod :g :i :t :l :e :n :s :spacebar] [:vscode :power :!symbols]]    ; gitlens: Palette
-                [:-g [:!Cp :!Speriod :g :i :t :!Ssemicolon :spacebar] [:vscode :power :!symbols]]   ; git: palette
-                [:-c [:!COTSg :c] [:vscode :power :!symbols]]                                       ; git commit
-                [:-q [:!COTSg :y] [:vscode :power :!symbols]]                                       ; git synQ
-                ; vscode - scrubbing - undefine all unused keys
-                [:any_key :vk_none [:vscode :power :!symbols]]
-                [:any_consumer :vk_none [:vscode :power :!symbols]]
-                ;
-                ; TODO more to be added here, per app
-            ]
-        }
-
-        {
-            :des "Application Layer - press A to trigger"
-            :rules [
-                :apps
-                    ; most used apps
-                    [:-w [:open "WhatsApp"]]              ; whatsapp
-                    [:-k [:open "Kitty"]]                 ; kitty
-                    [:-g [:open "Signal"]]                ; signal
-                    [:-t [:open "Telegram"]]              ; telegram
-                    [:-s [:open "Drafts"]]                ; drafts
-                    [:-v [:open "Preview"]]               ; preView
-                    [:-n [:open "Safari"]]                ; navigator
-                    [:-e [:open "Visual Studio Code"]]    ; editor
-                    [:-f [:open "Type Fu"]]               ; typeFu
-                    [:-m [:open "Mailmate"]]              ; mail
-                    ; others
-                    [:-p :activate_1password]             ; password_manager
-                    [:-y :internet_query]                 ; internet querY
-                    [:spacebar :activate_spotlight]       ; spotlight
-            ]
-        }
-
-        {
-            :des "Desktop Layer - press F to trigger"
-            :rules [
-                :desktop
-                    [:j :!!1]
-                    [:k :!!2]
-                    [:l :!!3]
-                    [:semicolon :!!4]
-                    [:quote :!!5]
-            ]
-        }
-
-        {
-            :des "System Layer - press Fn to trigger (Esc, too, on Velocifire)"
-            :rules [
-                [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
-                [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
-                :system
+                ; [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
+                ; [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
+                ; :system
                     ; global shortcuts
-                    [:spacebar :system-force_quit_apps]
-                    [:u :mission_control]
-                    [:o :show_application_windows]
+                    [:!!spacebar :system-force_quit_apps]
+                    [:!!l :mission_control]
+                    [:!!y :show_application_windows]
+                    [:f23 :command_tab]
                     ; snapshots
-                    [:q :fullscreen_snapshot]
-                    [:w :window_snapshot]
+                    ; [:q :fullscreen_snapshot]
+                    ; [:w :window_snapshot]
                     ; focus on one window (triggers Hazeover)
-                    [:return_or_enter :activate_hazeover]
+                    ; [:return_or_enter :activate_hazeover]
                     ; window positioning (triggers Rectangle)
-                    [:j :window_align_left]
-                    [:k :window_center]
-                    [:l :window_align_right]
-                    [:i :window_full_size]
+                    ; [:j :window_align_left]
+                    ; [:k :window_center]
+                    ; [:l :window_align_right]
+                    ; [:i :window_full_size]
             ]
         }
 
@@ -280,12 +232,11 @@
             :rules [
                 :safari
                     ; power key - toggle reader mode
-                    [:f24 :safari-toggle_reader :safari]
-                    [:!Cperiod :safari-hist_frwd]
-                    [:!Ccomma :safari-hist_back]
-                    ; while in the extend layer
-                    [:comma :safari-prev_tab [:safari :extend]]
-                    [:period :safari-next_tab [:safari :extend]]
+                    [:f24 :safari-toggle_reader]
+                    [:!Ocomma :safari-hist_back]
+                    [:!Operiod :safari-hist_frwd]
+                    [:!COTcomma :safari-prev_tab]
+                    [:!COTperiod :safari-next_tab]
             ]
         }
 
@@ -294,47 +245,52 @@
             :des "Kitty Layer - Application Specific Shortcuts"
             :rules [
                 :kitty
-                    ; power key - tmux prefix
-                    [:f24 :kitty-tmux_prefix :kitty]
-                    [:!Ccomma :kitty-move_tab_left :kitty]
-                    [:!Cperiod :kitty-move_tab_right :kitty]
-                    ; while in the extend layer
-                    [:u :kitty-beginning_of_line [:kitty :extend]]
-                    [:o :kitty-end_of_line [:kitty :extend]]
-                    [:!Cu :kitty-word_left [:kitty :extend]]
-                    [:!Co :kitty-word_right [:kitty :extend]]
-                    [:comma :kitty-prev_tab [:kitty :extend]]
-                    [:period :kitty-next_tab [:kitty :extend]]
+                    ; power key - send tmux prefix
+                    [:f24 :kitty-tmux_prefix]
+                    [:!Ocomma :kitty-move_tab_left]
+                    [:!Operiod :kitty-move_tab_right]
+                    [:!COTcomma :kitty-prev_tab]
+                    [:!COTperiod :kitty-next_tab]
             ]
         }
 
+        {
+            :des "Mailmate Layer - Application Specific Shortcuts"
+            :rules [
+                :mailmate
+                    ; power key - toggle between terminal or editor
+                    [:f24 :mailmate-sync_mailbox]
+                    ; [:!Ocomma :focus_editor_left]
+                    ; [:!Operiod :focus_editor_right]
+                    ; [:!COTcomma :focus_group_or_terminal_left]
+                    ; [:!COTperiod :focus_group_or_terminal_right]
+            ]
+        }
+
+
+        {
+            :des "Chrome Layer - Application Specific Shortcuts"
+            :rules [
+                :chrome
+                    ; power key - toggle reader mode
+                    [:f24 :safari-toggle_reader]
+                    [:!Ocomma :safari-hist_back]
+                    [:!Operiod :safari-hist_frwd]
+                    [:!COTcomma :safari-prev_tab]
+                    [:!COTperiod :safari-next_tab]
+            ]
+        }
 
         {
             :des "VSCode Layer - Application Specific Shortcuts"
             :rules [
                 :vscode
                     ; power key - toggle between terminal or editor
-                    [:f24 :toggle_terminal_or_editor :vscode]
-                    [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
-                    [:!Ccomma :focus_editor_left]
-                    [:!Cperiod :focus_editor_right]
-                    ; while in the extend layer
-                    [:comma :focus_group_or_terminal_left [:vscode :extend]]
-                    [:period :focus_group_or_terminal_right [:vscode :extend]]
-            ]
-        }
-
-        {
-            :des "Symbols & Emoji - use backtick to do the same as LShift (a bit better on Apple KB)"
-            :rules [
-                ; trigger symbols layer
-                [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                ; trigger emoji layer - while we're in the shifted layer
-                [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                :symbols
-                    [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
-                :emoji
-                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
+                    [:f24 :toggle_terminal_or_editor]
+                    [:!Ocomma :focus_editor_left]
+                    [:!Operiod :focus_editor_right]
+                    [:!COTcomma :focus_group_or_terminal_left]
+                    [:!COTperiod :focus_group_or_terminal_right]
             ]
         }
 
@@ -403,19 +359,32 @@
         }
 
         {
-            :des "Right Command to Cmd+Tab on release, acts as LCtrl on hold"
+            :des "Applications Layer"
             :rules [
-                [:right_command :left_control nil {:alone :command_tab}]
+                [:!COTk [:open "Kitty"]]                 ; kitty
+                [:!COTw [:open "WhatsApp"]]              ; whatsapp
+                [:!COTg [:open "Signal"]]                ; signal
+                [:!COTt [:open "Telegram"]]              ; telegram
+                [:!COTs [:open "Drafts"]]                ; drafts
+                [:!COTv [:open "Preview"]]               ; preView
+                [:!COTn [:open "Safari"]]                ; navigator
+                [:!COTe [:open "Visual Studio Code"]]    ; editor
+                [:!COTf [:open "Type Fu"]]               ; typeFu
+                [:!COTm [:open "Mailmate"]]              ; mail
+                [:!COTc [:open "Chrome"]]                ; chrome
+                [:!COTp :activate_1password]             ; password_manager
+                [:!COTy :internet_query]                 ; internet querY
+                [:!COTspacebar :activate_spotlight]      ; spotlight
             ]
         }
 
-        {
-            :des "Double Press Cmd+Q to Quit Applications"
-            :rules [
-                [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
-                [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
-            ]
-        }
+        ; {
+        ;     :des "Double Press Cmd+Q to Quit Applications"
+        ;     :rules [
+        ;         [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+        ;         [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
+        ;     ]
+        ; }
     ]
 }
 
