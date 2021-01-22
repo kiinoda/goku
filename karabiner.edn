@@ -149,7 +149,7 @@
         :mission_control {:key :!!up_arrow}
         :internet_query {:key :!!t}
         :show_application_windows {:key :!!down_arrow}
-        :show_desktop {:key :!!f12}
+        :show_desktop {:key :f11}
         :activate_spotlight {:key :!!spacebar}
         :fullscreen_snapshot {:key :!CS3}
         :window_snapshot {:key :!CS4}
@@ -169,7 +169,7 @@
         :window_center {:key :!!i}
         :window_full_size {:key :!!p}
         ; vscode
-        :toggle_terminal_or_editor {:key :!Cspacebar}
+        :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
         :focus_group_or_terminal_left {:key :!CTOup_arrow}
         :focus_group_or_terminal_right {:key :!CTOdown_arrow}
         :focus_editor_left {:key :!COleft_arrow}
@@ -210,10 +210,11 @@
                 ; [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
                 ; :system
                     ; global shortcuts
-                    [:!!spacebar :system-force_quit_apps]
+                    [:!!escape :system-force_quit_apps]
                     [:!!l :mission_control]
                     [:!!y :show_application_windows]
                     [:f23 :command_tab]
+                    [:!!k :show_desktop]
                     ; snapshots
                     ; [:q :fullscreen_snapshot]
                     ; [:w :window_snapshot]
@@ -287,10 +288,10 @@
                 :vscode
                     ; power key - toggle between terminal or editor
                     [:f24 :toggle_terminal_or_editor]
-                    [:!Ocomma :focus_editor_left]
-                    [:!Operiod :focus_editor_right]
-                    [:!COTcomma :focus_group_or_terminal_left]
-                    [:!COTperiod :focus_group_or_terminal_right]
+                    [:!Ocomma :focus_group_or_terminal_left]
+                    [:!Operiod :focus_group_or_terminal_right]
+                    [:!COTcomma :focus_editor_left]
+                    [:!COTperiod :focus_editor_right]
             ]
         }
 
