@@ -371,7 +371,7 @@
                 [:!COTv [:open "Preview"]]               ; preView
                 [:!COTn [:open "Safari"]]                ; navigator
                 [:!COTe [:open "Visual Studio Code"]]    ; editor
-                [:!COTu [:open "Type Fu"]]               ; typeFu
+                [:!COTu [:open "Type Fu"]]               ; typefu
                 [:!COTm [:open "Mailmate"]]              ; mail
                 [:!COTd [:open "Discord"]]               ; discord
                 [:!COTc [:open "Chrome"]]                ; chrome
