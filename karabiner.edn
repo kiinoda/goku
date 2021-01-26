@@ -32,6 +32,7 @@
         :vscode [ "^com.microsoft.VSCode$" ]
         :mailmate [ "^com.freron.MailMate$" ]
         :chrome [ "^com.google.Chrome$" ]
+        :finder [ "com.apple.finder$" ]
     }
 
     :froms {
@@ -362,17 +363,19 @@
         {
             :des "Applications Layer"
             :rules [
-                [:!COTk [:open "Kitty"]]                 ; kitty
+                [:!COTt [:open "Kitty"]]                 ; terminal
                 [:!COTw [:open "WhatsApp"]]              ; whatsapp
-                [:!COTg [:open "Signal"]]                ; signal
-                [:!COTt [:open "Telegram"]]              ; telegram
-                [:!COTs [:open "Drafts"]]                ; drafts
+                [:!COTs [:open "Signal"]]                ; signal
+                [:!COTg [:open "Telegram"]]              ; telegram
+                [:!COTd [:open "Drafts"]]                ; drafts
                 [:!COTv [:open "Preview"]]               ; preView
                 [:!COTn [:open "Safari"]]                ; navigator
                 [:!COTe [:open "Visual Studio Code"]]    ; editor
-                [:!COTf [:open "Type Fu"]]               ; typeFu
+                [:!COTu [:open "Type Fu"]]               ; typeFu
                 [:!COTm [:open "Mailmate"]]              ; mail
+                [:!COTd [:open "Discord"]]               ; discord
                 [:!COTc [:open "Chrome"]]                ; chrome
+                [:!COTf [:open "Finder"]]                ; finder
                 [:!COTp :activate_1password]             ; password_manager
                 [:!COTy :internet_query]                 ; internet querY
                 [:!COTspacebar :activate_spotlight]      ; spotlight
