@@ -147,7 +147,7 @@
         :mission_control {:key :!!up_arrow}
         :internet_query {:key :!!t}
         :show_application_windows {:key :!!down_arrow}
-        :show_desktop {:key :!!f12}
+        :show_desktop {:key :f11}
         :activate_spotlight {:key :!!spacebar}
         :fullscreen_snapshot {:key :!CS3}
         :window_snapshot {:key :!CS4}
@@ -162,12 +162,13 @@
         ; hazeover - focus on one window
         :activate_hazeover {:key :!!return_or_enter}
         ; mosaic - window positioning
-        :window_align_left {:key :!!u}
-        :window_align_right {:key :!!o}
-        :window_center {:key :!!i}
-        :window_full_size {:key :!!p}
+        :window_left_half {:key :!!j}
+        :window_resize_and_right {:key :!!l}
+        :window_resize_and_center {:key :!!k}
+        :window_full_size {:key :!!i}
+        :window_center {:key :!!semicolon}
         ; vscode
-        :toggle_terminal_or_editor {:key :!Cspacebar}
+        :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
         :focus_group_or_terminal_left {:key :!CTOup_arrow}
         :focus_group_or_terminal_right {:key :!CTOdown_arrow}
         :focus_editor_left {:key :!COleft_arrow}
@@ -184,7 +185,7 @@
         :kitty-word_right {:key :!Tright_arrow}
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
-        :kitty-tmux_prefix {:key :!Tb}
+        :kitty-tmux_prefix {:key :!Ta}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -202,8 +203,23 @@
         {
             :des "Extend Layer - CapsLock (quick release for ESC)"
             :rules [
-                [:##caps_lock ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :escape}]
+                [:##caps_lock :left_control :!extend {:alone :escape}]
+                [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
+                    ; per-app shortcuts
+                    ; vscode
+                    [:##comma :focus_editor_left :vscode]
+                    [:##period :focus_editor_right :vscode]
+                    [:##slash :toggle_terminal_or_editor :vscode]
+                    ; kitty
+                    [:##comma :kitty-prev_tab :kitty]
+                    [:##period :kitty-next_tab :kitty]
+                    [:##slash :kitty-tmux_prefix :kitty]
+                    ; safari
+                    [:##comma :safari-prev_tab :safari]
+                    [:##period :safari-next_tab :safari]
+                    [:##slash :safari-toggle_reader :safari]
+                    ; global settings
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
@@ -217,37 +233,21 @@
                     ; shortcuts
                     [:##u :!Cleft_arrow :!terminals]
                     [:##o :!Cright_arrow :!terminals]
-                    ; switch app windows
-                    [:##p :!Cgrave_accent_and_tilde]
+                    ; switch app window
+                    [:##n :!Cgrave_accent_and_tilde]
+                    [:##m [:!Ctab :escape]]
+                    [:##left_shift :!!left_arrow]
+                    [:##right_shift :!!right_arrow]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; edit/organize text properly
-                    [:##open_bracket :delete_forward]
-                    [:##close_bracket :insert]
-                    [:##spacebar :return_or_enter]
+                    [:##p :delete_forward]
+                    [:##open_bracket :insert]
+                    [:##caps_lock :escape]
                     [:##semicolon :delete_or_backspace]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
                     [:##return_or_enter :!Creturn_or_enter]
-            ]
-        }
-
-        {
-            :des "Power Layer / Per App - p (quick release for primary combo)"
-            :rules [
-                ; vscode - power layer triggering
-                [:p ["power" 1] [:vscode :!symbols] {:alone :toggle_terminal_or_editor :afterup ["power" 0] :delayed {:invoked ["power" 0] :cancelled ["power" 0]}}]
-                ; vscode - actual layer functions
-                [:-v [:!Ck :v] [:vscode :power :!symbols]]                                          ; preView (markdown)
-                [:-p [:!Cp :!Speriod :g :i :t :l :e :n :s :spacebar] [:vscode :power :!symbols]]    ; gitlens: Palette
-                [:-g [:!Cp :!Speriod :g :i :t :!Ssemicolon :spacebar] [:vscode :power :!symbols]]   ; git: palette
-                [:-c [:!COTSg :c] [:vscode :power :!symbols]]                                       ; git commit
-                [:-q [:!COTSg :y] [:vscode :power :!symbols]]                                       ; git synQ
-                ; vscode - scrubbing - undefine all unused keys
-                [:any_key :vk_none [:vscode :power :!symbols]]
-                [:any_consumer :vk_none [:vscode :power :!symbols]]
-                ;
-                ; TODO more to be added here, per app
             ]
         }
 
@@ -257,14 +257,13 @@
                 :apps
                     ; most used apps
                     [:-w [:open "WhatsApp"]]              ; whatsapp
-                    [:-k [:open "Kitty"]]                 ; kitty
+                    [:-t [:open "Kitty"]]                 ; kitty
                     [:-g [:open "Signal"]]                ; signal
-                    [:-t [:open "Telegram"]]              ; telegram
-                    [:-s [:open "Drafts"]]                ; drafts
-                    [:-v [:open "Preview"]]               ; preView
+                    [:-l [:open "Telegram"]]              ; telegram
+                    [:-d [:open "Drafts"]]                ; drafts
                     [:-n [:open "Safari"]]                ; navigator
                     [:-e [:open "Visual Studio Code"]]    ; editor
-                    [:-f [:open "Type Fu"]]               ; typeFu
+                    [:-u [:open "Type Fu"]]               ; typeFu
                     [:-m [:open "Mailmate"]]              ; mail
                     ; others
                     [:-p :activate_1password]             ; password_manager
@@ -289,7 +288,8 @@
             :des "System Layer - press Fn to trigger (Esc, too, on Velocifire)"
             :rules [
                 [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
-                [:escape ["system" 1] [:!mouse :velocifire] {:afterup ["system" 0] :alone :show_desktop}]
+                ; [:escape ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
+                [:left_control ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
                 :system
                     ; global shortcuts
                     [:spacebar :system-force_quit_apps]
@@ -301,49 +301,21 @@
                     ; focus on one window (triggers Hazeover)
                     [:return_or_enter :activate_hazeover]
                     ; window positioning (triggers Rectangle)
-                    [:j :window_align_left]
-                    [:k :window_center]
-                    [:l :window_align_right]
+                    [:j :window_left_half]
+                    [:k :window_resize_and_center]
+                    [:l :window_resize_and_right]
                     [:i :window_full_size]
+                    [:semicolon :window_center]
             ]
         }
-
-
-        {
-            :des "Mouse Layer - press LCmd twice and hold to trigger (release for Cmd+Tab)"
-            :rules [
-                [:left_command [["mouse" 1], ["command" 0]] :command {:afterup [["command" 0], ["mouse" 0]] :alone :!Ctab}]
-                :mouse
-                    ; escape - maybe you want to undo a right click
-                    [:escape :escape]
-                    ; hold capslock to slow down to 1/4 of normal speed
-                    [:caps_lock {:mkey {:speed 0.25}}]
-                    ; move around
-                    [:k {:mkey {:y 4000}}]
-                    [:i {:mkey {:y -4000}}]
-                    [:j {:mkey {:x -4000}}]
-                    [:l {:mkey {:x 4000}}]
-                    ; press buttons
-                    [:u {:pkey :button1}]
-                    [:o {:pkey :button2}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none]
-                    [:any_consumer :vk_none]
-            ]
-        }
-
 
         {
             :des "Safari Layer - Application Specific Shortcuts"
             :rules [
                 :safari
                     ; (colemak semicolon) power key - toggle reader mode
-                    [:p :safari-toggle_reader [:safari :!symbols]]
                     [:!Cperiod :safari-hist_frwd]
                     [:!Ccomma :safari-hist_back]
-                    ; while in the extend layer
-                    [:comma :safari-prev_tab [:safari :extend]]
-                    [:period :safari-next_tab [:safari :extend]]
             ]
         }
 
@@ -353,16 +325,8 @@
             :rules [
                 :kitty
                     ; (colemak semicolon) power key - tmux prefix
-                    [:p :kitty-tmux_prefix [:kitty :!symbols]]
                     [:!Ccomma :kitty-move_tab_left :kitty]
                     [:!Cperiod :kitty-move_tab_right :kitty]
-                    ; while in the extend layer
-                    [:u :kitty-beginning_of_line [:kitty :extend]]
-                    [:o :kitty-end_of_line [:kitty :extend]]
-                    [:!Cu :kitty-word_left [:kitty :extend]]
-                    [:!Co :kitty-word_right [:kitty :extend]]
-                    [:comma :kitty-prev_tab [:kitty :extend]]
-                    [:period :kitty-next_tab [:kitty :extend]]
             ]
         }
 
@@ -371,30 +335,25 @@
             :des "VSCode Layer - Application Specific Shortcuts"
             :rules [
                 :vscode
-                    ; (colemak semicolon) power key - toggle between terminal or editor
-                    ; [:p :toggle_terminal_or_editor [:vscode :!symbols]]
                     [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
                     [:!Ccomma :focus_editor_left]
                     [:!Cperiod :focus_editor_right]
-                    ; while in the extend layer
-                    [:comma :focus_group_or_terminal_left [:vscode :extend]]
-                    [:period :focus_group_or_terminal_right [:vscode :extend]]
             ]
         }
 
-        {
-            :des "Symbols & Emoji - use backtick to do the same as LShift (a bit better on Apple KB)"
-            :rules [
-                ; trigger symbols layer
-                [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                ; trigger emoji layer - while we're in the shifted layer
-                [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                :symbols
-                    [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
-                :emoji
-                    [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
-            ]
-        }
+        ; {
+        ;     :des "Symbols & Emoji - use backtick to do the same as LShift (a bit better on Apple KB)"
+        ;     :rules [
+        ;         ; trigger symbols layer
+        ;         [:btick :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+        ;         ; trigger emoji layer - while we're in the shifted layer
+        ;         [:btick ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+        ;         :symbols
+        ;             [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
+        ;         :emoji
+        ;             [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
+        ;     ]
+        ; }
  
         {
             :des "Symbols Layer - press LShift and release to trigger"
@@ -421,7 +380,7 @@
                     [:-k :equal nil {:afterup ["symbols" 0]}]                            ; eKual
                     [:-m :bullet nil {:afterup ["symbols" 0]}]                           ; multiply
                     [:slash :!Sslash nil {:afterup ["symbols" 0]}]                       ; slash
-                    [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
+                    ; [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
                     ; sequence - parens, brackets and braces
                     [:-g :open_brace nil {:afterup ["symbols" 0]}]
                     [:-j :close_brace nil {:afterup ["symbols" 0]}]
@@ -429,9 +388,6 @@
                     [:-t :open_paren nil {:afterup ["symbols" 0]}]
                     [:-n :close_paren nil {:afterup ["symbols" 0]}]
                     [:-i :close_bracket nil {:afterup ["symbols" 0]}]
-                    ; sequence - work helpers
-                    [:spacebar :return_or_enter nil {:afterup ["symbols" 0]}]
-                    [:return_or_enter :!Creturn_or_enter nil {:afterup ["symbols" 0]}]
                     ; sequence - cancelled keypresses (can be repurposed)
                     [:-q :vk_none nil {:afterup ["symbols" 0]}]
                     [:-f :vk_none nil {:afterup ["symbols" 0]}]
@@ -541,21 +497,21 @@
             ]
         }
 
-        {
-            :des "Shifted Layer - use slash to do the same as LShift (a bit better on Apple KB)"
-            :rules [
-                [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                :shifted
-                    [:slash :slash nil {:afterup ["shifted" 0]}]
-            ]
-        }
+        ; {
+        ;     :des "Shifted Layer - use slash to do the same as LShift (a bit better on Apple KB)"
+        ;     :rules [
+        ;         [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+        ;         :shifted
+        ;             [:slash :slash nil {:afterup ["shifted" 0]}]
+        ;     ]
+        ; }
 
         {
             :des "Shifted Layer - press RShift to trigger"
             :rules [
                 ; [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 [:right_shift :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                [:up_arrow :right_shift [:!shifted :!symbols :velocifire] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+                ; [:up_arrow :right_shift [:!shifted :!symbols :velocifire] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
                 :shifted
                     ; capital letters
                     [:-q :!Sq nil {:afterup ["shifted" 0]}]
@@ -592,42 +548,42 @@
         }
 
 
-        {
-            :des "Ctrl Layer - press LCtrl to trigger"
-            :rules [
-                [:left_control :left_control nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
-                :ctrl
-                    [:-q :!Tq nil {:afterup ["ctrl" 0]}]
-                    [:-w :!Tw nil {:afterup ["ctrl" 0]}]
-                    [:-f :!Tf nil {:afterup ["ctrl" 0]}]
-                    [:-p :!Tp nil {:afterup ["ctrl" 0]}]
-                    [:-g :!Tg nil {:afterup ["ctrl" 0]}]
-                    [:-j :!Tj nil {:afterup ["ctrl" 0]}]
-                    [:-l :!Tl nil {:afterup ["ctrl" 0]}]
-                    [:-u :!Tu nil {:afterup ["ctrl" 0]}]
-                    [:-y :!Ty nil {:afterup ["ctrl" 0]}]
-                    [:-a :!Ta nil {:afterup ["ctrl" 0]}]
-                    [:-r :!Tr nil {:afterup ["ctrl" 0]}]
-                    [:-s :!Ts nil {:afterup ["ctrl" 0]}]
-                    [:-t :!Tt nil {:afterup ["ctrl" 0]}]
-                    [:-d :!Td nil {:afterup ["ctrl" 0]}]
-                    [:-h :!Th nil {:afterup ["ctrl" 0]}]
-                    [:-n :!Tn nil {:afterup ["ctrl" 0]}]
-                    [:-e :!Te nil {:afterup ["ctrl" 0]}]
-                    [:-i :!Ti nil {:afterup ["ctrl" 0]}]
-                    [:-o :!To nil {:afterup ["ctrl" 0]}]
-                    [:-z :!Tz nil {:afterup ["ctrl" 0]}]
-                    [:-x :!Tx nil {:afterup ["ctrl" 0]}]
-                    [:-c :!Tc nil {:afterup ["ctrl" 0]}]
-                    [:-v :!Tv nil {:afterup ["ctrl" 0]}]
-                    [:-b :!Tb nil {:afterup ["ctrl" 0]}]
-                    [:-k :!Tk nil {:afterup ["ctrl" 0]}]
-                    [:-m :!Tm nil {:afterup ["ctrl" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-            ]
-        }
+        ; {
+        ;     :des "Ctrl Layer - press LCtrl to trigger"
+        ;     :rules [
+        ;         [:left_control :left_control nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
+        ;         :ctrl
+        ;             [:-q :!Tq nil {:afterup ["ctrl" 0]}]
+        ;             [:-w :!Tw nil {:afterup ["ctrl" 0]}]
+        ;             [:-f :!Tf nil {:afterup ["ctrl" 0]}]
+        ;             [:-p :!Tp nil {:afterup ["ctrl" 0]}]
+        ;             [:-g :!Tg nil {:afterup ["ctrl" 0]}]
+        ;             [:-j :!Tj nil {:afterup ["ctrl" 0]}]
+        ;             [:-l :!Tl nil {:afterup ["ctrl" 0]}]
+        ;             [:-u :!Tu nil {:afterup ["ctrl" 0]}]
+        ;             [:-y :!Ty nil {:afterup ["ctrl" 0]}]
+        ;             [:-a :!Ta nil {:afterup ["ctrl" 0]}]
+        ;             [:-r :!Tr nil {:afterup ["ctrl" 0]}]
+        ;             [:-s :!Ts nil {:afterup ["ctrl" 0]}]
+        ;             [:-t :!Tt nil {:afterup ["ctrl" 0]}]
+        ;             [:-d :!Td nil {:afterup ["ctrl" 0]}]
+        ;             [:-h :!Th nil {:afterup ["ctrl" 0]}]
+        ;             [:-n :!Tn nil {:afterup ["ctrl" 0]}]
+        ;             [:-e :!Te nil {:afterup ["ctrl" 0]}]
+        ;             [:-i :!Ti nil {:afterup ["ctrl" 0]}]
+        ;             [:-o :!To nil {:afterup ["ctrl" 0]}]
+        ;             [:-z :!Tz nil {:afterup ["ctrl" 0]}]
+        ;             [:-x :!Tx nil {:afterup ["ctrl" 0]}]
+        ;             [:-c :!Tc nil {:afterup ["ctrl" 0]}]
+        ;             [:-v :!Tv nil {:afterup ["ctrl" 0]}]
+        ;             [:-b :!Tb nil {:afterup ["ctrl" 0]}]
+        ;             [:-k :!Tk nil {:afterup ["ctrl" 0]}]
+        ;             [:-m :!Tm nil {:afterup ["ctrl" 0]}]
+        ;             ; scrubbing - undefine all unused keys
+        ;             [:any_key :vk_none nil {:afterup ["shifted" 0]}]
+        ;             [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
+        ;     ]
+        ; }
 
         {
             :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
@@ -656,19 +612,19 @@
         }
 
         {
-            :des "Right Command to Cmd+Tab on release, acts as LCtrl on hold"
+            :des "LCtrl to Fn"
             :rules [
-                [:right_command :left_control nil {:alone :command_tab}]
+                [:##left_control :fn]
             ]
         }
 
-        {
-            :des "Double Press Cmd+Q to Quit Applications"
-            :rules [
-                [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
-                [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
-            ]
-        }
+        ; {
+        ;     :des "Double Press Cmd+Q to Quit Applications"
+        ;     :rules [
+        ;         [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+        ;         [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
+        ;     ]
+        ; }
 
         {
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
@@ -682,22 +638,22 @@
             :rules [
                 nil
                     ; p is a power key, it is defined per app and thus UNmapped on the nil layer
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :vk_none]
+                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##n :k]
             ]
         }
 
-        {
-            :des "Velocifire KB - arrows become /, RCmd, ROption, RCtrl"
-            :rules [
-                nil
-                    [:##up_arrow :slash :velocifire]
-                    [:##left_arrow :right_command :velocifire]
-                    [:##down_arrow :right_option :velocifire]
-                    [:##right_arrow :right_control :velocifire]
-            ]
-        }
+        ; {
+        ;     :des "Velocifire KB - arrows become /, RCmd, ROption, RCtrl"
+        ;     :rules [
+        ;         nil
+        ;             [:##up_arrow :slash :velocifire]
+        ;             [:##left_arrow :right_command :velocifire]
+        ;             [:##down_arrow :right_option :velocifire]
+        ;             [:##right_arrow :right_control :velocifire]
+        ;     ]
+        ; }
     ]
 }
 
