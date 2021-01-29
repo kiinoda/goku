@@ -240,11 +240,15 @@
                     [:##right_shift :!!right_arrow]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
+                    ; tab manipulation
+                    [:##w :!Cw]
+                    [:##e :!Ct]
                     ; edit/organize text properly
                     [:##p :delete_forward]
                     [:##open_bracket :insert]
                     [:##caps_lock :escape]
                     [:##semicolon :delete_or_backspace]
+                    [:##quote :return_or_enter]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
                     [:##return_or_enter :!Creturn_or_enter]
@@ -413,7 +417,8 @@
         {
             :des "Command Layer - press LCmd and release to trigger"
             :rules [
-                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
+                ; [:left_command ["raise" 1] :!command {:alone ["command" 1] :delayed {:invoked [["command" 0] ["raise" 0]] :cancelled [["command" 0]["raise" 0]]}}]
+                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked [["command" 0] ["raise" 0]] :cancelled [["command" 0]["raise" 0]]}}]
                 :command
                     ; tab switching
                     [:1 :!C1 nil {:afterup ["command" 0]}]
@@ -456,6 +461,12 @@
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["command" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["command" 0]}]
+                :raise
+                    [:tab :!Ctab]
+                    [:comma :x nil {:afterup ["raise" 0]}]
+                    ; scrubbing - undefine all unused keys
+                    [:any_key :vk_none nil {:afterup ["raise" 0]}]
+                    [:any_consumer :vk_none nil {:afterup ["raise" 0]}]
             ]
         }
 
