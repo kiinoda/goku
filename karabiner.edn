@@ -201,10 +201,19 @@
 
     :main [
         {
-            :des "Extend Layer - CapsLock (quick release for ESC)"
+            :des "Press RShift-Spacebar to deactivate all layers (including Colemak)"
             :rules [
-                [:##caps_lock :left_control :!extend {:alone :escape}]
-                [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system] {:afterup ["extend" 0] :alone :spacebar}]
+                [:!Rspacebar ["blocked" 1] :!blocked]
+                [:!Rspacebar ["blocked" 0] :blocked]
+                [:left_control :left_command]
+            ]
+        }
+
+        {
+            :des "Extend Layer - Spacebar"
+            :rules [
+                [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
+                [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
                     ; per-app shortcuts
                     ; vscode
@@ -231,8 +240,10 @@
                     [:##i :up_arrow]
                     [:##l :right_arrow]
                     ; shortcuts
-                    [:##u :!Cleft_arrow :!terminals]
-                    [:##o :!Cright_arrow :!terminals]
+                    [:!Su :page_up]
+                    [:!So :page_down]
+                    [:##u :home :!terminals]
+                    [:##o :end :!terminals]
                     ; switch app window
                     [:##n :!Cgrave_accent_and_tilde]
                     [:##m [:!Ctab :escape]]
@@ -240,9 +251,13 @@
                     [:##right_shift :!!right_arrow]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
+                    ; same as above for mod-wide on colemak
+                    ; [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
                     ; tab manipulation
                     [:##w :!Cw]
-                    [:##e :!Ct]
+                    [:##r :!Ct]
+                    ; system specific
+                    [:##e :show_desktop]
                     ; edit/organize text properly
                     [:##p :delete_forward]
                     [:##open_bracket :insert]
@@ -251,7 +266,7 @@
                     [:##quote :return_or_enter]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
-                    [:##return_or_enter :!Creturn_or_enter]
+                    [:##return_or_enter :return_or_enter]
             ]
         }
 
@@ -291,9 +306,8 @@
         {
             :des "System Layer - press Fn to trigger (Esc, too, on Velocifire)"
             :rules [
-                [:fn ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
-                ; [:escape ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
-                [:left_control ["system" 1] nil {:afterup ["system" 0] :alone :show_desktop}]
+                [:fn ["system" 1] [:!blocked] {:afterup ["system" 0] :alone :show_desktop}]
+                [:escape ["system" 1] [:!blocked] {:afterup ["system" 0] :alone :show_desktop}]
                 :system
                     ; global shortcuts
                     [:spacebar :system-force_quit_apps]
@@ -310,38 +324,6 @@
                     [:l :window_resize_and_right]
                     [:i :window_full_size]
                     [:semicolon :window_center]
-            ]
-        }
-
-        {
-            :des "Safari Layer - Application Specific Shortcuts"
-            :rules [
-                :safari
-                    ; (colemak semicolon) power key - toggle reader mode
-                    [:!Cperiod :safari-hist_frwd]
-                    [:!Ccomma :safari-hist_back]
-            ]
-        }
-
-
-        {
-            :des "Kitty Layer - Application Specific Shortcuts"
-            :rules [
-                :kitty
-                    ; (colemak semicolon) power key - tmux prefix
-                    [:!Ccomma :kitty-move_tab_left :kitty]
-                    [:!Cperiod :kitty-move_tab_right :kitty]
-            ]
-        }
-
-
-        {
-            :des "VSCode Layer - Application Specific Shortcuts"
-            :rules [
-                :vscode
-                    [:right_option :left_control :!command {:alone :focus_file_or_new_tab}]
-                    [:!Ccomma :focus_editor_left]
-                    [:!Cperiod :focus_editor_right]
             ]
         }
 
@@ -362,7 +344,8 @@
         {
             :des "Symbols Layer - press LShift and release to trigger"
             :rules [
-                [:left_shift :left_shift [:!symbols :!shifted] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                [:left_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                [:right_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 :symbols
                     ; symbols - mnemonics reflect Colemak layout
                     [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
@@ -395,8 +378,8 @@
                     ; sequence - cancelled keypresses (can be repurposed)
                     [:-q :vk_none nil {:afterup ["symbols" 0]}]
                     [:-f :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-x :vk_none nil {:afterup ["symbols" 0]}]
                     [:-z :vk_none nil {:afterup ["symbols" 0]}]
+                    [:-x :vk_none nil {:afterup ["symbols" 0]}]
                     [:hyphen :vk_none nil {:afterup ["symbols" 0]}]
                     [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
                     [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
@@ -417,8 +400,7 @@
         {
             :des "Command Layer - press LCmd and release to trigger"
             :rules [
-                ; [:left_command ["raise" 1] :!command {:alone ["command" 1] :delayed {:invoked [["command" 0] ["raise" 0]] :cancelled [["command" 0]["raise" 0]]}}]
-                [:left_command :left_command :!command {:alone ["command" 1] :delayed {:invoked [["command" 0] ["raise" 0]] :cancelled [["command" 0]["raise" 0]]}}]
+                [:left_command :left_command [:!command :!blocked]{:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
                 :command
                     ; tab switching
                     [:1 :!C1 nil {:afterup ["command" 0]}]
@@ -458,55 +440,50 @@
                     [:-k :!Ck nil {:afterup ["command" 0]}]
                     [:-m :!Cm nil {:afterup ["command" 0]}]
                     [:comma :!Ccomma nil {:afterup ["command" 0]}]
+                    [:slash :!Cslash nil {:afterup ["command" 0]}]
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["command" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["command" 0]}]
-                :raise
-                    [:tab :!Ctab]
-                    [:comma :x nil {:afterup ["raise" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["raise" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["raise" 0]}]
             ]
         }
 
-        {
-            :des "Emoji Layer - while in the Shifted layer, press LShift to trigger"
-            :rules [
-                ; trigger emoji layer - while we're in the shifted layer
-                [:left_shift ["emoji" 1] [:shifted] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-                :emoji
-                    [:left_shift :emoji_picker [:emoji] {:afterup ["emoji" 0]}]
-                    [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
-                    [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
-                    [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
-                    [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
-                    [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
-                    [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
-                    [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
-                    [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
-                    [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
-                    [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
-                    [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
-                    [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
-                    [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
-                    [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
-                    [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
-                    [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
-                    [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
-                    [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
-                    [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
-                    [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
-                    [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
-                    [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
-                    [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
-                    [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
-                    [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["emoji" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
-            ]
-        }
+        ; {
+        ;     :des "Emoji Layer - while in the Shifted layer, press LShift to trigger"
+        ;     :rules [
+        ;         ; trigger emoji layer - while we're in the shifted layer
+        ;         [:left_shift ["emoji" 1] [:shifted :!blocked] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
+        ;         :emoji
+        ;             [:left_shift :emoji_picker [:emoji] {:afterup ["emoji" 0]}]
+        ;             [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
+        ;             [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
+        ;             [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
+        ;             [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
+        ;             [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
+        ;             [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
+        ;             [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
+        ;             [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
+        ;             [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
+        ;             [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
+        ;             [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
+        ;             [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
+        ;             [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
+        ;             [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
+        ;             [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
+        ;             [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
+        ;             [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
+        ;             [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
+        ;             [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
+        ;             [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
+        ;             [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
+        ;             [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
+        ;             [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
+        ;             [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
+        ;             [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
+        ;             ; scrubbing - undefine all unused keys
+        ;             [:any_key :vk_none nil {:afterup ["emoji" 0]}]
+        ;             [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
+        ;     ]
+        ; }
 
         ; {
         ;     :des "Shifted Layer - use slash to do the same as LShift (a bit better on Apple KB)"
@@ -517,52 +494,52 @@
         ;     ]
         ; }
 
-        {
-            :des "Shifted Layer - press RShift to trigger"
-            :rules [
-                ; [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                [:right_shift :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                ; [:up_arrow :right_shift [:!shifted :!symbols :velocifire] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-                :shifted
-                    ; capital letters
-                    [:-q :!Sq nil {:afterup ["shifted" 0]}]
-                    [:-w :!Sw nil {:afterup ["shifted" 0]}]
-                    [:-f :!Sf nil {:afterup ["shifted" 0]}]
-                    [:-p :!Sp nil {:afterup ["shifted" 0]}]
-                    [:-g :!Sg nil {:afterup ["shifted" 0]}]
-                    [:-j :!Sj nil {:afterup ["shifted" 0]}]
-                    [:-l :!Sl nil {:afterup ["shifted" 0]}]
-                    [:-u :!Su nil {:afterup ["shifted" 0]}]
-                    [:-y :!Sy nil {:afterup ["shifted" 0]}]
-                    [:-a :!Sa nil {:afterup ["shifted" 0]}]
-                    [:-r :!Sr nil {:afterup ["shifted" 0]}]
-                    [:-s :!Ss nil {:afterup ["shifted" 0]}]
-                    [:-t :!St nil {:afterup ["shifted" 0]}]
-                    [:-d :!Sd nil {:afterup ["shifted" 0]}]
-                    [:-h :!Sh nil {:afterup ["shifted" 0]}]
-                    [:-n :!Sn nil {:afterup ["shifted" 0]}]
-                    [:-e :!Se nil {:afterup ["shifted" 0]}]
-                    [:-i :!Si nil {:afterup ["shifted" 0]}]
-                    [:-o :!So nil {:afterup ["shifted" 0]}]
-                    [:-z :!Sz nil {:afterup ["shifted" 0]}]
-                    [:-x :!Sx nil {:afterup ["shifted" 0]}]
-                    [:-c :!Sc nil {:afterup ["shifted" 0]}]
-                    [:-v :!Sv nil {:afterup ["shifted" 0]}]
-                    [:-b :!Sb nil {:afterup ["shifted" 0]}]
-                    [:-k :!Sk nil {:afterup ["shifted" 0]}]
-                    [:-m :!Sm nil {:afterup ["shifted" 0]}]
-                    [:up_arrow :slash [:shifted :velocifire] {:afterup ["shifted" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["shifted" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-            ]
-        }
+        ; {
+        ;     :des "Shifted Layer - press RShift to trigger"
+        ;     :rules [
+        ;         ; [:slash :right_shift [:!shifted :!symbols :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+        ;         [:right_shift :right_shift [:!shifted :!symbols :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+        ;         ; [:up_arrow :right_shift [:!shifted :!symbols :velocifire :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
+        ;         :shifted
+        ;             ; capital letters
+        ;             [:-q :!Sq nil {:afterup ["shifted" 0]}]
+        ;             [:-w :!Sw nil {:afterup ["shifted" 0]}]
+        ;             [:-f :!Sf nil {:afterup ["shifted" 0]}]
+        ;             [:-p :!Sp nil {:afterup ["shifted" 0]}]
+        ;             [:-g :!Sg nil {:afterup ["shifted" 0]}]
+        ;             [:-j :!Sj nil {:afterup ["shifted" 0]}]
+        ;             [:-l :!Sl nil {:afterup ["shifted" 0]}]
+        ;             [:-u :!Su nil {:afterup ["shifted" 0]}]
+        ;             [:-y :!Sy nil {:afterup ["shifted" 0]}]
+        ;             [:-a :!Sa nil {:afterup ["shifted" 0]}]
+        ;             [:-r :!Sr nil {:afterup ["shifted" 0]}]
+        ;             [:-s :!Ss nil {:afterup ["shifted" 0]}]
+        ;             [:-t :!St nil {:afterup ["shifted" 0]}]
+        ;             [:-d :!Sd nil {:afterup ["shifted" 0]}]
+        ;             [:-h :!Sh nil {:afterup ["shifted" 0]}]
+        ;             [:-n :!Sn nil {:afterup ["shifted" 0]}]
+        ;             [:-e :!Se nil {:afterup ["shifted" 0]}]
+        ;             [:-i :!Si nil {:afterup ["shifted" 0]}]
+        ;             [:-o :!So nil {:afterup ["shifted" 0]}]
+        ;             [:-z :!Sz nil {:afterup ["shifted" 0]}]
+        ;             [:-x :!Sx nil {:afterup ["shifted" 0]}]
+        ;             [:-c :!Sc nil {:afterup ["shifted" 0]}]
+        ;             [:-v :!Sv nil {:afterup ["shifted" 0]}]
+        ;             [:-b :!Sb nil {:afterup ["shifted" 0]}]
+        ;             [:-k :!Sk nil {:afterup ["shifted" 0]}]
+        ;             [:-m :!Sm nil {:afterup ["shifted" 0]}]
+        ;             [:up_arrow :slash [:shifted :velocifire] {:afterup ["shifted" 0]}]
+        ;             ; scrubbing - undefine all unused keys
+        ;             [:any_key :vk_none nil {:afterup ["shifted" 0]}]
+        ;             [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
+        ;     ]
+        ; }
 
 
         ; {
         ;     :des "Ctrl Layer - press LCtrl to trigger"
         ;     :rules [
-        ;         [:left_control :left_control nil {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
+        ;         [:left_control :left_control [:!blocked] {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
         ;         :ctrl
         ;             [:-q :!Tq nil {:afterup ["ctrl" 0]}]
         ;             [:-w :!Tw nil {:afterup ["ctrl" 0]}]
@@ -625,7 +602,7 @@
         {
             :des "LCtrl to Fn"
             :rules [
-                [:##left_control :fn]
+                [:##left_control :fn :!blocked]
             ]
         }
 
@@ -645,13 +622,16 @@
         }
 
         {
-            :des "Colemak Layout - semicolon (QWERTY P) is unmapped, used as power key in apps"
+            :des "Colemak Layout"
             :rules [
-                nil
-                    ; p is a power key, it is defined per app and thus UNmapped on the nil layer
+                :!blocked
+                    ; used for mod-wide on colemak and apple keyboard
+                    ; [:##non_us_backslash :grave_accent_and_tilde]
+                    ; [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :left_shift]
+                    [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##n :k]
+                    [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
             ]
         }
 
