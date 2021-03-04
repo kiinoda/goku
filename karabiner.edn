@@ -24,7 +24,8 @@
               end tell
               '"
         :sleep "sleep %s" ; sample placeholder
-    }
+        :set_keyboard "set_keyboard_layout %s"
+      }
 
     :applications {
         :kitty [ "net.kovidgoyal.kitty" ]
@@ -286,6 +287,8 @@
                     [:slash :activate_1password]          ; password_manager
                     [:y :internet_query]                  ; internet querY
                     [:delete_or_backspace :activate_spotlight] ; spotlight
+                    [:comma [:set_keyboard "m1"]]
+                    [:period [:set_keyboard "kyria"]]
             ]
         }
 
