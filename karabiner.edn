@@ -187,7 +187,7 @@
         :kitty-word_right {:key :!Tright_arrow}
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
-        :kitty-tmux_prefix {:key :!Ta}
+        :kitty-tmux_prefix {:key :!Tb}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -238,6 +238,11 @@
             :rules [
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
+                [:left_command :left_command nil {:alone :!Ctab}]
+                [:right_command :right_command :vscode {:alone :toggle_terminal_or_editor}]
+                [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
+                [:right_command :right_command :safari {:alone :safari-toggle_reader}]
+                [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
                 :extend
                     ;
                     ; per-app shortcuts
