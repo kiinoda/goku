@@ -186,7 +186,7 @@
         :kitty-word_right {:key :!Tright_arrow}
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
-        :kitty-tmux_prefix {:key :!Ta}
+        :kitty-tmux_prefix {:key :!Tb}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -223,84 +223,48 @@
             :rules [
                 :windows
                     ; window positioning using rectangle 
-                    [:j :window_left_half]
-                    [:k :window_resize_and_center]
-                    [:l :window_resize_and_right]
-                    [:i :window_full_size]
-                    [:p :window_center]
-                    [:semicolon :window_snapshot]
+                    [:n :window_left_half]
+                    [:e :window_resize_and_center]
+                    [:i :window_resize_and_right]
+                    [:u :window_full_size]
+                    [:o :window_center]
+                    [:quote :window_snapshot]
                     [:h :system-force_quit_apps]
             ]
         }
         {
-            :des "Extend Layer - Spacebar"
+            :des "Extend Layer"
             :rules [
-                [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
-                [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
-                :extend
-                    ;
-                    ; per-app shortcuts
-                    ;
-                    ; vscode
-                    [:comma :focus_editor_left :vscode]
-                    [:period :focus_editor_right :vscode]
-                    [:slash :toggle_terminal_or_editor :vscode]
-                    ; kitty
-                    [:comma :kitty-prev_tab :kitty]
-                    [:period :kitty-next_tab :kitty]
-                    [:slash :kitty-tmux_prefix :kitty]
-                    ; safari
-                    [:comma :safari-prev_tab :safari]
-                    [:period :safari-next_tab :safari]
-                    [:slash :safari-toggle_reader :safari]
-                    ; chrome
-                    [:comma :safari-prev_tab :chrome]
-                    [:period :safari-next_tab :chrome]
-                    [:slash :safari-toggle_reader :chrome]
-                    ; opera
-                    [:comma :opera-prev_tab :opera]
-                    [:period :opera-next_tab :opera]
-                    ;
-                    ; global settings
-                    ; functions
-                    [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
-                    [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
-                    ; modifiers
-                    [:##a :left_shift][:##s :left_option][:##d :left_command]
-                    ; arrows
-                    [:##j :left_arrow]
-                    [:##k :down_arrow]
-                    [:##i :up_arrow]
-                    [:##l :right_arrow]
-                    ; shortcuts
-                    [:!Su :page_up]
-                    [:!So :page_down]
-                    [:##u :home]
-                    [:##o :end]
-                    ; switch app window
-                    [:##n :!Cgrave_accent_and_tilde]
-                    [:##m [:!Ctab :escape]]
-                    ; [:##left_shift :!!left_arrow]
-                    ; [:##right_shift :!!right_arrow]
-                    ; undo, cut, copy, paste
-                    [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
-                    ; same as above for mod-wide on colemak
-                    ; [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
-                    ; tab manipulation
-                    [:##w :!Cw]
-                    [:##r :!Ct]
-                    ; system specific
-                    [:##e :show_desktop]
-                    ; edit/organize text properly
-                    [:##p :delete_forward]
-                    [:##open_bracket :insert]
-                    [:##caps_lock :delete_or_backspace]
-                    [:##semicolon :delete_or_backspace]
-                    [:##quote :return_or_enter]
-                    [:##delete_or_backspace :caps_lock]
-                    ; quick send in vscode gitlens, mailmate, others
-                    [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
-                    [:##return_or_enter :return_or_enter]
+                ;
+                ; per-app shortcuts
+                ;
+                ; vscode
+                [:!COTcomma :focus_editor_left :vscode]
+                [:!COTperiod :focus_editor_right :vscode]
+                [:!COTslash :toggle_terminal_or_editor :vscode]
+                [:left_option :left_option :vscode {:alone :toggle_terminal_or_editor}]
+                ; kitty
+                [:!COTcomma :kitty-prev_tab :kitty]
+                [:!COTperiod :kitty-next_tab :kitty]
+                [:!COTslash :kitty-tmux_prefix :kitty]
+                [:left_option :left_option :kitty {:alone :kitty-tmux_prefix}]
+                ; safari
+                [:!COTcomma :safari-prev_tab :safari]
+                [:!COTperiod :safari-next_tab :safari]
+                [:!COTslash :safari-toggle_reader :safari]
+                [:left_option :left_option :safari {:alone :safari-toggle_reader}]
+                ; chrome
+                [:!COTcomma :safari-prev_tab :chrome]
+                [:!COTperiod :safari-next_tab :chrome]
+                [:!COTslash :safari-toggle_reader :chrome]
+                [:left_option :left_option :chrome {:alone :chrome-toggle_reader}]
+                ; opera
+                [:!COTcomma :opera-prev_tab :opera]
+                [:!COTperiod :opera-next_tab :opera]
+                ;
+                [:!COTk :!Cgrave_accent_and_tilde]
+                [:!COTm :!Ctab]
+                [:left_command :left_command nil {:alone :!Ctab}]
             ]
         }
 
@@ -309,37 +273,36 @@
             :rules [
                 :apps
                     ; most used apps
-                    [:-w [:open "WhatsApp"]]              ; whatsapp
-                    [:-t [:open "Kitty"]]                 ; kitty
-                    [:-g [:open "Signal"]]                ; signal
-                    [:-l [:open "Telegram"]]              ; telegram
-                    [:-d [:open "Drafts"]]                ; drafts
-                    [:-n [:open "Opera"]]                 ; navigator
-                    [:-e [:open "Visual Studio Code"]]    ; editor
-                    [:-u [:open "Type Fu"]]               ; typeFu
-                    [:-m [:open "Mailmate"]]              ; mail
+                    [:w [:open "WhatsApp"]]              ; whatsapp
+                    [:t [:open "Kitty"]]                 ; kitty
+                    [:g [:open "Signal"]]                ; signal
+                    [:l [:open "Telegram"]]              ; telegram
+                    [:d [:open "Drafts"]]                ; drafts
+                    [:n [:open "Opera"]]                 ; navigator
+                    [:e [:open "Visual Studio Code"]]    ; editor
+                    [:u [:open "Type Fu"]]               ; typeFu
+                    [:m [:open "Mailmate"]]              ; mail
                     ; others
-                    [:-p :activate_1password]             ; password_manager
                     [:slash :activate_1password]          ; password_manager
-                    [:-y :internet_query]                 ; internet querY
-                    [:spacebar :activate_spotlight]       ; spotlight
+                    [:y :internet_query]                  ; internet querY
+                    [:delete_or_backspace :activate_spotlight] ; spotlight
             ]
         }
 
         {
-            :des "Desktop Layer - press F to trigger"
+            :des "Desktop Layer - press Q to trigger"
             :rules [
                 :desqtop
                     ; system layer substitutes
                     [:comma :left_desktop]
                     [:period :right_desktop]
-                    [:u :mission_control]
-                    [:o :show_application_windows]
+                    [:l :mission_control]
+                    [:y :show_application_windows]
                     ; switch to desktop
-                    [:j :!!1]
-                    [:k :!!2]
-                    [:l :!!3]
-                    [:semicolon :!!4]
+                    [:n :!!1]
+                    [:e :!!2]
+                    [:i :!!3]
+                    [:o :!!4]
                     [:quote :!!5]
             ]
         }
@@ -355,312 +318,6 @@
         ;             [:btick :colon nil {:afterup ["symbols" 0]}]                         ; ?
         ;         :emoji
         ;             [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
-        ;     ]
-        ; }
- 
-        {
-            :des "Symbols Layer - press LShift and release to trigger"
-            :rules [
-                [:left_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                [:right_shift :right_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                :symbols
-                    ; symbols - mnemonics reflect Colemak layout
-                    [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
-                    [:-w :tilde nil {:afterup ["symbols" 0]}]                            ; wave
-                    [:-p :percent nil {:afterup ["symbols" 0]}]                          ; percent
-                    [:-l :plus nil {:afterup ["symbols" 0]}]                             ; pLus
-                    [:-u :underscore nil {:afterup ["symbols" 0]}]                       ; underscore
-                    [:-y :hyphen nil {:afterup ["symbols" 0]}]                           ; hYphen
-                    [:-semicolon :backquote nil {:afterup ["symbols" 0]}]                ; ?
-                    [:-a :at nil {:afterup ["symbols" 0]}]                               ; at
-                    [:-s :ampersand nil {:afterup ["symbols" 0]}]                        ; amperSand
-                    [:-d :dollar nil {:afterup ["symbols" 0]}]                           ; dollar
-                    [:-h :hash nil {:afterup ["symbols" 0]}]                             ; hash
-                    [:-e :exclaim nil {:afterup ["symbols" 0]}]                          ; exclaim
-                    [:-o :semicolon nil {:afterup ["symbols" 0]}]                        ; semicOlon
-                    [:-c :caret nil {:afterup ["symbols" 0]}]                            ; caret
-                    [:-v :pipe nil {:afterup ["symbols" 0]}]                             ; vertical
-                    [:-b :backslash nil {:afterup ["symbols" 0]}]                        ; backslash
-                    [:-k :equal nil {:afterup ["symbols" 0]}]                            ; eKual
-                    [:-m :bullet nil {:afterup ["symbols" 0]}]                           ; multiply
-                    [:slash :!Sslash nil {:afterup ["symbols" 0]}]                       ; slash
-                    ; [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
-                    ; sequence - parens, brackets and braces
-                    [:-g :open_brace nil {:afterup ["symbols" 0]}]
-                    [:-j :close_brace nil {:afterup ["symbols" 0]}]
-                    [:-r :open_bracket nil {:afterup ["symbols" 0]}]
-                    [:-t :open_paren nil {:afterup ["symbols" 0]}]
-                    [:-n :close_paren nil {:afterup ["symbols" 0]}]
-                    [:-i :close_bracket nil {:afterup ["symbols" 0]}]
-                    ; sequence - cancelled keypresses (can be repurposed)
-                    [:-q :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-f :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-z :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-x :vk_none nil {:afterup ["symbols" 0]}]
-                    [:hyphen :vk_none nil {:afterup ["symbols" 0]}]
-                    [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
-                    [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
-                    [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
-                    ; sequence - symbols on the original keys but shifted for ease of use
-                    [:comma :less_than nil {:afterup ["symbols" 0]}]
-                    [:period :greater_than nil {:afterup ["symbols" 0]}]
-                    [:quote :dquote nil {:afterup ["symbols" 0]}]
-                    [:backslash :pipe nil {:afterup ["symbols" 0]}]
-                    [:btick :tilde nil {:afterup ["symbols" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["symbols" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
-            ]
-        }
-
-
-        {
-            :des "Command Layer - press LCmd and release to trigger"
-            :rules [
-                [:left_command :left_command [:!command :!blocked]{:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
-                :command
-                    ; tab switching
-                    [:1 :!C1 nil {:afterup ["command" 0]}]
-                    [:2 :!C2 nil {:afterup ["command" 0]}]
-                    [:3 :!C3 nil {:afterup ["command" 0]}]
-                    [:4 :!C4 nil {:afterup ["command" 0]}]
-                    [:5 :!C5 nil {:afterup ["command" 0]}]
-                    [:6 :!C6 nil {:afterup ["command" 0]}]
-                    [:7 :!C7 nil {:afterup ["command" 0]}]
-                    [:8 :!C8 nil {:afterup ["command" 0]}]
-                    [:9 :!C9 nil {:afterup ["command" 0]}]
-                    [:0 :!C0 nil {:afterup ["command" 0]}]
-                    ; press command+key
-                    [:-q :!Cq nil {:afterup ["command" 0]}]
-                    [:-w :!Cw nil {:afterup ["command" 0]}]
-                    [:-f :!Cf nil {:afterup ["command" 0]}]
-                    [:-p :!Cp nil {:afterup ["command" 0]}]
-                    [:-g :!Cg nil {:afterup ["command" 0]}]
-                    [:-j :!Cj nil {:afterup ["command" 0]}]
-                    [:-l :!Cl nil {:afterup ["command" 0]}]
-                    [:-u :!Cu nil {:afterup ["command" 0]}]
-                    [:-y :!Cy nil {:afterup ["command" 0]}]
-                    [:-a :!Ca nil {:afterup ["command" 0]}]
-                    [:-r :!Cr nil {:afterup ["command" 0]}]
-                    [:-s :!Cs nil {:afterup ["command" 0]}]
-                    [:-t :!Ct nil {:afterup ["command" 0]}]
-                    [:-d :!Cd nil {:afterup ["command" 0]}]
-                    [:-h :!Ch nil {:afterup ["command" 0]}]
-                    [:-n :!Cn nil {:afterup ["command" 0]}]
-                    [:-e :!Ce nil {:afterup ["command" 0]}]
-                    [:-i :!Ci nil {:afterup ["command" 0]}]
-                    [:-o :!Co nil {:afterup ["command" 0]}]
-                    [:-x :!Cx nil {:afterup ["command" 0]}]
-                    [:-c :!Cc nil {:afterup ["command" 0]}]
-                    [:-v :!Cv nil {:afterup ["command" 0]}]
-                    [:-b :!Cb nil {:afterup ["command" 0]}]
-                    [:-k :!Ck nil {:afterup ["command" 0]}]
-                    [:-m :!Cm nil {:afterup ["command" 0]}]
-                    [:comma :!Ccomma nil {:afterup ["command" 0]}]
-                    [:slash :!Cslash nil {:afterup ["command" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["command" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["command" 0]}]
-            ]
-        }
-
-        ; {
-        ;     :des "Emoji Layer - while in the Shifted layer, press LShift to trigger"
-        ;     :rules [
-        ;         ; trigger emoji layer - while we're in the shifted layer
-        ;         [:left_shift ["emoji" 1] [:shifted :!blocked] {:afterup ["shifted" 0] :delayed {:invoked ["emoji" 0]}}]
-        ;         :emoji
-        ;             [:left_shift :emoji_picker [:emoji] {:afterup ["emoji" 0]}]
-        ;             [:-q [:paste "🤫"] nil {:afterup ["emoji" 0]}] ;quiet
-        ;             [:-w [:paste "😉"] nil {:afterup ["emoji" 0]}] ;wink
-        ;             [:-f [:paste "🤦‍♂️"] nil {:afterup ["emoji" 0]}] ;facepalm️
-        ;             [:-p [:paste "🎉"] nil {:afterup ["emoji" 0]}] ;party
-        ;             [:-g [:paste "😬"] nil {:afterup ["emoji" 0]}] ;grimace
-        ;             [:-j [:paste "😂"] nil {:afterup ["emoji" 0]}] ;joking
-        ;             [:-l [:paste "😍"] nil {:afterup ["emoji" 0]}] ;love it
-        ;             [:-u [:paste "🤷‍♂️"] nil {:afterup ["emoji" 0]}] ;shrUg
-        ;             [:-y [:paste "😡"] nil {:afterup ["emoji" 0]}] ;angrY
-        ;             [:-a [:paste "👍"] nil {:afterup ["emoji" 0]}] ;alright
-        ;             [:-r [:paste "🚀"] nil {:afterup ["emoji" 0]}] ;rocket
-        ;             [:-s [:paste "😢"] nil {:afterup ["emoji" 0]}] ;sad
-        ;             [:-t [:paste "🤔"] nil {:afterup ["emoji" 0]}] ;thinking
-        ;             [:-d [:paste "😮"] nil {:afterup ["emoji" 0]}] ;damn!
-        ;             [:-h [:paste "💜"] nil {:afterup ["emoji" 0]}] ;heart
-        ;             [:-n [:paste "👎"] nil {:afterup ["emoji" 0]}] ;nope
-        ;             [:-e [:paste "🙂"] nil {:afterup ["emoji" 0]}] ;smilE
-        ;             [:-i [:paste "👀"] nil {:afterup ["emoji" 0]}] ;I
-        ;             [:-o [:paste "💩"] nil {:afterup ["emoji" 0]}] ;pOop
-        ;             [:-x [:paste "😵"] nil {:afterup ["emoji" 0]}] ;x-eyes
-        ;             [:-c [:paste "👏"] nil {:afterup ["emoji" 0]}] ;clap
-        ;             [:-v [:paste "😎"] nil {:afterup ["emoji" 0]}] ;very cool
-        ;             [:-b [:paste "😊"] nil {:afterup ["emoji" 0]}] ;blush
-        ;             [:-k [:paste "🍺"] nil {:afterup ["emoji" 0]}] ;drink
-        ;             [:-m [:paste "🙏"] nil {:afterup ["emoji" 0]}] ;merçi
-        ;             ; scrubbing - undefine all unused keys
-        ;             [:any_key :vk_none nil {:afterup ["emoji" 0]}]
-        ;             [:any_consumer :vk_none nil {:afterup ["emoji" 0]}]
-        ;     ]
-        ; }
-
-        ; {
-        ;     :des "Shifted Layer - use slash to do the same as LShift (a bit better on Apple KB)"
-        ;     :rules [
-        ;         [:slash :right_shift [:!shifted :!symbols] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-        ;         :shifted
-        ;             [:slash :slash nil {:afterup ["shifted" 0]}]
-        ;     ]
-        ; }
-
-        ; {
-        ;     :des "Shifted Layer - press RShift to trigger"
-        ;     :rules [
-        ;         ; [:slash :right_shift [:!shifted :!symbols :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-        ;         [:right_shift :right_shift [:!shifted :!symbols :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-        ;         ; [:up_arrow :right_shift [:!shifted :!symbols :velocifire :!blocked] {:alone ["shifted" 1] :delayed {:invoked ["shifted" 0] :cancelled ["shifted" 0]}}]
-        ;         :shifted
-        ;             ; capital letters
-        ;             [:-q :!Sq nil {:afterup ["shifted" 0]}]
-        ;             [:-w :!Sw nil {:afterup ["shifted" 0]}]
-        ;             [:-f :!Sf nil {:afterup ["shifted" 0]}]
-        ;             [:-p :!Sp nil {:afterup ["shifted" 0]}]
-        ;             [:-g :!Sg nil {:afterup ["shifted" 0]}]
-        ;             [:-j :!Sj nil {:afterup ["shifted" 0]}]
-        ;             [:-l :!Sl nil {:afterup ["shifted" 0]}]
-        ;             [:-u :!Su nil {:afterup ["shifted" 0]}]
-        ;             [:-y :!Sy nil {:afterup ["shifted" 0]}]
-        ;             [:-a :!Sa nil {:afterup ["shifted" 0]}]
-        ;             [:-r :!Sr nil {:afterup ["shifted" 0]}]
-        ;             [:-s :!Ss nil {:afterup ["shifted" 0]}]
-        ;             [:-t :!St nil {:afterup ["shifted" 0]}]
-        ;             [:-d :!Sd nil {:afterup ["shifted" 0]}]
-        ;             [:-h :!Sh nil {:afterup ["shifted" 0]}]
-        ;             [:-n :!Sn nil {:afterup ["shifted" 0]}]
-        ;             [:-e :!Se nil {:afterup ["shifted" 0]}]
-        ;             [:-i :!Si nil {:afterup ["shifted" 0]}]
-        ;             [:-o :!So nil {:afterup ["shifted" 0]}]
-        ;             [:-z :!Sz nil {:afterup ["shifted" 0]}]
-        ;             [:-x :!Sx nil {:afterup ["shifted" 0]}]
-        ;             [:-c :!Sc nil {:afterup ["shifted" 0]}]
-        ;             [:-v :!Sv nil {:afterup ["shifted" 0]}]
-        ;             [:-b :!Sb nil {:afterup ["shifted" 0]}]
-        ;             [:-k :!Sk nil {:afterup ["shifted" 0]}]
-        ;             [:-m :!Sm nil {:afterup ["shifted" 0]}]
-        ;             [:up_arrow :slash [:shifted :velocifire] {:afterup ["shifted" 0]}]
-        ;             ; scrubbing - undefine all unused keys
-        ;             [:any_key :vk_none nil {:afterup ["shifted" 0]}]
-        ;             [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-        ;     ]
-        ; }
-
-
-        ; {
-        ;     :des "Ctrl Layer - press LCtrl to trigger"
-        ;     :rules [
-        ;         [:left_control :left_control [:!blocked] {:alone ["ctrl" 1] :delayed {:invoked ["ctrl" 0]}}]
-        ;         :ctrl
-        ;             [:-q :!Tq nil {:afterup ["ctrl" 0]}]
-        ;             [:-w :!Tw nil {:afterup ["ctrl" 0]}]
-        ;             [:-f :!Tf nil {:afterup ["ctrl" 0]}]
-        ;             [:-p :!Tp nil {:afterup ["ctrl" 0]}]
-        ;             [:-g :!Tg nil {:afterup ["ctrl" 0]}]
-        ;             [:-j :!Tj nil {:afterup ["ctrl" 0]}]
-        ;             [:-l :!Tl nil {:afterup ["ctrl" 0]}]
-        ;             [:-u :!Tu nil {:afterup ["ctrl" 0]}]
-        ;             [:-y :!Ty nil {:afterup ["ctrl" 0]}]
-        ;             [:-a :!Ta nil {:afterup ["ctrl" 0]}]
-        ;             [:-r :!Tr nil {:afterup ["ctrl" 0]}]
-        ;             [:-s :!Ts nil {:afterup ["ctrl" 0]}]
-        ;             [:-t :!Tt nil {:afterup ["ctrl" 0]}]
-        ;             [:-d :!Td nil {:afterup ["ctrl" 0]}]
-        ;             [:-h :!Th nil {:afterup ["ctrl" 0]}]
-        ;             [:-n :!Tn nil {:afterup ["ctrl" 0]}]
-        ;             [:-e :!Te nil {:afterup ["ctrl" 0]}]
-        ;             [:-i :!Ti nil {:afterup ["ctrl" 0]}]
-        ;             [:-o :!To nil {:afterup ["ctrl" 0]}]
-        ;             [:-z :!Tz nil {:afterup ["ctrl" 0]}]
-        ;             [:-x :!Tx nil {:afterup ["ctrl" 0]}]
-        ;             [:-c :!Tc nil {:afterup ["ctrl" 0]}]
-        ;             [:-v :!Tv nil {:afterup ["ctrl" 0]}]
-        ;             [:-b :!Tb nil {:afterup ["ctrl" 0]}]
-        ;             [:-k :!Tk nil {:afterup ["ctrl" 0]}]
-        ;             [:-m :!Tm nil {:afterup ["ctrl" 0]}]
-        ;             ; scrubbing - undefine all unused keys
-        ;             [:any_key :vk_none nil {:afterup ["shifted" 0]}]
-        ;             [:any_consumer :vk_none nil {:afterup ["shifted" 0]}]
-        ;     ]
-        ; }
-
-        {
-            :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
-            :rules [
-                ; 1 finger resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 1]]
-                    [:-w :!Cw]
-                    [:-p :!Ct]
-                    [:-s {:pkey :button1 :modi :left_shift}]
-                    [:-t {:pkey :button1}]
-                    [:-d {:pkey :button1 :modi :left_command}]
-                    [:grave_accent_and_tilde :!Tgrave_accent_and_tilde]
-                    [:-z :!Cz]
-                    [:-x :!Cx]
-                    [:-c :!Cc]
-                    [:-v :!Cv]
-                    [:-b :!CT1]
-                    [:spacebar :return_or_enter]
-                    [:a :delete_or_backspace]
-                ; 2 fingers resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 2]]
-                    [:-s :selection_snapshot]
-                    [:-t :window_snapshot]
-                    [:-d :fullscreen_snapshot]
-            ]
-        }
-
-        {
-            :des "LCtrl to Fn"
-            :rules [
-                ; [:##left_control :fn :!blocked]
-                [:##right_command :right_shift]
-            ]
-        }
-
-        ; {
-        ;     :des "Double Press Cmd+Q to Quit Applications"
-        ;     :rules [
-        ;         [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
-        ;         [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
-        ;     ]
-        ; }
-
-        {
-            :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
-            :rules [
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0]]]
-            ]
-        }
-
-        {
-            :des "Colemak Layout"
-            :rules [
-                [:condi :!blocked :allow_colemak]
-                    ; used for mod-wide on colemak and apple keyboard
-                    ; [:##non_us_backslash :grave_accent_and_tilde]
-                    ; [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :left_shift]
-                    ; [:return_or_enter :vk_none]
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
-                    [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
-            ]
-        }
-
-        ; {
-        ;     :des "Velocifire KB - arrows become /, RCmd, ROption, RCtrl"
-        ;     :rules [
-        ;         nil
-        ;             [:##up_arrow :slash :velocifire]
-        ;             [:##left_arrow :right_command :velocifire]
-        ;             [:##down_arrow :right_option :velocifire]
-        ;             [:##right_arrow :right_control :velocifire]
         ;     ]
         ; }
     ]
