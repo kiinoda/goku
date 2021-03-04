@@ -243,6 +243,8 @@
                 [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                 [:right_command :right_command :safari {:alone :safari-toggle_reader}]
                 [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
+                [:left_shift :left_shift nil {:alone :open_paren}]
+                [:right_shift :right_shift nil {:alone :close_paren}]
                 :extend
                     ;
                     ; per-app shortcuts
