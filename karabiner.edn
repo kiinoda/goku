@@ -286,17 +286,13 @@
                     ; switch app window
                     [:##n :!Cgrave_accent_and_tilde]
                     [:##m [:!Ctab :escape]]
-                    ; [:##left_shift :!!left_arrow]
-                    ; [:##right_shift :!!right_arrow]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; same as above for mod-wide on colemak
-                    ; [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
+                    [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
                     ; tab manipulation
                     [:##w :!Cw]
-                    [:##r :!Ct]
-                    ; system specific
-                    [:##e :show_desktop]
+                    [:##f :!Ct] ; colemak Cmd+t
                     ; edit/organize text properly
                     [:##p :delete_forward]
                     [:##open_bracket :insert]
@@ -305,7 +301,7 @@
                     [:##quote :return_or_enter]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
-                    [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
+                    ;; [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
                     [:##return_or_enter :return_or_enter]
             ]
         }
@@ -325,7 +321,6 @@
                     [:-u [:open "Type Fu"]]               ; typeFu
                     [:-m [:open "Mailmate"]]              ; mail
                     ; others
-                    [:-p :activate_1password]             ; password_manager
                     [:slash :activate_1password]          ; password_manager
                     [:-y :internet_query]                 ; internet querY
                     [:spacebar :activate_spotlight]       ; spotlight
@@ -621,14 +616,6 @@
                     [:-s :selection_snapshot]
                     [:-t :window_snapshot]
                     [:-d :fullscreen_snapshot]
-            ]
-        }
-
-        {
-            :des "LCtrl to Fn"
-            :rules [
-                ; [:##left_control :fn :!blocked]
-                [:##right_command :right_shift]
             ]
         }
 
