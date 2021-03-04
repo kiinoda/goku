@@ -3,10 +3,10 @@
         :Default {
             :default true
             :sim      200 ; keys need to be pressed within this threshold to be considered simultaneous
-            :simlayer-threshold 450 ; ???????
-            :delay    500 ; time after which the key press is count delayed
-            :alone    500 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
-            :held    1000 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
+            :simlayer-threshold 250 ; ???????
+            :alone    300 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
+            :delay    300 ; time after which the key press is count delayed
+            :held     350 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
         }
     }
 
@@ -30,6 +30,7 @@
         :kitty [ "net.kovidgoyal.kitty" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
+        :chrome [ "^com.operasoftware.Opera$" ]
     }
 
     :froms {
@@ -192,11 +193,21 @@
         :safari-hist_back {:key :!Copen_bracket}
         :safari-hist_frwd {:key :!Cclose_bracket}
         :safari-toggle_reader {:key :!CSr}
+        ; chrome
+        :chrome-prev_tab {:key :!TStab}
+        :chrome-next_tab {:key :!Ttab}
+        :chrome-toggle_reader {:key :!CSr}
+        ; opera
+        :opera-prev_tab {:key :!COleft_arrow}
+        :opera-next_tab {:key :!COright_arrow}
     }
 
     :simlayers {
-        :apps {:key :a}
-        :desktop {:key :f}
+        :desqtop {:key :q}
+        :windows {:key :w}
+        ;; :apps {:key :e}
+        :apps {:key :tab}
+        ;; :extend {:key :f}
     }
 
     :main [
@@ -205,35 +216,57 @@
             :rules [
                 [:!Rspacebar ["blocked" 1] :!blocked]
                 [:!Rspacebar ["blocked" 0] :blocked]
-                [:left_control :left_command]
             ]
         }
-
+        {
+            :des "Window Positioning Layer"
+            :rules [
+                :windows
+                    ; window positioning using rectangle 
+                    [:j :window_left_half]
+                    [:k :window_resize_and_center]
+                    [:l :window_resize_and_right]
+                    [:i :window_full_size]
+                    [:p :window_center]
+                    [:semicolon :window_snapshot]
+                    [:h :system-force_quit_apps]
+            ]
+        }
         {
             :des "Extend Layer - Spacebar"
             :rules [
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
+                    ;
                     ; per-app shortcuts
+                    ;
                     ; vscode
-                    [:##comma :focus_editor_left :vscode]
-                    [:##period :focus_editor_right :vscode]
-                    [:##slash :toggle_terminal_or_editor :vscode]
+                    [:comma :focus_editor_left :vscode]
+                    [:period :focus_editor_right :vscode]
+                    [:slash :toggle_terminal_or_editor :vscode]
                     ; kitty
-                    [:##comma :kitty-prev_tab :kitty]
-                    [:##period :kitty-next_tab :kitty]
-                    [:##slash :kitty-tmux_prefix :kitty]
+                    [:comma :kitty-prev_tab :kitty]
+                    [:period :kitty-next_tab :kitty]
+                    [:slash :kitty-tmux_prefix :kitty]
                     ; safari
-                    [:##comma :safari-prev_tab :safari]
-                    [:##period :safari-next_tab :safari]
-                    [:##slash :safari-toggle_reader :safari]
+                    [:comma :safari-prev_tab :safari]
+                    [:period :safari-next_tab :safari]
+                    [:slash :safari-toggle_reader :safari]
+                    ; chrome
+                    [:comma :safari-prev_tab :chrome]
+                    [:period :safari-next_tab :chrome]
+                    [:slash :safari-toggle_reader :chrome]
+                    ; opera
+                    [:comma :opera-prev_tab :opera]
+                    [:period :opera-next_tab :opera]
+                    ;
                     ; global settings
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
                     ; modifiers
-                    [:##a :left_control][:##s :left_shift][:##d :left_option][:##f :left_command]
+                    [:##a :left_shift][:##s :left_option][:##d :left_command]
                     ; arrows
                     [:##j :left_arrow]
                     [:##k :down_arrow]
@@ -242,13 +275,13 @@
                     ; shortcuts
                     [:!Su :page_up]
                     [:!So :page_down]
-                    [:##u :home :!terminals]
-                    [:##o :end :!terminals]
+                    [:##u :home]
+                    [:##o :end]
                     ; switch app window
                     [:##n :!Cgrave_accent_and_tilde]
                     [:##m [:!Ctab :escape]]
-                    [:##left_shift :!!left_arrow]
-                    [:##right_shift :!!right_arrow]
+                    ; [:##left_shift :!!left_arrow]
+                    ; [:##right_shift :!!right_arrow]
                     ; undo, cut, copy, paste
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; same as above for mod-wide on colemak
@@ -261,11 +294,12 @@
                     ; edit/organize text properly
                     [:##p :delete_forward]
                     [:##open_bracket :insert]
-                    [:##caps_lock :escape]
+                    [:##caps_lock :delete_or_backspace]
                     [:##semicolon :delete_or_backspace]
                     [:##quote :return_or_enter]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
+                    [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
                     [:##return_or_enter :return_or_enter]
             ]
         }
@@ -280,12 +314,13 @@
                     [:-g [:open "Signal"]]                ; signal
                     [:-l [:open "Telegram"]]              ; telegram
                     [:-d [:open "Drafts"]]                ; drafts
-                    [:-n [:open "Safari"]]                ; navigator
+                    [:-n [:open "Opera"]]                 ; navigator
                     [:-e [:open "Visual Studio Code"]]    ; editor
                     [:-u [:open "Type Fu"]]               ; typeFu
                     [:-m [:open "Mailmate"]]              ; mail
                     ; others
                     [:-p :activate_1password]             ; password_manager
+                    [:slash :activate_1password]          ; password_manager
                     [:-y :internet_query]                 ; internet querY
                     [:spacebar :activate_spotlight]       ; spotlight
             ]
@@ -294,36 +329,18 @@
         {
             :des "Desktop Layer - press F to trigger"
             :rules [
-                :desktop
+                :desqtop
+                    ; system layer substitutes
+                    [:comma :left_desktop]
+                    [:period :right_desktop]
+                    [:u :mission_control]
+                    [:o :show_application_windows]
+                    ; switch to desktop
                     [:j :!!1]
                     [:k :!!2]
                     [:l :!!3]
                     [:semicolon :!!4]
                     [:quote :!!5]
-            ]
-        }
-
-        {
-            :des "System Layer - press Fn to trigger (Esc, too, on Velocifire)"
-            :rules [
-                [:fn ["system" 1] [:!blocked] {:afterup ["system" 0] :alone :show_desktop}]
-                [:escape ["system" 1] [:!blocked] {:afterup ["system" 0] :alone :show_desktop}]
-                :system
-                    ; global shortcuts
-                    [:spacebar :system-force_quit_apps]
-                    [:u :mission_control]
-                    [:o :show_application_windows]
-                    ; snapshots
-                    [:q :fullscreen_snapshot]
-                    [:w :window_snapshot]
-                    ; focus on one window (triggers Hazeover)
-                    [:return_or_enter :activate_hazeover]
-                    ; window positioning (triggers Rectangle)
-                    [:j :window_left_half]
-                    [:k :window_resize_and_center]
-                    [:l :window_resize_and_right]
-                    [:i :window_full_size]
-                    [:semicolon :window_center]
             ]
         }
 
@@ -345,7 +362,7 @@
             :des "Symbols Layer - press LShift and release to trigger"
             :rules [
                 [:left_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                [:right_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+                [:right_shift :right_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
                 :symbols
                     ; symbols - mnemonics reflect Colemak layout
                     [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
@@ -385,11 +402,11 @@
                     [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
                     [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
                     ; sequence - symbols on the original keys but shifted for ease of use
-                    [:comma :less_than nil {:afterup ["sequence" 0]}]
-                    [:period :greater_than nil {:afterup ["sequence" 0]}]
-                    [:quote :dquote nil {:afterup ["sequence" 0]}]
-                    [:backslash :pipe nil {:afterup ["sequence" 0]}]
-                    [:btick :tilde nil {:afterup ["sequence" 0]}]
+                    [:comma :less_than nil {:afterup ["symbols" 0]}]
+                    [:period :greater_than nil {:afterup ["symbols" 0]}]
+                    [:quote :dquote nil {:afterup ["symbols" 0]}]
+                    [:backslash :pipe nil {:afterup ["symbols" 0]}]
+                    [:btick :tilde nil {:afterup ["symbols" 0]}]
                     ; scrubbing - undefine all unused keys
                     [:any_key :vk_none nil {:afterup ["symbols" 0]}]
                     [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
@@ -602,7 +619,8 @@
         {
             :des "LCtrl to Fn"
             :rules [
-                [:##left_control :fn :!blocked]
+                ; [:##left_control :fn :!blocked]
+                [:##right_command :right_shift]
             ]
         }
 
@@ -624,11 +642,11 @@
         {
             :des "Colemak Layout"
             :rules [
-                :!blocked
+                [:condi :!blocked :allow_colemak]
                     ; used for mod-wide on colemak and apple keyboard
                     ; [:##non_us_backslash :grave_accent_and_tilde]
                     ; [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :left_shift]
-                    [:return_or_enter :vk_none]
+                    ; [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
