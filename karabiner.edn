@@ -642,7 +642,7 @@
         {
             :des "Colemak Layout"
             :rules [
-                [:condi :!blocked :allow_colemak]
+                [:condi :!blocked]
                     ; used for mod-wide on colemak and apple keyboard
                     ; [:##non_us_backslash :grave_accent_and_tilde]
                     ; [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :left_shift]
