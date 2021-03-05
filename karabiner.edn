@@ -171,6 +171,7 @@
         :window_center {:key :!!semicolon}
         ; vscode
         :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
+        :toggle_terminal {:key :!Cspacebar}
         :focus_group_or_terminal_left {:key :!CTOup_arrow}
         :focus_group_or_terminal_right {:key :!CTOdown_arrow}
         :focus_editor_left {:key :!COleft_arrow}
@@ -239,7 +240,7 @@
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 [:left_command :left_command nil {:alone :!Ctab}]
-                [:right_command :right_command :vscode {:alone :toggle_terminal_or_editor}]
+                [:right_command :right_command :vscode {:alone :toggle_terminal}]
                 [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                 [:right_command :right_command :safari {:alone :safari-toggle_reader}]
                 [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
@@ -252,7 +253,7 @@
                     ; vscode
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
-                    [:slash :toggle_terminal_or_editor :vscode]
+                    [:slash :toggle_terminal :vscode]
                     ; kitty
                     [:comma :kitty-prev_tab :kitty]
                     [:period :kitty-next_tab :kitty]
