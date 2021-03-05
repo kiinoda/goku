@@ -275,10 +275,10 @@
                 :apps
                     ; most used apps
                     [:w [:open "WhatsApp"]]              ; whatsapp
-                    [:t [:open "Kitty"]]                 ; kitty
+                    [:o [:open "Kitty"]]                 ; terminal cOnsole
                     [:g [:open "Signal"]]                ; signal
                     [:l [:open "Telegram"]]              ; telegram
-                    [:d [:open "Drafts"]]                ; drafts
+                    [:i [:open "Drafts"]]                ; snIppets
                     [:n [:open "Opera"]]                 ; navigator
                     [:e [:open "Visual Studio Code"]]    ; editor
                     [:u [:open "Type Fu"]]               ; typeFu
