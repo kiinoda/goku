@@ -171,6 +171,7 @@
         :window_center {:key :!!semicolon}
         ; vscode
         :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
+        :toggle_terminal {:key :!Cspacebar}
         :focus_group_or_terminal_left {:key :!CTOup_arrow}
         :focus_group_or_terminal_right {:key :!CTOdown_arrow}
         :focus_editor_left {:key :!COleft_arrow}
