@@ -290,7 +290,7 @@
                     [:##n :!Cgrave_accent_and_tilde]
                     [:##m [:!Ctab :escape]]
                     ; undo, cut, copy, paste
-                    [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
+                    ;; [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; same as above for mod-wide on colemak
                     [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
                     ; tab manipulation
@@ -643,11 +643,11 @@
                 [:condi :!blocked]
                     ; used for mod-wide on colemak and apple keyboard
                     ; [:##non_us_backslash :grave_accent_and_tilde]
-                    ; [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :left_shift]
+                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :grave_accent_and_tilde]
                     ; [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
+                    ;; [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
             ]
         }
 
