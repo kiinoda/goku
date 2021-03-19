@@ -32,6 +32,7 @@
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
         :chrome [ "^com.operasoftware.Opera$" ]
+        :emacs [ "^org.gnu.Emacs$" ]
     }
 
     :froms {
