@@ -302,6 +302,8 @@
                     ; quick send in vscode gitlens, mailmate, others
                     ;; [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
                     [:##return_or_enter :return_or_enter]
+                    [:left_shift :open_bracket]
+                    [:right_shift :close_bracket]
                 [:condi :!blocked]
                     [:right_command :toggle_terminal :vscode]
                     [:right_command :kitty-tmux_prefix :kitty]
