@@ -241,13 +241,6 @@
             :rules [
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
-                [:left_command :left_command nil {:alone :!Ctab}]
-                [:right_command :right_command :vscode {:alone :toggle_terminal}]
-                [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
-                [:right_command :right_command :safari {:alone :safari-toggle_reader}]
-                [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
-                [:left_shift :left_shift nil {:alone :open_paren}]
-                [:right_shift :right_shift nil {:alone :close_paren}]
                 :extend
                     ;
                     ; per-app shortcuts
@@ -308,6 +301,13 @@
                     ; quick send in vscode gitlens, mailmate, others
                     ;; [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
                     [:##return_or_enter :return_or_enter]
+                [:condi :!blocked]
+                    [:right_command :toggle_terminal :vscode]
+                    [:right_command :kitty-tmux_prefix :kitty]
+                    [:right_command :safari-toggle_darkmode :safari]
+                    [:right_command :chrome-toggle_reader :chrome]
+                    [:right_command [:escape :spacebar :backquote] :emacs]
+                    [:right_option :safari-close_tab :safari]
             ]
         }
 
