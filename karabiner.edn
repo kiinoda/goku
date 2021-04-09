@@ -31,8 +31,11 @@
         :kitty [ "net.kovidgoyal.kitty" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
-        :chrome [ "^com.operasoftware.Opera$" ]
+        :opera [ "^com.operasoftware.Opera$" ]
+        :chrome [ "^com.google.Chrome$" ]
         :emacs [ "^org.gnu.Emacs$" ]
+        :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
+        :firefox [ "^org.mozilla.firefox$" ]
     }
 
     :froms {
@@ -189,7 +192,7 @@
         :kitty-word_right {:key :!Tright_arrow}
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
-        :kitty-tmux_prefix {:key :!Tb}
+        :kitty-tmux_prefix {:key :!Ta}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -205,6 +208,11 @@
         ; opera
         :opera-prev_tab {:key :!COleft_arrow}
         :opera-next_tab {:key :!COright_arrow}
+        ; emacs
+        :emacs-toggle_terminal {:key :!Cspacebar}
+        ; drafts
+        :drafts-beginning_of_line {:key :!Cleft_arrow}
+        :drafts-end_of_line {:key :!Cright_arrow}
     }
 
     :simlayers {
@@ -265,7 +273,12 @@
                     ; opera
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
-                    ;
+                    ; emacs
+                    [:u :!Cleft_arrow :emacs]
+                    [:o :!Cright_arrow :emacs]
+                    ; drafts
+                    [:u :drafts-beginning_of_line :drafts]
+                    [:o :drafts-end_of_line :drafts]
                     ; global settings
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
@@ -304,23 +317,27 @@
                     [:##return_or_enter :return_or_enter]
                     [:left_shift :open_bracket]
                     [:right_shift :close_bracket]
+                    [:left_command :open_brace]
+                    [:right_command :close_brace]
                 [:condi :!blocked]
                     ;; [:p :!Ssemicolon]
                     ;; [:!Sp :semicolon]
                     ;; [:!Qleft_shift :open_brace]
                     ;; [:!Cright_shift :close_brace]
-                    ;; [:left_shift :left_shift nil {:alone :open_paren}]
-                    ;; [:right_shift :right_shift nil {:alone :close_paren}]
-                    [:non_us_backslash [:open "Safari"]]
+                    [:left_shift :left_shift nil {:alone :open_paren}]
+                    [:right_shift :right_shift nil {:alone :close_paren}]
+                    [:non_us_backslash :!CT1 :safari]
+                    [:non_us_backslash :!Tperiod :firefox]
+                    [:non_us_backslash :!Tb :kitty] ; Ctrl+B, the default tmux prefix
                     [:left_command :left_command nil {:alone :!Ctab}]
-                    [:left_shift :left_shift nil {:alone [:open "Kitty"]}]
-                    [:right_shift :right_shift nil {:alone [:open "Emacs"]}]
-                    [:right_command :toggle_terminal :vscode]
-                    [:right_command :kitty-tmux_prefix :kitty]
-                    [:right_command :safari-toggle_darkmode :safari]
-                    [:right_command :chrome-toggle_reader :chrome]
-                    [:right_command [:escape :spacebar :backquote] :emacs]
-                    [:right_option :safari-close_tab :safari]
+                    ;; [:left_shift :left_shift nil {:alone [:open "Kitty"]}]
+                    ;; [:right_shift :right_shift nil {:alone [:open "Visual Studio Code"]}]
+                    [:right_command :right_command :vscode {:alone :toggle_terminal}]
+                    [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
+                    [:right_command :right_command :safari {:alone :safari-toggle_darkmode}]
+                    [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
+                    [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
+                    [:right_option :right_option :safari {:alone :safari-close_tab}]
             ]
         }
 
