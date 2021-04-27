@@ -327,9 +327,9 @@
                     ;; [:!Cright_shift :close_brace]
                     [:left_shift :left_shift nil {:alone :open_paren}]
                     [:right_shift :right_shift nil {:alone :close_paren}]
-                    [:non_us_backslash :!CT1 :safari]
-                    [:non_us_backslash :!Tperiod :firefox]
-                    [:non_us_backslash :!Tb :kitty] ; Ctrl+B, the default tmux prefix
+                    [:b :!CT1 :safari]
+                    [:b :!Tperiod :firefox]
+                    [:b :!Tb :kitty] ; Ctrl+B, the default tmux prefix
                     [:left_command :left_command nil {:alone :!Ctab}]
                     ;; [:left_shift :left_shift nil {:alone [:open "Kitty"]}]
                     ;; [:right_shift :right_shift nil {:alone [:open "Visual Studio Code"]}]
@@ -676,8 +676,8 @@
             :rules [
                 [:condi :!blocked]
                     ; used for mod-wide on colemak and apple keyboard
-                    ; [:##non_us_backslash :grave_accent_and_tilde]
-                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :grave_accent_and_tilde]
+                    [:##non_us_backslash :grave_accent_and_tilde]
+                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :non_us_backslash]
                     ; [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
