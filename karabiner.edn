@@ -213,6 +213,7 @@
         ; drafts
         :drafts-beginning_of_line {:key :!Cleft_arrow}
         :drafts-end_of_line {:key :!Cright_arrow}
+        :drafts-toggle_draft_list {:key :!C1}
     }
 
     :simlayers {
@@ -337,6 +338,7 @@
                     [:right_command :right_command :safari {:alone :safari-toggle_darkmode}]
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
                     [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
+                    [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
                     [:right_option :right_option :safari {:alone :safari-close_tab}]
             ]
         }
