@@ -285,15 +285,15 @@
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
                     ; modifiers
-                    [:##a :left_shift][:##s :left_option][:##d :left_command]
+                    [:caps_lock :!CTOleft_shift][:##a :left_shift][:##s :left_option][:##d :left_command]
                     ; arrows
                     [:##j :left_arrow]
                     [:##k :down_arrow]
                     [:##i :up_arrow]
                     [:##l :right_arrow]
                     ; shortcuts
-                    [:!Su :page_up]
-                    [:!So :page_down]
+                    [:!!u :page_up]
+                    [:!!o :page_down]
                     [:##u :home]
                     [:##o :end]
                     ; switch app window
