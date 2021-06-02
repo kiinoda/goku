@@ -332,11 +332,13 @@
                     ;; [:right_shift :right_shift nil {:alone [:open "Visual Studio Code"]}]
                     [:right_command :right_command :vscode {:alone :toggle_terminal}]
                     [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
-                    [:right_command :right_command :safari {:alone :safari-toggle_darkmode}]
+                    [:right_command :right_command :safari {:alone :safari-toggle_reader}]
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
                     [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
-                    [:right_option :right_option :safari {:alone :safari-close_tab}]
+                    [:right_option :right_option :safari {:alone :!CSbackslash}]
+                    [:right_option :right_option :vscode {:alone :!COTright_arrow}]
+                    [:!Cright_command :!Cb :vscode]
             ]
         }
 
