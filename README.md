@@ -2,42 +2,28 @@
 
 This is a configuration file for [GokuRakuJoudo](#what-are-karabiner-and-gokurakujoudo) which in turn generates a [Karabiner](#what-are-karabiner-and-gokurakujoudo) profile.
 
-With sequences and squeezing up to 4 events out of a single key, it enables you to limit the number of times you need to twist your hands or are forced to leave the home row. Sequence layers transform chords like `Cmd+Key`, `Shift+Key`, `Ctrl+Key` into sequences of pressing two keys. For example, instead of pressing `Cmd+S` to save a file, you can press `Cmd` quickly followed by `S` and get the same behavior. `Cmd` still retains its original behavior and can be used for any `Cmd+Key` combo.
-
-**WARNING**: Some things rely upon the fact that the Colemak layout (and its corresponding layer) is used. As such, the semicolon key on Colemak (where P is placed on QWERTY) is unmapped in the default layout and is instead used as a "power key" and a trigger for the power layer. This key is then mapped per-app: toggle reader mode in Safari, switch between editor and terminal in VSCode or send the tmux prefix in [Kitty](https://sw.kovidgoyal.net/kitty/index.html), the fast, lightweight, terminal emulator.
+Some things rely upon the fact that the Colemak layout (and its corresponding layer) is used. Single press mod keys are used as "power key combos" and a trigger things like toggling reader mode in Safari, switching between editor and terminal in VSCode or sending the tmux prefix in [Kitty](https://sw.kovidgoyal.net/kitty/index.html), the fast, lightweight, terminal emulator.
 
 ## What are Karabiner and GokuRakuJoudo?
 
 [Karabiner](https://pqrs.org/osx/karabiner/) is a powerful and stable keyboard customizer for macOS. [Goku](https://github.com/yqrashawn/GokuRakuJoudo) is a tool to let you manage your Karabiner configuration with ease, since Karabiner uses JSON for its very verbose, complex config file, while Goku uses the "optimized for typing" [edn format](https://github.com/edn-format/edn).
 
-## Background
+## Sample combos
 
-The idea of the sequence layers was inspired by Xah Lee's [article](http://xahlee.info/kbd/banish_shift_key.html) on banning the Shift key, thus avoiding combos of multiple key presses (chording) as much as possible. Triggering some things on double-press and hold or on double-press and release, you can get 4 events on a single key such as command, caps lock and others. Some of the combos defined are specific to my [60% Velocifire M2](https://www.velocifiretech.com/product/m2-wireless-mechanical-keyboard/) keyboard, making it a lot more usable without having to resort to chording for most of the right-side modifiers which overlap with arrows by default.
+- press and release `LCmd` to switch to previously used app
+- press and release `RCmd` and, depending on the current app get this:
+  - toggle between terminal and editor in VSCode
+  - toggle reading mode in Safari
+  - send tmux prefix in Kitty
+  - toggle left pane with notes list in Drafts
+- press and release `ROpt` and, depending on the current app get this:
+  - toggle between left and right editors in split-screen VSCode
+  - toggle tab overview in Safari
+  - etc
+- get an extended layer on pressing and holding the space bar
+- etc
 
-### Functional Summary
-
-#### Sequence Layers
-
-- **symbols** (type "`LShift` followed by `Key`" to get symbols like !, *, parens, etc)
-- **shifted** (type "`RShift` followed by `Key`" to get capital letter for `Key`)
-- **emoji** (while in the shifted layer, type `LShift` then various letters to get emojis)
-- **ctrl** (type "`LCtrl` followed by `Key`" to get `LCtrl+Key`)
-- **command** (type "`LCmd` followed by `Key`" to get `LCmd+Key`)
-
-#### App-Specific Layers
-
-- **kitty** (customizations for [Kitty](https://sw.kovidgoyal.net/kitty/index.html), the fast, lightweight, terminal emulator)
-- **vscode** (customizations for Visual Studio Code)
-- **safari** (customizations for Safari)
-
-#### Chording Layers
-
-- **extend** (type `CapsLock` and hold to activate, quick release for `Esc`)
-- **power** (a second extend layer, application specific. hold Colemak `semicolon` to activate, quickly release to just press the power key)
-- **apps** (press and hold `A`, then quickly follow by various keys to switch to apps)
-- **desktop** (press and hold `F`, then quickly follow by various keys to switch to desktop)
-- **system** (press and hold `Fn` to activate and rearrange windows or other tasks, quick release to show desktop)
-- **mouse** (press `LCmd` twice and hold for mouse movements or press twice and release for `LCmd+Tab`)
+**Special mention**: there is an `experimental` branch where some settings are active, like sequence layers (press `shift`, quickly followed by `s` to send `S`, or `LCmd` quickly followed by `t` to send `Cmt+T`) or getting 4 different outcomes from a single key. Check it out.
 
 ## Installation
 
