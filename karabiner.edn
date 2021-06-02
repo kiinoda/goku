@@ -376,11 +376,8 @@
                     [:u :mission_control]
                     [:o :show_application_windows]
                     ; switch to desktop
-                    [:j :!!1]
-                    [:k :!!2]
-                    [:l :!!3]
-                    [:semicolon :!!4]
-                    [:quote :!!5]
+                    [:j :left_desktop]
+                    [:l :right_desktop]
             ]
         }
 
