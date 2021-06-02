@@ -296,9 +296,6 @@
                     [:!!o :page_down]
                     [:##u :home]
                     [:##o :end]
-                    ; switch app window
-                    [:##n :!Cgrave_accent_and_tilde]
-                    [:##m [:!Ctab :escape]]
                     ; undo, cut, copy, paste
                     ;; [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
                     ; same as above for mod-wide on colemak
