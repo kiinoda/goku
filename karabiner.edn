@@ -304,8 +304,8 @@
                     [:##q :!!1][:##w :!!2][:##e :!!3][:##r :!!4][:##t :!!5]
                     ; edit/organize text properly
                     [:##open_bracket :insert]
-                    [:##caps_lock :delete_or_backspace]
-                    [:##semicolon :delete_or_backspace]
+                    [:##h :delete_or_backspace]
+                    [:##semicolon :delete_forward]
                     [:##quote :return_or_enter]
                     [:##delete_or_backspace :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
