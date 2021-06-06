@@ -315,6 +315,8 @@
                     ;; [:right_shift :close_bracket]
                     ;; [:left_command :open_brace]
                     ;; [:right_command :close_brace]
+                    [:left_command :left_command nil {:alone :activate_spotlight}]
+                    [:left_option :left_option nil {:alone :activate_1password}]
                 [:condi :!blocked]
                     ;; [:p :!Ssemicolon]
                     ;; [:!Sp :semicolon]
