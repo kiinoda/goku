@@ -258,19 +258,15 @@
                     ; vscode
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
-                    [:slash :toggle_terminal :vscode]
                     ; kitty
                     [:comma :kitty-prev_tab :kitty]
                     [:period :kitty-next_tab :kitty]
-                    [:slash :kitty-tmux_prefix :kitty]
                     ; safari
                     [:comma :safari-prev_tab :safari]
                     [:period :safari-next_tab :safari]
-                    [:slash :safari-toggle_reader :safari]
                     ; chrome
                     [:comma :safari-prev_tab :chrome]
                     [:period :safari-next_tab :chrome]
-                    [:slash :safari-toggle_reader :chrome]
                     ; opera
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
@@ -315,6 +311,11 @@
                     ;; [:right_shift :close_bracket]
                     ;; [:left_command :open_brace]
                     ;; [:right_command :close_brace]
+                    ;
+                    ; desktop navigation via m and slash
+                    [:m :left_desktop]
+                    [:slash :right_desktop]
+                    ; quick access apps
                     [:left_command :left_command nil {:alone :activate_spotlight}]
                     [:left_option :left_option nil {:alone :activate_1password}]
                 [:condi :!blocked]
