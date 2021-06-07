@@ -219,8 +219,6 @@
     :simlayers {
         :desqtop {:key :q}
         :windows {:key :w}
-        ;; :apps {:key :e}
-        ;; :apps {:key :tab}
         ;; :extend {:key :f}
     }
 
@@ -344,29 +342,6 @@
                     [:!Cright_command :!Cb :vscode]
             ]
         }
-
-        ;; {
-        ;;     :des "Application Layer - press A to trigger"
-        ;;     :rules [
-        ;;         :apps
-        ;;             ; most used apps
-        ;;             [:-w [:open "WhatsApp"]]              ; whatsapp
-        ;;             [:-g [:open "Signal"]]                ; signal
-        ;;             [:-l [:open "Telegram"]]              ; telegram
-        ;;             [:-n [:open "Opera"]]                 ; navigator
-        ;;             [:-e [:open "Visual Studio Code"]]    ; editor
-        ;;             [:-i [:open "Drafts"]]                ; snIppets
-        ;;             [:-o [:open "Kitty"]]                 ; terminal cOnsole
-        ;;             [:-u [:open "Type Fu"]]               ; typeFu
-        ;;             [:-m [:open "Mailmate"]]              ; mail
-        ;;             ; others
-        ;;             [:slash :activate_1password]          ; password_manager
-        ;;             [:-y :internet_query]                 ; internet querY
-        ;;             [:spacebar :activate_spotlight]       ; spotlight
-        ;;             [:comma [:set_keyboard "m1"]]
-        ;;             [:period [:set_keyboard "kyria"]]
-        ;;     ]
-        ;; }
 
         {
             :des "Desktop Layer - press F to trigger"
