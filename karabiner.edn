@@ -217,7 +217,6 @@
     }
 
     :simlayers {
-        :desqtop {:key :q}
         :windows {:key :w}
         ;; :extend {:key :f}
     }
@@ -341,21 +340,6 @@
                     [:right_option :right_option :safari {:alone :!CSbackslash}]
                     [:right_option :right_option :vscode {:alone :!COTright_arrow}]
                     [:!Cright_command :!Cb :vscode]
-            ]
-        }
-
-        {
-            :des "Desktop Layer - press F to trigger"
-            :rules [
-                :desqtop
-                    ; system layer substitutes
-                    [:comma :left_desktop]
-                    [:period :right_desktop]
-                    [:u :mission_control]
-                    [:o :show_application_windows]
-                    ; switch to desktop
-                    [:j :left_desktop]
-                    [:l :right_desktop]
             ]
         }
 
