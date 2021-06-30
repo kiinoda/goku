@@ -154,7 +154,7 @@
         :mission_control {:key :!!up_arrow}
         :internet_query {:key :!!t}
         :show_application_windows {:key :!!down_arrow}
-        :show_desktop {:key :f11}
+        :show_desktop {:key :f12}
         :activate_spotlight {:key :!!spacebar}
         :fullscreen_snapshot {:key :!CS3}
         :window_snapshot {:key :!CS4}
@@ -324,6 +324,7 @@
                     ;; [:!Sp :semicolon]
                     ;; [:!Qleft_shift :open_brace]
                     ;; [:!Cright_shift :close_brace]
+                    [:fn :fn nil {:alone :show_desktop}]
                     [:left_shift :left_shift nil {:alone :open_paren}]
                     [:right_shift :right_shift nil {:alone :close_paren}]
                     [:b :!CT1 :safari]
