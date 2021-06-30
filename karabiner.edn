@@ -299,6 +299,7 @@
                     [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
                     ; desktop/spaces switching
                     [:##q :!!1][:##w :!!2][:##e :!!3][:##r :!!4][:##t :!!5]
+                    [:##fn :mission_control]
                     ; edit/organize text properly
                     [:##open_bracket :insert]
                     [:##h :delete_or_backspace]
