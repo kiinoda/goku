@@ -36,6 +36,7 @@
         :emacs [ "^org.gnu.Emacs$" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :firefox [ "^org.mozilla.firefox$" ]
+        :zoom [ "^us.zoom.xos$" ]
     }
 
     :froms {
@@ -267,6 +268,9 @@
                     ; opera
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
+                    ; zoom
+                    [:comma :!Tp :zoom]
+                    [:period :!Tn :zoom]
                     ; emacs
                     [:u :!Cleft_arrow :emacs]
                     [:o :!Cright_arrow :emacs]
@@ -339,6 +343,9 @@
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
                     [:right_option :right_option :safari {:alone :!CSbackslash}]
                     [:right_option :right_option :vscode {:alone :!COTright_arrow}]
+                    [:left_option :left_option :zoom {:alone :!Oy}]
+                    [:right_option :right_option :zoom {:alone :!CSa}]
+                    [:right_command :right_command :zoom {:alone :!CSh}]
                     [:!Cright_command :!Cb :vscode]
             ]
         }
