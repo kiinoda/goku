@@ -219,7 +219,6 @@
 
     :simlayers {
         :windows {:key :w}
-        ;; :extend {:key :f}
     }
 
     :main [
