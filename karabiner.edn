@@ -218,7 +218,7 @@
     }
 
     :simlayers {
-        :windows {:key :w}
+        :windows {:key :g}
     }
 
     :main [
