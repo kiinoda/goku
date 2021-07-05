@@ -219,6 +219,7 @@
 
     :simlayers {
         :windows {:key :g}
+        :launch {:key :j}
     }
 
     :main [
@@ -241,6 +242,25 @@
                     [:p :window_center]
                     [:semicolon :window_snapshot]
                     [:h :system-force_quit_apps]
+            ]
+        }
+        {
+            :des "Launch Layer - J to trigger"
+            :rules [
+                :launch
+                    ; colemak shortcuts
+                    ; 1st space
+                    [:-p [:open "MailMate"]]
+                    [:-f [:open "WhatsApp"]]
+                    [:-w [:open "Telegram"]]
+                    ; 2nd space
+                    [:-t [:open "Safari"]]
+                    [:-s [:open "Kitty"]]
+                    [:-r [:open "Drafts"]]
+                    ; 3rd space
+                    [:-c [:open "Visual Studio Code"]]
+                    [:-x [:open "Chrome"]]
+
             ]
         }
         {
@@ -366,7 +386,7 @@
         ;             [:btick :emoji_picker nil {:afterup ["emoji" 0]}] ;
         ;     ]
         ; }
- 
+
         {
             :des "Symbols Layer - press LShift and release to trigger"
             :rules [
