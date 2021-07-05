@@ -345,7 +345,7 @@
                     ;; [:!Sp :semicolon]
                     ;; [:!Qleft_shift :open_brace]
                     ;; [:!Cright_shift :close_brace]
-                    [:fn :fn nil {:alone :show_desktop}]
+                    [:##fn :fn nil {:alone :show_desktop}]
                     [:##delete_forward :show_desktop]
                     ;; [:eject [:open "Screenshot"]]
                     ;; [:eject :show_desktop]
