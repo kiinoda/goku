@@ -218,7 +218,7 @@
     }
 
     :simlayers {
-        :windows {:key :g}
+        :windows {:key :f}
         :launch {:key :j}
     }
 
