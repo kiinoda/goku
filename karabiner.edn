@@ -28,6 +28,7 @@
     }
 
     :applications {
+        ; extract from /Applications/$APP/Contents/Info.plist from 'CFBundleIdentifier' key
         :kitty [ "net.kovidgoyal.kitty" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
@@ -37,6 +38,7 @@
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :firefox [ "^org.mozilla.firefox$" ]
         :zoom [ "^us.zoom.xos$" ]
+        :mailmate [ "^com.freron.MailMate$"]
     }
 
     :froms {
