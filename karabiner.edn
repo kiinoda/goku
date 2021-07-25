@@ -392,111 +392,112 @@
         ;     ]
         ; }
 
-        {
-            :des "Symbols Layer - press LShift and release to trigger"
-            :rules [
-                [:left_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                [:right_shift :right_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
-                :symbols
-                    ; symbols - mnemonics reflect Colemak layout
-                    [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
-                    [:-w :tilde nil {:afterup ["symbols" 0]}]                            ; wave
-                    [:-p :percent nil {:afterup ["symbols" 0]}]                          ; percent
-                    [:-l :plus nil {:afterup ["symbols" 0]}]                             ; pLus
-                    [:-u :underscore nil {:afterup ["symbols" 0]}]                       ; underscore
-                    [:-y :hyphen nil {:afterup ["symbols" 0]}]                           ; hYphen
-                    [:-semicolon :backquote nil {:afterup ["symbols" 0]}]                ; ?
-                    [:-a :at nil {:afterup ["symbols" 0]}]                               ; at
-                    [:-s :ampersand nil {:afterup ["symbols" 0]}]                        ; amperSand
-                    [:-d :dollar nil {:afterup ["symbols" 0]}]                           ; dollar
-                    [:-h :hash nil {:afterup ["symbols" 0]}]                             ; hash
-                    [:-e :exclaim nil {:afterup ["symbols" 0]}]                          ; exclaim
-                    [:-o :semicolon nil {:afterup ["symbols" 0]}]                        ; semicOlon
-                    [:-c :caret nil {:afterup ["symbols" 0]}]                            ; caret
-                    [:-v :pipe nil {:afterup ["symbols" 0]}]                             ; vertical
-                    [:-b :backslash nil {:afterup ["symbols" 0]}]                        ; backslash
-                    [:-k :equal nil {:afterup ["symbols" 0]}]                            ; eKual
-                    [:-m :bullet nil {:afterup ["symbols" 0]}]                           ; multiply
-                    [:slash :!Sslash nil {:afterup ["symbols" 0]}]                       ; slash
-                    ; [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
-                    ; sequence - parens, brackets and braces
-                    [:-g :open_brace nil {:afterup ["symbols" 0]}]
-                    [:-j :close_brace nil {:afterup ["symbols" 0]}]
-                    [:-r :open_bracket nil {:afterup ["symbols" 0]}]
-                    [:-t :open_paren nil {:afterup ["symbols" 0]}]
-                    [:-n :close_paren nil {:afterup ["symbols" 0]}]
-                    [:-i :close_bracket nil {:afterup ["symbols" 0]}]
-                    ; sequence - cancelled keypresses (can be repurposed)
-                    [:-q :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-f :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-z :vk_none nil {:afterup ["symbols" 0]}]
-                    [:-x :vk_none nil {:afterup ["symbols" 0]}]
-                    [:hyphen :vk_none nil {:afterup ["symbols" 0]}]
-                    [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
-                    [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
-                    [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
-                    ; sequence - symbols on the original keys but shifted for ease of use
-                    [:comma :less_than nil {:afterup ["symbols" 0]}]
-                    [:period :greater_than nil {:afterup ["symbols" 0]}]
-                    [:quote :dquote nil {:afterup ["symbols" 0]}]
-                    [:backslash :pipe nil {:afterup ["symbols" 0]}]
-                    [:btick :tilde nil {:afterup ["symbols" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["symbols" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
-            ]
-        }
+
+        ;; {
+        ;;     :des "Symbols Layer - press LShift and release to trigger"
+        ;;     :rules [
+        ;;         [:left_shift :left_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+        ;;         [:right_shift :right_shift [:!symbols :!shifted :!blocked] {:alone ["symbols" 1] :delayed {:invoked ["symbols" 0] :cancelled ["symbols" 0]}}]
+        ;;         :symbols
+        ;;             ; symbols - mnemonics reflect Colemak layout
+        ;;             [:left_shift :colon :symbols {:afterup ["symbols" 0]}]               ; ???
+        ;;             [:-w :tilde nil {:afterup ["symbols" 0]}]                            ; wave
+        ;;             [:-p :percent nil {:afterup ["symbols" 0]}]                          ; percent
+        ;;             [:-l :plus nil {:afterup ["symbols" 0]}]                             ; pLus
+        ;;             [:-u :underscore nil {:afterup ["symbols" 0]}]                       ; underscore
+        ;;             [:-y :hyphen nil {:afterup ["symbols" 0]}]                           ; hYphen
+        ;;             [:-semicolon :backquote nil {:afterup ["symbols" 0]}]                ; ?
+        ;;             [:-a :at nil {:afterup ["symbols" 0]}]                               ; at
+        ;;             [:-s :ampersand nil {:afterup ["symbols" 0]}]                        ; amperSand
+        ;;             [:-d :dollar nil {:afterup ["symbols" 0]}]                           ; dollar
+        ;;             [:-h :hash nil {:afterup ["symbols" 0]}]                             ; hash
+        ;;             [:-e :exclaim nil {:afterup ["symbols" 0]}]                          ; exclaim
+        ;;             [:-o :semicolon nil {:afterup ["symbols" 0]}]                        ; semicOlon
+        ;;             [:-c :caret nil {:afterup ["symbols" 0]}]                            ; caret
+        ;;             [:-v :pipe nil {:afterup ["symbols" 0]}]                             ; vertical
+        ;;             [:-b :backslash nil {:afterup ["symbols" 0]}]                        ; backslash
+        ;;             [:-k :equal nil {:afterup ["symbols" 0]}]                            ; eKual
+        ;;             [:-m :bullet nil {:afterup ["symbols" 0]}]                           ; multiply
+        ;;             [:slash :!Sslash nil {:afterup ["symbols" 0]}]                       ; slash
+        ;;             ; [:up_arrow :!Sslash [:symbols :velocifire] {:afterup ["symbols" 0]}] ; slash
+        ;;             ; sequence - parens, brackets and braces
+        ;;             [:-g :open_brace nil {:afterup ["symbols" 0]}]
+        ;;             [:-j :close_brace nil {:afterup ["symbols" 0]}]
+        ;;             [:-r :open_bracket nil {:afterup ["symbols" 0]}]
+        ;;             [:-t :open_paren nil {:afterup ["symbols" 0]}]
+        ;;             [:-n :close_paren nil {:afterup ["symbols" 0]}]
+        ;;             [:-i :close_bracket nil {:afterup ["symbols" 0]}]
+        ;;             ; sequence - cancelled keypresses (can be repurposed)
+        ;;             [:-q :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:-f :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:-z :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:-x :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:hyphen :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:equal_sign :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:open_bracket :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:close_bracket :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             ; sequence - symbols on the original keys but shifted for ease of use
+        ;;             [:comma :less_than nil {:afterup ["symbols" 0]}]
+        ;;             [:period :greater_than nil {:afterup ["symbols" 0]}]
+        ;;             [:quote :dquote nil {:afterup ["symbols" 0]}]
+        ;;             [:backslash :pipe nil {:afterup ["symbols" 0]}]
+        ;;             [:btick :tilde nil {:afterup ["symbols" 0]}]
+        ;;             ; scrubbing - undefine all unused keys
+        ;;             [:any_key :vk_none nil {:afterup ["symbols" 0]}]
+        ;;             [:any_consumer :vk_none nil {:afterup ["symbols" 0]}]
+        ;;     ]
+        ;; }
 
 
-        {
-            :des "Command Layer - press LCmd and release to trigger"
-            :rules [
-                [:left_command :left_command [:!command :!blocked]{:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
-                :command
-                    ; tab switching
-                    [:1 :!C1 nil {:afterup ["command" 0]}]
-                    [:2 :!C2 nil {:afterup ["command" 0]}]
-                    [:3 :!C3 nil {:afterup ["command" 0]}]
-                    [:4 :!C4 nil {:afterup ["command" 0]}]
-                    [:5 :!C5 nil {:afterup ["command" 0]}]
-                    [:6 :!C6 nil {:afterup ["command" 0]}]
-                    [:7 :!C7 nil {:afterup ["command" 0]}]
-                    [:8 :!C8 nil {:afterup ["command" 0]}]
-                    [:9 :!C9 nil {:afterup ["command" 0]}]
-                    [:0 :!C0 nil {:afterup ["command" 0]}]
-                    ; press command+key
-                    [:-q :!Cq nil {:afterup ["command" 0]}]
-                    [:-w :!Cw nil {:afterup ["command" 0]}]
-                    [:-f :!Cf nil {:afterup ["command" 0]}]
-                    [:-p :!Cp nil {:afterup ["command" 0]}]
-                    [:-g :!Cg nil {:afterup ["command" 0]}]
-                    [:-j :!Cj nil {:afterup ["command" 0]}]
-                    [:-l :!Cl nil {:afterup ["command" 0]}]
-                    [:-u :!Cu nil {:afterup ["command" 0]}]
-                    [:-y :!Cy nil {:afterup ["command" 0]}]
-                    [:-a :!Ca nil {:afterup ["command" 0]}]
-                    [:-r :!Cr nil {:afterup ["command" 0]}]
-                    [:-s :!Cs nil {:afterup ["command" 0]}]
-                    [:-t :!Ct nil {:afterup ["command" 0]}]
-                    [:-d :!Cd nil {:afterup ["command" 0]}]
-                    [:-h :!Ch nil {:afterup ["command" 0]}]
-                    [:-n :!Cn nil {:afterup ["command" 0]}]
-                    [:-e :!Ce nil {:afterup ["command" 0]}]
-                    [:-i :!Ci nil {:afterup ["command" 0]}]
-                    [:-o :!Co nil {:afterup ["command" 0]}]
-                    [:-x :!Cx nil {:afterup ["command" 0]}]
-                    [:-c :!Cc nil {:afterup ["command" 0]}]
-                    [:-v :!Cv nil {:afterup ["command" 0]}]
-                    [:-b :!Cb nil {:afterup ["command" 0]}]
-                    [:-k :!Ck nil {:afterup ["command" 0]}]
-                    [:-m :!Cm nil {:afterup ["command" 0]}]
-                    [:comma :!Ccomma nil {:afterup ["command" 0]}]
-                    [:slash :!Cslash nil {:afterup ["command" 0]}]
-                    ; scrubbing - undefine all unused keys
-                    [:any_key :vk_none nil {:afterup ["command" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["command" 0]}]
-            ]
-        }
+        ;; {
+        ;;     :des "Command Layer - press LCmd and release to trigger"
+        ;;     :rules [
+        ;;         [:left_command :left_command [:!command :!blocked]{:alone ["command" 1] :delayed {:invoked ["command" 0] :cancelled ["command" 0]}}]
+        ;;         :command
+        ;;             ; tab switching
+        ;;             [:1 :!C1 nil {:afterup ["command" 0]}]
+        ;;             [:2 :!C2 nil {:afterup ["command" 0]}]
+        ;;             [:3 :!C3 nil {:afterup ["command" 0]}]
+        ;;             [:4 :!C4 nil {:afterup ["command" 0]}]
+        ;;             [:5 :!C5 nil {:afterup ["command" 0]}]
+        ;;             [:6 :!C6 nil {:afterup ["command" 0]}]
+        ;;             [:7 :!C7 nil {:afterup ["command" 0]}]
+        ;;             [:8 :!C8 nil {:afterup ["command" 0]}]
+        ;;             [:9 :!C9 nil {:afterup ["command" 0]}]
+        ;;             [:0 :!C0 nil {:afterup ["command" 0]}]
+        ;;             ; press command+key
+        ;;             [:-q :!Cq nil {:afterup ["command" 0]}]
+        ;;             [:-w :!Cw nil {:afterup ["command" 0]}]
+        ;;             [:-f :!Cf nil {:afterup ["command" 0]}]
+        ;;             [:-p :!Cp nil {:afterup ["command" 0]}]
+        ;;             [:-g :!Cg nil {:afterup ["command" 0]}]
+        ;;             [:-j :!Cj nil {:afterup ["command" 0]}]
+        ;;             [:-l :!Cl nil {:afterup ["command" 0]}]
+        ;;             [:-u :!Cu nil {:afterup ["command" 0]}]
+        ;;             [:-y :!Cy nil {:afterup ["command" 0]}]
+        ;;             [:-a :!Ca nil {:afterup ["command" 0]}]
+        ;;             [:-r :!Cr nil {:afterup ["command" 0]}]
+        ;;             [:-s :!Cs nil {:afterup ["command" 0]}]
+        ;;             [:-t :!Ct nil {:afterup ["command" 0]}]
+        ;;             [:-d :!Cd nil {:afterup ["command" 0]}]
+        ;;             [:-h :!Ch nil {:afterup ["command" 0]}]
+        ;;             [:-n :!Cn nil {:afterup ["command" 0]}]
+        ;;             [:-e :!Ce nil {:afterup ["command" 0]}]
+        ;;             [:-i :!Ci nil {:afterup ["command" 0]}]
+        ;;             [:-o :!Co nil {:afterup ["command" 0]}]
+        ;;             [:-x :!Cx nil {:afterup ["command" 0]}]
+        ;;             [:-c :!Cc nil {:afterup ["command" 0]}]
+        ;;             [:-v :!Cv nil {:afterup ["command" 0]}]
+        ;;             [:-b :!Cb nil {:afterup ["command" 0]}]
+        ;;             [:-k :!Ck nil {:afterup ["command" 0]}]
+        ;;             [:-m :!Cm nil {:afterup ["command" 0]}]
+        ;;             [:comma :!Ccomma nil {:afterup ["command" 0]}]
+        ;;             [:slash :!Cslash nil {:afterup ["command" 0]}]
+        ;;             ; scrubbing - undefine all unused keys
+        ;;             [:any_key :vk_none nil {:afterup ["command" 0]}]
+        ;;             [:any_consumer :vk_none nil {:afterup ["command" 0]}]
+        ;;     ]
+        ;; }
 
         ; {
         ;     :des "Emoji Layer - while in the Shifted layer, press LShift to trigger"
