@@ -329,8 +329,7 @@
                     [:##open_bracket :insert]
                     [:##h :delete_or_backspace]
                     [:##semicolon :delete_forward]
-                    [:##quote :return_or_enter]
-                    [:##delete_or_backspace :caps_lock]
+                    [:##quote :caps_lock]
                     ; quick send in vscode gitlens, mailmate, others
                     ;; [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
                     [:##return_or_enter :return_or_enter]
