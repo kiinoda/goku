@@ -298,6 +298,9 @@
                     ; drafts
                     [:u :drafts-beginning_of_line :drafts]
                     [:o :drafts-end_of_line :drafts]
+                    ; mailmate
+                    [:u :!Cleft_arrow :mailmate]
+                    [:o :!Cright_arrow :mailmate]
                     ; global settings
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
