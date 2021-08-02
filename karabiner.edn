@@ -280,6 +280,8 @@
                     ; kitty
                     [:comma :kitty-prev_tab :kitty]
                     [:period :kitty-next_tab :kitty]
+                    [:!Sj :!Ob :kitty]              ; jump a word left
+                    [:!Sl :!Of :kitty]              ; jump a word right
                     ; safari
                     [:comma :safari-prev_tab :safari]
                     [:period :safari-next_tab :safari]
