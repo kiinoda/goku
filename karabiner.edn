@@ -228,6 +228,8 @@
         {
             :des "Press RShift-Spacebar to deactivate all layers (including Colemak)"
             :rules [
+                [:!R#Pleft_shift ["blocked" 1] :!blocked]
+                [:!R#Pleft_shift ["blocked" 0] :blocked]
                 [:!Rspacebar ["blocked" 1] :!blocked]
                 [:!Rspacebar ["blocked" 0] :blocked]
             ]
