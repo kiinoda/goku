@@ -447,17 +447,6 @@
                     ;; [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
             ]
         }
-
-        ; {
-        ;     :des "Velocifire KB - arrows become /, RCmd, ROption, RCtrl"
-        ;     :rules [
-        ;         nil
-        ;             [:##up_arrow :slash :velocifire]
-        ;             [:##left_arrow :right_command :velocifire]
-        ;             [:##down_arrow :right_option :velocifire]
-        ;             [:##right_arrow :right_control :velocifire]
-        ;     ]
-        ; }
     ]
 }
 
