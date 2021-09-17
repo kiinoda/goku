@@ -221,10 +221,15 @@
 
     :simlayers {
         :windows {:key :f}
-        :launch {:key :j}
     }
 
     :main [
+        {
+            :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
+            :rules [
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0], ["apprun" 0]]]
+            ]
+        }
         {
             :des "Press RShift-Spacebar to deactivate all layers (including Colemak)"
             :rules [
@@ -249,54 +254,65 @@
             ]
         }
         {
-            :des "Launch Layer - J to trigger"
+            :des "AppRun Layer"
             :rules [
-                :launch
-                    ; colemak shortcuts
-                    ; 1st space
-                    [:-p [:open "MailMate"]]
-                    [:-f [:open "WhatsApp"]]
-                    [:-w [:open "Telegram"]]
-                    ; 2nd space
-                    [:-t [:open "Safari"]]
-                    [:-s [:open "Kitty"]]
-                    [:-r [:open "Drafts"]]
-                    ; 3rd space
-                    [:-c [:open "Visual Studio Code"]]
-                    [:-x [:open "Chrome"]]
+                [:condi :!blocked :!extend]
+                    ; activate layer
+                    [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                    [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                :apprun
+                    [:-w [:open "WhatsApp"]                     nil {:afterup ["apprun" 0]}]
+                    [:-f [:open "Finder"]                       nil {:afterup ["apprun" 0]}]
+                    [:-e [:open "MailMate"]                     nil {:afterup ["apprun" 0]}]
+                    [:-t [:open "Telegram"]                     nil {:afterup ["apprun" 0]}]
+                    [:-s [:open "Safari"]                       nil {:afterup ["apprun" 0]}]
+                    [:-g [:open "Signal"]                       nil {:afterup ["apprun" 0]}]
+                    [:-k [:open "Kitty"]                        nil {:afterup ["apprun" 0]}]
+                    [:-m [:open "Messages"]                     nil {:afterup ["apprun" 0]}]
+                    [:-d [:open "Drafts"]                       nil {:afterup ["apprun" 0]}]
+                    [:-i [:open "Discord"]                      nil {:afterup ["apprun" 0]}]
+                    [:-c [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
+                    [:-x [:open "Chrome"]                       nil {:afterup ["apprun" 0]}]
+                    [:-y [:open "Skype"]                        nil {:afterup ["apprun" 0]}]
+                    [:grave_accent_and_tilde [:open "zoom.us"]  nil {:afterup ["apprun" 0]}]
+                    [:spacebar :activate_spotlight              nil {:afterup ["apprun" 0]}]
             ]
         }
         {
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend]
+                    ; global
+                    [:left_option :left_option nil {:alone :activate_spotlight}]
+                    [:left_command :left_command nil {:alone :!Ctab}]
                     [:!Th :delete_or_backspace]
-                    [:!Cspacebar :activate_spotlight]
-                    [:!Qspacebar :activate_1password]
-                    [:##fn :fn nil {:alone :show_desktop}]
-                    [:##delete_forward :show_desktop]
                     [:!S#Pright_shift :caps_lock]                           ; press both shift keys to activate/deactivate caps
+                    [:!Ospacebar :activate_1password]
+                    [:!Sspacebar :spacebar]
+                    ; chrome
+                    [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
+                    ; drafts
+                    [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
+                    ; emacs
+                    [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
                     ; kitty
+                    [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                     [:!Ccomma [:!Ta :p] :kitty]
                     [:!Cperiod [:!Ta :n] :kitty]
-                    [:left_command :left_command nil {:alone :!Ctab}]
-                    ;; [:left_option :left_option nil {:alone [:!Ctab :!Ctab]}]
-                    ;; [:left_shift :left_shift nil {:alone [:open "Kitty"]}]
-                    ;; [:right_shift :right_shift nil {:alone [:open "Visual Studio Code"]}]
-                    ;; [:left_control :left_control nil {:alone [:open "Safari"]}]
-                    ;; [:left_control :left_control nil {:alone :spacebar}]
-                    [:right_command :right_command :vscode {:alone :toggle_terminal}]
-                    [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
-                    [:right_command :right_command :safari {:alone :safari-toggle_reader}]
-                    [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
-                    [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
-                    [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
+                    ; mailmate
+                    [:right_command :right_command :mailmate {:alone :!COTd}]
+                    ; safari
+                    [:right_command :right_command :safari {:alone :!CT1}]
                     [:right_option :right_option :safari {:alone :!CSbackslash}]
+                    ; vscode
+                    [:right_command :right_command :vscode {:alone :toggle_terminal_or_editor}]
                     [:right_option :right_option :vscode {:alone :!COTright_arrow}]
-                    [:left_option :left_option :zoom {:alone :!CSa}]
+                    [:!Cright_command :toggle_terminal :vscode]
+                    [:!Qleft_command :!Cb :vscode]
+                    ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]
                     [:right_command :right_command :zoom {:alone :!CSh}]
-                    [:!Cright_command :!Cb :vscode]
+                    [:!Eright_command :!CSa :zoom]
             ]
         }
         {
@@ -305,38 +321,44 @@
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
-                    ;
-                    ; per-app shortcuts
-                    ;
-                    ; vscode
-                    [:comma :focus_editor_left :vscode]
-                    [:period :focus_editor_right :vscode]
+                    ; global
+                    [:left_shift :spacebar]
+                    [:left_control [:open "Screenshot"]]
+                    ; chrome
+                    [:comma :safari-prev_tab :chrome]
+                    [:period :safari-next_tab :chrome]
+                    ; drafts
+                    [:u :drafts-beginning_of_line :drafts]
+                    [:o :drafts-end_of_line :drafts]
+                    ; emacs
+                    [:u :!Cleft_arrow :emacs]
+                    [:o :!Cright_arrow :emacs]
+                    ; firefox
+                    [:right_command :!Tperiod :firefox]
                     ; kitty
                     [:comma :kitty-prev_tab :kitty]
                     [:period :kitty-next_tab :kitty]
                     [:!Sj :!Ob :kitty]              ; jump a word left
                     [:!Sl :!Of :kitty]              ; jump a word right
-                    ; safari
-                    [:comma :safari-prev_tab :safari]
-                    [:period :safari-next_tab :safari]
-                    ; chrome
-                    [:comma :safari-prev_tab :chrome]
-                    [:period :safari-next_tab :chrome]
-                    ; opera
-                    [:comma :opera-prev_tab :opera]
-                    [:period :opera-next_tab :opera]
-                    ; zoom
-                    [:comma :!Tp :zoom]
-                    [:period :!Tn :zoom]
-                    ; emacs
-                    [:u :!Cleft_arrow :emacs]
-                    [:o :!Cright_arrow :emacs]
-                    ; drafts
-                    [:u :drafts-beginning_of_line :drafts]
-                    [:o :drafts-end_of_line :drafts]
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
+                    ; opera
+                    [:comma :opera-prev_tab :opera]
+                    [:period :opera-next_tab :opera]
+                    ; safari
+                    [:right_command :safari-toggle_reader :safari]
+                    [:right_command :!COk :safari]
+                    [:comma :safari-prev_tab :safari]
+                    [:period :safari-next_tab :safari]
+                    ; vscode
+                    [:right_command :!Cb :vscode]
+                    [:right_command :!Cb :vscode]
+                    [:comma :focus_editor_left :vscode]
+                    [:period :focus_editor_right :vscode]
+                    ; zoom
+                    [:comma :!Tp :zoom]
+                    [:period :!Tn :zoom]
                     ; global settings
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
@@ -353,84 +375,17 @@
                     [:!!o :page_down]
                     [:##u :home]
                     [:##o :end]
-                    ; undo, cut, copy, paste
-                    ;; [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
-                    ; same as above for mod-wide on colemak
+                    ; undo, cut, copy, paste on mod-wide on colemak
                     [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
-                    ; desktop/spaces switching
-                    [:##q :!!1][:##w :!!2][:##e :!!3][:##r :!!4][:##t :!!5]
-                    [:##fn :mission_control]
-                    [:##delete_forward :mission_control]
                     ; edit/organize text properly
-                    [:##open_bracket :insert]
+                    [:##quote :insert]
                     [:##h :delete_or_backspace]
                     [:##semicolon :delete_forward]
-                    [:##quote :caps_lock]
-                    ; quick send in vscode gitlens, mailmate, others
-                    ;; [:##return_or_enter nil [:extend :!blocked] {:afterup :return_or_enter :held {:key :!Creturn_or_enter            :repeat false :halt true}}] 
-                    [:##return_or_enter :return_or_enter]
-                    ;; [:left_shift :open_bracket]
-                    ;; [:right_shift :close_bracket]
-                    ;; [:left_command :open_brace]
-                    ;; [:right_command :close_brace]
-                    ;
                     ; desktop navigation via m and slash
                     [:m :left_desktop]
                     [:slash :right_desktop]
-                    ; quick access apps
-                    ;; [:left_command :left_command nil {:alone :activate_spotlight}]
-                    ;; [:left_option :left_option nil {:alone :activate_1password}]
-                    [:left_control [:open "Screenshot"]]
-                    [:right_command :!Cb :vscode]
-                    [:right_command :!CT1 :safari]
-                    [:right_command :!Tperiod :firefox]
-                    [:right_command :!COk :safari]
-                    [:right_command :!Cb :vscode]
-                    ;; [:b :delete_forward]
             ]
         }
-
-        {
-            :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
-            :rules [
-                ; 1 finger resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 1]]
-                    [:-w :!Cw]
-                    [:-p :!Ct]
-                    [:-s {:pkey :button1 :modi :left_shift}]
-                    [:-t {:pkey :button1}]
-                    [:-d {:pkey :button1 :modi :left_command}]
-                    [:grave_accent_and_tilde :!Tgrave_accent_and_tilde]
-                    [:-z :!Cz]
-                    [:-x :!Cx]
-                    [:-c :!Cc]
-                    [:-v :!Cv]
-                    [:-b :!CT1]
-                    [:spacebar :return_or_enter]
-                    [:a :delete_or_backspace]
-                ; 2 fingers resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 2]]
-                    [:-s :selection_snapshot]
-                    [:-t :window_snapshot]
-                    [:-d :fullscreen_snapshot]
-            ]
-        }
-
-        ; {
-        ;     :des "Double Press Cmd+Q to Quit Applications"
-        ;     :rules [
-        ;         [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
-        ;         [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["commandq" 0]}}]
-        ;     ]
-        ; }
-
-        {
-            :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
-            :rules [
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0]]]
-            ]
-        }
-
         {
             :des "Colemak Layout"
             :rules [
@@ -439,7 +394,7 @@
                     [:##non_us_backslash :grave_accent_and_tilde]
                     ;; [:delete_or_backspace :!!delete_or_backspace]
                     ;; [:##delete_or_backspace :non_us_backslash]
-                    [:##delete_or_backspace :vk_none]
+                    ;; [:##delete_or_backspace :vk_none]
                     [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :vk_none]
                     ;; [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
@@ -453,12 +408,12 @@
 ;; rule [:period ["media-mode" 1] nil {:afterup ["media-mode" 0] :alone :period}]
 ;;       |_____| |_______________| |_| |_________________________________________|
 ;;        <from>    <to>      <conditions>         <other options>
-
+;;
 ;; !  | means mandatory -   modifier(s) alone when pressend change behavior
 ;; #  | means optional  -   modifiers are optional (but atleast one necessary)
-
+;;
 ;; :!Ca is keycode :a and prefix a with !C
-
+;;
 ;; C  | left_command
 ;; T  | left_control
 ;; O  | left_option
@@ -469,17 +424,27 @@
 ;; E  | right_option
 ;; R  | right_shift
 ;; P  | caps_lock
-
+;;
 ;; ## | optional any (this has no effect when used on the RHS; only LHS)
 ;; !! | command + control + optional + shift (hyper)
-
+;;
 ;; to understand better how modifiers work in karabiner
 ;; karabiner definition of mandatory and optional
 ;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
-
+;;
 ;; need to prefix C T O S F P with ! or #
 ;;
 ;; code for all this:
 ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/b9b334a187379f9bc8182ad59e2cca2a1789e9c0/src/karabiner_configurator/keys.clj#L68 
-
+;;
+;;
+;; list of keys usable in Karabiner
+;; https://github.com/pqrs-org/Karabiner-Elements/issues/925
+;;
+;;
+;; Sample mouse event remapping
+;; Could be used in a layer. Intercepting events from mice interferes with the scrollwheel.
+;; [{:pkey :button2} :delete_forward]
+;;
+;;
 ;; URL of extend layer - https://forum.colemak.com/topic/2014-extend-extra-extreme/
