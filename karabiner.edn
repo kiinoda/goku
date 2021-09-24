@@ -253,13 +253,12 @@
                     [:h :system-force_quit_apps]
             ]
         }
-        {
             :des "AppRun Layer"
             :rules [
                 [:condi :!blocked :!extend]
                     ; activate layer
-                    [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
-                    [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                    [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                    [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
                 :apprun
                     [:-w [:open "WhatsApp"]                     nil {:afterup ["apprun" 0]}]
                     [:-f [:open "Finder"]                       nil {:afterup ["apprun" 0]}]
@@ -272,22 +271,23 @@
                     [:-d [:open "Drafts"]                       nil {:afterup ["apprun" 0]}]
                     [:-i [:open "Discord"]                      nil {:afterup ["apprun" 0]}]
                     [:-c [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
-                    [:-x [:open "Chrome"]                       nil {:afterup ["apprun" 0]}]
+                    [:-x [:open "Google Chrome"]                nil {:afterup ["apprun" 0]}]
                     [:-y [:open "Skype"]                        nil {:afterup ["apprun" 0]}]
                     [:grave_accent_and_tilde [:open "zoom.us"]  nil {:afterup ["apprun" 0]}]
-                    [:spacebar :activate_spotlight              nil {:afterup ["apprun" 0]}]
+                    [:left_shift :activate_spotlight            nil {:afterup ["apprun" 0]}]
+                    [:right_shift :activate_1password           nil {:afterup ["apprun" 0]}]
             ]
         }
         {
             :des "Power Combos"
             :rules [
-                [:condi :!blocked :!extend]
+                [:condi :!blocked :!extend :!apprun]
                     ; global
-                    [:left_option :left_option nil {:alone :activate_spotlight}]
+                    [:##caps_lock :left_control nil {:alone :escape}]
+                    [:left_control :left_control nil {:alone :!CTspacebar}]
                     [:left_command :left_command nil {:alone :!Ctab}]
                     [:!Th :delete_or_backspace]
                     [:!S#Pright_shift :caps_lock]                           ; press both shift keys to activate/deactivate caps
-                    [:!Ospacebar :activate_1password]
                     [:!Sspacebar :spacebar]
                     ; chrome
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
@@ -301,14 +301,20 @@
                     [:!Cperiod [:!Ta :n] :kitty]
                     ; mailmate
                     [:right_command :right_command :mailmate {:alone :!COTd}]
+                    [:right_option :right_option :mailmate {:alone :!COu}]
                     ; safari
                     [:right_command :right_command :safari {:alone :!CT1}]
-                    [:right_option :right_option :safari {:alone :!CSbackslash}]
+                    [:right_option :right_option :safari {:alone :safari-toggle_reader}]
+                    [:!Qspacebar :!COi :safari]
                     ; vscode
-                    [:right_command :right_command :vscode {:alone :toggle_terminal_or_editor}]
-                    [:right_option :right_option :vscode {:alone :!COTright_arrow}]
-                    [:!Cright_command :toggle_terminal :vscode]
-                    [:!Qleft_command :!Cb :vscode]
+                    ; toggle between toggling terminal or terminal_or_editor when pressing right_command
+                    [:!Qspacebar ["vscode_terminal" 1] [:vscode :!vscode_terminal]]
+                    [:!Qspacebar ["vscode_terminal" 0] [:vscode :vscode_terminal]]
+                    ; based on the variable above, toggle based on preference
+                    [:right_command :right_command [:vscode :vscode_terminal] {:alone :toggle_terminal_or_editor}]
+                    [:right_command :right_command [:vscode :!vscode_terminal] {:alone :toggle_terminal}]
+                    [:right_option :right_option :vscode {:alone :!Cb}]
+                    [:left_option :right_option :vscode {:alone :!Tw}]
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]
                     [:right_command :right_command :zoom {:alone :!CSh}]
@@ -322,8 +328,19 @@
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
                     ; global
-                    [:left_shift :spacebar]
-                    [:left_control [:open "Screenshot"]]
+                    [:escape :window_full_size]
+                    [:non_us_backslash [:open "Screenshot"]]
+                    ;; [:##q :backquote]
+                    ;; [:##w :backslash]
+                    [:##e :hyphen]
+                    [:##r :equal]
+                    [:##t :open_bracket]
+                    [:##y :close_bracket]
+                    [:##v :open_paren]
+                    [:##n :close_paren]
+                    ; reposition some keys closer
+                    [:##f :return_or_enter]
+                    [:##g :delete_or_backspace]
                     ; chrome
                     [:comma :safari-prev_tab :chrome]
                     [:period :safari-next_tab :chrome]
@@ -352,8 +369,6 @@
                     [:comma :safari-prev_tab :safari]
                     [:period :safari-next_tab :safari]
                     ; vscode
-                    [:right_command :!Cb :vscode]
-                    [:right_command :!Cb :vscode]
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
                     ; zoom
@@ -364,7 +379,10 @@
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
                     ; modifiers
-                    [:caps_lock :!CTOleft_shift][:##a :left_shift][:##s :left_option][:##d :left_command]
+                    [:##caps_lock :left_control]
+                    [:##a :left_shift]
+                    [:##s :left_option]
+                    [:##d :left_command]
                     ; arrows
                     [:##j :left_arrow]
                     [:##k :down_arrow]
@@ -392,13 +410,9 @@
                 [:condi :!blocked]
                     ; used for mod-wide on colemak and apple keyboard
                     [:##non_us_backslash :grave_accent_and_tilde]
-                    ;; [:delete_or_backspace :!!delete_or_backspace]
-                    ;; [:##delete_or_backspace :non_us_backslash]
-                    ;; [:##delete_or_backspace :vk_none]
-                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :vk_none]
-                    ;; [:return_or_enter :vk_none]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
+                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :spacebar]
                     ;; [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
             ]
         }
