@@ -253,6 +253,28 @@
                     [:h :system-force_quit_apps]
             ]
         }
+        {
+            :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
+            :rules [
+                ; 1 finger resting on the trackpad
+                [:condi ["multitouch_extension_finger_count_total" 1]]
+                    [:-r :safari-prev_tab :safari]
+                    [:-t :safari-next_tab :safari]
+                    [:-w :!Cw]
+                    [:-p :!Ct]
+                    [:caps_lock {:pkey :button1 :modi :left_command}]
+                    [:grave_accent_and_tilde :!Cz]
+                    [:-z :!Cx]
+                    [:-x :!Cc]
+                    [:-c :!Cv]
+                    ;; [:caps_lock [[:pkey :button1][:pkey :button1]]]
+                ; 2 finger resting on the trackpad
+                [:condi ["multitouch_extension_finger_count_total" 2]]
+                    [:-r :safari-hist_back :safari]
+                    [:-t :safari-hist_frwd :safari]
+            ]
+        }
+        {
             :des "AppRun Layer"
             :rules [
                 [:condi :!blocked :!extend]
