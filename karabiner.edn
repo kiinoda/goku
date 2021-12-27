@@ -522,8 +522,7 @@
 ;;
 ;;
 ;; list of keys usable in Karabiner
-;; https://github.com/pqrs-org/Karabiner-Elements/issues/925
-;;
+;; https://github.com/pqrs-org/Karabiner-Elements/issues/925#issuecomment-323984568
 ;;
 ;; Sample mouse event remapping
 ;; Could be used in a layer. Intercepting events from mice interferes with the scrollwheel.
