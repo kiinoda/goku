@@ -16,6 +16,12 @@
 
     :templates {
         :open "osascript -e 'tell application \"%s\" to activate'"
+        ; send keystrokes
+        :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\"'"
+        ; send keystrokes and press enter
+        :type_cr "
+            osascript -e 'tell application \"System Events\" to keystroke \"%s\"';
+            osascript -e 'tell application \"System Events\" to keystroke return';"
         :paste "osascript -e '
               set the clipboard to \"%s\"
               set the clipboard to the clipboard + \"%s\"
@@ -196,6 +202,7 @@
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
         :kitty-tmux_prefix {:key :!Ta}
+        ;; :kitty-tmux-multipane {:key :!Ta :!Ssemicolon :return_or_enter}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -221,6 +228,7 @@
 
     :simlayers {
         :windows {:key :f}
+        :apprun {:key :grave_accent_and_tilde}
     }
 
     :main [
@@ -231,12 +239,12 @@
             ]
         }
         {
-            :des "Press RShift-Spacebar to deactivate all layers (including Colemak)"
+            :des "Press !Sright_shift for CapsLock, !Rleft_shift to deactivate all layers (including Colemak)"
             :rules [
-                [:!R#Pleft_shift ["blocked" 1] :!blocked]
-                [:!R#Pleft_shift ["blocked" 0] :blocked]
-                [:!Rspacebar ["blocked" 1] :!blocked]
-                [:!Rspacebar ["blocked" 0] :blocked]
+                [:!R#Pleft_shift [["blocked" 1][:noti :blocked "QWERTY - no layers"]] ["blocked" 0]]
+                [:!R#Pleft_shift [["blocked" 0][:noti :blocked ""]] ["blocked" 1]]
+                [:!S#Pright_shift [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] ["capslock" 0]]                  ; press both shift keys to activate caps
+                [:!S#Pright_shift [:caps_lock [:noti :caps ""]["capslock" 0]] ["capslock" 1]]                           ; press both shift keys to deactivate caps
             ]
         }
         {
@@ -253,34 +261,58 @@
                     [:h :system-force_quit_apps]
             ]
         }
-        {
-            :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
-            :rules [
-                ; 1 finger resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 1]]
-                    [:-r :safari-prev_tab :safari]
-                    [:-t :safari-next_tab :safari]
-                    [:-w :!Cw]
-                    [:-p :!Ct]
-                    [:caps_lock {:pkey :button1 :modi :left_command}]
-                    [:grave_accent_and_tilde :!Cz]
-                    [:-z :!Cx]
-                    [:-x :!Cc]
-                    [:-c :!Cv]
-                    ;; [:caps_lock [[:pkey :button1][:pkey :button1]]]
-                ; 2 finger resting on the trackpad
-                [:condi ["multitouch_extension_finger_count_total" 2]]
-                    [:-r :safari-hist_back :safari]
-                    [:-t :safari-hist_frwd :safari]
-            ]
-        }
+        ;; {
+        ;;     :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
+        ;;     :rules [
+        ;;         ; 1 finger resting on the trackpad
+        ;;         [:condi ["multitouch_extension_finger_count_total" 1]]
+        ;;             [:-r :safari-prev_tab :safari]
+        ;;             [:-t :safari-next_tab :safari]
+        ;;             [:-w :!Cw]
+        ;;             [:-p :!Ct]
+        ;;             [:caps_lock {:pkey :button1 :modi :left_command}]
+        ;;             [:grave_accent_and_tilde :!Cz]
+        ;;             [:-z :!Cx]
+        ;;             [:-x :!Cc]
+        ;;             [:-c :!Cv]
+        ;;             ;; [:caps_lock [[:pkey :button1][:pkey :button1]]]
+        ;;         ; 2 finger resting on the trackpad
+        ;;         [:condi ["multitouch_extension_finger_count_total" 2]]
+        ;;             [:-r :safari-hist_back :safari]
+        ;;             [:-t :safari-hist_frwd :safari]
+        ;;     ]
+        ;; }
+        ;; {
+        ;;     :des "Symbols Layer"
+        ;;     :rules [
+        ;;         [:condi :!blocked :!extend]
+        ;;             ; activate layer
+        ;;             [:##tab ["symbols_layer" 1] [:!shifted :!blocked] {:alone :tab :afterup ["symbols_layer" 0]}]
+        ;;         :symbols_layer
+        ;;             [:##caps_lock :left_control]
+        ;;             [:##a :left_shift]
+        ;;             [:##s :left_option]
+        ;;             [:##d :left_command]
+        ;;             [:##h :!Th]
+        ;;             [:##y :backquote]
+        ;;             [:##j :open_paren][:##u :close_paren]
+        ;;             [:##k :open_bracket][:##i :close_bracket]
+        ;;             [:##l :open_brace][:##o :close_brace]
+        ;;             [:##semicolon :hyphen][:##p :equal]
+        ;;             [:##n :backslash]
+        ;;             [:##m :underscore]
+        ;;             [:##period :pipe]
+        ;;             [:##comma :tilde]
+        ;;             [:##slash :plus]
+        ;;     ]
+        ;; }
         {
             :des "AppRun Layer"
             :rules [
-                [:condi :!blocked :!extend]
+                ;; [:condi :!blocked :!extend]
                     ; activate layer
-                    [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
-                    [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                    ;; [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                    ;; [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
                 :apprun
                     [:-w [:open "WhatsApp"]                     nil {:afterup ["apprun" 0]}]
                     [:-f [:open "Finder"]                       nil {:afterup ["apprun" 0]}]
@@ -295,9 +327,9 @@
                     [:-c [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
                     [:-x [:open "Google Chrome"]                nil {:afterup ["apprun" 0]}]
                     [:-y [:open "Skype"]                        nil {:afterup ["apprun" 0]}]
-                    [:grave_accent_and_tilde [:open "zoom.us"]  nil {:afterup ["apprun" 0]}]
-                    [:left_shift :activate_spotlight            nil {:afterup ["apprun" 0]}]
-                    [:right_shift :activate_1password           nil {:afterup ["apprun" 0]}]
+                    [:-o [:open "zoom.us"]                      nil {:afterup ["apprun" 0]}]
+                    [:spacebar :activate_spotlight              nil {:afterup ["apprun" 0]}]
+                    [:slash :activate_1password                 nil {:afterup ["apprun" 0]}]
             ]
         }
         {
@@ -309,22 +341,28 @@
                     [:left_control :left_control nil {:alone :!CTspacebar}]
                     [:left_command :left_command nil {:alone :!Ctab}]
                     [:!Th :delete_or_backspace]
-                    [:!S#Pright_shift :caps_lock]                           ; press both shift keys to activate/deactivate caps
                     [:!Sspacebar :spacebar]
                     ; chrome
+                    [:!Qleft_command [:!Ql :!Qv :return_or_enter] :chrome]
+                    [:!Cright_command [:button2 :c :return_or_enter] :chrome]
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
                     ; drafts
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
-                    ; emacs
+                    [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
                     [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
                     ; kitty
                     [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
+                    [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
+                    [:right_option :right_option [:kitty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
                     [:!Ccomma [:!Ta :p] :kitty]
                     [:!Cperiod [:!Ta :n] :kitty]
                     ; mailmate
                     [:right_command :right_command :mailmate {:alone :!COTd}]
                     [:right_option :right_option :mailmate {:alone :!COu}]
                     ; safari
+                    [:!Qleft_command [:!Cl :!Cv :return_or_enter] :safari]
+                    [:!Cright_command [:button2 :c :return_or_enter] :safari]
+                    [:left_option :left_option :safari {:alone :!CSbackslash}]
                     [:right_command :right_command :safari {:alone :!CT1}]
                     [:right_option :right_option :safari {:alone :safari-toggle_reader}]
                     [:!Qspacebar :!COi :safari]
@@ -344,9 +382,10 @@
             ]
         }
         {
-            :des "Extend Layer - Spacebar"
+            :des "Extended Layer - Spacebar"
             :rules [
                 [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
+                ;; [:##spacebar [["extend" 1][:noti :extend "Extended Layer"]] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup [["extend" 0][:noti :extend ""]] :alone :spacebar}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
                     ; global
@@ -364,6 +403,8 @@
                     [:##f :return_or_enter]
                     [:##g :delete_or_backspace]
                     ; chrome
+                    [:u :!Cleft_arrow :chrome]
+                    [:o :!Cright_arrow :chrome]
                     [:comma :safari-prev_tab :chrome]
                     [:period :safari-next_tab :chrome]
                     ; drafts
@@ -379,6 +420,10 @@
                     [:period :kitty-next_tab :kitty]
                     [:!Sj :!Ob :kitty]              ; jump a word left
                     [:!Sl :!Of :kitty]              ; jump a word right
+                    [:!Tj [:!Ta :left_arrow] :kitty]
+                    [:!Tk [:!Ta :down_arrow] :kitty]
+                    [:!Ti [:!Ta :up_arrow] :kitty]
+                    [:!Tl [:!Ta :right_arrow] :kitty]
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
@@ -386,6 +431,8 @@
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
                     ; safari
+                    [:u :!Cleft_arrow :safari]
+                    [:o :!Cright_arrow :safari]
                     [:right_command :safari-toggle_reader :safari]
                     [:right_command :!COk :safari]
                     [:comma :safari-prev_tab :safari]
