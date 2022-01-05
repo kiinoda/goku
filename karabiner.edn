@@ -509,7 +509,7 @@
 ;; P  | caps_lock
 ;;
 ;; ## | optional any (this has no effect when used on the RHS; only LHS)
-;; !! | command + control + optional + shift (hyper)
+;; !! | command + control + option + shift (hyper)
 ;;
 ;; to understand better how modifiers work in karabiner
 ;; karabiner definition of mandatory and optional
