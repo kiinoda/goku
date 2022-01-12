@@ -379,6 +379,7 @@
                     [:right_option :right_option :zoom {:alone :!Oy}]
                     [:right_command :right_command :zoom {:alone :!CSh}]
                     [:!Eright_command :!CSa :zoom]
+                    [:!Espacebar :!CSv :zoom]
             ]
         }
         {
