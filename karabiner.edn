@@ -235,16 +235,18 @@
         {
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
-                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0], ["apprun" 0]]]
+                [:!COTescape [["extend" 0], ["apps" 0], ["desktop" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0], ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0], ["apprun" 0], ["qwerty" 0]]]
             ]
         }
         {
             :des "Press !Sright_shift for CapsLock, !Rleft_shift to deactivate all layers (including Colemak)"
             :rules [
-                [:!R#Pleft_shift [["blocked" 1][:noti :blocked "QWERTY - no layers"]] ["blocked" 0]]
+                [:!R#Pleft_shift [["blocked" 1][:noti :blocked "Karabiner OFF"]] ["blocked" 0]]
                 [:!R#Pleft_shift [["blocked" 0][:noti :blocked ""]] ["blocked" 1]]
                 [:!S#Pright_shift [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] ["capslock" 0]]                  ; press both shift keys to activate caps
                 [:!S#Pright_shift [:caps_lock [:noti :caps ""]["capslock" 0]] ["capslock" 1]]                           ; press both shift keys to deactivate caps
+                [:!Fspacebar [["qwerty" 1][:noti :qwerty "QWERTY w/ layers"]] ["qwerty" 0]]
+                [:!Fspacebar [["qwerty" 0][:noti :qwerty ""]] ["qwerty" 1]]
             ]
         }
         {
@@ -481,7 +483,7 @@
         {
             :des "Colemak Layout"
             :rules [
-                [:condi :!blocked]
+                [:condi :!blocked :!qwerty]
                     ; used for mod-wide on colemak and apple keyboard
                     [:##non_us_backslash :grave_accent_and_tilde]
                     [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
