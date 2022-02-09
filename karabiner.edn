@@ -227,7 +227,7 @@
     }
 
     :simlayers {
-        :windows {:key :f}
+        :windows {:key :tab}
         :apprun {:key :grave_accent_and_tilde}
     }
 
@@ -390,7 +390,6 @@
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
                     ; global
-                    [:escape :window_full_size]
                     [:non_us_backslash [:open "Screenshot"]]
                     ;; [:##q :backquote]
                     ;; [:##w :backslash]
