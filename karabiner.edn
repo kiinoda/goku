@@ -376,10 +376,12 @@
                     [:right_option :right_option :vscode {:alone :!Cb}]
                     [:left_option :right_option :vscode {:alone :!Tw}]
                     ; zoom
-                    [:right_option :right_option :zoom {:alone :!Oy}]
-                    [:right_command :right_command :zoom {:alone :!CSh}]
-                    [:!Eright_command :!CSa :zoom]
-                    [:!Espacebar :!CSv :zoom]
+                    [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
+                    [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
+                    [:!Qright_option :!CSa :zoom]                           ; toggle microphone
+                    [:!Qspacebar :!CSv :zoom]                               ; toggle video
+                    [:!Qleft_command :!CSs :zoom]                           ; toggle sharing
+                    [:!Qleft_option :!CSh :zoom]                            ; toggle chat
             ]
         }
         {
