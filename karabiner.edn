@@ -391,8 +391,6 @@
         {
             :des "Extended Layer - Spacebar"
             :rules [
-                [:##caps_lock :left_control [:!extend :!blocked] {:alone :escape}]
-                ;; [:##spacebar [["extend" 1][:noti :extend "Extended Layer"]] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup [["extend" 0][:noti :extend ""]] :alone :spacebar}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
                     ; activate window management layer while in extended layer
@@ -456,7 +454,7 @@
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
                     ; modifiers
-                    [:##caps_lock :left_control]
+                    [:##caps_lock :left_control nil {:alone :escape}]
                     [:##a :left_shift]
                     [:##s :left_option]
                     [:##d :left_command]
