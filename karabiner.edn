@@ -35,16 +35,17 @@
 
     :applications {
         ; extract from /Applications/$APP/Contents/Info.plist from 'CFBundleIdentifier' key
+        :chrome [ "^com.google.Chrome$" ]
+        :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
+        :emacs [ "^org.gnu.Emacs$" ]
+        :evernote [ "^com.evernote.Evernote$" ]
+        :firefox [ "^org.mozilla.firefox$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
+        :mailmate [ "^com.freron.MailMate$"]
+        :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
-        :opera [ "^com.operasoftware.Opera$" ]
-        :chrome [ "^com.google.Chrome$" ]
-        :emacs [ "^org.gnu.Emacs$" ]
-        :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
-        :firefox [ "^org.mozilla.firefox$" ]
         :zoom [ "^us.zoom.xos$" ]
-        :mailmate [ "^com.freron.MailMate$"]
     }
 
     :froms {
