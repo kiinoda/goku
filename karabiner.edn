@@ -225,6 +225,9 @@
         :drafts-beginning_of_line {:key :!Cleft_arrow}
         :drafts-end_of_line {:key :!Cright_arrow}
         :drafts-toggle_draft_list {:key :!C1}
+        ; evernote
+        :evernote-beginning_of_line {:key :!Cleft_arrow}
+        :evernote-end_of_line {:key :!Cright_arrow}
     }
 
     :simlayers {
@@ -414,6 +417,9 @@
                     [:o :!Cright_arrow :chrome]
                     [:comma :safari-prev_tab :chrome]
                     [:period :safari-next_tab :chrome]
+                    ; evernote
+                    [:u :evernote-beginning_of_line :evernote]
+                    [:o :evernote-end_of_line :evernote]
                     ; drafts
                     [:u :drafts-beginning_of_line :drafts]
                     [:o :drafts-end_of_line :drafts]
