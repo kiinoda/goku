@@ -228,7 +228,6 @@
     }
 
     :simlayers {
-        :windows {:key :tab}
         :apprun {:key :grave_accent_and_tilde}
     }
 
@@ -255,11 +254,10 @@
             :rules [
                 :windows
                     ; window positioning using rectangle 
+                    [[:j :k :l] :window_full_size]
                     [:j :window_left_half]
                     [:k :window_resize_and_center]
                     [:l :window_resize_and_right]
-                    [:i :window_full_size]
-                    [:p :window_center]
                     [:semicolon :window_snapshot]
                     [:h :system-force_quit_apps]
             ]
@@ -397,6 +395,8 @@
                 ;; [:##spacebar [["extend" 1][:noti :extend "Extended Layer"]] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup [["extend" 0][:noti :extend ""]] :alone :spacebar}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
+                    ; enable window alignment layer while in extended layer
+                    [:##tab ["windows" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["windows" 0] :alone :tab}]
                     ; global
                     [:non_us_backslash [:open "Screenshot"]]
                     ;; [:##q :backquote]
