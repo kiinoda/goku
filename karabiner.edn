@@ -250,9 +250,9 @@
             ]
         }
         {
-            :des "Window Positioning Layer"
+            :des "Window Management Layer"
             :rules [
-                :windows
+                :wm
                     ; window positioning using rectangle 
                     [[:j :k :l] :window_full_size]
                     [:j :window_left_half]
@@ -395,8 +395,8 @@
                 ;; [:##spacebar [["extend" 1][:noti :extend "Extended Layer"]] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup [["extend" 0][:noti :extend ""]] :alone :spacebar}]
                 [:##spacebar ["extend" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["extend" 0] :alone :spacebar}]
                 :extend
-                    ; enable window alignment layer while in extended layer
-                    [:##tab ["windows" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["windows" 0] :alone :tab}]
+                    ; activate window management layer while in extended layer
+                    [:##tab ["wm" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["wm" 0] :alone :tab}]
                     ; global
                     [:non_us_backslash [:open "Screenshot"]]
                     ;; [:##q :backquote]
