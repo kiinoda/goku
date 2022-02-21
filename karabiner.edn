@@ -178,7 +178,7 @@
         ; hazeover - focus on one window
         :activate_hazeover {:key :!!return_or_enter}
         ; mosaic - window positioning
-        :window_left_half {:key :!!j}
+        :window_resize_and_left {:key :!!j}
         :window_resize_and_right {:key :!!l}
         :window_resize_and_center {:key :!!k}
         :window_full_size {:key :!!i}
@@ -258,7 +258,7 @@
                 :wm
                     ; window positioning using rectangle 
                     [[:j :k :l] :window_full_size]
-                    [:j :window_left_half]
+                    [:j :window_resize_and_left]
                     [:k :window_resize_and_center]
                     [:l :window_resize_and_right]
                     [:semicolon :window_snapshot]
