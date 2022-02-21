@@ -175,24 +175,21 @@
 
         ; 1password
         :activate_1password {:key :!!backslash}
+        ; chrome
+        :chrome-prev_tab {:key :!TStab}
+        :chrome-next_tab {:key :!Ttab}
+        :chrome-toggle_reader {:key :!CSr}
+        ; drafts
+        :drafts-beginning_of_line {:key :!Cleft_arrow}
+        :drafts-end_of_line {:key :!Cright_arrow}
+        :drafts-toggle_draft_list {:key :!C1}
+        ; emacs
+        :emacs-toggle_terminal {:key :!Cspacebar}
+        ; evernote
+        :evernote-beginning_of_line {:key :!Cleft_arrow}
+        :evernote-end_of_line {:key :!Cright_arrow}
         ; hazeover - focus on one window
         :activate_hazeover {:key :!!return_or_enter}
-        ; mosaic - window positioning
-        :window_resize_and_left {:key :!!j}
-        :window_resize_and_right {:key :!!l}
-        :window_resize_and_center {:key :!!k}
-        :window_full_size {:key :!!i}
-        :window_center {:key :!!semicolon}
-        ; vscode
-        :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
-        :toggle_terminal {:key :!Cspacebar}
-        :focus_group_or_terminal_left {:key :!CTOup_arrow}
-        :focus_group_or_terminal_right {:key :!CTOdown_arrow}
-        :focus_editor_left {:key :!COleft_arrow}
-        :focus_editor_right {:key :!COright_arrow}
-        :focus_file_or_new_tab {:key :!Cp}
-        ; TODO find a valid way to express this or propose a patch so that it becomes a valid definition
-        ; :vscode-markdown_preview {:key [:!Ck :v]}
         ; kitty
         :kitty-prev_tab {:key :!Cleft_arrow}
         :kitty-next_tab {:key :!Cright_arrow}
@@ -203,7 +200,15 @@
         :kitty-beginning_of_line {:key :!Ta}
         :kitty-end_of_line {:key :!Te}
         :kitty-tmux_prefix {:key :!Ta}
-        ;; :kitty-tmux-multipane {:key :!Ta :!Ssemicolon :return_or_enter}
+        ; opera
+        :opera-prev_tab {:key :!COleft_arrow}
+        :opera-next_tab {:key :!COright_arrow}
+        ; rectangle - window positioning
+        :window_resize_and_left {:key :!!j}
+        :window_resize_and_right {:key :!!l}
+        :window_resize_and_center {:key :!!k}
+        :window_full_size {:key :!!i}
+        :window_center {:key :!!semicolon}
         ; safari
         :safari-prev_tab {:key :!TStab}
         :safari-next_tab {:key :!Ttab}
@@ -212,22 +217,14 @@
         :safari-toggle_reader {:key :!CSr}
         :safari-toggle_darkmode {:key :!COk}
         :safari-close_tab {:key :!Cw}
-        ; chrome
-        :chrome-prev_tab {:key :!TStab}
-        :chrome-next_tab {:key :!Ttab}
-        :chrome-toggle_reader {:key :!CSr}
-        ; opera
-        :opera-prev_tab {:key :!COleft_arrow}
-        :opera-next_tab {:key :!COright_arrow}
-        ; emacs
-        :emacs-toggle_terminal {:key :!Cspacebar}
-        ; drafts
-        :drafts-beginning_of_line {:key :!Cleft_arrow}
-        :drafts-end_of_line {:key :!Cright_arrow}
-        :drafts-toggle_draft_list {:key :!C1}
-        ; evernote
-        :evernote-beginning_of_line {:key :!Cleft_arrow}
-        :evernote-end_of_line {:key :!Cright_arrow}
+        ; vscode
+        :toggle_terminal_or_editor {:key :!Tgrave_accent_and_tilde}
+        :toggle_terminal {:key :!Cspacebar}
+        :focus_group_or_terminal_left {:key :!CTOup_arrow}
+        :focus_group_or_terminal_right {:key :!CTOdown_arrow}
+        :focus_editor_left {:key :!COleft_arrow}
+        :focus_editor_right {:key :!COright_arrow}
+        :focus_file_or_new_tab {:key :!Cp}
     }
 
     :simlayers {
