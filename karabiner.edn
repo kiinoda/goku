@@ -426,8 +426,8 @@
                     ; kitty
                     [:comma :kitty-prev_tab :kitty]
                     [:period :kitty-next_tab :kitty]
-                    [:!Sj :!Ob :kitty]              ; jump a word left
-                    [:!Sl :!Of :kitty]              ; jump a word right
+                    [:!Oj :!Ob :kitty]              ; jump a word left
+                    [:!Ol :!Of :kitty]              ; jump a word right
                     [:!Tj [:!Ta :left_arrow] :kitty]
                     [:!Tk [:!Ta :down_arrow] :kitty]
                     [:!Ti [:!Ta :up_arrow] :kitty]
