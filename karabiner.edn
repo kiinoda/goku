@@ -378,7 +378,9 @@
                     [:right_command :right_command [:vscode :!vscode_terminal] {:alone :toggle_terminal}]
                     [:!Creturn_or_enter :!TOn :vscode]                      ; run code
                     [:right_option :right_option :vscode {:alone :!Cb}]
-                    [:left_option :right_option :vscode {:alone :!Tw}]
+                    [:left_option :left_option :vscode {:alone :!Cp}]
+                    [:!Rleft_option :!Rleft_option :vscode {:alone :!CSp}]
+                    [:left_control :left_control :vscode {:alone :!Tw}]
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
                     [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
