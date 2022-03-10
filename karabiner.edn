@@ -398,8 +398,6 @@
                     [:##tab ["wm" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["wm" 0] :alone :tab}]
                     ; global
                     [:non_us_backslash [:open "Screenshot"]]
-                    ;; [:##q :backquote]
-                    ;; [:##w :backslash]
                     [:##e :hyphen]
                     [:##r :equal]
                     [:##t :open_bracket]
