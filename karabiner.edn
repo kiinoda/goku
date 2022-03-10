@@ -314,10 +314,6 @@
         {
             :des "AppRun Layer"
             :rules [
-                ;; [:condi :!blocked :!extend]
-                    ; activate layer
-                    ;; [:right_shift :right_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
-                    ;; [:left_shift :left_shift [:!symbols :!mouse :!shifted :!system :!blocked :!apprun] {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
                 [:##tab ["apprun" 1] [:!symbols :!mouse :!shifted :!system :!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
                     [:-w [:open "WhatsApp"]                     nil {:afterup ["apprun" 0]}]
