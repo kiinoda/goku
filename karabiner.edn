@@ -340,7 +340,6 @@
                 [:condi :!blocked :!extend :!apprun]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
-                    [:left_control :left_control nil {:alone :!CTspacebar}]
                     [:left_command :left_command nil {:alone :!Ctab}]
                     [:f5 :!!f5]                                                ; toggle show desktop
                     [:f6 :activate_hazeover]                                   ; activate hazeover
