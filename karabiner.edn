@@ -180,6 +180,7 @@
         :chrome-next_tab {:key :!Ttab}
         :chrome-toggle_reader {:key :!CSr}
         ; drafts
+        :drafts-toggle_onoff {:key :!!return_or_enter}
         :drafts-beginning_of_line {:key :!Cleft_arrow}
         :drafts-end_of_line {:key :!Cright_arrow}
         :drafts-toggle_draft_list {:key :!C1}
@@ -189,7 +190,7 @@
         :evernote-beginning_of_line {:key :!Cleft_arrow}
         :evernote-end_of_line {:key :!Cright_arrow}
         ; hazeover - focus on one window
-        :activate_hazeover {:key :!!return_or_enter}
+        :activate_hazeover {:key :!!f6}
         ; kitty
         :kitty-prev_tab {:key :!Cleft_arrow}
         :kitty-next_tab {:key :!Cright_arrow}
