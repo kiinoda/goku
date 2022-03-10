@@ -353,7 +353,6 @@
                     ; drafts
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
                     [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
-                    [:right_command :right_command :emacs {:alone :emacs-toggle_terminal}]
                     ; kitty
                     [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
