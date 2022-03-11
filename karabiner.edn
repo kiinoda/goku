@@ -381,6 +381,7 @@
                     [:left_option :left_option :vscode {:alone :!Cp}]
                     [:!Rleft_option :!Rleft_option :vscode {:alone :!CSp}]
                     [:left_control :left_control :vscode {:alone :!Tw}]
+                    [:!Sright_option :!Sright_option :vscode {:alone :!CSj}] ; toggle side panel
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
                     [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
