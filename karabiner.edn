@@ -332,7 +332,8 @@
                     [:!Cright_command [:button2 :c :return_or_enter] :safari]
                     [:left_option :left_option :safari {:alone :!CSbackslash}]
                     [:right_command :right_command :safari {:alone :!CT1}]
-                    [:right_option :right_option :safari {:alone :safari-toggle_reader}]
+                    [:right_option :right_option :safari {:alone :!COk}]        ; toggle dark mode
+                    [:!Sright_command :safari-toggle_reader :safari]
                     [:!Qspacebar :!COi :safari]
                     ; vscode
                     ; toggle between toggling terminal or terminal_or_editor when pressing right_command
