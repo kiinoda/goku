@@ -265,51 +265,6 @@
                     [:h :system-force_quit_apps]
             ]
         }
-        ;; {
-        ;;     :des "MultiTouch Layer - hold finger(s) on trackpad to trigger"
-        ;;     :rules [
-        ;;         ; 1 finger resting on the trackpad
-        ;;         [:condi ["multitouch_extension_finger_count_total" 1]]
-        ;;             [:-r :safari-prev_tab :safari]
-        ;;             [:-t :safari-next_tab :safari]
-        ;;             [:-w :!Cw]
-        ;;             [:-p :!Ct]
-        ;;             [:caps_lock {:pkey :button1 :modi :left_command}]
-        ;;             [:grave_accent_and_tilde :!Cz]
-        ;;             [:-z :!Cx]
-        ;;             [:-x :!Cc]
-        ;;             [:-c :!Cv]
-        ;;             ;; [:caps_lock [[:pkey :button1][:pkey :button1]]]
-        ;;         ; 2 finger resting on the trackpad
-        ;;         [:condi ["multitouch_extension_finger_count_total" 2]]
-        ;;             [:-r :safari-hist_back :safari]
-        ;;             [:-t :safari-hist_frwd :safari]
-        ;;     ]
-        ;; }
-        ;; {
-        ;;     :des "Symbols Layer"
-        ;;     :rules [
-        ;;         [:condi :!blocked :!extend]
-        ;;             ; activate layer
-        ;;             [:##tab ["symbols_layer" 1] [:!shifted :!blocked] {:alone :tab :afterup ["symbols_layer" 0]}]
-        ;;         :symbols_layer
-        ;;             [:##caps_lock :left_control]
-        ;;             [:##a :left_shift]
-        ;;             [:##s :left_option]
-        ;;             [:##d :left_command]
-        ;;             [:##h :!Th]
-        ;;             [:##y :backquote]
-        ;;             [:##j :open_paren][:##u :close_paren]
-        ;;             [:##k :open_bracket][:##i :close_bracket]
-        ;;             [:##l :open_brace][:##o :close_brace]
-        ;;             [:##semicolon :hyphen][:##p :equal]
-        ;;             [:##n :backslash]
-        ;;             [:##m :underscore]
-        ;;             [:##period :pipe]
-        ;;             [:##comma :tilde]
-        ;;             [:##slash :plus]
-        ;;     ]
-        ;; }
         {
             :des "AppRun Layer"
             :rules [
