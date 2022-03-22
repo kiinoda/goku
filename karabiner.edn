@@ -250,6 +250,15 @@
             ]
         }
         {
+            :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+SpaceBar"
+            :rules [
+                [:!F#Pspacebar [["blocked" 0]["qwerty" 1]["layer" 1][:noti :layers "QWERTY w/ layers [Fn+Space]"]]["layer" 0]]
+                [:!F#Pspacebar [["blocked" 0]["qwerty" 1]["layer" 2][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+Space]"]]["layer" 1]]
+                [:!F#Pspacebar [["blocked" 1]["qwerty" 1]["layer" 3][:noti :layers "Karabiner Disabled [Fn+Space]"]]["layer" 2]]
+                [:!F#Pspacebar [["blocked" 0]["qwerty" 0]["layer" 0][:noti :layers ""]]["layer" 3]]
+            ]
+        }
+        {
             :des "Window Management Layer"
             :rules [
                 :wm
