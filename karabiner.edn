@@ -30,7 +30,6 @@
               end tell
               '"
         :sleep "sleep %s" ; sample placeholder
-        :set_keyboard "/Users/grn/bin/set_keyboard_layout %s"
     }
 
     :applications {
