@@ -243,14 +243,10 @@
             ]
         }
         {
-            :des "Press !Sright_shift for CapsLock, !Rleft_shift to deactivate all layers (including Colemak)"
+            :des "Toggle CapsLock w/ FN+CapsLock"
             :rules [
-                [:!R#Pleft_shift [["blocked" 1][:noti :blocked "Karabiner OFF"]] ["blocked" 0]]
-                [:!R#Pleft_shift [["blocked" 0][:noti :blocked ""]] ["blocked" 1]]
-                [:!S#Pright_shift [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] ["capslock" 0]]                  ; press both shift keys to activate caps
-                [:!S#Pright_shift [:caps_lock [:noti :caps ""]["capslock" 0]] ["capslock" 1]]                           ; press both shift keys to deactivate caps
-                [:!Fspacebar [["qwerty" 1][:noti :qwerty "QWERTY w/ layers"]] ["qwerty" 0]]
-                [:!Fspacebar [["qwerty" 0][:noti :qwerty ""]] ["qwerty" 1]]
+                [:!F#Pcaps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
+                [:!F#Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
             ]
         }
         {
