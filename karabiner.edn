@@ -314,8 +314,6 @@
                     [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
                     [:right_option :right_option [:kitty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
-                    [:!Ccomma [:!Ta :p] :kitty]
-                    [:!Cperiod [:!Ta :n] :kitty]
                     ; mailmate
                     [:right_command :right_command :mailmate {:alone :!COTd}]
                     [:right_option :right_option :mailmate {:alone :!COu}]
@@ -391,6 +389,8 @@
                     [:!Tk [:!Ta :down_arrow] :kitty]
                     [:!Ti [:!Ta :up_arrow] :kitty]
                     [:!Tl [:!Ta :right_arrow] :kitty]
+                    [:!Tcomma [:!Ta :p] :kitty]
+                    [:!Tperiod [:!Ta :n] :kitty]
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
