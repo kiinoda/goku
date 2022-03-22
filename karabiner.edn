@@ -259,6 +259,16 @@
             ]
         }
         {
+            :des "Games Layer"
+            :rules [
+                [:condi ["layer" 2]]
+                    [:##i :up_arrow]
+                    [:##k :down_arrow]
+                    [:##j :left_arrow]
+                    [:##l :right_arrow]
+            ]
+        }
+        {
             :des "Window Management Layer"
             :rules [
                 :wm
