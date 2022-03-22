@@ -443,7 +443,7 @@
         {
             :des "Colemak Layout"
             :rules [
-                [:condi :!blocked :!qwerty]
+                [:condi :!qwerty]
                     ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
                     [:##non_us_backslash :grave_accent_and_tilde]
                     [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
