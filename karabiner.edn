@@ -414,7 +414,6 @@
                     ; safari
                     [:u :!Cleft_arrow :safari]
                     [:o :!Cright_arrow :safari]
-                    [:right_command :safari-toggle_reader :safari]
                     [:right_command :!COk :safari]
                     [:comma :safari-prev_tab :safari]
                     [:period :safari-next_tab :safari]
