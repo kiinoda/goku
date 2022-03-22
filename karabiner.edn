@@ -237,8 +237,8 @@
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
                 [:!COTescape [
-                    ["blocked" 0] ["extend" 0], ["wm" 0], ["command" 0], ["mouse" 0], ["symbols" 0], ["shifted" 0],
-                    ["ctrl" 0], ["emoji" 0], ["system" 0], ["power" 0], ["apprun" 0], ["qwerty" 0], ["capslock" 0]
+                    ["blocked" 0] ["extend" 0], ["wm" 0], ["apprun" 0],
+                    ["qwerty" 0], ["capslock" 0], ["games" 0], ["layer" 0]
                 ]]
             ]
         }
