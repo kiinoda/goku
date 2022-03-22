@@ -444,13 +444,12 @@
             :des "Colemak Layout"
             :rules [
                 [:condi :!blocked :!qwerty]
-                    ; used for mod-wide on colemak and apple keyboard
+                    ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
                     [:##non_us_backslash :grave_accent_and_tilde]
-                    [:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
-                    [:##s :r][:##d :s][:##f :t][:##g :d][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##n :k][:##b :spacebar]
-                    ;; [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k]
-            ]
+                    [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
+                    [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
+                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##b :spacebar][:##n :k][:##m :m]
+                ]
         }
     ]
 }
