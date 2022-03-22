@@ -35,6 +35,7 @@
     :applications {
         ; extract from /Applications/$APP/Contents/Info.plist from 'CFBundleIdentifier' key
         :chrome [ "^com.google.Chrome$" ]
+        :discord [ "^com.hnc.Discord" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :emacs [ "^org.gnu.Emacs$" ]
         :evernote [ "^com.evernote.Evernote$" ]
@@ -303,6 +304,8 @@
                     [:!Qleft_command [:!Ql :!Qv :return_or_enter] :chrome]
                     [:!Cright_command [:button2 :c :return_or_enter] :chrome]
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
+                    ; discord
+                    [:right_command :right_command :discord {:alone :!Cu}] ; toggle user list
                     ; drafts
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
                     [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
