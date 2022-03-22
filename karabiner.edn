@@ -265,7 +265,7 @@
         {
             :des "AppRun Layer"
             :rules [
-                [:##tab ["apprun" 1] [:!symbols :!mouse :!shifted :!system :!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
+                [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
                     [:-l [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
                     [:-u [:open "Drafts"]                       nil {:afterup ["apprun" 0]}]
