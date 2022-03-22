@@ -364,6 +364,10 @@
                     ; activate window management layer while in extended layer
                     [:##tab ["wm" 1] [:!symbols :!mouse :!shifted :!system :!blocked] {:afterup ["wm" 0] :alone :tab}]
                     ; global
+                    [:!Ti :page_up]
+                    [:!Tk :page_down]
+                    [:!TSi :!Spage_up]
+                    [:!TSk :!Spage_down]
                     [:non_us_backslash [:open "Screenshot"]]
                     [:##e :hyphen]
                     [:##r :equal]
