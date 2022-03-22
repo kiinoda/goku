@@ -290,6 +290,9 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    ; parens, brackets and braces
+                    [:left_shift :left_shift nil {:alone :open_paren}]
+                    [:right_shift :right_shift nil {:alone :close_paren}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:left_command :left_command nil {:alone :!Ctab}]
@@ -356,10 +359,10 @@
                     [:non_us_backslash [:open "Screenshot"]]
                     [:##e :hyphen]
                     [:##r :equal]
-                    [:##t :open_bracket]
-                    [:##y :close_bracket]
-                    [:##v :open_paren]
-                    [:##n :close_paren]
+                    [:##t :open_brace]
+                    [:##y :close_brace]
+                    [:##v :open_bracket]
+                    [:##n :close_bracket]
                     ; reposition some keys closer
                     [:##f :return_or_enter]
                     [:##g :delete_or_backspace]
