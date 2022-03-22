@@ -283,6 +283,7 @@
                     [:equal_sign [:open "Skype"]                nil {:afterup ["apprun" 0]}]
                     [:spacebar :activate_spotlight              nil {:afterup ["apprun" 0]}]
                     [:slash :activate_1password                 nil {:afterup ["apprun" 0]}]
+                    [:return_or_enter :!Ctab]
             ]
         }
         {
