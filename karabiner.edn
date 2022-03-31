@@ -383,21 +383,6 @@
                 :extend
                     ; activate window management layer while in extended layer
                     [:##tab ["wm" 1] [:!blocked :extend] {:afterup ["wm" 0] :alone :tab}]
-                    ; global
-                    [:!Ti :page_up]
-                    [:!Tk :page_down]
-                    [:!TSi :!Spage_up]
-                    [:!TSk :!Spage_down]
-                    [:non_us_backslash [:open "Screenshot"]]
-                    [:##e :hyphen]
-                    [:##r :equal]
-                    [:##t :open_brace]
-                    [:##y :close_brace]
-                    [:##v :open_bracket]
-                    [:##n :close_bracket]
-                    ; reposition some keys closer
-                    [:##f :return_or_enter]
-                    [:##g :delete_or_backspace]
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
                     [:o :!Cright_arrow :chrome]
@@ -444,6 +429,20 @@
                     [:comma :!Tp :zoom]
                     [:period :!Tn :zoom]
                     ; global settings
+                    [:!Ti :page_up]
+                    [:!Tk :page_down]
+                    [:!TSi :!Spage_up]
+                    [:!TSk :!Spage_down]
+                    [:non_us_backslash [:open "Screenshot"]]
+                    [:##e :hyphen]
+                    [:##r :equal]
+                    [:##t :open_brace]
+                    [:##y :close_brace]
+                    [:##v :open_bracket]
+                    [:##n :close_bracket]
+                    ; reposition some keys closer
+                    [:##f :return_or_enter]
+                    [:##g :delete_or_backspace]
                     ; functions
                     [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
                     [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
