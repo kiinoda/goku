@@ -45,6 +45,7 @@
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
+        :workflowy [ "^com.workflowy.desktop" ]
         :zoom [ "^us.zoom.xos$" ]
     }
 
@@ -292,6 +293,7 @@
                     [:-h :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
                     [:-n [:open "Safari"]                       nil {:afterup ["apprun" 0]}]
                     [:-e [:open "MailMate"]                     nil {:afterup ["apprun" 0]}]
+                    [:-o [:open "WorkFlowy"]                    nil {:afterup ["apprun" 0]}]
                     [:-k [:open "Kitty"]                        nil {:afterup ["apprun" 0]}]
                     [:-m [:open "Messages"]                     nil {:afterup ["apprun" 0]}]
                     [:7 [:open "WhatsApp"]                      nil {:afterup ["apprun" 0]}]
@@ -367,6 +369,10 @@
                     [:left_option :left_option :vscode {:alone :!Cp}]        ; toggle switch to file
                     [:!Rleft_option :!Rleft_option :vscode {:alone :!CSp}]   ; toggle command palette
                     [:left_control :left_control :vscode {:alone :!Tw}]      ; select window to switch to
+                    ; workflowy
+                    [:right_command :right_command :workflowy {:alone :!Cup_arrow}]
+                    [:!Sright_command :!Sright_command :workflowy {:alone :!Cdown_arrow}]
+                    [:right_option :right_option :workflowy {:alone :!Cslash}]
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
                     [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
@@ -383,6 +389,7 @@
                 :extend
                     ; activate window management layer while in extended layer
                     [:##tab ["wm" 1] [:!blocked :extend] {:afterup ["wm" 0] :alone :tab}]
+                    ; per-app key definitions
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
                     [:o :!Cright_arrow :chrome]
@@ -425,6 +432,14 @@
                     ; vscode
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
+                    ; workflowy
+                    [:!Ok :!CSdown_arrow :workflowy]
+                    [:!Oi :!CSup_arrow :workflowy]
+                    [:comma :!Ccomma :workflowy]
+                    [:period :!Cperiod :workflowy]
+                    [:!Ti :!CS9 :workflowy]
+                    [:!Tk :!CS0 :workflowy]
+                    [:return_or_enter :!Creturn_or_enter :workflowy]
                     ; zoom
                     [:comma :!Tp :zoom]
                     [:period :!Tn :zoom]
