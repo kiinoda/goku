@@ -55,6 +55,7 @@
         :firefox [ "^org.mozilla.firefox$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
         :mailmate [ "^com.freron.MailMate$"]
+        :obsidian [ "^md.obsidian" ]
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
@@ -348,6 +349,8 @@
                     ; mailmate
                     [:right_command :right_command :mailmate {:alone :!COTd}]
                     [:right_option :right_option :mailmate {:alone :!COu}]
+                    ; obsidian
+                    [:right_command :right_command :obsidian {:alone :!Ct}]
                     ; safari
                     [:!Qleft_command [:!Cl :!Cv :return_or_enter] :safari]
                     [:!Cright_command [:button2 :c :return_or_enter] :safari]
