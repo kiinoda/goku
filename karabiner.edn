@@ -289,7 +289,7 @@
                 [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
                     [:-l [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
-                    [:-u [:open "Drafts"]                       nil {:afterup ["apprun" 0]}]
+                    [:-u [:open "Obsidian"]                     nil {:afterup ["apprun" 0]}]
                     [:-y [:open "Google Chrome"]                nil {:afterup ["apprun" 0]}]
                     [:-h :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
                     [:-n [:open "Safari"]                       nil {:afterup ["apprun" 0]}]
