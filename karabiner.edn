@@ -1,6 +1,6 @@
 {
     :profiles {
-        :Default {
+        :goku {
             :default true
             :sim      200 ; keys need to be pressed within this threshold to be considered simultaneous
             :simlayer-threshold 250 ; ???????
