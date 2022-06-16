@@ -445,8 +445,14 @@
                     [:!Tcomma :!Oup_arrow [:safari ["in-gdoc" 1]]]
                     [:!Tperiod :!Odown_arrow [:safari ["in-gdoc" 1]]]
                     ; vscode
+                    [:!Tj :!COleft_arrow :vscode]
+                    [:!Tk :!COdown_arrow :vscode]
+                    [:!Ti :!COup_arrow :vscode]
+                    [:!Tl :!COright_arrow :vscode]
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
+                    [:!Tcomma :!COTleft_arrow :vscode]
+                    [:!Tperiod :!COTright_arrow :vscode]                    
                     ; workflowy
                     [:!Ok :!CSdown_arrow :workflowy]
                     [:!Oi :!CSup_arrow :workflowy]
