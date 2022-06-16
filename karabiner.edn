@@ -283,19 +283,6 @@
             ]
         }
         {
-            :des "Window Management Layer"
-            :rules [
-                :wm
-                    ; window positioning using rectangle 
-                    [[:j :k :l] :window_full_size]
-                    [:j :window_resize_and_left]
-                    [:k :window_resize_and_center]
-                    [:l :window_resize_and_right]
-                    [:semicolon :window_snapshot]
-                    [:h :system-force_quit_apps]
-            ]
-        }
-        {
             :des "AppRun Layer"
             :rules [
                 [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
@@ -400,8 +387,13 @@
             :rules [
                 [:##spacebar [["extend" 1][:is_in_gdoc]] [:!blocked :!apprun] {:afterup [["extend" 0]["in-gdoc" 0]] :alone :spacebar}]
                 :extend
-                    ; activate window management layer while in extended layer
-                    [:##tab ["wm" 1] [:!blocked :extend] {:afterup ["wm" 0] :alone :tab}]
+                    ; window management
+                    [[:q :w :e] :window_full_size]
+                    [:q :window_resize_and_left]
+                    [:w :window_resize_and_center]
+                    [:e :window_resize_and_right]
+                    [:r :window_full_size]
+                    [:t :!CTf]
                     ; per-app key definitions
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
