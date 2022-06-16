@@ -428,8 +428,8 @@
                     [:!Tk [:!Ta :down_arrow] :kitty]
                     [:!Ti [:!Ta :up_arrow] :kitty]
                     [:!Tl [:!Ta :right_arrow] :kitty]
-                    [:!Tcomma [:!Ta :p] :kitty]
-                    [:!Tperiod [:!Ta :n] :kitty]
+                    [:!Tcomma [:!Ta :!Tp] :kitty]
+                    [:!Tperiod [:!Ta :!Tn] :kitty]
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
