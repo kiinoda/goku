@@ -414,6 +414,8 @@
                     ; drafts
                     [:u :drafts-beginning_of_line :drafts]
                     [:o :drafts-end_of_line :drafts]
+                    [:comma :!TStab :drafts]
+                    [:period :!Ttab :drafts]
                     ; emacs
                     [:u :!Cleft_arrow :emacs]
                     [:o :!Cright_arrow :emacs]
