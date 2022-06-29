@@ -288,13 +288,12 @@
             :rules [
                 [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
+                    [:-j :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
                     [:-l [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
                     [:-u [:open "Obsidian"]                     nil {:afterup ["apprun" 0]}]
-                    [:-y [:open "Google Chrome"]                nil {:afterup ["apprun" 0]}]
-                    [:-h :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
+                    [:-h [:open "Google Chrome"]                nil {:afterup ["apprun" 0]}]
                     [:-n [:open "Safari"]                       nil {:afterup ["apprun" 0]}]
                     [:-e [:open "MailMate"]                     nil {:afterup ["apprun" 0]}]
-                    [:-o [:open "WorkFlowy"]                    nil {:afterup ["apprun" 0]}]
                     [:-k [:open "Kitty"]                        nil {:afterup ["apprun" 0]}]
                     [:-m [:open "Messages"]                     nil {:afterup ["apprun" 0]}]
                     [:7 [:open "WhatsApp"]                      nil {:afterup ["apprun" 0]}]
@@ -303,9 +302,9 @@
                     [:0 [:open "zoom.us"]                       nil {:afterup ["apprun" 0]}]
                     [:hyphen [:open "Discord"]                  nil {:afterup ["apprun" 0]}]
                     [:equal_sign [:open "Skype"]                nil {:afterup ["apprun" 0]}]
+                    [:-o :activate_spotlight                    nil {:afterup ["apprun" 0]}]
                     [:spacebar :activate_spotlight              nil {:afterup ["apprun" 0]}]
-                    [:slash :activate_1password                 nil {:afterup ["apprun" 0]}]
-                    [:return_or_enter :!Ctab]
+                    [:return_or_enter :activate_1password       nil {:afterup ["apprun" 0]}]
             ]
         }
         {
