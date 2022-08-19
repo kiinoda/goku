@@ -450,8 +450,9 @@
                     [:!Tl :!COright_arrow :vscode]
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
+                    [:##right_command :!COm :vscode]       ; maximize panel
                     [:!Tcomma :!COTleft_arrow :vscode]
-                    [:!Tperiod :!COTright_arrow :vscode]                    
+                    [:!Tperiod :!COTright_arrow :vscode]
                     ; workflowy
                     [:!Ok :!CSdown_arrow :workflowy]
                     [:!Oi :!CSup_arrow :workflowy]
