@@ -42,6 +42,7 @@
                     do shell script \"/Users/grn/bin/in-gdoc.sh\"
                 end if
             end if'"
+        :open_workspace_dir "open ~/Workspaces"
         :sleep "sleep %s" ; sample placeholder
     }
 
@@ -288,6 +289,7 @@
             :rules [
                 [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
+                    [:x [:open_workspace_dir]                   nil {:afterup ["apprun" 0]}]
                     [:-j :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
                     [:-l [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
                     [:-u [:open "Obsidian"]                     nil {:afterup ["apprun" 0]}]
