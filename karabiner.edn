@@ -60,6 +60,7 @@
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
         :vscode [ "^com.microsoft.VSCode$" ]
+        :vscodium [ "^com.vscodium$" ]
         :workflowy [ "^com.workflowy.desktop" ]
         :zoom [ "^us.zoom.xos$" ]
     }
@@ -374,6 +375,19 @@
                     [:left_option :left_option :vscode {:alone :!Cp}]        ; toggle switch to file
                     [:!Rleft_option :!Rleft_option :vscode {:alone :!CSp}]   ; toggle command palette
                     [:left_control :left_control :vscode {:alone :!Tw}]      ; select window to switch to
+                    ; vscodium
+                    ; toggle between toggling terminal or terminal_or_editor when pressing right_command
+                    [:!Qspacebar ["vscodium_terminal" 1] [:vscodium :!vscodium_terminal]]
+                    [:!Qspacebar ["vscodium_terminal" 0] [:vscodium :vscodium_terminal]]
+                    ; based on the variable above, toggle based on preference
+                    [:right_command :right_command [:vscodium :vscodium_terminal] {:alone :toggle_terminal_or_editor}]
+                    [:right_command :right_command [:vscodium :!vscodium_terminal] {:alone :toggle_terminal}]
+                    [:!Creturn_or_enter :!TOn :vscodium]                       ; run code
+                    [:right_option :right_option :vscodium {:alone :!Cb}]      ; toggle side bar
+                    [:!Sright_option :!Sright_option :vscodium {:alone :!CSj}] ; toggle side panel
+                    [:left_option :left_option :vscodium {:alone :!Cp}]        ; toggle switch to file
+                    [:!Rleft_option :!Rleft_option :vscodium {:alone :!CSp}]   ; toggle command palette
+                    [:left_control :left_control :vscodium {:alone :!Tw}]      ; select window to switch to
                     ; workflowy
                     [:right_command :right_command :workflowy {:alone :!Cup_arrow}]
                     [:!Sright_command :!Sright_command :workflowy {:alone :!Cdown_arrow}]
@@ -453,6 +467,16 @@
                     [:##right_command :!COm :vscode]       ; maximize panel
                     [:!Tcomma :!COTleft_arrow :vscode]
                     [:!Tperiod :!COTright_arrow :vscode]
+                    ; vscodium
+                    [:!Tj :!COleft_arrow :vscodium]
+                    [:!Tk :!COdown_arrow :vscodium]
+                    [:!Ti :!COup_arrow :vscodium]
+                    [:!Tl :!COright_arrow :vscodium]
+                    [:comma :focus_editor_left :vscodium]
+                    [:period :focus_editor_right :vscodium]
+                    [:##right_command :!COm :vscodium]       ; maximize panel
+                    [:!Tcomma :!COTleft_arrow :vscodium]
+                    [:!Tperiod :!COTright_arrow :vscodium]
                     ; workflowy
                     [:!Ok :!CSdown_arrow :workflowy]
                     [:!Oi :!CSup_arrow :workflowy]
