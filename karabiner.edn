@@ -398,7 +398,7 @@
                     [:w :window_resize_and_center]
                     [:e :window_resize_and_right]
                     [:r :window_full_size]
-                    [:t :!CTf]
+                    [:tab :!CTf]
                     ; per-app key definitions
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
