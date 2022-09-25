@@ -246,7 +246,7 @@
     }
 
     :simlayers {
-        :apprun {:key :a}
+        :apprun {:key :grave_accent_and_tilde}
     }
 
     :main [
