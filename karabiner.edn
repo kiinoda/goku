@@ -245,7 +245,7 @@
     }
 
     :simlayers {
-        :apprun {:key :grave_accent_and_tilde}
+        :apprun {:key :a}
     }
 
     :main [
@@ -287,9 +287,9 @@
         {
             :des "AppRun Layer"
             :rules [
-                [:##tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
+                [:tab ["apprun" 1] [:!blocked :!extend] {:afterup ["apprun" 0] :alone :tab}]
                 :apprun
-                    [:x [:open_workspace_dir]                   nil {:afterup ["apprun" 0]}]
+                    [:-d [:open_workspace_dir]                  nil {:afterup ["apprun" 0]}]
                     [:-j :system-force_quit_apps                nil {:afterup ["apprun" 0]}]
                     [:-l [:open "Visual Studio Code"]           nil {:afterup ["apprun" 0]}]
                     [:-u [:open "Obsidian"]                     nil {:afterup ["apprun" 0]}]
