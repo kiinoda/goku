@@ -53,12 +53,14 @@
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :emacs [ "^org.gnu.Emacs$" ]
         :evernote [ "^com.evernote.Evernote$" ]
+        :finder [ "^com.apple.finder" ]
         :firefox [ "^org.mozilla.firefox$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
         :mailmate [ "^com.freron.MailMate$"]
         :obsidian [ "^md.obsidian" ]
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
+        :slack [ "^com.tinyspeck.slackmacgap" ]
         :vscode [ "^com.microsoft.VSCode$" ]
         :vscodium [ "^com.vscodium$" ]
         :workflowy [ "^com.workflowy.desktop" ]
@@ -335,6 +337,8 @@
                     [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
                     [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
                     [:right_option :right_option :drafts {:alone :!C0}]             ; toggle actions bar
+                    ; finder
+                    [:right_command :right_command :finder {:alone :!CTs}]
                     ; kitty
                     [:right_command :right_command :kitty {:alone :kitty-tmux_prefix}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
@@ -362,6 +366,8 @@
                     [:right_option :right_option :safari {:alone :!COk}]        ; toggle dark mode
                     [:!Sright_command :safari-toggle_reader :safari]
                     [:!Qspacebar :!COi :safari]
+                    ; slack
+                    [:right_command :right_command :slack {:alone :!CSd}]
                     ; vscode
                     ; toggle between toggling terminal or terminal_or_editor when pressing right_command
                     [:!Qspacebar ["vscode_terminal" 1] [:vscode :!vscode_terminal]]
