@@ -103,11 +103,11 @@
         :-i {:key :l}
         :-o {:key :semicolon}
 
-        :-z {:key :z}
-        :-x {:key :x}
-        :-c {:key :c}
-        :-v {:key :v}
-        :-b {:key :b}
+        :-z {:key :tilde}
+        :-x {:key :z}
+        :-c {:key :x}
+        :-v {:key :c}
+        :-b {:key :v}
         :-k {:key :n}
         :-m {:key :m}
     }
@@ -136,11 +136,11 @@
         :-i {:key :l}
         :-o {:key :semicolon}
 
-        :-z {:key :z}
-        :-x {:key :x}
-        :-c {:key :c}
-        :-v {:key :v}
-        :-b {:key :b}
+        :-z {:key :tilde}
+        :-x {:key :z}
+        :-c {:key :x}
+        :-v {:key :c}
+        :-b {:key :v}
         :-k {:key :n}
         :-m {:key :m}
     
