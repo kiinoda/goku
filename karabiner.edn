@@ -557,6 +557,7 @@
                   [:-w           [:open "WhatsApp"]        nil {:afterup ["chording" 0]}]
                   [:-g           [:open "Signal"]          nil {:afterup ["chording" 0]}]
                   [:-l           [:open "Slack"]           nil {:afterup ["chording" 0]}]
+                  [:-y           [:open "Skype"]           nil {:afterup ["chording" 0]}]
                   [:-t           [:open "Transmission"]    nil {:afterup ["chording" 0]}]
                   [:-e           [:open "MailMate"]        nil {:afterup ["chording" 0]}]
                   [:-o           [:activate_spotlight]     nil {:afterup ["chording" 0]}]
