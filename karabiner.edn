@@ -17,7 +17,7 @@
     :templates {
         :open "osascript -e 'tell application \"%s\" to activate'"
         :go_to_url "osascript -e 'open location \"%s\"'"
-        :zcode "/Users/grn/bin/gui.py"
+        :zcode "/Users/grn/bin/gui.py &"
         ; send keystrokes
         :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\"'"
         ; send keystrokes and press enter
