@@ -17,6 +17,7 @@
     :templates {
         :open "osascript -e 'tell application \"%s\" to activate'"
         :go_to_url "osascript -e 'open location \"%s\"'"
+        :zcode "/Users/grn/bin/gui.py"
         ; send keystrokes
         :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\"'"
         ; send keystrokes and press enter
@@ -548,7 +549,7 @@
                 [:right_shift :left_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
                 ; set up chording layers
                 [:left_shift  ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Safari"]["chording" 0]]} :held [:open "Kitty"]}] ; magic - switch to safari or open apps
-                [:right_shift ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Visual Studio Code"]["chording" 0]]} :held [:open "Obsidian"]}] ; switch to vscode or open apps
+                [:right_shift ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Visual Studio Code"]["chording" 0]]} :held [:zcode]}] ; switch to vscode or open apps
                 ; chording==1 -> open apps
                 [:condi ["chording" 1]]
                   [:1            [:activate_1password]     nil {:afterup ["chording" 0]}]
@@ -559,7 +560,8 @@
                   [:-g           [:open "Signal"]          nil {:afterup ["chording" 0]}]
                   [:-l           [:open "Slack"]           nil {:afterup ["chording" 0]}]
                   [:-y           [:open "Skype"]           nil {:afterup ["chording" 0]}]
-                  [:-t           [:open "Transmission"]    nil {:afterup ["chording" 0]}]
+                  [:-t           [:open "Telegram"]        nil {:afterup ["chording" 0]}]
+                  [:-n           [:open "Transmission"]    nil {:afterup ["chording" 0]}]
                   [:-e           [:open "MailMate"]        nil {:afterup ["chording" 0]}]
                   [:-o           [:activate_spotlight]     nil {:afterup ["chording" 0]}]
                   [:-z           [:open "zoom.us"]         nil {:afterup ["chording" 0]}]
