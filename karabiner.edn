@@ -385,10 +385,10 @@
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
                     [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
-                    [:!Qright_option :!CSa :zoom]                           ; toggle microphone
-                    [:!Qspacebar :!CSv :zoom]                               ; toggle video
+                    [:left_option :left_option :zoom {:alone :!CSa}]        ; toggle microphone
+                    [:!Qleft_option :!CSv :zoom]                            ; toggle video
                     [:!Qleft_command :!CSs :zoom]                           ; toggle sharing
-                    [:!Qleft_option :!CSh :zoom]                            ; toggle chat
+                    [:!Qright_option :!CSh :zoom]                           ; toggle chat
             ]
         }
         {
