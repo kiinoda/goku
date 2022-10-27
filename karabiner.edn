@@ -493,6 +493,10 @@
                     [:comma :!Tp :zoom]
                     [:period :!Tn :zoom]
                     ; global settings
+                    [:!Tj :home]
+                    [:!Tl :end]
+                    [:!TSj :!Shome]
+                    [:!TSl :!Send]
                     [:!Ti :page_up]
                     [:!Tk :page_down]
                     [:!TSi :!Spage_up]
