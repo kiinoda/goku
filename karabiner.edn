@@ -470,20 +470,12 @@
                     [:!Tcomma :!Oup_arrow [:safari ["in-gdoc" 1]]]
                     [:!Tperiod :!Odown_arrow [:safari ["in-gdoc" 1]]]
                     ; vscode
-                    [:!Tj :!COleft_arrow :vscode]
-                    [:!Tk :!COdown_arrow :vscode]
-                    [:!Ti :!COup_arrow :vscode]
-                    [:!Tl :!COright_arrow :vscode]
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
                     [:##right_command :!COm :vscode]       ; maximize panel
                     [:!Tcomma :!COTleft_arrow :vscode]
                     [:!Tperiod :!COTright_arrow :vscode]
                     ; vscodium
-                    [:!Tj :!COleft_arrow :vscodium]
-                    [:!Tk :!COdown_arrow :vscodium]
-                    [:!Ti :!COup_arrow :vscodium]
-                    [:!Tl :!COright_arrow :vscodium]
                     [:comma :focus_editor_left :vscodium]
                     [:period :focus_editor_right :vscodium]
                     [:##right_command :!COm :vscodium]       ; maximize panel
