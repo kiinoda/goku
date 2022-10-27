@@ -301,9 +301,6 @@
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:left_command :left_command nil {:alone :!Ctab}]
-                    [:!Cspacebar :!!spacebar]
-                    [:!Cright_command :activate_1password]
-                    ;; [:fn :fn nil {:alone :!Ctab :afterup :left_option}]
                     [:f5 :!Fh]                                                 ; toggle show desktop
                     [:f6 :activate_hazeover]                                   ; activate hazeover
                     [:!Th :delete_or_backspace]
