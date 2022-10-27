@@ -396,13 +396,17 @@
             :rules [
                 [:##spacebar [["extend" 1][:is_in_gdoc]] :!blocked {:afterup [["extend" 0]["in-gdoc" 0]] :alone :spacebar}]
                 :extend
-                    ; window management
-                    [[:q :w :e] :window_full_size]
-                    [:q :window_resize_and_left]
-                    [:w :window_resize_and_center]
-                    [:e :window_resize_and_right]
-                    [:r :window_full_size]
-                    [:tab :!CTf]
+                    ;~* system wide shortcuts for top utilities
+                    [:escape            nil nil {:alone :escape                      :held :system-force_quit_apps}]
+                    [:non_us_backslash  nil nil {:alone :!Fh                         :held :!CSreturn_or_enter}]
+                    [:backslash         nil nil {:alone :activate_spotlight          :held :activate_1password}]
+                    ;~* power apps & window positioning - 1 hand switching
+                    [:-q                nil nil {:alone [:open "Safari"]             :held :window_resize_and_left}]
+                    [:-w                nil nil {:alone [:open "Visual Studio Code"] :held :window_resize_and_center}]
+                    [:-f                nil nil {:alone [:open "Kitty"]              :held :window_resize_and_right}]
+                    [:-p                nil nil {:alone [:open "Obsidian"]           :held :window_full_size}]
+                    [:-g                nil nil {:alone [:open "Mailmate"]           :held :!CTf}]
+                    [:-j                nil nil {:alone [:open_social]               :held :activate_hazeover}]
                     ; per-app key definitions
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
