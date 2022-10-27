@@ -15,6 +15,7 @@
     }
 
     :templates {
+        :open_social "/Users/grn/bin/open_social %s"
         :open "osascript -e 'tell application \"%s\" to activate'"
         :go_to_url "osascript -e 'open location \"%s\"'"
         :zcode "/Users/grn/bin/gui.py &"
