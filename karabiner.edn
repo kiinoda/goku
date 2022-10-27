@@ -407,6 +407,19 @@
                     [:-p                nil nil {:alone [:open "Obsidian"]           :held :window_full_size}]
                     [:-g                nil nil {:alone [:open "Mailmate"]           :held :!CTf}]
                     [:-j                nil nil {:alone [:open_social]               :held :activate_hazeover}]
+                    ;~* function keys & social apps
+                    [:##1                 nil nil {:alone :f1                          :held [:open "Transmission"]}]
+                    [:##2                 nil nil {:alone :f2                          :held [:open "Google Chrome"]}]
+                    [:##3                 nil nil {:alone :f3                          :held [:open "Messages"]}]
+                    [:##4                 nil nil {:alone :f4                          :held :!CS4}]
+                    [:##5                 nil nil {:alone :f5                          :held :!CS5}]
+                    [:##6                 nil nil {:alone :f6                          :held [:open_social "Slack"]}]
+                    [:##7                 nil nil {:alone :f7                          :held [:open_social "WhatsApp"]}]
+                    [:##8                 nil nil {:alone :f8                          :held [:open_social "Telegram"]}]
+                    [:##9                 nil nil {:alone :f9                          :held [:open_social "Signal"]}]
+                    [:##0                 nil nil {:alone :f10                         :held [:open_social "zoom.us"]}]
+                    [:##hyphen            nil nil {:alone :f11                         :held [:open_social "Discord"]}]
+                    [:##equal_sign        nil nil {:alone :f12                         :held [:open_social "Skype"]}]
                     ; per-app key definitions
                     ; chrome
                     [:u :!Cleft_arrow :chrome]
@@ -487,19 +500,9 @@
                     [:!Tk :page_down]
                     [:!TSi :!Spage_up]
                     [:!TSk :!Spage_down]
-                    [:non_us_backslash [:open "Screenshot"]]
-                    [:##e :hyphen]
-                    [:##r :equal]
-                    [:##t :open_brace]
-                    [:##y :close_brace]
-                    [:##v :open_bracket]
-                    [:##n :close_bracket]
                     ; reposition some keys closer
                     [:##f :return_or_enter]
                     [:##g :delete_or_backspace]
-                    ; functions
-                    [:##1 :f1][:##2 :f2][:##3 :f3][:##4 :f4][:##5 :f5][:##6 :f6]
-                    [:##7 :f7][:##8 :f8][:##9 :f9][:##0 :f10][:##hyphen :f11][:##equal_sign :f12]
                     ; modifiers
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:##a :left_shift]
