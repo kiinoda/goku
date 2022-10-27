@@ -45,7 +45,6 @@
                     do shell script \"/Users/grn/bin/in-gdoc.sh\"
                 end if
             end if'"
-        :open_workspace_dir "open ~/Workspaces"
         :sleep "sleep %s" ; sample placeholder
     }
 
@@ -533,7 +532,7 @@
             :des "Chording Layers"
             :rules [
                 [:left_shift :left_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
-                [:right_shift :left_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
+                [:right_shift :right_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
                 ; set up chording layers
                 [:left_shift  ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Safari"]["chording" 0]]} :held [:open "Kitty"]}] ; magic - switch to safari or open apps
                 [:right_shift ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Visual Studio Code"]["chording" 0]]} :held [:zcode]}] ; switch to vscode or open apps
@@ -560,7 +559,6 @@
                   [:any_consumer :vk_none                  nil {:afterup ["chording" 0]}]
                 ; chording==2 -> go to URLs
                 [:condi ["chording" 2]]
-                  [:-w           [:open_workspace_dir]                      nil {:afterup ["chording" 0]}]
                   [:-g           [:go_to_url "https://www.github.com"]      nil {:afterup ["chording" 0]}]
                   [:-f           [:go_to_url "file:///Users/grn"]           nil {:afterup ["chording" 0]}]
                   [:-d           [:go_to_url "file:///Users/grn/Downloads"] nil {:afterup ["chording" 0]}]
