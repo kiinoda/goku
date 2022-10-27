@@ -6,7 +6,7 @@
             :simlayer-threshold 250 ; ???????
             :alone    150 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
             :delay    200 ; time after which the key press is count delayed
-            :held     250 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
+            :held     350 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
         }
     }
 
