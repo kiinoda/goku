@@ -51,6 +51,7 @@
 
     :applications {
         ; extract from /Applications/$APP/Contents/Info.plist from 'CFBundleIdentifier' key
+        :arc [ "^company.thebrowser.Browser" ]
         :chrome [ "^com.google.Chrome$" ]
         :discord [ "^com.hnc.Discord" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
@@ -331,6 +332,8 @@
                     [:f6 :activate_hazeover]                                   ; activate hazeover
                     [:!Th :delete_or_backspace]
                     [:!Sspacebar :spacebar]
+                    ; arc
+                    [:right_command :right_command :arc {:alone :!Cs}]
                     ; chrome
                     [:!Qleft_command [:!Ql :!Qv :return_or_enter] :chrome]
                     [:!Cright_command [:button2 :c :return_or_enter] :chrome]
