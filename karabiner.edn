@@ -529,6 +529,47 @@
             ]
         }
         {
+            :des "Chording Layers"
+            :rules [
+                [:left_shift :left_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
+                [:right_shift :right_shift [:!chording :!blocked] {:alone ["chording" 1] :delayed {:invoked ["chording" 0] :cancelled ["chording" 0]}}]
+                ; set up chording layers
+                [:left_shift  ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Safari"]["chording" 0]]} :held [:open "Kitty"]}] ; magic - switch to safari or open apps
+                [:right_shift ["chording" 2] ["chording" 1] {:delayed {:invoked [[:open "Visual Studio Code"]["chording" 0]]} :held [:zcode]}] ; switch to vscode or open apps
+                ; chording==1 -> open apps
+                [:condi ["chording" 1]]
+                  [:1            [:activate_1password]     nil {:afterup ["chording" 0]}]
+                  [:4            :!CS4                     nil {:afterup ["chording" 0]}]
+                  [:5            :!CS5                     nil {:afterup ["chording" 0]}]
+                  [:-q           [:system-force_quit_apps] nil {:afterup ["chording" 0]}]
+                  [:-w           [:open "WhatsApp"]        nil {:afterup ["chording" 0]}]
+                  [:-g           [:open "Signal"]          nil {:afterup ["chording" 0]}]
+                  [:-l           [:open "Slack"]           nil {:afterup ["chording" 0]}]
+                  [:-y           [:open "Skype"]           nil {:afterup ["chording" 0]}]
+                  [:-t           [:open "Telegram"]        nil {:afterup ["chording" 0]}]
+                  [:-n           [:open "Transmission"]    nil {:afterup ["chording" 0]}]
+                  [:-e           [:open "MailMate"]        nil {:afterup ["chording" 0]}]
+                  [:-o           [:activate_spotlight]     nil {:afterup ["chording" 0]}]
+                  [:-z           [:open "zoom.us"]         nil {:afterup ["chording" 0]}]
+                  [:-k           [:open "Kitty"]           nil {:afterup ["chording" 0]}]
+                  [:-m           [:open "Messages"]        nil {:afterup ["chording" 0]}]
+                  [:comma        :left_desktop             nil {:afterup ["chording" 0]}]
+                  [:period       :right_desktop            nil {:afterup ["chording" 0]}]
+                  [:any_key      :vk_none                  nil {:afterup ["chording" 0]}]
+                  [:any_consumer :vk_none                  nil {:afterup ["chording" 0]}]
+                ; chording==2 -> go to URLs
+                [:condi ["chording" 2]]
+                  [:-g           [:go_to_url "https://www.github.com"]      nil {:afterup ["chording" 0]}]
+                  [:-f           [:go_to_url "file:///Users/grn"]           nil {:afterup ["chording" 0]}]
+                  [:-d           [:go_to_url "file:///Users/grn/Downloads"] nil {:afterup ["chording" 0]}]
+                  [:-h           [:go_to_url "file:///Users/grn/Desktop"]   nil {:afterup ["chording" 0]}]
+                  [:-c           [:go_to_url "file:///Users/grn/code"]      nil {:afterup ["chording" 0]}]
+                  [:slash        [:go_to_url "https://www.google.com"]      nil {:afterup ["chording" 0]}]
+                  [:any_key      :vk_none                                   nil {:afterup ["chording" 0]}]
+                  [:any_consumer :vk_none                                   nil {:afterup ["chording" 0]}]
+            ]
+        }
+        {
             :des "Colemak Layout"
             :rules [
                 ; colemak
