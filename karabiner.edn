@@ -453,6 +453,11 @@
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
+                    ; messages
+                    [:!Ti :!TStab :messages]
+                    [:!Tk :!Ttab :messages]
+                    [:comma :!TStab :messages]
+                    [:period :!Ttab :messages]
                     ; opera
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
