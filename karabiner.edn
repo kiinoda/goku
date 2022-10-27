@@ -525,9 +525,9 @@
                     [:##quote :insert]
                     [:##h :delete_or_backspace]
                     [:##semicolon :delete_forward]
-                    ; desktop navigation via m and slash
-                    [:m :left_desktop]
-                    [:slash :right_desktop]
+                    ; spaces navigation
+                    [:!Scomma :left_desktop]
+                    [:!Speriod  :right_desktop]
             ]
         }
         {
