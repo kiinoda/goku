@@ -61,6 +61,7 @@
         :firefox [ "^org.mozilla.firefox$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
         :mailmate [ "^com.freron.MailMate$"]
+        :messages [ "^com.apple.MobileSMS" ]
         :obsidian [ "^md.obsidian" ]
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
