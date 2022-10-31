@@ -297,6 +297,8 @@
             :rules [
                 [:condi :!blocked :!extend]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
+                    [:!Ocomma :!Ccomma]
+                    [:!Ccomma :!COTcomma]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:left_command :left_command nil {:alone :!Ctab}]
