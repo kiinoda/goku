@@ -297,6 +297,7 @@
             :rules [
                 [:condi :!blocked :!extend]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
+                    [:!Cspacebar nil nil {:alone :activate_spotlight :held :activate_1password}]
                     [:!Ocomma :!Ccomma]
                     [:!Ccomma :!COTcomma]
                     ; global
