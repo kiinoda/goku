@@ -65,6 +65,7 @@
         :opera [ "^com.operasoftware.Opera$" ]
         :safari [ "^com.apple.Safari$" ]
         :slack [ "^com.tinyspeck.slackmacgap" ]
+        :teams [ "^com.microsoft.teams" ]
         :vscode [ "^com.microsoft.VSCode$" ]
         :vscodium [ "^com.vscodium$" ]
         :workflowy [ "^com.workflowy.desktop" ]
@@ -361,6 +362,8 @@
                     [:!Qspacebar :!COi :safari]
                     ; slack
                     [:right_command :right_command :slack {:alone :!CSd}]
+                    ; teams
+                    [:left_option :left_option :teams {:alone :!CSm}]        ; toggle microphone
                     ; vscode
                     ; toggle between toggling terminal or terminal_or_editor when pressing right_command
                     [:!Qspacebar ["vscode_terminal" 1] [:vscode :!vscode_terminal]]
