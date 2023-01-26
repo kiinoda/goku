@@ -570,8 +570,9 @@
                     [:##h :delete_or_backspace]
                     [:##semicolon :delete_forward]
                     ; spaces navigation
-                    [:!Scomma :left_desktop]
-                    [:!Speriod  :right_desktop]
+                    [:n :!!left_arrow]
+                    [:m :!!left_arrow]
+                    [:slash :!!right_arrow]
             ]
         }
         {
