@@ -277,12 +277,12 @@
             ]
         }
         {
-            :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+SpaceBar"
+            :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_control [["blocked" 0]["qwerty" 1]["layer" 1]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 0]]
-                [:!F#Pleft_control [["blocked" 1]["qwerty" 1]["layer" 2]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 1]]
-                [:!F#Pleft_control [["blocked" 1]["qwerty" 1]["layer" 3]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 2]]
-                [:!F#Pleft_control [["blocked" 0]["qwerty" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 3]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["layer" 1]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["layer" 2]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["layer" 3]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 2]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 3]]
             ]
         }
         {
