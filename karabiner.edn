@@ -378,12 +378,14 @@
                     ; teams
                     [:left_option :left_option :teams {:alone :!CSm}]        ; toggle microphone
                     ; vscode
-                    ; toggle between toggling terminal or terminal_or_editor when pressing right_command
-                    [:!Qspacebar ["vscode_terminal" 1] [:vscode :!vscode_terminal]]
-                    [:!Qspacebar ["vscode_terminal" 0] [:vscode :vscode_terminal]]
-                    ; based on the variable above, toggle based on preference
-                    [:right_command :right_command [:vscode :vscode_terminal] {:alone :toggle_terminal_or_editor}]
-                    [:right_command :right_command [:vscode :!vscode_terminal] {:alone :toggle_terminal}]
+                    ; rotate between showing/hiding terminal, switching between them visible and maximized terminal
+                    [:!Qspacebar ["vscode_terminal" 1] [:vscode ["vscode_terminal" 0]]]
+                    [:!Qspacebar ["vscode_terminal" 2] [:vscode ["vscode_terminal" 1]]]
+                    [:!Qspacebar ["vscode_terminal" 0] [:vscode ["vscode_terminal" 2]]]
+                    ; based on the variable above, work with terminal based on preference
+                    [:right_command :right_command [:vscode ["vscode_terminal" 0]] {:alone :toggle_terminal_or_editor}]
+                    [:right_command :right_command [:vscode ["vscode_terminal" 1]] {:alone :toggle_terminal}]
+                    [:right_command :right_command [:vscode ["vscode_terminal" 2]] {:alone [:!COm :toggle_terminal]}]
                     [:!Creturn_or_enter :!TOn :vscode]                       ; run code
                     [:right_option :right_option :vscode {:alone :!Cb}]      ; toggle side bar
                     [:!Sright_option :!Sright_option :vscode {:alone :!CSj}] ; toggle side panel
