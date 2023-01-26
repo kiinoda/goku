@@ -451,18 +451,22 @@
                     ; firefox
                     [:right_command :!Tperiod :firefox]
                     ; kitty
-                    [:comma :kitty-prev_tab :kitty]
-                    [:period :kitty-next_tab :kitty]
-                    [:u :!Ta :kitty]
+                    [:!Tcomma :kitty-prev_tab :kitty]
+                    [:!Tperiod :kitty-next_tab :kitty]
+                    [:u [:!Ta :a] :kitty]
                     [:o :!Te :kitty]
-                    [:!Oj :!Ob :kitty]              ; jump a word left
-                    [:!Ol :!Of :kitty]              ; jump a word right
-                    [:!Tj [:!Ta :left_arrow] :kitty]
-                    [:!Tk [:!Ta :down_arrow] :kitty]
-                    [:!Ti [:!Ta :up_arrow] :kitty]
-                    [:!Tl [:!Ta :right_arrow] :kitty]
-                    [:!Tcomma [:!Ta :!Tp] :kitty]
-                    [:!Tperiod [:!Ta :!Tn] :kitty]
+                    [:!Cj [:!Ta :left_arrow] :kitty]
+                    [:!Ck [:!Ta :down_arrow] :kitty]
+                    [:!Ci [:!Ta :up_arrow] :kitty]
+                    [:!Cl [:!Ta :right_arrow] :kitty]
+                    [:!Oj :!Ob :kitty]
+                    [:!Ol :!Of :kitty]
+                    [:!Tj [:!Tw :left_arrow] :kitty]
+                    [:!Tk [:!Tw :down_arrow] :kitty]
+                    [:!Ti [:!Tw :up_arrow] :kitty]
+                    [:!Tl [:!Tw :right_arrow] :kitty]
+                    [:comma [:!Ta :p] :kitty]
+                    [:period [:!Ta :n] :kitty]
                     ; mailmate
                     [:u :!Cleft_arrow :mailmate]
                     [:o :!Cright_arrow :mailmate]
