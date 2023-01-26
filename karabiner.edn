@@ -255,9 +255,9 @@
         :focus_file_or_new_tab {:key :!Cp}
     }
 
-    :simlayers {
-        :apprun {:key :grave_accent_and_tilde}
-    }
+    ;; :simlayers {
+    ;;     :apprun {:key :grave_accent_and_tilde}
+    ;; }
 
     :main [
         {
