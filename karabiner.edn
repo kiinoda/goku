@@ -296,6 +296,28 @@
             ]
         }
         {
+          :des "Kitty Layers"
+          :rules [
+            [:condi :fn_tmux]
+                [:i [:!Ta :up_arrow]]
+                [:j [:!Ta :left_arrow]]
+                [:k [:!Ta :down_arrow]]
+                [:l [:!Ta :right_arrow]]
+                [:any_key :vk_none]
+            [:condi :fn_nvim]
+                [:u :!Sb]
+                [:o :!Sw]
+                [:semicolon [:!Tw :o]]
+                [:i [:!Tw :up_arrow]]
+                [:j [:!Tw :left_arrow]]
+                [:k [:!Tw :down_arrow]]
+                [:l [:!Tw :right_arrow]]
+                [:comma [:type_cr ":bp"]]
+                [:period [:type_cr ":bn"]]
+                [:any_key :vk_none]
+            ]
+        }
+        {
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend]
@@ -406,9 +428,9 @@
                     [:-q                nil nil {:alone [:open "Safari"]             :held :window_resize_and_left}]
                     [:-w                nil nil {:alone [:open "Visual Studio Code"] :held :window_resize_and_center}]
                     [:-f                nil nil {:alone [:open "Kitty"]              :held :window_resize_and_right}]
-                    [:-p                nil nil {:alone [:open "Obsidian"]           :held :window_full_size}]
-                    [:-g                nil nil {:alone [:open "Mailmate"]           :held :!CTf}]
                     [:-j                nil nil {:alone [:open_social]               :held :activate_hazeover}]
+                    [:r   ["fn_nvim" 1] nil {:alone :!!4 :afterup ["fn_nvim" 0]}]
+                    [:t   ["fn_tmux" 1] nil {:alone :!!5 :afterup ["fn_tmux" 0]}]
                     ;~* function keys
                     [:##1               :f1]
                     [:##2               :f2]
