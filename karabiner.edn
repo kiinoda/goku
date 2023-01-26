@@ -67,6 +67,7 @@
         :safari [ "^com.apple.Safari$" ]
         :slack [ "^com.tinyspeck.slackmacgap" ]
         :teams [ "^com.microsoft.teams" ]
+        :telegram [ "^ru.keepcoder.Telegram" ]
         :vscode [ "^com.microsoft.VSCode$" ]
         :vscodium [ "^com.vscodium$" ]
         :workflowy [ "^com.workflowy.desktop" ]
@@ -492,6 +493,9 @@
                     [:period :safari-next_tab :safari]
                     [:!Tcomma :!Oup_arrow [:safari ["in-gdoc" 1]]]
                     [:!Tperiod :!Odown_arrow [:safari ["in-gdoc" 1]]]
+                    ; telegram
+                    [:comma :!COup_arrow :telegram]
+                    [:period :!COdown_arrow :telegram]
                     ; vscode
                     [:comma :focus_editor_left :vscode]
                     [:period :focus_editor_right :vscode]
