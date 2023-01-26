@@ -423,14 +423,14 @@
             :rules [
                 [:##spacebar [["extend" 1][:is_in_gdoc]] :!blocked {:afterup [["extend" 0]["in-gdoc" 0]] :alone :spacebar}]
                 :extend
-                    ;~* system wide shortcuts for top utilities
-                    [:escape            nil nil {:alone :escape                      :held :system-force_quit_apps}]
-                    [:non_us_backslash  nil nil {:alone :!Fh                         :held :activate_hazeover}]
                     ;~* power apps & window positioning - 1 hand switching
                     [:-q                nil nil {:alone [:open "Safari"]             :held :window_resize_and_left}]
                     [:-w                nil nil {:alone [:open "Visual Studio Code"] :held :window_resize_and_center}]
                     [:-f                nil nil {:alone [:open "Kitty"]              :held :window_resize_and_right}]
                     [:-j                nil nil {:alone [:open_social]               :held :activate_hazeover}]
+                    ;~ system wide shortcuts for top utilities
+                    [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
+                    [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
                     [:r   ["fn_nvim" 1] nil {:alone :!!4 :afterup ["fn_nvim" 0]}]
                     [:t   ["fn_tmux" 1] nil {:alone :!!5 :afterup ["fn_tmux" 0]}]
                     ;~* function keys
