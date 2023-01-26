@@ -58,6 +58,7 @@
         :evernote [ "^com.evernote.Evernote$" ]
         :finder [ "^com.apple.finder" ]
         :firefox [ "^org.mozilla.firefox$" ]
+        :goodnotes [ "^com.goodnotesapp.x$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
         :mailmate [ "^com.freron.MailMate$"]
         :messages [ "^com.apple.MobileSMS" ]
@@ -448,6 +449,15 @@
                     ; emacs
                     [:u :!Cleft_arrow :emacs]
                     [:o :!Cright_arrow :emacs]
+                    ; goodnotes
+                    [:g :e :goodnotes]
+                    [:v :p :goodnotes]
+                    [:d :l :goodnotes]
+                    [:h :h :goodnotes]
+                    [:caps_lock :s :goodnotes]
+                    [:a :!Chyphen :goodnotes]
+                    [:s  :!Cequal_sign :goodnotes]
+                    [:f {:pkey :button1} :goodnotes]
                     ; firefox
                     [:right_command :!Tperiod :firefox]
                     ; kitty
