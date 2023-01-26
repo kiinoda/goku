@@ -386,12 +386,12 @@
                     [:!Sright_command :!Sright_command :workflowy {:alone :!Cdown_arrow}]
                     [:right_option :right_option :workflowy {:alone :!Cslash}]
                     ; zoom
-                    [:right_option :right_option :zoom {:alone :!Oy}]       ; toggle raised hand
-                    [:right_command :right_command :zoom {:alone :!Cu}]     ; toggle participant list
-                    [:left_option :left_option :zoom {:alone :!CSa}]        ; toggle microphone
-                    [:!Qleft_option :!CSv :zoom]                            ; toggle video
-                    [:!Qleft_command :!CSs :zoom]                           ; toggle sharing
-                    [:!Qright_option :!CSh :zoom]                           ; toggle chat
+                    [:right_option :right_option :zoom {:alone :!Oy}]           ; toggle raised hand
+                    [:right_command :right_command :zoom {:alone [:!Cu :!CSh]}] ; toggle participant list & chat
+                    [:left_option :left_option :zoom {:alone :!CSa}]            ; toggle microphone
+                    [:!Cleft_option :!CSv :zoom]                                ; toggle video
+                    [:!Qleft_option :!CSv :zoom]                                ; toggle video
+                    [:!Qleft_command :!CSs :zoom]                               ; toggle sharing
             ]
         }
         {
