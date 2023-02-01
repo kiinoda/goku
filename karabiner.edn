@@ -311,6 +311,9 @@
                 [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                 [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
             [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
+                ; shortcuts used by other things than Yabai
+                [:right_shift :!FSe]
+                ;
                 [:7 :!F7]
                 [:8 :!F8]
                 [:9 :!F9]
@@ -330,7 +333,6 @@
                 [:comma :!Fcomma]
                 [:period :!Fperiod]
                 [:hyphen :!Fhyphen]
-                [:spacebar :!Fspacebar]
                 [:backslash :!Fbackslash]
                 [:equal_sign :!Fequal_sign]
                 [:return_or_enter :!Freturn_or_enter]
