@@ -308,20 +308,30 @@
             ]
         }
         {
-            :des "AppRun Layer - press LCmd and release to trigger"
+            :des "AppRun Layer - hold Tab key to activate"
             :rules [
-                [:left_command :left_command :!apprun {:alone ["apprun" 1] :delayed {:invoked ["apprun" 0] :cancelled ["apprun" 0]}}]
+                [:tab ["apprun" 1] [:!fn_base :!fn_ctrl :!fn_optn :!fn_cmnd :!extend :!blocked :!qwerty] {:alone :tab :afterup ["apprun" 0]}]
                 :apprun
-                    [:tab :!Ctab :apprun {:afterup ["apprun" 0]}]
-                    ;; [:caps_lock [:open "Drafts"] :apprun {:afterup ["apprun" 0]}]
-                    [:left_command [:open "Visual Studio Code"] :apprun {:afterup ["apprun" 0]}]
-                    [:spacebar [:open "Vivaldi"] :apprun {:afterup ["apprun" 0]}]               ; ???
-                    [:right_command [:open "Safari"] :apprun {:afterup ["apprun" 0]}]
-                    [:-d [:open "Drafts"] :apprun {:afterup ["apprun" 0]}]
-                    [:-k [:open "Kitty"] :apprun {:afterup ["apprun" 0]}]
-                    [:-m [:open "Mailmate"] :apprun {:afterup ["apprun" 0]}]
-                    [:any_key :vk_none nil {:afterup ["apprun" 0]}]
-                    [:any_consumer :vk_none nil {:afterup ["apprun" 0]}]
+                    ;; switch desktops
+                    [:y :!!1]
+                    [:u :!!2]
+                    [:i :!!3]
+                    [:o :!!4]
+                    [:p :!!5]
+                    [:open_bracket :!!6]
+                    [:return_or_enter :!Fspacebar]
+                    ;; swap active browser
+                    [:right_option ["browser" 0] ["browser" 1]]
+                    [:right_option ["browser" 1] ["browser" 0]]
+                    [:spacebar [:open "Safari"] ["browser" 0]]
+                    [:spacebar [:open "Vivaldi"] ["browser" 1]]
+                    ;; keys acting on single apps
+                    [:j [:open "Visual Studio Code"]]
+                    [:n [:open "Kitty"]]
+                    [:m [:open "Mailmate"]]
+                    ;; final cleanup
+                    [:any_key :vk_none]
+                    [:any_consumer :vk_none]
             ]
         }
         {
