@@ -274,7 +274,7 @@
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
                 [:!COTescape [
-                    ["blocked" 0] ["extend" 0], ["wm" 0], ["apprun" 0],
+                    ["blocked" 0] ["extend" 0], ["wm" 0], ["apprun" 0], ["colemak_unshifted" 0]
                     ["qwerty" 0], ["capslock" 0], ["games" 0], ["layer" 0]
                 ]]
             ]
@@ -289,16 +289,17 @@
         {
             :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["layer" 1]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 0]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["layer" 2]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 1]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["layer" 3]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 2]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 3]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0][:noti :layers "Unshifted Colemak [Fn+LCtrl]"]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 2]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 3]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 4]]
             ]
         }
         {
             :des "Games Layer"
             :rules [
-                [:condi ["layer" 2]]
+                [:condi ["layer" 3]]
                     [:##i :up_arrow]
                     [:##k :down_arrow]
                     [:##j :left_arrow]
@@ -684,8 +685,6 @@
                     [:!!o :page_down]
                     [:##u :home]
                     [:##o :end]
-                    ; undo, cut, copy, paste on mod-wide on colemak
-                    [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
                     ; edit/organize text properly
                     [:##quote :insert]
                     [:##h :delete_or_backspace]
@@ -694,10 +693,29 @@
                     [:n :!!left_arrow]
                     [:m :!!left_arrow]
                     [:slash :!!right_arrow]
+                [:condi :extend :colemak_unshifted]
+                    ; undo, cut, copy, paste on colemak
+                    [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
+                [:condi :extend :!colemak_unshifted]
+                    ; undo, cut, copy, paste on mod-wide on colemak
+                    [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
             ]
+
         }
         {
-            :des "Colemak Layout"
+            :des "Colemak - Unshifted Layout"
+            :rules [
+                ; colemak
+                [:condi :!qwerty :colemak_unshifted]
+                    ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
+                    [:##non_us_backslash :grave_accent_and_tilde]
+                    [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
+                    [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
+                    [:##grave_accent_and_tilde :non_us_backslash][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
+                ]
+        }
+        {
+            :des "Colemak - Shifted Layout"
             :rules [
                 ; colemak
                 [:condi :!qwerty]
