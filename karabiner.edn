@@ -442,9 +442,10 @@
                     ; discord
                     [:right_command :right_command :discord {:alone :!Cu}] ; toggle user list
                     ; drafts
-                    [:right_command :right_command :drafts {:alone :drafts-toggle_draft_list}]
+                    [:right_command :right_command :drafts {:alone [:!C1 :!COt :!CSt]}]     ; make it look as basic as possible
+                    [:right_option :right_option :drafts {:alone [:!Cbackslash :down_arrow :down_arrow :right_arrow]}]
+                    [:left_option :left_option :drafts {:alone [:!CSbackslash]}]
                     [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
-                    [:right_option :right_option :drafts {:alone :!C0}]             ; toggle actions bar
                     ; finder
                     [:right_command :right_command :finder {:alone :!CTs}]
                     ; kitty
