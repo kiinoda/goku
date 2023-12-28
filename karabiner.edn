@@ -426,9 +426,9 @@
             :rules [
                 [:condi :!blocked :!extend :!apprun]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
-                    [:left_shift :left_shift nil {:alone :!Fj}]
-                    [:right_shift :right_shift nil {:alone :!Fl}]
-                    ;; [:left_command :left_command nil {:alone :!Ctab}]
+                    [:left_shift :left_shift nil {:alone :!Fopen_bracket}]
+                    [:right_shift :right_shift nil {:alone :!Fclose_bracket}]
+                    [:left_command :left_command nil {:alone :!Ctab}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:f5 :!Fh]                                                 ; toggle show desktop
