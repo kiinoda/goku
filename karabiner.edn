@@ -22,7 +22,7 @@
                 set isVisible to visible of process \"%s\"
                 set isVisible to not isVisible
                 set visible of process \"%s\" to isVisible
-              '"
+        '"
         :go_to_url "osascript -e 'open location \"%s\"'"
         :zcode "/Users/grn/bin/gui.py &"
         ; send keystrokes
@@ -32,16 +32,16 @@
             osascript -e 'tell application \"System Events\" to keystroke \"%s\"';
             osascript -e 'tell application \"System Events\" to keystroke return';"
         :paste "osascript -e '
-              global storedClipboard
-              set storedClipboard to the clipboard
-              set the clipboard to \"%s\"
-              set the clipboard to the clipboard + \"%s\"
-              tell application \"System Events\"
-                      keystroke \"v\" using command down
-              end tell
-              delay 0.1
-              set the clipboard to storedClipboard
-              '"
+            global storedClipboard
+            set storedClipboard to the clipboard
+            set the clipboard to \"%s\"
+            set the clipboard to the clipboard + \"%s\"
+            tell application \"System Events\"
+                    keystroke \"v\" using command down
+            end tell
+            delay 0.1
+            set the clipboard to storedClipboard
+        '"
         :is_in_gdoc "osascript -e '
             global frontApp, window_name, theURL
             tell application \"System Events\"
@@ -387,25 +387,25 @@
         ]
         }
         {
-          :des "Kitty Layers"
-          :rules [
-            [:condi :fn_tmux]
-                [:i [:!Ta :up_arrow]]
-                [:j [:!Ta :left_arrow]]
-                [:k [:!Ta :down_arrow]]
-                [:l [:!Ta :right_arrow]]
-                [:any_key :vk_none]
-            [:condi :fn_nvim]
-                [:u :!Sb]
-                [:o :!Sw]
-                [:semicolon [:!Tw :o]]
-                [:i [:!Tw :up_arrow]]
-                [:j [:!Tw :left_arrow]]
-                [:k [:!Tw :down_arrow]]
-                [:l [:!Tw :right_arrow]]
-                [:comma [:type_cr ":bp"]]
-                [:period [:type_cr ":bn"]]
-                [:any_key :vk_none]
+            :des "Kitty Layers"
+            :rules [
+                [:condi :fn_tmux]
+                    [:i [:!Ta :up_arrow]]
+                    [:j [:!Ta :left_arrow]]
+                    [:k [:!Ta :down_arrow]]
+                    [:l [:!Ta :right_arrow]]
+                    [:any_key :vk_none]
+                [:condi :fn_nvim]
+                    [:u :!Sb]
+                    [:o :!Sw]
+                    [:semicolon [:!Tw :o]]
+                    [:i [:!Tw :up_arrow]]
+                    [:j [:!Tw :left_arrow]]
+                    [:k [:!Tw :down_arrow]]
+                    [:l [:!Tw :right_arrow]]
+                    [:comma [:type_cr ":bp"]]
+                    [:period [:type_cr ":bn"]]
+                    [:any_key :vk_none]
             ]
         }
         {
