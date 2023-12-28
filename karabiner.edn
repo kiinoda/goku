@@ -81,6 +81,7 @@
         :telegram [ "^ru.keepcoder.Telegram" ]
         :vscode [ "^com.microsoft.VSCode$" ]
         :vivaldi [ "^com.vivaldi.Vivaldi$" ]
+        :vlc [ "^org.videolan.vlc" ]
         :workflowy [ "^com.workflowy.desktop" ]
         :zoom [ "^us.zoom.xos$" ]
     }
@@ -497,6 +498,9 @@
                     [:right_option :right_option :vivaldi {:alone :!COTslash}]
                     ;; [:right_option :left_option :vivaldi {:alone :!CSr}]
                     [:!Qspacebar :!COi :vivaldi]
+                    ; vlc
+                    [:right_command :right_command :vlc {:alone :!COp}]
+                    [:right_option :right_option :vlc {:alone :!C3}]
                     ; vscode
                     ; rotate between showing/hiding terminal, switching between them visible and maximized terminal
                     [:!Qspacebar ["vscode_terminal" 1] [:vscode ["vscode_terminal" 0]]]
