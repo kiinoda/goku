@@ -360,6 +360,12 @@
                     ;
                     [:e ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                     [:w ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
+                    [:1 :!F1]
+                    [:2 :!F2]
+                    [:3 :!F3]
+                    [:7 :!F7]
+                    [:8 :!F8]
+                    [:9 :!F9]
                     [:0 :!F0]
                     [:z :!Fz]
                     [:x :!Fx]
