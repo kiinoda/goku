@@ -327,6 +327,9 @@
                     [:spacebar [:open "Vivaldi"] ["browser" 1]]
                     [:right_command [:open "Vivaldi"] ["browser" 0]]
                     [:right_command [:open "Safari"] ["browser" 1]]
+                    ;; swap shift combos between tiled/stacked
+                    [:left_option ["yabai_stack" 0] ["yabai_stack" 1]]
+                    [:left_option ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; keys acting on single apps
                     [:j [:open "Visual Studio Code"]]
                     [:n [:open "Kitty"]]
@@ -438,8 +441,11 @@
             :rules [
                 [:condi :!blocked :!extend :!apprun]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
-                    [:left_shift :left_shift nil {:alone :!Fopen_bracket}]
-                    [:right_shift :right_shift nil {:alone :!Fclose_bracket}]
+                    ; Yabai: switch between apps in the stack OR tiled using shift
+                    [:left_shift :left_shift ["yabai_stack" 0] {:alone :!Fj}]
+                    [:right_shift :right_shift ["yabai_stack" 0] {:alone :!Fl}]
+                    [:left_shift :left_shift ["yabai_stack" 1] {:alone :!Fcomma}]
+                    [:right_shift :right_shift ["yabai_stack" 1] {:alone :!Fperiod}]
                     [:left_command :left_command nil {:alone :!Ctab}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
@@ -568,8 +574,10 @@
                     [:t   ["fn_tmux" 1] nil {:alone :!!5 :afterup ["fn_tmux" 0]}]
                     [:y   ["fn_tmux" 1] nil {:alone :!!6 :afterup ["fn_tmux" 0]}]
                     ;~ switch between apps in the same stack
-                    [:left_shift :left_shift nil {:alone :!Fcomma}]
-                    [:right_shift :right_shift nil {:alone :!Fperiod}]
+                    [:left_shift :left_shift ["yabai_stack" 1] {:alone :!Fj}]
+                    [:right_shift :right_shift ["yabai_stack" 1] {:alone :!Fl}]
+                    [:left_shift :left_shift ["yabai_stack" 0] {:alone :!Fcomma}]
+                    [:right_shift :right_shift ["yabai_stack" 0] {:alone :!Fperiod}]
                     ;~* function keys & social apps
                     [:##1          nil nil {:alone :f1  :held [:open "Transmission"]}]
                     [:##2          nil nil {:alone :f2  :held [:open "Google Chrome"]}]
