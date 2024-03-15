@@ -572,7 +572,7 @@
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
                     [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
                     [:tab :!!left_arrow]
-                    [:return_or_enter :!!right_arrow]
+                    [:return_or_enter :!Fspacebar]
                     ;~ power apps & window positioning - 1 hand switching
                     [:q   ["fn_base" 1] nil {:alone :!!1 :afterup ["fn_base" 0]}]
                     [:w   ["fn_ctrl" 1] nil {:alone :!!2 :afterup ["fn_ctrl" 0]}]
