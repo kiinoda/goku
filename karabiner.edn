@@ -325,6 +325,8 @@
                     [:right_option ["browser" 1] ["browser" 0]]
                     [:spacebar [:open "Safari"] ["browser" 0]]
                     [:spacebar [:open "Vivaldi"] ["browser" 1]]
+                    [:right_command [:open "Vivaldi"] ["browser" 0]]
+                    [:right_command [:open "Safari"] ["browser" 1]]
                     ;; keys acting on single apps
                     [:j [:open "Visual Studio Code"]]
                     [:n [:open "Kitty"]]
