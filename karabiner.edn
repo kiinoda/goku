@@ -532,7 +532,7 @@
                     [:!CSf :vk_none :vivaldi]
                     [:!Qf :!QSt :vivaldi]
                     [:right_command :right_command :vivaldi {:alone :!COb}]
-                    [:right_option :right_option :vivaldi {:alone :!COTslash}]
+                    [:right_option :right_option :vivaldi {:alone :!COTn}]
                     ;; [:right_option :left_option :vivaldi {:alone :!CSr}]
                     [:!Qspacebar :!COi :vivaldi]
                     ; vlc
