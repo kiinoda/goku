@@ -576,10 +576,10 @@
                     ;~ power apps & window positioning - 1 hand switching
                     [:q   ["fn_base" 1] nil {:alone :!!1 :afterup ["fn_base" 0]}]
                     [:w   ["fn_ctrl" 1] nil {:alone :!!2 :afterup ["fn_ctrl" 0]}]
-                    [:e   ["fn_nvim" 1] nil {:alone :!!3 :afterup ["fn_nvim" 0]}]
-                    [:r   ["fn_tmux" 1] nil {:alone :!!4 :afterup ["fn_tmux" 0]}]
-                    [:t   ["fn_tmux" 1] nil {:alone :!!5 :afterup ["fn_tmux" 0]}]
-                    [:y   ["fn_tmux" 1] nil {:alone :!!6 :afterup ["fn_tmux" 0]}]
+                    [:e   ["fn_tmux" 1] nil {:alone :!!3 :afterup ["fn_tmux" 0]}]
+                    [:r   ["fn_nvim" 1] nil {:alone :!!4 :afterup ["fn_nvim" 0]}]
+                    [:t   ["fn_nvim" 1] nil {:alone :!!5 :afterup ["fn_nvim" 0]}]
+                    [:y   ["fn_nvim" 1] nil {:alone :!!6 :afterup ["fn_nvim" 0]}]
                     ;~ switch between apps in the same stack
                     [:left_shift :left_shift ["yabai_stack" 1] {:alone :!Fj}]
                     [:right_shift :right_shift ["yabai_stack" 1] {:alone :!Fl}]
