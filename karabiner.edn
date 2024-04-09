@@ -328,8 +328,8 @@
                     [:right_command [:open "Vivaldi"] ["browser" 0]]
                     [:right_command [:open "Safari"] ["browser" 1]]
                     ;; swap shift combos between tiled/stacked
-                    [:left_option ["yabai_stack" 0] ["yabai_stack" 1]]
-                    [:left_option ["yabai_stack" 1] ["yabai_stack" 0]]
+                    [:fn ["yabai_stack" 0] ["yabai_stack" 1]]
+                    [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; keys acting on single apps
                     [:j [:open "Visual Studio Code"]]
                     [:n [:open "Kitty"]]
