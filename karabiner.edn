@@ -11,11 +11,12 @@
     }
 
     :devices {
-        :velocifire [{:vendor_id 1452 :product_id 591}]
+        ; :kninepro [{:vendor_id 13364 :product_id 656}]
+        :kninepro [{:vendor_id 13364 :product_id 640}]
     }
 
     :templates {
-        :open_social "/Users/grn/bin/open_social %s"
+        :open_social "/Users/kii/bin/open_social %s"
         :open "osascript -e 'tell application \"%s\" to activate'"
         :showhide "osascript -e '
                 global isVisible
@@ -24,7 +25,6 @@
                 set visible of process \"%s\" to isVisible
         '"
         :go_to_url "osascript -e 'open location \"%s\"'"
-        :zcode "/Users/grn/bin/gui.py &"
         ; send keystrokes
         :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\"'"
         ; send keystrokes and press enter
@@ -52,7 +52,7 @@
                     set theURL to URL of current tab of window 1
                 end tell
                 if theURL contains \"https://docs.google.com/spreadsheets\" then
-                    do shell script \"/Users/grn/bin/in-gdoc.sh\"
+                    do shell script \"/Users/kii/bin/in-gdoc.sh\"
                 end if
             end if'"
         :sleep "sleep %s" ; sample placeholder
@@ -68,9 +68,11 @@
         :evernote [ "^com.evernote.Evernote$" ]
         :finder [ "^com.apple.finder" ]
         :firefox [ "^org.mozilla.firefox$" ]
+        :ghostty [ "^com.mitchellh.ghostty$" ]
         :goodnotes [ "^com.goodnotesapp.x$" ]
         :kitty [ "net.kovidgoyal.kitty" ]
         :mailmate [ "^com.freron.MailMate$"]
+        :min [ "^com.electron.min$"]
         :messages [ "^com.apple.MobileSMS" ]
         :obsidian [ "^md.obsidian" ]
         :opera [ "^com.operasoftware.Opera$" ]
@@ -266,10 +268,7 @@
         :focus_file_or_new_tab {:key :!Cp}
     }
 
-    ;; :simlayers {
-    ;;     :apprun {:key :grave_accent_and_tilde}
-    ;; }
-
+    ; :simlayers {:apprun {:key :period}}
     :main [
         {
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
@@ -290,11 +289,11 @@
         {
             :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0][:noti :layers "Unshifted Colemak [Fn+LCtrl]"]]["layer" 0]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 1]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 2]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 3]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 4]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1]]["layer" 2]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1]]["layer" 3]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0]]["layer" 4]]
             ]
         }
         {
@@ -319,7 +318,6 @@
                     [:o :!!4]
                     [:p :!!5]
                     [:open_bracket :!!6]
-                    [:return_or_enter :!Fspacebar]
                     ;; swap active browser
                     [:right_option ["browser" 0] ["browser" 1]]
                     [:right_option ["browser" 1] ["browser" 0]]
@@ -328,10 +326,13 @@
                     [:right_command [:open "Vivaldi"] ["browser" 0]]
                     [:right_command [:open "Safari"] ["browser" 1]]
                     ;; swap shift combos between tiled/stacked
+                    [:left_control ["yabai_stack" 0] ["yabai_stack" 1]]
+                    [:left_control ["yabai_stack" 1] ["yabai_stack" 0]]
+                    ;; swap shift combos between tiled/stacked
                     [:fn ["yabai_stack" 0] ["yabai_stack" 1]]
                     [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; keys acting on single apps
-                    [:j [:open "Visual Studio Code"]]
+                    [:j [:open "Drafts"]]
                     [:n [:open "Kitty"]]
                     [:m [:open "Mailmate"]]
                     ;; final cleanup
@@ -342,24 +343,23 @@
         {
             :des "Yabai Layers (uses Fn as base trigger)"
             :rules [
-                [:fn ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Freturn_or_enter}]
+                [[:left_shift :right_shift] :!Freturn_or_enter]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0][:noti :layers "Unshifted Colemak [Fn+LCtrl]"]]["layer" 0]]
-                    [:left_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0][:noti :layers "QWERTY w/ layers [Fn+LCtrl]"]]["layer" 1]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1][:noti :layers "QWERTY w/ IJKL locked to arrows [Fn+LCtrl]"]]["layer" 2]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1][:noti :layers "Karabiner Disabled [Fn+LCtrl]"]]["layer" 3]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0][:noti :layers ""]]["layer" 4]]
+                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0]]["layer" 0]]
+                    [:left_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0]]["layer" 1]]
+                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1]]["layer" 2]]
+                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1]]["layer" 3]]
+                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0]]["layer" 4]]
                     [:left_control ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
-                    ; shortcuts used by other things than Yabai
-                    [:right_shift :!FSe]
+                    [:right_shift :!Fbackslash]
                     ;
-                    [:e ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                     [:w ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
+                    [:e ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                     [:1 :!F1]
                     [:2 :!F2]
                     [:3 :!F3]
@@ -390,6 +390,7 @@
                     [:equal_sign :!Fequal_sign]
                     [:hyphen :!Fhyphen]
                     [:backslash :!Fbackslash]
+                    [:h :!Fbackslash]
                     [:return_or_enter :!Freturn_or_enter]
                     [:any_key :vk_none]
                 [:condi :fn_ctrl]
@@ -435,6 +436,8 @@
                     [:j :!TOleft_arrow]
                     [:k :!TOdown_arrow]
                     [:l :!TOright_arrow]
+                    [:9 [:!Ta :!S9]]
+                    [:0 [:!Ta :!S0]]
                     [:any_key :vk_none]
                 [:condi :fn_nvim]
                     [:u :!Sb]
@@ -453,13 +456,14 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    [:left_command :left_command nil {:alone :!Fspacebar}]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
                     ; Yabai: switch between apps in the stack OR tiled using shift
-                    [:left_shift :left_shift ["yabai_stack" 0] {:alone :!Fj}]
-                    [:right_shift :right_shift ["yabai_stack" 0] {:alone :!Fl}]
-                    [:left_shift :left_shift ["yabai_stack" 1] {:alone :!Fcomma}]
-                    [:right_shift :right_shift ["yabai_stack" 1] {:alone :!Fperiod}]
-                    [:left_command :left_command nil {:alone :!Ctab}]
+                    [:left_shift :left_shift [["yabai_stack" 0]] {:alone :!Fcomma}]
+                    [:right_shift :right_shift [["yabai_stack" 0]] {:alone :!Fperiod}]
+                    [:!Rleft_shift :!!left_arrow]
+                    [:!Sright_shift :!!right_arrow]
+                    ; [:left_command :left_command nil {:alone :!Ctab}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:f5 :!Fh]                                                 ; toggle show desktop
@@ -479,12 +483,45 @@
                     [:!Cdelete_or_backspace :!CSOdelete_or_backspace :drafts]
                     ; finder
                     [:right_command :right_command :finder {:alone :!CTs}]
+                    ; ghostty
+                    [:left_option :left_option :ghostty {:alone [:!Ta :z]}]
+                    [:right_option :right_option [:ghostty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
+                    [:right_option :right_option [:ghostty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
+                    [:right_command :right_command [:ghostty ["tmux_prefix" 0]] {:alone :!Ta}]
+                    [:right_command :right_command [:ghostty ["tmux_prefix" 1]] {:alone :!Tb}]
+                    ; rotate between ctrl+a & ctrl+b as a tmux prefix
+                    [:!Qspacebar ["tmux_prefix" 1] [:ghostty ["tmux_prefix" 0]]]
+                    [:!Qspacebar ["tmux_prefix" 0] [:ghostty ["tmux_prefix" 1]]]
+                    [:!Cf [:!Ta :c] :ghostty]           ; Cmd+T on Colemak
+                    [:!Cw [:!Ta :k] :ghostty]
+                    [:!C0 [:!Ta :0] :ghostty]
+                    [:!C1 [:!Ta :1] :ghostty]
+                    [:!C2 [:!Ta :2] :ghostty]
+                    [:!C3 [:!Ta :3] :ghostty]
+                    [:!C4 [:!Ta :4] :ghostty]
+                    [:!C5 [:!Ta :5] :ghostty]
+                    [:!C6 [:!Ta :6] :ghostty]
+                    [:!C7 [:!Ta :7] :ghostty]
+                    [:!C8 [:!Ta :8] :ghostty]
+                    [:!C9 [:!Ta :9] :ghostty]
+                    [:!CSf :vk_none :ghostty]
+                    [:!Qf :!QSt :ghostty]
+                    [:!Q0 :!C0 :ghostty]
+                    [:!Q1 :!C1 :ghostty]
+                    [:!Q2 :!C2 :ghostty]
+                    [:!Q3 :!C3 :ghostty]
+                    [:!Q4 :!C4 :ghostty]
+                    [:!Q5 :!C5 :ghostty]
+                    [:!Q6 :!C6 :ghostty]
+                    [:!Q7 :!C7 :ghostty]
+                    [:!Q8 :!C8 :ghostty]
+                    [:!Q9 :!C9 :ghostty]
                     ; kitty
-                    [:right_command :right_command [:kitty ["tmux_prefix" 0]] {:alone :!Ta}]
-                    [:right_command :right_command [:kitty ["tmux_prefix" 1]] {:alone :!Tb}]
-                    [:right_command :right_command [:vscode ["vscode_terminal" 0]] {:alone :toggle_terminal_or_editor}]
+                    [:left_option :left_option :kitty {:alone [:!Ta :z]}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
                     [:right_option :right_option [:kitty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
+                    [:right_command :right_command [:kitty ["tmux_prefix" 0]] {:alone :!Ta}]
+                    [:right_command :right_command [:kitty ["tmux_prefix" 1]] {:alone :!Tb}]
                     ; rotate between ctrl+a & ctrl+b as a tmux prefix
                     [:!Qspacebar ["tmux_prefix" 1] [:kitty ["tmux_prefix" 0]]]
                     [:!Qspacebar ["tmux_prefix" 0] [:kitty ["tmux_prefix" 1]]]
@@ -515,6 +552,9 @@
                     ; mailmate
                     [:right_command :right_command :mailmate {:alone :!COTd}]
                     [:right_option :right_option :mailmate {:alone :!COu}]
+                    ; min browser
+                    [:right_command :right_command :min {:alone :!CSr}]
+                    [:right_option :right_option :min {:alone :!CSe}]
                     ; obsidian
                     [:right_command :right_command :obsidian {:alone :!Ct}]
                     ; opera
@@ -577,20 +617,26 @@
                     ;~ system wide shortcuts for top utilities
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
                     [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
-                    [:tab :!!left_arrow]
+                    [:tab :vk_none]
                     [:return_or_enter :!Fspacebar]
+                    ;~ placing this up here to precede the general declaration of number -> functions
+                    [:##2 :!Cs :drafts]
                     ;~ power apps & window positioning - 1 hand switching
-                    [:q   ["fn_base" 1] nil {:alone :!!1 :afterup ["fn_base" 0]}]
-                    [:w   ["fn_ctrl" 1] nil {:alone :!!2 :afterup ["fn_ctrl" 0]}]
-                    [:e   ["fn_desk" 1] nil {:alone :!!3 :afterup ["fn_desk" 0]}]
-                    [:r   ["fn_tmux" 1] nil {:alone :!!4 :afterup ["fn_tmux" 0]}]
-                    [:t   ["fn_nvim" 1] nil {:alone :!!5 :afterup ["fn_nvim" 0]}]
-                    [:y   ["fn_nvim" 1] nil {:alone :!!6 :afterup ["fn_nvim" 0]}]
-                    ;~ switch between apps in the same stack
-                    [:left_shift :left_shift ["yabai_stack" 1] {:alone :!Fj}]
-                    [:right_shift :right_shift ["yabai_stack" 1] {:alone :!Fl}]
-                    [:left_shift :left_shift ["yabai_stack" 0] {:alone :!Fcomma}]
-                    [:right_shift :right_shift ["yabai_stack" 0] {:alone :!Fperiod}]
+                    [:!Rq :!!1]
+                    [:!Rw :!!2]
+                    [:!Re :!!3]
+                    [:!Rr :!!4]
+                    [:!Rt :!!5]
+                    [:!Ry :!!6]
+                    [:q ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!!1}]
+                    [:w ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
+                    [:e ["fn_desk" 1] nil {:afterup ["fn_desk" 0]}]
+                    [:r ["fn_tmux" 1] nil {:afterup ["fn_tmux" 0]}]
+                    [:t ["fn_nvim" 1] nil {:afterup ["fn_nvim" 0]}]
+                    [:y ["fn_nvim" 1] nil {:afterup ["fn_nvim" 0] :alone :!!6}]
+                    ;~ switch from one stack to the other
+                    [:left_shift :left_shift nil {:alone :!Fj}]
+                    [:right_shift :right_shift nil {:alone :!Fl}]
                     ;~* function keys & social apps
                     [:##1          nil nil {:alone :f1  :held [:open "Transmission"]}]
                     [:##2          nil nil {:alone :f2  :held [:open "Google Chrome"]}]
@@ -623,12 +669,27 @@
                     ; drafts
                     [:u :drafts-beginning_of_line :drafts]
                     [:o :drafts-end_of_line :drafts]
-                    [:comma :!TStab :drafts]
-                    [:period :!Ttab :drafts]
+                    [:comma :!TSdown_arrow :drafts]
+                    [:period :!TSup_arrow :drafts]
                     ; emacs
                     [:u :!Cleft_arrow :emacs]
                     [:o :!Cright_arrow :emacs]
-                    ; goodnotes
+                    ; ghostty
+                    [:u [:!Ta :a] :ghostty]
+                    [:o :!Te :ghostty]
+                    [:!Cj [:!Ta :left_arrow] :ghostty]
+                    [:!Ck [:!Ta :down_arrow] :ghostty]
+                    [:!Ci [:!Ta :up_arrow] :ghostty]
+                    [:!Cl [:!Ta :right_arrow] :ghostty]
+                    [:!Oj :!Ob :ghostty]
+                    [:!Ol :!Of :ghostty]
+                    [:!Tj [:escape :!Tw :left_arrow] :ghostty]
+                    [:!Tk [:escape :!Tw :down_arrow] :ghostty]
+                    [:!Ti [:escape :!Tw :up_arrow] :ghostty]
+                    [:!Tl [:escape :!Tw :right_arrow] :ghostty]
+                    [:comma [:!Ta :p] :ghostty]
+                    [:period [:!Ta :n] :ghostty]
+                     ; goodnotes
                     [:g :e :goodnotes]
                     [:v :p :goodnotes]
                     [:d :l :goodnotes]
@@ -638,6 +699,8 @@
                     [:s  :!Cequal_sign :goodnotes]
                     [:f {:pkey :button1} :goodnotes]
                     ; firefox
+                    [:comma :!TStab :firefox]
+                    [:period :!Ttab :firefox]
                     [:right_command :!Tperiod :firefox]
                     ; kitty
                     [:!Tcomma :kitty-prev_tab :kitty]
@@ -664,6 +727,9 @@
                     [:!Tk :!Ttab :messages]
                     [:comma :!TStab :messages]
                     [:period :!Ttab :messages]
+                    ; min browser
+                    [:comma :!TStab :min]
+                    [:period :!Ttab :min]
                     ; opera
                     [:comma :opera-prev_tab :opera]
                     [:period :opera-next_tab :opera]
@@ -723,7 +789,7 @@
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:##a :left_shift]
                     [:##s :left_option]
-                    [:##d :left_command]
+                    [:##d :vk_none]
                     ; arrows
                     [:##j :left_arrow]
                     [:##k :down_arrow]
@@ -739,7 +805,7 @@
                     [:##h :delete_or_backspace]
                     [:##semicolon :delete_forward]
                     ; spaces navigation
-                    [:n :!!left_arrow]
+                    ; [:n :!!left_arrow]
                     [:m :!!left_arrow]
                     [:slash :!!right_arrow]
                 [:condi :extend :colemak_unshifted]
@@ -749,7 +815,6 @@
                     ; undo, cut, copy, paste on mod-wide on colemak
                     [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
             ]
-
         }
         {
             :des "Colemak - Unshifted Layout"
@@ -760,7 +825,8 @@
                     [:##non_us_backslash :grave_accent_and_tilde]
                     [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##grave_accent_and_tilde :non_us_backslash][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
+                    ; [:##grave_accent_and_tilde :non_us_backslash][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
+                    [:##grave_accent_and_tilde :non_us_backslash :!kninepro][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
                 ]
         }
         {
@@ -769,10 +835,10 @@
                 ; colemak
                 [:condi :!qwerty]
                     ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
-                    [:##non_us_backslash :grave_accent_and_tilde]
+                    [:##non_us_backslash :grave_accent_and_tilde :!kninepro]
                     [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##grave_accent_and_tilde :z][:##z :x][:##x :c][:##c :v][:##v :b][:##b :spacebar][:##n :k][:##m :m]
+                    [:##grave_accent_and_tilde :z :!kninepro][:##z :x][:##x :c][:##c :v][:##v :b][:##b :spacebar][:##n :k][:##m :m]
                 ]
         }
     ]
