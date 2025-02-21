@@ -11,8 +11,8 @@
     }
 
     :devices {
-        ; :kninepro [{:vendor_id 13364 :product_id 656}]
-        :kninepro [{:vendor_id 13364 :product_id 640}]
+        :kninepro [{:vendor_id 13364 :product_id 656}]
+        ; :kninepro [{:vendor_id 13364 :product_id 640}]
     }
 
     :templates {
@@ -274,8 +274,8 @@
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
                 [:!COTescape [
-                    ["blocked" 0] ["extend" 0], ["wm" 0], ["apprun" 0], ["colemak_unshifted" 0]
-                    ["qwerty" 0], ["capslock" 0], ["games" 0], ["layer" 0]
+                    ["blocked" 0]["extend" 0]["wm" 0]["apprun" 0]
+                    ["qwerty" 0]["capslock" 0]["games" 0]["layer" 0]
                 ]]
             ]
         }
@@ -289,11 +289,10 @@
         {
             :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0]]["layer" 0]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0]]["layer" 1]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1]]["layer" 2]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1]]["layer" 3]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0]]["layer" 4]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]]["layer" 2]]
+                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]]["layer" 3]]
             ]
         }
         {
@@ -347,11 +346,10 @@
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 1]["layer" 1]["wm_off" 0]]["layer" 0]]
-                    [:left_shift [["blocked" 0]["qwerty" 1]["colemak_unshifted" 0]["layer" 2]["wm_off" 0]]["layer" 1]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 3]["wm_off" 1]]["layer" 2]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak_unshifted" 0]["layer" 4]["wm_off" 1]]["layer" 3]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak_unshifted" 0]["layer" 0]["wm_off" 0]]["layer" 4]]
+                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]]["layer" 0]]
+                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]]["layer" 1]]
+                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]]["layer" 2]]
+                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]]["layer" 3]]
                     [:left_control ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
@@ -808,37 +806,22 @@
                     ; [:n :!!left_arrow]
                     [:m :!!left_arrow]
                     [:slash :!!right_arrow]
-                [:condi :extend :colemak_unshifted]
+                [:condi :extend :colemak]
                     ; undo, cut, copy, paste on colemak
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
-                [:condi :extend :!colemak_unshifted]
-                    ; undo, cut, copy, paste on mod-wide on colemak
-                    [:##grave_accent_and_tilde :!Cz][:##z :!Cx][:##x :!Cc][:##c :!Cv]
             ]
         }
         {
             :des "Colemak - Unshifted Layout"
             :rules [
                 ; colemak
-                [:condi :!qwerty :colemak_unshifted]
+                [:condi :!qwerty :colemak]
                     ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
-                    [:##non_us_backslash :grave_accent_and_tilde]
+                    ; [:##non_us_backslash :grave_accent_and_tilde]
+                    ; [:##grave_accent_and_tilde :non_us_backslash]
                     [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    ; [:##grave_accent_and_tilde :non_us_backslash][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
-                    [:##grave_accent_and_tilde :non_us_backslash :!kninepro][:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
-                ]
-        }
-        {
-            :des "Colemak - Shifted Layout"
-            :rules [
-                ; colemak
-                [:condi :!qwerty]
-                    ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
-                    [:##non_us_backslash :grave_accent_and_tilde :!kninepro]
-                    [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
-                    [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
-                    [:##grave_accent_and_tilde :z :!kninepro][:##z :x][:##x :c][:##c :v][:##v :b][:##b :spacebar][:##n :k][:##m :m]
+                    [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
                 ]
         }
     ]
