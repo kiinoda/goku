@@ -274,8 +274,7 @@
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
                 [:!COTescape [
-                    ["blocked" 0]["extend" 0]["wm" 0]["apprun" 0]
-                    ["qwerty" 0]["capslock" 0]["games" 0]["layer" 0]
+                    ["blocked" 0]["extend" 0]["apprun" 0]["capslock" 0]["layer" 0]
                 ]]
             ]
         }
@@ -287,28 +286,17 @@
             ]
         }
         {
-            :des "Rotate between Game Layer, QWERTY w/ layers and Karabiner Toggle w/ FN+LeftShift"
+            :des "Rotate between Colemak, QWERTY w/ layers and Off w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]]["layer" 0]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]]["layer" 1]]
-                [:!F#Pleft_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]]["layer" 2]]
-                [:!F#Pleft_shift [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]]["layer" 3]]
-            ]
-        }
-        {
-            :des "Games Layer"
-            :rules [
-                [:condi ["layer" 3]]
-                    [:##i :up_arrow]
-                    [:##k :down_arrow]
-                    [:##j :left_arrow]
-                    [:##l :right_arrow]
+                [:!F#Pleft_shift [["blocked" 1]["layer" 1]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 1]["layer" 2]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 0]["layer" 0]]["layer" 2]]
             ]
         }
         {
             :des "AppRun Layer - hold Tab key to activate"
             :rules [
-                [:tab ["apprun" 1] [:!fn_base :!fn_ctrl :!fn_optn :!fn_cmnd :!extend :!blocked :!qwerty] {:alone :tab :afterup ["apprun" 0]}]
+                [:tab ["apprun" 1] [:!fn_base :!fn_ctrl :!fn_optn :!fn_cmnd :!extend :!blocked] {:alone :tab :afterup ["apprun" 0]}]
                 :apprun
                     ;; switch desktops
                     [:y :!!1]
@@ -344,17 +332,12 @@
             :rules [
                 [[:left_shift :right_shift] :!Freturn_or_enter]
                 [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
-                [:f24 [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]][["layer" 0]["extend" 0]]]
-                [:f24 [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]][["layer" 1]["extend" 0]]]
-                [:f24 [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]][["layer" 2]["extend" 0]]]
-                [:f24 [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]][["layer" 3]["extend" 0]]]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]]["layer" 0]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]]["layer" 1]]
-                    [:left_shift [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]]["layer" 2]]
-                    [:left_shift [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]]["layer" 3]]
+                    [:left_shift [["blocked" 1]["layer" 1]]["layer" 0]]
+                    [:left_shift [["blocked" 1]["layer" 2]]["layer" 1]]
+                    [:left_shift [["blocked" 0]["layer" 0]]["layer" 2]]
                     [:left_control ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
@@ -811,16 +794,15 @@
                     ; [:n :!!left_arrow]
                     [:m :!!left_arrow]
                     [:slash :!!right_arrow]
-                [:condi :extend :colemak]
                     ; undo, cut, copy, paste on colemak
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
             ]
         }
         {
-            :des "Colemak - Unshifted Layout"
+            :des "Colemak Layout"
             :rules [
                 ; colemak
-                [:condi :!qwerty :colemak]
+                [:condi :!blocked]
                     ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
                     ; [:##non_us_backslash :grave_accent_and_tilde]
                     ; [:##grave_accent_and_tilde :non_us_backslash]
