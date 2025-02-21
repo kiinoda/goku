@@ -343,6 +343,11 @@
             :des "Yabai Layers (uses Fn as base trigger)"
             :rules [
                 [[:left_shift :right_shift] :!Freturn_or_enter]
+                [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
+                [:f24 [["blocked" 0]["qwerty" 0]["colemak" 1]["layer" 1]][["layer" 0]["extend" 0]]]
+                [:f24 [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 2]][["layer" 1]["extend" 0]]]
+                [:f24 [["blocked" 1]["qwerty" 1]["colemak" 0]["layer" 3]][["layer" 2]["extend" 0]]]
+                [:f24 [["blocked" 0]["qwerty" 0]["colemak" 0]["layer" 0]][["layer" 3]["extend" 0]]]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
