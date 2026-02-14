@@ -286,6 +286,27 @@
             ]
         }
         {
+            :des "System Keys Layer - hold ESC to activate (internal keyboard only)"
+            :rules [
+                [:escape ["system_keys" 1] :!kninepro {:afterup ["system_keys" 0] :alone :escape}]
+                :system_keys
+                    [:f1 :display_brightness_decrement]
+                    [:f2 :display_brightness_increment]
+                    [:f3 :mission_control]
+                    [:f4 :launchpad]
+                    [:f5 :illumination_decrement]
+                    [:f6 :illumination_increment]
+                    [:f7 :rewind]
+                    [:f8 :play_or_pause]
+                    [:f9 :fastforward]
+                    [:f10 :mute]
+                    [:f11 :volume_decrement]
+                    [:f12 :volume_increment]
+                    [:any_key :vk_none]
+                    [:any_consumer :vk_none]
+            ]
+        }
+        {
             :des "Rotate between Colemak, QWERTY w/ layers and Off w/ FN+LeftShift"
             :rules [
                 [:!F#Pleft_shift [["blocked" 1]["layer" 1]]["layer" 0]]
