@@ -56,6 +56,7 @@
                 end if
             end if'"
         :sleep "sleep %s" ; sample placeholder
+        :set_var "/Users/kii/bin/karabiner_state set %s %s"
     }
 
     :applications {
@@ -320,9 +321,9 @@
         {
             :des "Rotate between Colemak, QWERTY w/ layers and Off w/ FN+LeftShift"
             :rules [
-                [:!F#Pleft_shift [["blocked" 1]["layer" 1]]["layer" 0]]
-                [:!F#Pleft_shift [["blocked" 1]["layer" 2]]["layer" 1]]
-                [:!F#Pleft_shift [["blocked" 0]["layer" 0]]["layer" 2]]
+                [:!F#Pleft_shift [["blocked" 1]["layer" 1][:set_var "layer" "qwerty"]]["layer" 0]]
+                [:!F#Pleft_shift [["blocked" 1]["layer" 2][:set_var "layer" "off"]]["layer" 1]]
+                [:!F#Pleft_shift [["blocked" 0]["layer" 0][:set_var "layer" "colemak"]]["layer" 2]]
             ]
         }
         {
@@ -338,8 +339,8 @@
                     [:p :!!5]
                     [:open_bracket :!!6]
                     ;; swap active browser
-                    [:right_option ["browser" 0] ["browser" 1]]
-                    [:right_option ["browser" 1] ["browser" 0]]
+                    [:right_option [["browser" 0] [:set_var "browser" "safari"]] ["browser" 1]]
+                    [:right_option [["browser" 1] [:set_var "browser" "vivaldi"]] ["browser" 0]]
                     [:spacebar [:open "Safari"] ["browser" 0]]
                     [:spacebar [:open "Vivaldi"] ["browser" 1]]
                     [:right_command [:open "Vivaldi"] ["browser" 0]]
@@ -367,9 +368,9 @@
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
-                    [:left_shift [["blocked" 1]["layer" 1]]["layer" 0]]
-                    [:left_shift [["blocked" 1]["layer" 2]]["layer" 1]]
-                    [:left_shift [["blocked" 0]["layer" 0]]["layer" 2]]
+                    [:left_shift [["blocked" 1]["layer" 1][:set_var "layer" "qwerty"]]["layer" 0]]
+                    [:left_shift [["blocked" 1]["layer" 2][:set_var "layer" "off"]]["layer" 1]]
+                    [:left_shift [["blocked" 0]["layer" 0][:set_var "layer" "colemak"]]["layer" 2]]
                     [:left_control ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
