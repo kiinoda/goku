@@ -638,7 +638,7 @@
                     ; slack
                     [:right_command :right_command :slack {:alone :!CSd}]
                     ; teams
-                    [:left_option :left_option :teams {:alone :!CSm}]        ; toggle microphone
+                    [:left_command :left_command :teams {:alone :!CSm}]        ; toggle microphone
                     ; vivaldi
                     [:!CSf :vk_none :vivaldi]
                     [:!Qf :!QSt :vivaldi]
@@ -660,7 +660,7 @@
                     [:right_command :right_command [:vscode ["vscode_terminal" 2]] {:alone [:!COm :toggle_terminal]}]
                     [:!Creturn_or_enter :!TOn :vscode]                       ; run code
                     [:right_option :right_option :vscode {:alone :!Cb}]      ; toggle side bar
-                    [:left_option :left_option :vscode {:alone :!Tw}]        ; switch to window
+                    [:left_command :left_command :vscode {:alone :!Tw}]        ; switch to window
                     ; workflowy
                     [:right_command :right_command :workflowy {:alone :!Cup_arrow}]
                     [:!Sright_command :!Sright_command :workflowy {:alone :!Cdown_arrow}]
@@ -668,7 +668,7 @@
                     ; zoom
                     [:right_option :right_option :zoom {:alone :!Oy}]           ; toggle raised hand
                     [:right_command :right_command :zoom {:alone [:!Cu :!CSh]}] ; toggle participant list & chat
-                    [:left_option :left_option :zoom {:alone :!CSa}]            ; toggle microphone
+                    [:left_command :left_command :zoom {:alone :!CSa}]            ; toggle microphone
                     [:!Cleft_option :!CSv :zoom]                                ; toggle video
                     [:!Qleft_option :!CSv :zoom]                                ; toggle video
                     [:!Qleft_command :!CSs :zoom]                               ; toggle sharing
