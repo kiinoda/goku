@@ -448,7 +448,7 @@
             ]
         }
         {
-            :des "Kitty Layers"
+            :des "Ghostty Layers"
             :rules [
                 [:condi :fn_desk]
                     [:j :!!left_arrow]
@@ -465,17 +465,6 @@
                     [:backslash [:!Ta :!Sbackslash]]
                     [:hyphen [:!Ta :hyphen]]
                     [:return_or_enter [:!Ta :z]]
-                    [:any_key :vk_none]
-                [:condi :fn_nvim]
-                    [:u :!Sb]
-                    [:o :!Sw]
-                    [:semicolon [:!Tw :o]]
-                    [:i [:escape :!Tw :up_arrow]]
-                    [:j [:escape :!Tw :left_arrow]]
-                    [:k [:escape :!Tw :down_arrow]]
-                    [:l [:escape :!Tw :right_arrow]]
-                    [:comma [:type_cr ":bp"]]
-                    [:period [:type_cr ":bn"]]
                     [:any_key :vk_none]
             ]
         }
@@ -697,8 +686,8 @@
                     [:w ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:e ["fn_desk" 1] nil {:afterup ["fn_desk" 0]}]
                     [:r ["fn_tmux" 1] nil {:afterup ["fn_tmux" 0]}]
-                    [:t ["fn_nvim" 1] nil {:afterup ["fn_nvim" 0]}]
-                    [:y ["fn_nvim" 1] nil {:afterup ["fn_nvim" 0] :alone :!!6}]
+                    [:t :vk_none nil]
+                    [:y :!Fbackslash nil]
                     ;~ switch from one stack to the other
                     [:left_shift :left_shift nil {:alone :!Fj}]
                     [:right_shift :right_shift nil {:alone :!Fl}]
