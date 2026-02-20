@@ -12,7 +12,7 @@
 
     :devices {
         :kninepro [{:vendor_id 13364 :product_id 656}]
-        ; :kninepro [{:vendor_id 13364 :product_id 640}]
+        :nuphyair60he [{:vendor_id 6645 :product_id 65248}]
     }
 
     :templates {
@@ -825,8 +825,8 @@
                 ; colemak
                 [:condi :!blocked]
                     ; mod-wide colemak on the apple keyboard (full layout below; some keys are the same as QWERTY)
-                    ; [:##non_us_backslash :grave_accent_and_tilde]
-                    ; [:##grave_accent_and_tilde :non_us_backslash]
+                    [:##non_us_backslash :grave_accent_and_tilde [:!kninepro :!nuphyair60he]]
+                    [:##grave_accent_and_tilde :non_us_backslash [:!kninepro :!nuphyair60he]]
                     [:##q :q][:##w :w][:##e :f][:##r :p][:##t :g][:##y :j][:##u :l][:##i :u][:##o :y][:##p :semicolon]
                     [:##a :a][:##s :r][:##d :s][:##f :t][:##g :d][:##h :h][:##j :n][:##k :e][:##l :i][:##semicolon :o]
                     [:##z :z][:##x :x][:##c :c][:##v :v][:##b :b][:##n :k][:##m :m]
