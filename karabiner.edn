@@ -481,7 +481,6 @@
                     [:right_shift :right_shift [["yabai_stack" 1]] {:alone :!Fl}]
                     [:!Rleft_shift :!!left_arrow]
                     [:!Sright_shift :!!right_arrow]
-                    ; [:left_command :left_command nil {:alone :!Ctab}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:f5 :!Fh]                                                 ; toggle show desktop
