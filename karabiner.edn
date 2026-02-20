@@ -364,9 +364,9 @@
         {
             :des "Yabai Layers (uses Fn as base trigger)"
             :rules [
-                [[:left_shift :right_shift] :!Freturn_or_enter]
-                [:fn ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone [:yabai_swap_space]}]
-                [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone [:yabai_swap_space]}]
+                [[:left_shift :right_shift] [:yabai_swap_space]]
+                [:fn ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
+                [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
@@ -472,8 +472,8 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
-                    [:left_option :left_option nil {:alone :!Fbackslash}]
-                    [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
+                    [:left_option :left_option nil {:alone :!Fspacebar}]
+                    [:return_or_enter nil nil {:alone :return_or_enter :held [:yabai_swap_space]}]
                     ; Yabai: switch between apps in the stack OR tiled using shift
                     [:left_shift :left_shift [["yabai_stack" 0]] {:alone :!Fcomma}]
                     [:right_shift :right_shift [["yabai_stack" 0]] {:alone :!Fperiod}]
