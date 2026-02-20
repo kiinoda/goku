@@ -61,6 +61,7 @@
     :applications {
         ; extract from /Applications/$APP/Contents/Info.plist from 'CFBundleIdentifier' key
         :arc [ "^company.thebrowser.Browser" ]
+        :alacritty [ "^org.alacritty" ]
         :chrome [ "^com.google.Chrome$" ]
         :discord [ "^com.hnc.Discord" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
@@ -216,6 +217,16 @@
 
         ; 1password
         :activate_1password {:key :!COTspacebar}
+        ; alacritty
+        :alacritty-prev_tab {:key :!Cleft_arrow}
+        :alacritty-next_tab {:key :!Cright_arrow}
+        :alacritty-move_tab_left {:key :!COleft_arrow}
+        :alacritty-move_tab_right {:key :!COright_arrow}
+        :alacritty-word_left {:key :!Tleft_arrow}
+        :alacritty-word_right {:key :!Tright_arrow}
+        :alacritty-beginning_of_line {:key :!Ta}
+        :alacritty-end_of_line {:key :!Te}
+        :alacritty-tmux_prefix {:key :!Ta}
         ; chrome
         :chrome-prev_tab {:key :!TStab}
         :chrome-next_tab {:key :!Ttab}
@@ -523,6 +534,43 @@
                     [:!Q7 :!C7 :ghostty]
                     [:!Q8 :!C8 :ghostty]
                     [:!Q9 :!C9 :ghostty]
+                    ; alacritty
+                    [:!Tslash :!TShyphen :alacritty]
+                    [:left_option :left_option [:alacritty ["tmux_prefix" 0]] {:alone :!Ta}]
+                    [:left_option :left_option [:alacritty ["tmux_prefix" 1]] {:alone :!Tb}]
+                    [:left_command :left_command [:alacritty ["tmux_prefix" 0]] {:alone [:!Ta :!Ta]}]
+                    [:left_command :left_command [:alacritty ["tmux_prefix" 1]] {:alone [:!Tb :!Tb]}]
+                    [:right_command :right_command [:alacritty ["tmux_prefix" 0]] {:alone [:!Ta :z]}]
+                    [:right_command :right_command [:alacritty ["tmux_prefix" 1]] {:alone [:!Tb :z]}]
+                    [:right_option :right_option [:alacritty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
+                    [:right_option :right_option [:alacritty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
+                    ; rotate between ctrl+a & ctrl+b as a tmux prefix
+                    [:!Qspacebar ["tmux_prefix" 1] [:alacritty ["tmux_prefix" 0]]]
+                    [:!Qspacebar ["tmux_prefix" 0] [:alacritty ["tmux_prefix" 1]]]
+                    [:!Cf [:!Ta :c] :alacritty]           ; Cmd+T on Colemak
+                    [:!Cw [:!Ta :k] :alacritty]
+                    [:!C0 [:!Ta :0] :alacritty]
+                    [:!C1 [:!Ta :1] :alacritty]
+                    [:!C2 [:!Ta :2] :alacritty]
+                    [:!C3 [:!Ta :3] :alacritty]
+                    [:!C4 [:!Ta :4] :alacritty]
+                    [:!C5 [:!Ta :5] :alacritty]
+                    [:!C6 [:!Ta :6] :alacritty]
+                    [:!C7 [:!Ta :7] :alacritty]
+                    [:!C8 [:!Ta :8] :alacritty]
+                    [:!C9 [:!Ta :9] :alacritty]
+                    [:!CSf :vk_none :alacritty]
+                    [:!Qf :!QSt :alacritty]
+                    [:!Q0 :!C0 :alacritty]
+                    [:!Q1 :!C1 :alacritty]
+                    [:!Q2 :!C2 :alacritty]
+                    [:!Q3 :!C3 :alacritty]
+                    [:!Q4 :!C4 :alacritty]
+                    [:!Q5 :!C5 :alacritty]
+                    [:!Q6 :!C6 :alacritty]
+                    [:!Q7 :!C7 :alacritty]
+                    [:!Q8 :!C8 :alacritty]
+                    [:!Q9 :!C9 :alacritty]
                     ; kitty
                     [:left_option :left_option :kitty {:alone [:!Ta :z]}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
@@ -658,6 +706,23 @@
                     [:##hyphen     nil nil {:alone :f11 :held [:open_social "Skype"]}]
                     [:##equal_sign nil nil {:alone :f12 :held [:open_social "zoom.us"]}]
                     ; per-app key definitions
+                    ; alacritty
+                    [:!Tcomma :alacritty-prev_tab :kitty]
+                    [:!Tperiod :alacritty-next_tab :kitty]
+                    [:u [:!Ta :a] :alacritty]
+                    [:o :!Te :alacritty]
+                    [:!Cj [:!Ta :left_arrow] :alacritty]
+                    [:!Ck [:!Ta :down_arrow] :alacritty]
+                    [:!Ci [:!Ta :up_arrow] :alacritty]
+                    [:!Cl [:!Ta :right_arrow] :alacritty]
+                    [:!Oj :!Ob :alacritty]
+                    [:!Ol :!Of :alacritty]
+                    [:!Tj [:escape :!Tw :left_arrow] :alacritty]
+                    [:!Tk [:escape :!Tw :down_arrow] :alacritty]
+                    [:!Ti [:escape :!Tw :up_arrow] :alacritty]
+                    [:!Tl [:escape :!Tw :right_arrow] :alacritty]
+                    [:comma [:!Ta :p] :alacritty]
+                    [:period [:!Ta :n] :alacritty]
                     ; arc
                     [:u :!Cleft_arrow :arc]
                     [:o :!Cright_arrow :arc]
