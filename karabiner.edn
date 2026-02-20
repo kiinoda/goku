@@ -347,8 +347,8 @@
                     [:right_command [:open "Vivaldi"] ["browser" 0]]
                     [:right_command [:open "Safari"] ["browser" 1]]
                     ;; swap shift combos between tiled/stacked
-                    [:left_control ["yabai_stack" 0] ["yabai_stack" 1]]
-                    [:left_control ["yabai_stack" 1] ["yabai_stack" 0]]
+                    [:left_shift ["yabai_stack" 0] ["yabai_stack" 1]]
+                    [:left_shift ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; swap shift combos between tiled/stacked
                     [:fn ["yabai_stack" 0] ["yabai_stack" 1]]
                     [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
