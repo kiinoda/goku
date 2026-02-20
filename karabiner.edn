@@ -354,7 +354,7 @@
                     [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; keys acting on single apps
                     [:j [:open "Drafts"]]
-                    [:n [:open "Kitty"]]
+                    [:n [:open "Ghostty"]]
                     [:m [:open "Mailmate"]]
                     ;; final cleanup
                     [:any_key :vk_none]
@@ -477,7 +477,6 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
-                    [:left_command :left_command nil {:alone :!Fspacebar}]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
                     ; Yabai: switch between apps in the stack OR tiled using shift
                     [:left_shift :left_shift [["yabai_stack" 0]] {:alone :!Fcomma}]
@@ -505,7 +504,7 @@
                     ; finder
                     [:right_command :right_command :finder {:alone :!CTs}]
                     ; ghostty
-                    [:left_option :left_option :ghostty {:alone [:!Ta :z]}]
+                    [:left_command :left_command :ghostty {:alone [:!Ta :z]}]
                     [:right_option :right_option [:ghostty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
                     [:right_option :right_option [:ghostty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
                     [:right_command :right_command [:ghostty ["tmux_prefix" 0]] {:alone :!Ta}]
@@ -575,7 +574,7 @@
                     [:!Q8 :!C8 :alacritty]
                     [:!Q9 :!C9 :alacritty]
                     ; kitty
-                    [:left_option :left_option :kitty {:alone [:!Ta :z]}]
+                    [:left_command :left_command :kitty {:alone [:!Ta :z]}]
                     [:right_option :right_option [:kitty :!tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes on"] ["tmux_sync_panes" 1]]}]
                     [:right_option :right_option [:kitty :tmux_sync_panes] {:alone [:!Ta :!Ssemicolon [:type_cr "setw synchronize-panes off"] ["tmux_sync_panes" 0]]}]
                     [:right_command :right_command [:kitty ["tmux_prefix" 0]] {:alone :!Ta}]
