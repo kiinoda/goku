@@ -477,6 +477,7 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    [:left_option :left_option nil {:alone :!Fbackslash}]
                     [:return_or_enter nil nil {:alone :return_or_enter :held :!CTf}]
                     ; Yabai: switch between apps in the stack OR tiled using shift
                     [:left_shift :left_shift [["yabai_stack" 0]] {:alone :!Fcomma}]
