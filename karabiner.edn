@@ -301,7 +301,7 @@
         {
             :des "System Keys Layer - hold ESC to activate (internal keyboard only)"
             :rules [
-                [:escape ["system_keys" 1] :!kninepro {:afterup ["system_keys" 0] :alone :escape}]
+                [:escape ["system_keys" 1] [:!kninepro :!nuphyair60he] {:afterup ["system_keys" 0] :alone :escape}]
                 :system_keys
                     [:f1 :display_brightness_decrement]
                     [:f2 :display_brightness_increment]
