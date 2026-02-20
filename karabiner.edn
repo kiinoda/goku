@@ -56,6 +56,7 @@
                 end if
             end if'"
         :sleep "sleep %s" ; sample placeholder
+        :yabai_swap_space "/Users/kii/bin/yabai-swap-space %s"
         :set_var "/Users/kii/bin/karabiner_state set %s %s"
     }
 
@@ -364,7 +365,8 @@
             :des "Yabai Layers (uses Fn as base trigger)"
             :rules [
                 [[:left_shift :right_shift] :!Freturn_or_enter]
-                [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
+                [:fn ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone [:yabai_swap_space]}]
+                [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone [:yabai_swap_space]}]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
@@ -684,7 +686,7 @@
                     [:!Rr :!!4]
                     [:!Rt :!!5]
                     [:!Ry :!!6]
-                    [:q ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!!1}]
+                    [:q ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone [:yabai_swap_space]}]
                     [:w ["fn_ctrl" 1] nil {:afterup ["fn_ctrl" 0]}]
                     [:e ["fn_desk" 1] nil {:afterup ["fn_desk" 0]}]
                     [:r ["fn_tmux" 1] nil {:afterup ["fn_tmux" 0]}]
