@@ -299,27 +299,6 @@
             ]
         }
         {
-            :des "System Keys Layer - hold ESC to activate (internal keyboard only)"
-            :rules [
-                [:escape ["system_keys" 1] [:!kninepro :!nuphyair60he] {:afterup ["system_keys" 0] :alone :escape}]
-                :system_keys
-                    [:f1 :display_brightness_decrement]
-                    [:f2 :display_brightness_increment]
-                    [:f3 :mission_control]
-                    [:f4 :launchpad]
-                    [:f5 :illumination_decrement]
-                    [:f6 :illumination_increment]
-                    [:f7 :rewind]
-                    [:f8 :play_or_pause]
-                    [:f9 :fastforward]
-                    [:f10 :mute]
-                    [:f11 :volume_decrement]
-                    [:f12 :volume_increment]
-                    [:any_key :vk_none]
-                    [:any_consumer :vk_none]
-            ]
-        }
-        {
             :des "Rotate between Colemak, QWERTY w/ layers and Off w/ FN+LeftShift"
             :rules [
                 [:!F#Pleft_shift [["blocked" 1]["layer" 1][:set_var "layer" "qwerty"]]["layer" 0]]
@@ -368,6 +347,8 @@
                 [:fn ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
                 [:f24 ["fn_base" 1] nil {:afterup ["fn_base" 0] :alone :!Fbackslash}]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
+                    [:escape [:yabai_swap_space]]
+                    [:grave_accent_and_tilde [:yabai_swap_space]]
                     [:caps_lock [:caps_lock [:noti :caps "Caps Lock"]["capslock" 1]] [["capslock" 0]["blocked" 0]]]
                     [:!Pcaps_lock [:caps_lock [:noti :caps ""]["capslock" 0]] [["capslock" 1]["blocked" 0]]]
                     [:left_shift [["blocked" 1]["layer" 1][:set_var "layer" "qwerty"]]["layer" 0]]
@@ -377,8 +358,6 @@
                     [:left_option  ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:left_command ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
-                    [:right_shift :!Fbackslash]
-                    ;
                     [:w ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:e ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
                     [:1 :!F1]
@@ -448,6 +427,27 @@
             ]
         }
         {
+            :des "System Keys Layer - hold ESC to activate (internal keyboard only)"
+            :rules [
+                [:escape ["system_keys" 1] [:!kninepro :!nuphyair60he] {:afterup ["system_keys" 0] :alone :escape}]
+                :system_keys
+                    [:f1 :display_brightness_decrement]
+                    [:f2 :display_brightness_increment]
+                    [:f3 :mission_control]
+                    [:f4 :launchpad]
+                    [:f5 :illumination_decrement]
+                    [:f6 :illumination_increment]
+                    [:f7 :rewind]
+                    [:f8 :play_or_pause]
+                    [:f9 :fastforward]
+                    [:f10 :mute]
+                    [:f11 :volume_decrement]
+                    [:f12 :volume_increment]
+                    [:any_key :vk_none]
+                    [:any_consumer :vk_none]
+            ]
+        }
+        {
             :des "Ghostty Layers"
             :rules [
                 [:condi :fn_desk]
@@ -472,6 +472,7 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    [:delete_or_backspace :!Odelete_or_backspace]
                     [:left_option :left_option nil {:alone :!Fspacebar}]
                     [:return_or_enter nil nil {:alone :return_or_enter :held [:yabai_swap_space]}]
                     ; Yabai: switch between apps in the stack OR tiled using shift
