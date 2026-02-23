@@ -360,9 +360,13 @@
                 [:condi :fn_base :!fn_ctrl :!fn_optn :!fn_cmnd]
                     [:w ["fn_optn" 1] nil {:afterup ["fn_optn" 0]}]
                     [:e ["fn_cmnd" 1] nil {:afterup ["fn_cmnd" 0]}]
-                    [:1 :!F1]
-                    [:2 :!F2]
-                    [:3 :!F3]
+                    ;; switch desktops
+                    [:1 :!!1]
+                    [:2 :!!2]
+                    [:3 :!!3]
+                    [:4 :!!4]
+                    [:5 :!!5]
+                    ;; window spacing in Yabai
                     [:6 :!F6]
                     [:7 :!F7]
                     [:8 :!F8]
