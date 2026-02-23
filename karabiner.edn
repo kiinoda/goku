@@ -476,6 +476,8 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    [:left_control :left_control nil {:alone :!Fbackslash}]
+                    [:right_control :right_control nil {:alone :!Fbackslash}]
                     [:delete_or_backspace :!Odelete_or_backspace]
                     [:left_option :left_option nil {:alone :!Fspacebar}]
                     [:return_or_enter nil nil {:alone :return_or_enter :held [:yabai_swap_space]}]
