@@ -319,12 +319,12 @@
                     [:p :!!5]
                     [:open_bracket :!!6]
                     ;; swap active browser
-                    [:right_option [["browser" 0] [:set_var "browser" "safari"]] ["browser" 1]]
-                    [:right_option [["browser" 1] [:set_var "browser" "vivaldi"]] ["browser" 0]]
-                    [:spacebar [:open "Safari"] ["browser" 0]]
-                    [:spacebar [:open "Vivaldi"] ["browser" 1]]
-                    [:right_command [:open "Vivaldi"] ["browser" 0]]
-                    [:right_command [:open "Safari"] ["browser" 1]]
+                    [:right_option [["browser" 0] [:set_var "browser" "vivaldi"]] ["browser" 1]]
+                    [:right_option [["browser" 1] [:set_var "browser" "safari"]] ["browser" 0]]
+                    [:spacebar [:open "Vivaldi"] ["browser" 0]]
+                    [:spacebar [:open "Safari"] ["browser" 1]]
+                    [:right_command [:open "Safari"] ["browser" 0]]
+                    [:right_command [:open "Vivaldi"] ["browser" 1]]
                     ;; swap shift combos between tiled/stacked
                     [:left_shift ["yabai_stack" 0] ["yabai_stack" 1]]
                     [:left_shift ["yabai_stack" 1] ["yabai_stack" 0]]
