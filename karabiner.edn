@@ -672,12 +672,14 @@
         {
             :des "Extended Layer - Spacebar"
             :rules [
-                [:##spacebar [["extend" 1][:is_in_gdoc]] :!blocked {:afterup [["extend" 0]["in-gdoc" 0]] :alone :spacebar}]
+                [:##spacebar [["extend" 1][:is_in_gdoc]] :!blocked {:afterup [["extend" 0]["in-gdoc" 0]["tab_chord" 0]] :alone :spacebar}]
+                :tab_chord
+                    [:tab [:yabai_swap_space ["tab_chord" 0]] ["tab_chord" 1] {:delayed {:invoked ["tab_chord" 0] :cancelled ["tab_chord" 0]}}]
                 :extend
                     ;~ system wide shortcuts for top utilities
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
                     [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
-                    [:tab :vk_none]
+                    [:tab ["tab_chord" 1] nil {:delayed {:invoked [:!Fbackslash ["tab_chord" 0]] :cancelled ["tab_chord" 0]}}]
                     [:return_or_enter :!Fspacebar]
                     ;~ placing this up here to precede the general declaration of number -> functions
                     [:##2 :!Cs :drafts]
