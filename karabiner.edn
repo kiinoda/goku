@@ -4,9 +4,9 @@
             :default true
             :sim      200 ; keys need to be pressed within this threshold to be considered simultaneous
             :simlayer-threshold 250 ; ???????
-            :alone    250 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
-            :delay    300 ; time after which the key press is count delayed
-            :held     450 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
+            :alone    200 ; hold for 495ms and single tap registered; hold for 505ms and seen as modifier
+            :delay    250 ; time after which the keypress is count delayed
+            :held     350 ; key is fired twice when 1000 ms is elapsed (otherwise seen as a hold command)
         }
     }
 
@@ -56,6 +56,7 @@
                 end if
             end if'"
         :sleep "sleep %s" ; sample placeholder
+        :test "/usr/bin/say test"
         :yabai_swap_space "/Users/kii/bin/yabai-swap-space %s"
         :set_var "/Users/kii/bin/karabiner_state set %s %s"
     }
@@ -286,6 +287,10 @@
         {
             :des "Cmd+Option+Shift+Esc to Reset All Layers (when/if something goes horribly wrong)"
             :rules [
+                ;;; set snap 'window', take the snap, press right
+                ; [:non_us_backslash [:!CS5 ["shot" 1]] ["shot" 0]]
+                ; [:non_us_backslash [:return_or_enter ["shot" 2]] ["shot" 1]]
+                ; [:non_us_backslash [:right_arrow ["shot" 0]] ["shot" 2]]
                 [:!COTescape [
                     ["blocked" 0]["extend" 0]["apprun" 0]["capslock" 0]["layer" 0]
                 ]]
@@ -468,6 +473,7 @@
                     [:close_bracket [:!Ta :!Sclose_bracket]]
                     [:backslash [:!Ta :!Sbackslash]]
                     [:hyphen [:!Ta :hyphen]]
+                    [:equal_sign [:!Ta :c]]
                     [:return_or_enter [:!Ta :z]]
                     [:any_key :vk_none]
             ]
@@ -675,6 +681,7 @@
                 [:##spacebar [["extend" 1][:is_in_gdoc]] :!blocked {:afterup [["extend" 0]["in-gdoc" 0]["tab_chord" 0]] :alone :spacebar}]
                 :tab_chord
                     [:tab [:yabai_swap_space ["tab_chord" 0]] ["tab_chord" 1] {:delayed {:invoked ["tab_chord" 0] :cancelled ["tab_chord" 0]}}]
+                    ; [:tab [:ping ["tab_chord" 0]] ["tab_chord" 1] {:delayed {:invoked ["tab_chord" 0] :cancelled ["tab_chord" 0]}}]
                 :extend
                     ;~ system wide shortcuts for top utilities
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
@@ -697,8 +704,8 @@
                     [:t :vk_none nil {:alone :!!5}]
                     [:y :!Fbackslash nil]
                     ;~ switch from one stack to the other
-                    [:left_shift :left_shift nil {:alone :!Fj}]
-                    [:right_shift :right_shift nil {:alone :!Fl}]
+                    ; [:left_shift :left_shift nil {:alone :!Fj}]
+                    ; [:right_shift :right_shift nil {:alone :!Fl}]
                     ;~* function keys & social apps
                     [:##1          nil nil {:alone :f1  :held [:open "Transmission"]}]
                     [:##2          nil nil {:alone :f2  :held [:open "Google Chrome"]}]
@@ -886,7 +893,10 @@
                     ; spaces navigation
                     ; [:n :!!left_arrow]
                     [:m :!!left_arrow]
+                    [:b :spacebar]
                     [:slash :!!right_arrow]
+                    ; [:left_shift :!!left_arrow]
+                    ; [:right_shift :!!right_arrow]
                     ; undo, cut, copy, paste on colemak
                     [:##z :!Cz][:##x :!Cx][:##c :!Cc][:##v :!Cv]
             ]
