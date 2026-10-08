@@ -333,12 +333,12 @@
                     [:spacebar [:open "Safari"] ["browser" 1]]
                     [:right_command [:open "Safari"] ["browser" 0]]
                     [:right_command [:open "Vivaldi"] ["browser" 1]]
-                    ;; swap shift combos between tiled/stacked
-                    [:left_shift ["yabai_stack" 0] ["yabai_stack" 1]]
-                    [:left_shift ["yabai_stack" 1] ["yabai_stack" 0]]
-                    ;; swap shift combos between tiled/stacked
-                    [:fn ["yabai_stack" 0] ["yabai_stack" 1]]
-                    [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
+                    ;;; swap shift combos between tiled/stacked
+                    ;;; [:left_shift ["yabai_stack" 0] ["yabai_stack" 1]]
+                    ;;; [:left_shift ["yabai_stack" 1] ["yabai_stack" 0]]
+                    ;;; swap shift combos between tiled/stacked
+                    ;;; [:fn ["yabai_stack" 0] ["yabai_stack" 1]]
+                    ;;; [:fn ["yabai_stack" 1] ["yabai_stack" 0]]
                     ;; keys acting on single apps
                     [:j [:open "Drafts"]]
                     [:n [:open "Ghostty"]]
