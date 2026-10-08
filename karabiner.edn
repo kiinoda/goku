@@ -69,6 +69,7 @@
         :chrome [ "^com.google.Chrome$" ]
         :cmux [ "^com.cmuxterm.app$" ]
         :discord [ "^com.hnc.Discord" ]
+        :dcvviewer [ "^com.nicesoftware.dcvviewer" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :emacs [ "^org.gnu.Emacs$" ]
         :evernote [ "^com.evernote.Evernote$" ]
@@ -474,6 +475,19 @@
                     [:backslash [:!Cd]]
                     [:return_or_enter [:!CSreturn_or_enter]]
                     [:any_key :vk_none]
+                 [:condi :fn_tmux :dcvviewer]
+                    [:i [:!Tb :up_arrow]]
+                    [:j [:!Tb :left_arrow]]
+                    [:k [:!Tb :down_arrow]]
+                    [:l [:!Tb :right_arrow]]
+                    [:o [:!Ta :y :question]]
+                    [:open_bracket [:!Tb :open_bracket]]
+                    [:close_bracket [:!Tb :close_bracket]]
+                    [:backslash [:!Tb :backslash]]
+                    [:hyphen [:!Tb :hyphen]]
+                    [:equal_sign [:!Tb :c]]
+                    [:return_or_enter [:!Tb :z]]
+                    [:any_key :vk_none]
                  [:condi :fn_tmux]
                     [:i :!TOup_arrow]
                     [:j :!TOleft_arrow]
@@ -519,6 +533,10 @@
                     [:left_command :left_command :cmux {:alone [:!CSreturn_or_enter]}]
                     [:right_command :right_command :cmux {:alone [:cmux_last_pane]}]
                     [:right_option :right_option :cmux {:alone :!Cb}]
+                    ; dcvviewer
+                    [:left_command :left_command :dcvviewer {:alone [:!Tb :z]}]
+                    [:right_command :right_command :dcvviewer {:alone [:!Tb]}]
+                    [:right_option :right_option :dcvviewer {:alone :!Tb}]
                     ; discord
                     [:right_command :right_command :discord {:alone :!Cu}] ; toggle user list
                     ; drafts
@@ -767,6 +785,9 @@
                     ; cmux
                     [:comma :!CSopen_bracket :cmux]
                     [:period :!CSclose_bracket :cmux]
+                    ; dcvviewer
+                    [:comma :!TStab :dcvviewer]
+                    [:period :!Ttab :dcvviewer]
                     ; evernote
                     [:u :evernote-beginning_of_line :evernote]
                     [:o :evernote-end_of_line :evernote]
