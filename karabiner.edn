@@ -716,10 +716,15 @@
                 :tab_chord
                     [:tab [:yabai_swap_space ["tab_chord" 0]] ["tab_chord" 1] {:delayed {:invoked ["tab_chord" 0] :cancelled ["tab_chord" 0]}}]
                     ; [:tab [:ping ["tab_chord" 0]] ["tab_chord" 1] {:delayed {:invoked ["tab_chord" 0] :cancelled ["tab_chord" 0]}}]
+                :tilde_chord
+                    [:non_us_backslash [:f12 ["tilde_chord" 0]] ["tilde_chord" 1] {:delayed {:invoked ["tilde_chord" 0] :cancelled ["tilde_chord" 0]}}]
+                    [:grave_accent_and_tilde [:f12 ["tilde_chord" 0]] ["tilde_chord" 1] {:delayed {:invoked ["tilde_chord" 0] :cancelled ["tilde_chord" 0]}}]
                 :extend
                     ;~ system wide shortcuts for top utilities
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
                     ; [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
+                    [:non_us_backslash ["tilde_chord" 1] nil {:delayed {:invoked [:f11 ["tilde_chord" 0]] :cancelled ["tilde_chord" 0]}}]
+                    [:grave_accent_and_tilde ["tilde_chord" 1] nil {:delayed {:invoked [:f11 ["tilde_chord" 0]] :cancelled ["tilde_chord" 0]}}]
                     [:tab ["tab_chord" 1] nil {:delayed {:invoked [:!Fbackslash ["tab_chord" 0]] :cancelled ["tab_chord" 0]}}]
                     [:return_or_enter :!Fspacebar]
                     ;~ placing this up here to precede the general declaration of number -> functions
