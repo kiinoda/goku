@@ -451,7 +451,7 @@
                     [:f6 :illumination_increment]
                     [:f7 :rewind]
                     [:f8 :play_or_pause]
-                    [:f9 :fastforward]
+                    [:f9 :fast_forward]
                     [:f10 :mute]
                     [:f11 :volume_decrement]
                     [:f12 :volume_increment]
@@ -507,6 +507,7 @@
             :des "Power Combos"
             :rules [
                 [:condi :!blocked :!extend :!apprun]
+                    ; global shortcuts
                     [:left_control :left_control nil {:alone :!Fbackslash}]
                     [:right_control :right_control nil {:alone :!Fbackslash}]
                     ; [:delete_or_backspace :!Odelete_or_backspace]
@@ -517,8 +518,8 @@
                     [:right_shift :right_shift [["yabai_stack" 0]] {:alone :!Fperiod}]
                     [:left_shift :left_shift [["yabai_stack" 1]] {:alone :!Fj}]
                     [:right_shift :right_shift [["yabai_stack" 1]] {:alone :!Fl}]
-                    [:!Rleft_shift :!!left_arrow]
-                    [:!Sright_shift :!!right_arrow]
+                    [:open_bracket nil nil {:alone :open_bracket :held :!!left_arrow}]
+                    [:close_bracket nil nil {:alone :close_bracket :held :!!right_arrow}]
                     ; global
                     [:##caps_lock :left_control nil {:alone :escape}]
                     [:f5 :!Fh]                                                 ; toggle show desktop
@@ -718,7 +719,7 @@
                 :extend
                     ;~ system wide shortcuts for top utilities
                     [:escape            nil nil {:alone :escape :held :system-force_quit_apps}]
-                    [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
+                    ; [:non_us_backslash  nil nil {:alone :!Fh    :held :activate_hazeover}]
                     [:tab ["tab_chord" 1] nil {:delayed {:invoked [:!Fbackslash ["tab_chord" 0]] :cancelled ["tab_chord" 0]}}]
                     [:return_or_enter :!Fspacebar]
                     ;~ placing this up here to precede the general declaration of number -> functions
