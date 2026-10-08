@@ -57,6 +57,7 @@
             end if'"
         :sleep "sleep %s" ; sample placeholder
         :test "/usr/bin/say test"
+        :cmux_last_pane "/Applications/cmux.app/Contents/Resources/bin/cmux last-pane"
         :yabai_swap_space "/Users/kii/bin/yabai-swap-space %s"
         :set_var "/Users/kii/bin/karabiner_state set %s %s"
     }
@@ -66,6 +67,7 @@
         :arc [ "^company.thebrowser.Browser" ]
         :alacritty [ "^org.alacritty" ]
         :chrome [ "^com.google.Chrome$" ]
+        :cmux [ "^com.cmuxterm.app$" ]
         :discord [ "^com.hnc.Discord" ]
         :drafts [ "^com.agiletortoise.Drafts-OSX$" ]
         :emacs [ "^org.gnu.Emacs$" ]
@@ -463,6 +465,15 @@
                     [:j :!!left_arrow]
                     [:l :!!right_arrow]
                     [:any_key :vk_none]
+                 [:condi :fn_tmux :cmux]
+                    [:i :!TOup_arrow]
+                    [:j :!TOleft_arrow]
+                    [:k :!TOdown_arrow]
+                    [:l :!TOright_arrow]
+                    [:hyphen [:!CSd]]
+                    [:backslash [:!Cd]]
+                    [:return_or_enter [:!CSreturn_or_enter]]
+                    [:any_key :vk_none]
                  [:condi :fn_tmux]
                     [:i :!TOup_arrow]
                     [:j :!TOleft_arrow]
@@ -504,6 +515,10 @@
                     [:!Qleft_command [:!Ql :!Qv :return_or_enter] :chrome]
                     [:!Cright_command [:button2 :c :return_or_enter] :chrome]
                     [:right_command :right_command :chrome {:alone :chrome-toggle_reader}]
+                    ; cmux
+                    [:left_command :left_command :cmux {:alone [:!CSreturn_or_enter]}]
+                    [:right_command :right_command :cmux {:alone [:cmux_last_pane]}]
+                    [:right_option :right_option :cmux {:alone :!Cb}]
                     ; discord
                     [:right_command :right_command :discord {:alone :!Cu}] ; toggle user list
                     ; drafts
@@ -749,6 +764,9 @@
                     [:o :!Cright_arrow :chrome]
                     [:comma :safari-prev_tab :chrome]
                     [:period :safari-next_tab :chrome]
+                    ; cmux
+                    [:comma :!CSopen_bracket :cmux]
+                    [:period :!CSclose_bracket :cmux]
                     ; evernote
                     [:u :evernote-beginning_of_line :evernote]
                     [:o :evernote-end_of_line :evernote]
